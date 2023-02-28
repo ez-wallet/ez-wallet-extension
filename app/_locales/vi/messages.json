@@ -340,15 +340,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "EZWallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "EZWallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "EZWallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -3028,6 +3028,18 @@
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "Tôi lưu Cụm mật khẩu khôi phục bí mật của mình bằng cách nào?"
   },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
   "seedPhraseIntroTitle": {
     "message": "Bảo mật cho ví của bạn"
   },
@@ -4334,10 +4346,10 @@
   "welcomeLoginTitle": {
     "message": "Gửi lời chào đến ví của bạn"
   },
-  "welcomeToMetaMask": {
+  "welcomeToEzWallet": {
     "message": "Bắt đầu nào"
   },
-  "welcomeToMetaMaskIntro": {
+  "welcomeToEzWalletIntro": {
     "message": "Được hàng triệu người tin dùng, MetaMask là một ví an toàn cho phép mọi người có thể truy cập vào thế giới web3."
   },
   "whatsNew": {

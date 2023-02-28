@@ -340,15 +340,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "EZWallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "EZWallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "EZWallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -665,7 +665,7 @@
     "message": "Confirm password"
   },
   "confirmRecoveryPhrase": {
-    "message": "Confirm Secret Recovery Phrase"
+    "message": "Confirmation"
   },
   "confirmed": {
     "message": "Confirmed"
@@ -849,7 +849,7 @@
     "message": "Create account"
   },
   "createNewWallet": {
-    "message": "Create a new wallet"
+    "message": "Create password"
   },
   "createPassword": {
     "message": "Create password"
@@ -2179,7 +2179,7 @@
     "message": "NFT was successfully added!"
   },
   "newPassword": {
-    "message": "New password (8 characters min)"
+    "message": "New password"
   },
   "newTokensImportedMessage": {
     "message": "You’ve successfully imported $1.",
@@ -2504,10 +2504,10 @@
     "message": "Choose your network"
   },
   "onboardingCreateWallet": {
-    "message": "Create a new wallet"
+    "message": "Create password"
   },
   "onboardingImportWallet": {
-    "message": "Import an existing wallet"
+    "message": "Import wallet"
   },
   "onboardingMetametricsAgree": {
     "message": "I agree"
@@ -2665,7 +2665,7 @@
     "message": "Password not long enough"
   },
   "passwordSetupDetails": {
-    "message": "This password will unlock your MetaMask wallet only on this device. MetaMask can not recover this password."
+    "message": "This password will unlock your EZ wallet only on this device"
   },
   "passwordStrength": {
     "message": "Password strength: $1",
@@ -2675,7 +2675,7 @@
     "message": "A strong password can improve the security of your wallet should your device be stolen or compromised."
   },
   "passwordTermsWarning": {
-    "message": "I understand that MetaMask cannot recover this password for me. $1"
+    "message": "I understand that EZ Wallet cannot recover this password for me. $1"
   },
   "passwordsDontMatch": {
     "message": "Passwords don't match"
@@ -3120,43 +3120,55 @@
     "message": "Confirm Secret Recovery Phrase"
   },
   "seedPhraseIntroNotRecommendedButtonCopy": {
-    "message": "Remind me later (not recommended)"
+    "message": "Remind me later"
   },
   "seedPhraseIntroRecommendedButtonCopy": {
-    "message": "Secure my wallet (recommended)"
+    "message": "Start"
   },
   "seedPhraseIntroSidebarBulletFour": {
-    "message": "Write down and store in multiple secret places"
+    "message": "Someone else finds it"
   },
   "seedPhraseIntroSidebarBulletOne": {
-    "message": "Save in a password manager"
+    "message": "You lose it"
   },
   "seedPhraseIntroSidebarBulletThree": {
-    "message": "Store in a safe deposit box"
+    "message": "You forget where you put it"
   },
   "seedPhraseIntroSidebarCopyOne": {
-    "message": "Your Secret Recovery Phrase is a 12-word phrase that is the “master key” to your wallet and your funds"
+    "message": "Write down your secret recovery phrase on a piece of paper and store in a safe place."
   },
   "seedPhraseIntroSidebarCopyThree": {
     "message": "If someone asks for your recovery phrase they are likely trying to scam you and steal your wallet funds."
   },
   "seedPhraseIntroSidebarCopyTwo": {
-    "message": "Never, ever share your Secret Recovery Phrase, not even with MetaMask!"
+    "message": "Doesn't have to be paper!"
   },
   "seedPhraseIntroSidebarTitleOne": {
-    "message": "What is a Secret Recovery Phrase?"
+    "message": "Manual"
   },
   "seedPhraseIntroSidebarTitleThree": {
-    "message": "Should I share my Secret Recovery Phrase?"
+    "message": "Other option:"
   },
   "seedPhraseIntroSidebarTitleTwo": {
-    "message": "How do I save my Secret Recovery Phrase?"
+    "message": "Risks are:"
+  },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": "Tips:"
+  },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": "Store in bank vault "
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": "Store in a safe"
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": "Store in multiple secret places"
   },
   "seedPhraseIntroTitle": {
     "message": "Secure your wallet"
   },
   "seedPhraseIntroTitleCopy": {
-    "message": "Before getting started, watch this short video to learn about your Secret Recovery Phrase and how to keep your wallet safe."
+    "message": "Secure your wallet's Secret recovery Phrase"
   },
   "seedPhraseReq": {
     "message": "Secret Recovery Phrases contain 12, 15, 18, 21, or 24 words"
@@ -4479,11 +4491,11 @@
   "welcomeLoginTitle": {
     "message": "Say hello to your wallet"
   },
-  "welcomeToMetaMask": {
-    "message": "Let's get started"
+  "welcomeToEzWallet": {
+    "message": "Welcome to EZWallet"
   },
-  "welcomeToMetaMaskIntro": {
-    "message": "Trusted by millions, MetaMask is a secure wallet making the world of web3 accessible to all."
+  "welcomeToEzWalletIntro": {
+    "message": "Import an existing wallet or create a new one"
   },
   "whatsNew": {
     "message": "What's new",

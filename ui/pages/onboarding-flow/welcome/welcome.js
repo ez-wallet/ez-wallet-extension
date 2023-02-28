@@ -2,8 +2,6 @@ import EventEmitter from 'events';
 import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Carousel } from 'react-responsive-carousel';
-import Mascot from '../../../components/ui/mascot';
 import Button from '../../../components/ui/button';
 import Typography from '../../../components/ui/typography/typography';
 import {
@@ -72,91 +70,42 @@ export default function OnboardingWelcome() {
     category: EVENT.CATEGORIES.ONBOARDING,
     event: EVENT_NAMES.ONBOARDING_WELCOME,
     properties: {
-      message_title: t('welcomeToMetaMask'),
+      message_title: t('welcomeToEzWallet'),
       app_version: global?.platform?.getVersion(),
     },
   });
 
   return (
     <div className="onboarding-welcome" data-testid="onboarding-welcome">
-      <Carousel showThumbs={false} showStatus={false} showArrows>
-        <div>
-          <Typography
-            variant={TypographyVariant.H2}
-            align={TEXT_ALIGN.CENTER}
-            fontWeight={FONT_WEIGHT.BOLD}
-          >
-            {t('welcomeToMetaMask')}
-          </Typography>
-          <Typography align={TEXT_ALIGN.CENTER} marginLeft={6} marginRight={6}>
-            {t('welcomeToMetaMaskIntro')}
-          </Typography>
-          <div className="onboarding-welcome__mascot">
-            <Mascot
-              animationEventEmitter={eventEmitter}
-              width="250"
-              height="250"
-            />
-          </div>
-        </div>
-        <div>
-          <Typography
-            variant={TypographyVariant.H2}
-            align={TEXT_ALIGN.CENTER}
-            fontWeight={FONT_WEIGHT.BOLD}
-          >
-            {t('welcomeExploreTitle')}
-          </Typography>
-          <Typography align={TEXT_ALIGN.CENTER}>
-            {t('welcomeExploreDescription')}
-          </Typography>
-          <div className="onboarding-welcome__image">
-            <img
-              src="/images/onboarding-welcome-say-hello.svg"
-              width="169"
-              height="237"
-              alt=""
-            />
-          </div>
-        </div>
-        <div>
-          <Typography
-            variant={TypographyVariant.H2}
-            align={TEXT_ALIGN.CENTER}
-            fontWeight={FONT_WEIGHT.BOLD}
-          >
-            {t('welcomeLoginTitle')}
-          </Typography>
-          <Typography align={TEXT_ALIGN.CENTER}>
-            {t('welcomeLoginDescription')}
-          </Typography>
-          <div className="onboarding-welcome__image">
-            <img
-              src="/images/onboarding-welcome-decentralised-apps.svg"
-              width="327"
-              height="256"
-              alt=""
-            />
-          </div>
-        </div>
-      </Carousel>
+      <div className="onboarding-welcome__header">
+        <Typography
+          variant={TypographyVariant.H2}
+          align={TEXT_ALIGN.CENTER}
+          fontWeight={FONT_WEIGHT.BOLD}
+        >
+          {t('welcomeToEzWallet')}
+        </Typography>
+        <Typography align={TEXT_ALIGN.CENTER} marginLeft={6} marginRight={6}>
+          {t('welcomeToEzWalletIntro')}
+        </Typography>
+      </div>
       <ul className="onboarding-welcome__buttons">
         <li>
           <Button
-            data-testid="onboarding-create-wallet"
-            type="primary"
-            onClick={onCreateClick}
+            data-testid="onboarding-import-wallet"
+            onClick={onImportClick}
           >
-            {t('onboardingCreateWallet')}
+            {t('onboardingImportWallet')}
           </Button>
         </li>
         <li>
           <Button
-            data-testid="onboarding-import-wallet"
-            type="secondary"
-            onClick={onImportClick}
+            data-testid="onboarding-create-wallet"
+            type="primary" 
+            // className="onboarding-welcome__button-create"
+            onClick={onCreateClick}
           >
-            {t('onboardingImportWallet')}
+            {t('onboardingCreateWallet')}
           </Button>
         </li>
       </ul>

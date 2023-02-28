@@ -340,15 +340,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "EZWallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "EZWallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "EZWallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -3028,6 +3028,18 @@
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "シークレットリカバリー フレーズはどのように保管すべきですか?"
   },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
   "seedPhraseIntroTitle": {
     "message": "ウォレットの保護"
   },
@@ -4334,10 +4346,10 @@
   "welcomeLoginTitle": {
     "message": "ウォレットにようこそ"
   },
-  "welcomeToMetaMask": {
+  "welcomeToEzWallet": {
     "message": "始めましょう"
   },
-  "welcomeToMetaMaskIntro": {
+  "welcomeToEzWalletIntro": {
     "message": "MetaMaskは何百万人もに信頼されている安全なウォレットで、すべての人々によるWeb3の世界へのアクセスを可能にしています。"
   },
   "whatsNew": {

@@ -1,0 +1,29 @@
+/**
+ * Colors custom
+ * Do not use "--brand-colors" in your code
+ * Instead use the "--color-" variables to ensure
+ * theme compatible styles
+ */
+
+:root {
+   /* green */
+   --colors-primary-green_01: #00E67B;
+   --colors-primary-green_02: #17E686;
+   --colors-primary-green_03: #39E596;
+   --colors-primary-green_04: #73E5B0;
+   --colors-primary-green_05: #ACE5CB;
+   --colors-primary-green_06: #CEF2E1;
+   --colors-primary-green_07: #00B360;
+   --colors-primary-green_08: #46a77a;
+   /* grey */
+   --colors-primary-grey_01: #8C8C99;
+   --colors-primary-grey_02: rgba(140, 140, 153, 0.5);
+   --colors-primary-grey_03: #BBBBCC;
+   --colors-primary-grey_04: #D2D2DA;
+   --colors-primary-grey_05: #DEE4F3;
+   --colors-primary-grey_06: #F3F3F9;
+   --colors-primary-grey_07: #EEEEF8;
+
+   --color-text-neutral-black_01: #35353A;
+   --color-text-neutral-grey_01: #8C8C99;
+}

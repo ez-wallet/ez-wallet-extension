@@ -32,6 +32,10 @@
     background: none;
   }
 
+  &__header {
+    height: 350px;
+  }
+
   &__mascot {
     width: 250px;
     height: 250px;
@@ -50,5 +54,11 @@
     li {
       margin-bottom: 24px;
     }
+  }
+
+  &__button-create {
+    background-color: #39E596;
+    color: #35353A;
+    border-width: 0;
   }
 }

@@ -6,6 +6,7 @@ $progress-bar-position-left: calc(-50% + 17px); // -50% + ((circle size / 2) + c
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+  gap: 45px;
 }
 
 ul.two-steps {
@@ -14,11 +15,11 @@ ul.two-steps {
 
 .progressbar li {
   @include H7;
-
+  white-space: nowrap;
   list-style-type: none;
   position: relative;
   text-align: center;
-  color: var(--color-text-alternative);
+  color: var(--color-text-neutral-grey_01);
   z-index: 2;
   align-items: center;
   display: flex;
@@ -32,33 +33,15 @@ ul.two-steps {
   content: counter(step);
   counter-increment: step;
   line-height: 30px;
-  border: 2px solid var(--color-border-muted);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin: 0 auto 10px auto;
   border-radius: 50%;
-  background-color: var(--color-background-default);
+  background-color: var(--colors-primary-grey_05);
 }
 
-.progressbar li::after {
-  width: $progress-bar-width;
-  height: 2px;
-  content: '';
-  position: absolute;
-  background-color: var(--color-background-alternative);
-  top: 15px;
-  left: $progress-bar-position-left;
-
-  [dir='rtl'] & {
-    width: $progress-bar-width;
-    height: 2px;
-    content: '';
-    position: absolute;
-    background-color: var(--color-background-alternative);
-  }
-}
 
 .progressbar li:first-child::after {
   content: none;
@@ -69,39 +52,41 @@ ul.two-steps {
 }
 
 .progressbar li.active {
-  color: var(--color-primary-default);
+  color: var(--color-text-neutral-black_01);
 
   [dir='rtl'] & {
-    color: var(--color-primary-default);
+    color: var(--color-text-neutral-black_01);
   }
 }
 
 .progressbar li.active::before {
-  border-color: var(--color-primary-default);
+  border-color: var(--colors-primary-green_03);
+  background-color: var(--colors-primary-green_03);
   z-index: 1;
 
   [dir='rtl'] & {
-    border-color: var(--color-primary-default);
+    border-color: var(--colors-primary-green_03);
+    background-color: var(--colors-primary-green_03);
     z-index: 1;
   }
 }
 
 .progressbar li.complete + li::after {
-  background-color: var(--color-primary-default);
+  background-color: var(--colors-primary-green_03);
   z-index: -1;
 
   [dir='rtl'] & {
-    background-color: var(--color-primary-default);
+    background-color: var(--colors-primary-green_03);
     z-index: -1;
   }
 }
 
 .progressbar li.complete::before {
-  background-color: var(--color-primary-default);
+  background-color: var(--colors-primary-green_03);
   color: var(--color-primary-inverse);
 
   [dir='rtl'] & {
-    background-color: var(--color-primary-default);
+    background-color: var(--colors-primary-green_03);
     color: var(--color-primary-inverse);
   }
 }

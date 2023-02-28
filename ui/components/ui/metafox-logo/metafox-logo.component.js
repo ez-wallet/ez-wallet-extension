@@ -34,15 +34,6 @@ export default class MetaFoxLogo extends PureComponent {
             'onboarding-app-header__metafox-logo--horizontal': isOnboarding,
           })}
         />
-        <img
-          {...iconProps}
-          src="./images/logo/metamask-fox.svg"
-          className={classnames({
-            'app-header__metafox-logo--icon': !isOnboarding,
-            'onboarding-app-header__metafox-logo--icon': isOnboarding,
-          })}
-          alt=""
-        />
       </div>
     );
   }

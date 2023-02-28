@@ -93,13 +93,13 @@ export default function CreatePassword({
       return {
         className: 'create-password__average',
         text: t('average'),
-        description: t('passwordStrengthDescription'),
+        description: '',
       };
     }
     return {
       className: 'create-password__weak',
       text: t('weak'),
-      description: t('passwordStrengthDescription'),
+      description: '',
     };
   };
 
@@ -229,6 +229,7 @@ export default function CreatePassword({
             alignItems={AlignItems.center}
             justifyContent={JustifyContent.spaceBetween}
             marginBottom={4}
+            marginTop={4}
           >
             <label className="create-password__form__terms-label">
               <CheckBox

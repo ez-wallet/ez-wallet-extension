@@ -340,15 +340,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "EZWallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "EZWallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "EZWallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -3028,6 +3028,18 @@
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "비밀 복구 구문은 어떻게 저장하나요?"
   },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
   "seedPhraseIntroTitle": {
     "message": "지갑 보호하기"
   },
@@ -4334,10 +4346,10 @@
   "welcomeLoginTitle": {
     "message": "내 지갑 처음 알아보기"
   },
-  "welcomeToMetaMask": {
+  "welcomeToEzWallet": {
     "message": "시작하기"
   },
-  "welcomeToMetaMaskIntro": {
+  "welcomeToEzWalletIntro": {
     "message": "수백만 명이 신뢰하는 MetaMask(메타마스크)는 모든 사람이 web3의 세계에 접근할 수 있도록 하는 안전한 지갑입니다."
   },
   "whatsNew": {

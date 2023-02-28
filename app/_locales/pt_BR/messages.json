@@ -206,15 +206,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "EZWallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "EZWallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "EZWallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -2066,6 +2066,18 @@
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "Como salvo minha Frase de Recuperação Secreta?"
   },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
   "seedPhraseIntroTitle": {
     "message": "Proteja sua carteira"
   },
@@ -3002,10 +3014,10 @@
   "welcomeLoginTitle": {
     "message": "Diga olá à sua carteira"
   },
-  "welcomeToMetaMask": {
+  "welcomeToEzWallet": {
     "message": "Vamos começar"
   },
-  "welcomeToMetaMaskIntro": {
+  "welcomeToEzWalletIntro": {
     "message": "Aprovada por milhões de pessoas, a MetaMask é uma carteira segura que torna o mundo da web3 acessível para todos."
   },
   "whatsNew": {

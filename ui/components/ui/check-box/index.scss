@@ -12,8 +12,8 @@
 
   &__checked,
   &__indeterminate {
-    color: var(--color-primary-default);
-    border-color: var(--color-primary-default);
+    color: var(--colors-primary-green_03);
+    border-color: var(--colors-primary-green_03);
   }
 
   &:disabled {

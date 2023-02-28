@@ -340,15 +340,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "EZWallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "EZWallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Fask",
+    "message": "EZWallet Fask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -3028,6 +3028,18 @@
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "मैं अपना गुप्त रिकवरी फ्रेज कैसे सहेजूं?"
   },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
   "seedPhraseIntroTitle": {
     "message": "अपने वॉलेट को सुरक्षित करें"
   },
@@ -4334,10 +4346,10 @@
   "welcomeLoginTitle": {
     "message": "अपने वॉलेट को हैलो कहें"
   },
-  "welcomeToMetaMask": {
+  "welcomeToEzWallet": {
     "message": "चलिए शुरु करते हैं"
   },
-  "welcomeToMetaMaskIntro": {
+  "welcomeToEzWalletIntro": {
     "message": "लाखों लोगों का भरोसेमंद, MetaMask एक सुरक्षित वॉलेट है जो वेब3 की दुनिया को सबके लिए सुलभ बनाता है।"
   },
   "whatsNew": {

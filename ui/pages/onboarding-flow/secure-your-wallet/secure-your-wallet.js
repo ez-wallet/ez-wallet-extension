@@ -83,7 +83,7 @@ export default function SecureYourWallet() {
       <Box
         justifyContent={JustifyContent.center}
         textAlign={TEXT_ALIGN.CENTER}
-        marginBottom={4}
+        marginBottom={2}
       >
         <Typography
           variant={TypographyVariant.H2}
@@ -92,7 +92,7 @@ export default function SecureYourWallet() {
           {t('seedPhraseIntroTitle')}
         </Typography>
       </Box>
-      <Box justifyContent={JustifyContent.center} marginBottom={6}>
+      <Box justifyContent={JustifyContent.center} marginBottom={2}>
         <Typography
           variant={TypographyVariant.H4}
           className="secure-your-wallet__details"
@@ -100,35 +100,64 @@ export default function SecureYourWallet() {
           {t('seedPhraseIntroTitleCopy')}
         </Typography>
       </Box>
-      <Box>
-        <video
-          className="secure-your-wallet__video"
-          onPlay={() => {
-            trackEvent({
-              category: EVENT.CATEGORIES.ONBOARDING,
-              event: EVENT_NAMES.ONBOARDING_WALLET_VIDEO_PLAY,
-            });
-          }}
-          controls
-        >
-          <source
-            type="video/webm"
-            src="./images/videos/recovery-onboarding/video.webm"
-          />
-          {Object.keys(subtitles).map((key) => {
-            return (
-              <track
-                default={Boolean(key === defaultLang)}
-                srcLang={key}
-                label={subtitles[key]}
-                key={`${key}-subtitles`}
-                kind="subtitles"
-                src={`./images/videos/recovery-onboarding/subtitles/${key}.vtt`}
-              />
-            );
-          })}
-        </video>
-      </Box>
+      <div className="box-info">
+        <Box marginBottom={4}>
+          <Typography
+            as="p"
+            variant={TypographyVariant.H4}
+            fontWeight={FONT_WEIGHT.BOLD}
+            boxProps={{ display: DISPLAY.BLOCK }}
+          >
+            {t('seedPhraseIntroSidebarTitleOne')}
+          </Typography>
+          <p className='color-description' variant={TypographyVariant.H4}>
+            {t('seedPhraseIntroSidebarCopyOne')}
+          </p>
+        </Box>
+        <Box marginBottom={4}>
+          <Typography
+            as="p"
+            variant={TypographyVariant.H4}
+            fontWeight={FONT_WEIGHT.BOLD}
+            boxProps={{ display: DISPLAY.BLOCK }}
+          >
+            {t('seedPhraseIntroSidebarTitleTwo')}
+          </Typography>
+          <ul className="secure-your-wallet__list">
+            <li>{t('seedPhraseIntroSidebarBulletOne')}</li>
+            <li>{t('seedPhraseIntroSidebarBulletThree')}</li>
+            <li>{t('seedPhraseIntroSidebarBulletFour')}</li>
+          </ul>
+        </Box>
+        <Box marginBottom={4}>
+          <Typography
+            as="p"
+            variant={TypographyVariant.H4}
+            fontWeight={FONT_WEIGHT.BOLD}
+            boxProps={{ display: DISPLAY.BLOCK }}
+          >
+            {t('seedPhraseIntroSidebarTitleThree')}
+          </Typography>
+          <p className='color-description' variant={TypographyVariant.H4}>
+            {t('seedPhraseIntroSidebarCopyTwo')}
+          </p>
+        </Box>
+        <Box marginBottom={6}>
+          <Typography
+            as="p"
+            variant={TypographyVariant.H4}
+            fontWeight={FONT_WEIGHT.BOLD}
+            boxProps={{ display: DISPLAY.BLOCK }}
+          >
+            {t('seedPhraseIntroSidebarTitleFour')}
+          </Typography>
+          <ul className="secure-your-wallet__list">
+            <li>{t('seedPhraseIntroSidebarTipOne')}</li>
+            <li>{t('seedPhraseIntroSidebarTipTwo')}</li>
+            <li>{t('seedPhraseIntroSidebarTipThree')}</li>
+          </ul>
+        </Box>
+      </div>
       <Box
         margin={8}
         justifyContent={JustifyContent.spaceBetween}
@@ -152,54 +181,6 @@ export default function SecureYourWallet() {
         >
           {t('seedPhraseIntroRecommendedButtonCopy')}
         </Button>
-      </Box>
-      <Box className="secure-your-wallet__desc">
-        <Box marginBottom={4}>
-          <Typography
-            as="p"
-            variant={TypographyVariant.H4}
-            fontWeight={FONT_WEIGHT.BOLD}
-            boxProps={{ display: DISPLAY.BLOCK }}
-          >
-            {t('seedPhraseIntroSidebarTitleOne')}
-          </Typography>
-          <Typography as="p" variant={TypographyVariant.H4}>
-            {t('seedPhraseIntroSidebarCopyOne')}
-          </Typography>
-        </Box>
-        <Box marginBottom={4}>
-          <Typography
-            as="p"
-            variant={TypographyVariant.H4}
-            fontWeight={FONT_WEIGHT.BOLD}
-            boxProps={{ display: DISPLAY.BLOCK }}
-          >
-            {t('seedPhraseIntroSidebarTitleTwo')}
-          </Typography>
-          <ul className="secure-your-wallet__list">
-            <li>{t('seedPhraseIntroSidebarBulletOne')}</li>
-            <li>{t('seedPhraseIntroSidebarBulletThree')}</li>
-            <li>{t('seedPhraseIntroSidebarBulletFour')}</li>
-          </ul>
-        </Box>
-        <Box marginBottom={6}>
-          <Typography
-            as="p"
-            variant={TypographyVariant.H4}
-            fontWeight={FONT_WEIGHT.BOLD}
-            boxProps={{ display: DISPLAY.BLOCK }}
-          >
-            {t('seedPhraseIntroSidebarTitleThree')}
-          </Typography>
-          <Typography as="p" variant={TypographyVariant.H4}>
-            {t('seedPhraseIntroSidebarCopyTwo')}
-          </Typography>
-        </Box>
-        <Box className="secure-your-wallet__highlighted" marginBottom={2}>
-          <Typography as="p" variant={TypographyVariant.H4}>
-            {t('seedPhraseIntroSidebarCopyThree')}
-          </Typography>
-        </Box>
       </Box>
     </div>
   );
