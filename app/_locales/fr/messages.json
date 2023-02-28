@@ -1739,6 +1739,9 @@
   "learnMore": {
     "message": "En savoir plus"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "learnMoreAboutGas": {
     "message": "Vous voulez $1 sur les frais de gaz ?",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -4286,8 +4289,11 @@
   "walletConnectionGuide": {
     "message": "notre guide de connexion des portefeuilles matériels"
   },
-  "walletCreationSuccessDetail": {
+  "walletCreationSuccessDetailOne": {
     "message": "Votre portefeuille est bien protégé. Conservez votre phrase secrète de récupération en sécurité et en toute discrétion. C’est votre responsabilité !"
+  },
+  "walletCreationSuccessDetailTwo": {
+    "message": ""
   },
   "walletCreationSuccessReminder1": {
     "message": "MetaMask ne peut pas restaurer votre phrase secrète de récupération."

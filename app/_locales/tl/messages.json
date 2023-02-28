@@ -1739,6 +1739,9 @@
   "learnMore": {
     "message": "matuto pa"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "learnMoreAboutGas": {
     "message": "Gusto mo bang $1 tungkol sa gas?",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -4286,8 +4289,11 @@
   "walletConnectionGuide": {
     "message": "ang aming gabay sa pagkonekta ng hardware wallet"
   },
-  "walletCreationSuccessDetail": {
+  "walletCreationSuccessDetailOne": {
     "message": "Tagumpay mong naprotektahan ang iyong wallet. Panatilihing ligtas ang iyong Secret Recovery Phrase at sikreto - pananagutan mo ito!"
+  },
+  "walletCreationSuccessDetailTwo": {
+    "message": ""
   },
   "walletCreationSuccessReminder1": {
     "message": "Di mababawi ng MetaMask ang iyong Secret Recovery Phrase."

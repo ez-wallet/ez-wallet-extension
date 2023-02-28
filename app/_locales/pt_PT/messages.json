@@ -89,6 +89,9 @@
   "learnMore": {
     "message": "Aprenda mais"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "loading": {
     "message": "A carregar..."
   },

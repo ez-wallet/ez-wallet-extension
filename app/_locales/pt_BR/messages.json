@@ -1247,6 +1247,9 @@
   "learnMore": {
     "message": "mais informações"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "learnMoreAboutGas": {
     "message": "Quer $1 sobre o gás?",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -2971,8 +2974,11 @@
   "walletConnectionGuide": {
     "message": "nosso guia de conexão com a carteira de hardware"
   },
-  "walletCreationSuccessDetail": {
+  "walletCreationSuccessDetailOne": {
     "message": "Você protegeu sua carteira com sucesso. Guarde sua Frase de Recuperação Secreta em segredo e em segurança — é sua responsabilidade!"
+  },
+  "walletCreationSuccessDetailTwo": {
+    "message": ""
   },
   "walletCreationSuccessReminder1": {
     "message": "A MetaMask não é capaz de recuperar sua Frase de Recuperação Secreta."

@@ -419,6 +419,9 @@
   "learnMore": {
     "message": "የበለጠ ይወቁ"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "ledgerAccountRestriction": {
     "message": "አዲስ መለያ ከማከልዎ በፊት የመጨረሻውን መለያዎን መጠቀም አለብዎት።"
   },

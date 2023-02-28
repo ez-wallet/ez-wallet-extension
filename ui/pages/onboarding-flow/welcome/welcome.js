@@ -17,6 +17,7 @@ import {
   ONBOARDING_METAMETRICS,
   ONBOARDING_SECURE_YOUR_WALLET_ROUTE,
   ONBOARDING_COMPLETION_ROUTE,
+  ONBOARDING_CREATE_PASSWORD_ROUTE
 } from '../../../helpers/constants/routes';
 import { FIRST_TIME_FLOW_TYPES } from '../../../helpers/constants/onboarding';
 import { getFirstTimeFlowType, getCurrentKeyring } from '../../../selectors';
@@ -51,7 +52,7 @@ export default function OnboardingWelcome() {
         account_type: 'metamask',
       },
     });
-    history.push(ONBOARDING_METAMETRICS);
+    history.push(ONBOARDING_CREATE_PASSWORD_ROUTE);
   };
 
   const onImportClick = () => {
@@ -101,7 +102,7 @@ export default function OnboardingWelcome() {
         <li>
           <Button
             data-testid="onboarding-create-wallet"
-            type="primary" 
+            type="primary"
             // className="onboarding-welcome__button-create"
             onClick={onCreateClick}
           >

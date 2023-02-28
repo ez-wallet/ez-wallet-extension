@@ -1739,6 +1739,9 @@
   "learnMore": {
     "message": "अधिक जानें"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "learnMoreAboutGas": {
     "message": "गैस के बारे में $1 चाहते हैं?",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -4286,8 +4289,11 @@
   "walletConnectionGuide": {
     "message": "हमारी हार्डवेयर वॉलेट कनेक्शन गाइड"
   },
-  "walletCreationSuccessDetail": {
+  "walletCreationSuccessDetaiOne": {
     "message": "आपने अपने वॉलेट को सफलतापूर्वक सुरक्षित कर लिया है। अपने सीक्रेट रिकवरी फ्रेज को सुरक्षित और गुप्त रखें -- यह आपकी जिम्मेदारी है!"
+  },
+  "walletCreationSuccessDetailTwo": {
+    "message": ""
   },
   "walletCreationSuccessReminder1": {
     "message": "MetaMask आपके सीक्रेट रिकवरी फ्रेज को फिर से प्राप्त नहीं कर सकता है।"

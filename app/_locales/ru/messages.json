@@ -1739,6 +1739,9 @@
   "learnMore": {
     "message": "подробнее"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "learnMoreAboutGas": {
     "message": "Хотите $1 о газе?",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -4286,8 +4289,11 @@
   "walletConnectionGuide": {
     "message": "наше руководство по подключению аппаратного кошелька"
   },
-  "walletCreationSuccessDetail": {
+  "walletCreationSuccessDetailOne": {
     "message": "Вы успешно защитили свой кошелек. Сохраните секретную фразу для восстановления в тайне — вы отвечаете за ее сохранность!"
+  },
+  "walletCreationSuccessDetailTwo": {
+    "message": ""
   },
   "walletCreationSuccessReminder1": {
     "message": "MetaMask не сможет восстановить вашу секретную фразу для восстановления."

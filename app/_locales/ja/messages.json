@@ -1739,6 +1739,9 @@
   "learnMore": {
     "message": "詳細"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "learnMoreAboutGas": {
     "message": "ガスに関する$1をご希望ですか？",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -4286,8 +4289,11 @@
   "walletConnectionGuide": {
     "message": "弊社のハードウェアウォレット接続ガイド"
   },
-  "walletCreationSuccessDetail": {
+  "walletCreationSuccessDetailOne": {
     "message": "ウォレットが正常に保護されました。シークレットリカバリーフレーズを安全かつ機密に保管してください。これはユーザーの責任です!"
+  },
+  "walletCreationSuccessDetailTwo": {
+    "message": ""
   },
   "walletCreationSuccessReminder1": {
     "message": "MetaMaskはシークレットリカバリーフレーズを復元できません。"

@@ -43,11 +43,23 @@
   }
 
   &__input {
-    padding: 10px 20px 10px 20px;
-    color: var(--color-text-default);
     border: 0px;
-    background-color: var(--colors-primary-grey_06);
-    box-shadow: 5px 5px 10px 0px #AAAACC33 inset;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 135px;
+
+    width: 361px;
+    height: 60px;
+    left: 16.12px;
+    top: 496.96px;
+
+    /* Neutral/grey_06 */
+
+    background: #F3F3F9;
+    box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.5), inset 2px 2px 4px rgba(170, 170, 204, 0.25), inset 5px 5px 10px rgba(170, 170, 204, 0.2), inset -5px -5px 10px #FFFFFF;
     border-radius: 40px;
 
     // &:focus {

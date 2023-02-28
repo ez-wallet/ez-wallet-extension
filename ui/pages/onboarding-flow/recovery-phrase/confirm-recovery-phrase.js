@@ -112,7 +112,7 @@ export default function ConfirmRecoveryPhrase({ secretRecoveryPhrase = '' }) {
           }}
           disabled={!matching}
         >
-          {t('confirm')}
+          {t('revealSeedWords')}
         </Button>
       </div>
     </div>

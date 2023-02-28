@@ -1739,6 +1739,9 @@
   "learnMore": {
     "message": "μάθε περισσότερα"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "learnMoreAboutGas": {
     "message": "Θέλετε να $1 για το τέλος συναλλαγής;",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -4286,8 +4289,11 @@
   "walletConnectionGuide": {
     "message": "ο οδηγός μας σύνδεσης υλικού πορτοφολιού"
   },
-  "walletCreationSuccessDetail": {
+  "walletCreationSuccessDetailOne": {
     "message": "Προστατεύσατε με επιτυχία το πορτοφόλι σας. Κρατήστε τη Μυστική Φράση Ανάκτησης σας ασφαλή και μυστική -- είναι δική σας ευθύνη!"
+  },
+  "walletCreationSuccessDetailTwo": {
+    "message": ""
   },
   "walletCreationSuccessReminder1": {
     "message": "Το MetaMask δεν μπορεί να ανακτήσει τη Μυστική Φράση Ανάκτησής σας."

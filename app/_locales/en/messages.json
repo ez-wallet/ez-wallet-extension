@@ -1800,6 +1800,9 @@
   "learnMore": {
     "message": "learn more"
   },
+  "leaveYourselfAHint": {
+    "message": "Leave yourself a hint?"
+  },
   "learnMoreAboutGas": {
     "message": "Want to $1 about gas?",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -3014,7 +3017,7 @@
     "message": "A token here reuses a symbol from another token you watch, this can be confusing or deceptive."
   },
   "revealSeedWords": {
-    "message": "Reveal Secret Recovery Phrase"
+    "message": "Continue"
   },
   "revealSeedWordsDescription1": {
     "message": "The $1 provides $2",
@@ -3114,10 +3117,10 @@
     "message": "Security & privacy"
   },
   "seedPhraseConfirm": {
-    "message": "Confirm Secret Recovery Phrase"
+    "message": "Confirmation"
   },
   "seedPhraseEnterMissingWords": {
-    "message": "Confirm Secret Recovery Phrase"
+    "message": "Select each word in the order it was presented to you."
   },
   "seedPhraseIntroNotRecommendedButtonCopy": {
     "message": "Remind me later"
@@ -3174,10 +3177,10 @@
     "message": "Secret Recovery Phrases contain 12, 15, 18, 21, or 24 words"
   },
   "seedPhraseWriteDownDetails": {
-    "message": "Write down this 12-word Secret Recovery Phrase and save it in a place that you trust and only you can access."
+    "message": "Write it down on a paper and keep it in a safe place. you'll be asked to re-enter this phrase (in order) on the next step."
   },
   "seedPhraseWriteDownHeader": {
-    "message": "Write down your Secret Recovery Phrase"
+    "message": "Secret recovery phrase"
   },
   "selectAccounts": {
     "message": "Select the account(s) to use on this site"
@@ -4431,8 +4434,11 @@
   "walletConnectionGuide": {
     "message": "our hardware wallet connection guide"
   },
-  "walletCreationSuccessDetail": {
-    "message": "You’ve successfully protected your wallet. Keep your Secret Recovery Phrase safe and secret -- it’s your responsibility!"
+  "walletCreationSuccessDetailOne": {
+    "message": "You've successfully protected your wallet. Remember to keep your secret recovery phrase safe, it's your responsibility!"
+  },
+  "walletCreationSuccessDetailTwo": {
+    "message": "EZ Wallet cannot recover your wallet should you lose it. You can find your secret recovery phrase in Settings > Security & Privacy."
   },
   "walletCreationSuccessReminder1": {
     "message": "MetaMask can’t recover your Secret Recovery Phrase."
@@ -4449,7 +4455,7 @@
     "description": "This string is localized separately from walletCreationSuccessReminder3 so that we can bold it"
   },
   "walletCreationSuccessTitle": {
-    "message": "Wallet creation successful"
+    "message": "Congratulations!"
   },
   "wantToAddThisNetwork": {
     "message": "Want to add this network?"

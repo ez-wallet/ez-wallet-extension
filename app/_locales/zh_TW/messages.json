@@ -842,6 +842,9 @@
   "learnMore": {
     "message": "了解更多"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "ledgerAccountRestriction": {
     "message": "您必須使用最後一個的帳戶才能產生新帳戶"
   },

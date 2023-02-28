@@ -1739,6 +1739,9 @@
   "learnMore": {
     "message": "了解更多"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "learnMoreAboutGas": {
     "message": "想了解有关燃料费的 $1？",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -4286,8 +4289,11 @@
   "walletConnectionGuide": {
     "message": "我们的硬件钱包连接指南"
   },
-  "walletCreationSuccessDetail": {
+  "walletCreationSuccessDetailOne": {
     "message": "您已经成功地保护了您的钱包。请确保您的账户助记词安全和秘密——这是您的责任！"
+  },
+  "walletCreationSuccessDetailTwo": {
+    "message": ""
   },
   "walletCreationSuccessReminder1": {
     "message": "MetaMask 无法恢复您的账户助记词。"

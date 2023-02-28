@@ -28,11 +28,6 @@ export default function RecoveryPhraseChips({
   const hideSeedPhrase = phraseRevealed === false;
   return (
     <Box
-      borderColor={BorderColor.borderMuted}
-      borderStyle={BorderStyle.solid}
-      padding={4}
-      borderWidth={1}
-      borderRadius={Size.MD}
       display={DISPLAY.GRID}
       marginBottom={4}
       className="recovery-phrase__secret"
@@ -51,14 +46,12 @@ export default function RecoveryPhraseChips({
           ) {
             return (
               <div className="recovery-phrase__chip-item" key={index}>
-                <div className="recovery-phrase__chip-item__number">
-                  {`${index + 1}.`}
-                </div>
                 <ChipWithInput
                   dataTestId={`recovery-phrase-input-${index}`}
                   borderColor={BorderColor.primaryDefault}
                   className="recovery-phrase__chip--with-input"
                   inputValue={inputValue[index]}
+                  itemNumber={`${index + 1}.`}
                   setInputValue={(value) => {
                     setInputValue({ ...inputValue, [index]: value });
                   }}
@@ -68,15 +61,12 @@ export default function RecoveryPhraseChips({
           }
           return (
             <div className="recovery-phrase__chip-item" key={index}>
-              <div className="recovery-phrase__chip-item__number">
-                {`${index + 1}.`}
-              </div>
               <Chip
                 dataTestId={`recovery-phrase-chip-${index}`}
                 className="recovery-phrase__chip"
                 borderColor={BorderColor.borderDefault}
               >
-                {word}
+                {`${index + 1}.${word}`}
               </Chip>
             </div>
           );

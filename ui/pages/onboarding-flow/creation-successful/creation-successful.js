@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Box from '../../../components/ui/box';
 import Typography from '../../../components/ui/typography';
@@ -12,23 +12,51 @@ import {
   AlignItems,
 } from '../../../helpers/constants/design-system';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import {
-  ONBOARDING_PIN_EXTENSION_ROUTE,
-  ONBOARDING_PRIVACY_SETTINGS_ROUTE,
-} from '../../../helpers/constants/routes';
+import { DEFAULT_ROUTE, ONBOARDING_PIN_EXTENSION_ROUTE } from '../../../helpers/constants/routes';
 import { isBeta } from '../../../helpers/utils/build-types';
+import { setCompletedOnboarding } from '../../../store/actions';
 import { getFirstTimeFlowType } from '../../../selectors';
 import { EVENT_NAMES, EVENT } from '../../../../shared/constants/metametrics';
+import { FIRST_TIME_FLOW_TYPES } from '../../../helpers/constants/onboarding';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 
 export default function CreationSuccessful() {
   const history = useHistory();
   const t = useI18nContext();
   const trackEvent = useContext(MetaMetricsContext);
+  const dispatch = useDispatch();
   const firstTimeFlowType = useSelector(getFirstTimeFlowType);
 
+  // const onCreateClick = () => {
+  //   dispatch(setFirstTimeFlowType('create'));
+  //   trackEvent({
+  //     category: EVENT.CATEGORIES.ONBOARDING,
+  //     event: EVENT_NAMES.ONBOARDING_WALLET_CREATION_STARTED,
+  //     properties: {
+  //       account_type: 'metamask',
+  //     },
+  //   });
+  //   history.push(ONBOARDING_CREATE_PASSWORD_ROUTE);
+  // };
+
+  const handleClick = async () => {
+    await dispatch(setCompletedOnboarding());
+    trackEvent({
+      category: EVENT.CATEGORIES.ONBOARDING,
+      event: EVENT_NAMES.ONBOARDING_WALLET_SETUP_COMPLETE,
+      properties: {
+        wallet_setup_type:
+          firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
+            ? 'import'
+            : 'new',
+        new_wallet: firstTimeFlowType === FIRST_TIME_FLOW_TYPES.CREATE,
+      },
+    });
+    history.push(DEFAULT_ROUTE);
+  };
+
   return (
-    <div className="creation-successful" data-testid="creation-successful">
+    <div className="onboarding-pin-extension" data-testid="creation-successful">
       <Box textAlign={TEXT_ALIGN.CENTER}>
         <img src="./images/tada.png" />
         <Typography
@@ -38,81 +66,43 @@ export default function CreationSuccessful() {
         >
           {t('walletCreationSuccessTitle')}
         </Typography>
+      </Box>
+      <Box textAlign={TEXT_ALIGN.LEFT}>
         <Typography variant={TypographyVariant.H4}>
-          {t('walletCreationSuccessDetail')}
+          {t('walletCreationSuccessDetailOne')}
         </Typography>
-      </Box>
-      <Typography
-        variant={TypographyVariant.H4}
-        boxProps={{ align: AlignItems.flexStart }}
-        marginLeft={12}
-      >
-        {t('remember')}
-      </Typography>
-      <ul>
-        <li>
-          <Typography variant={TypographyVariant.H4}>
-            {isBeta()
-              ? t('betaWalletCreationSuccessReminder1')
-              : t('walletCreationSuccessReminder1')}
-          </Typography>
-        </li>
-        <li>
-          <Typography variant={TypographyVariant.H4}>
-            {isBeta()
-              ? t('betaWalletCreationSuccessReminder2')
-              : t('walletCreationSuccessReminder2')}
-          </Typography>
-        </li>
-        <li>
-          <Typography variant={TypographyVariant.H4}>
-            {t('walletCreationSuccessReminder3', [
-              <span
-                key="creation-successful__bold"
-                className="creation-successful__bold"
-              >
-                {t('walletCreationSuccessReminder3BoldSection')}
-              </span>,
-            ])}
-          </Typography>
-        </li>
-        <li>
-          <Button
-            href="https://community.metamask.io/t/what-is-a-secret-recovery-phrase-and-how-to-keep-your-crypto-wallet-secure/3440"
-            target="_blank"
-            type="link"
-            rel="noopener noreferrer"
-          >
-            {t('learnMoreUpperCase')}
-          </Button>
-        </li>
-      </ul>
-      <Box marginTop={6} className="creation-successful__actions">
-        <Button
+        <a
+          href="https://community.metamask.io/t/what-is-a-secret-recovery-phrase-and-how-to-keep-your-crypto-wallet-secure/3440"
+          target="_blank"
           type="link"
-          onClick={() => history.push(ONBOARDING_PRIVACY_SETTINGS_ROUTE)}
+          className='btn-link'
+          rel="noopener noreferrer"
         >
-          {t('advancedConfiguration')}
-        </Button>
-        <Button
-          data-testid="onboarding-complete-done"
-          type="primary"
-          large
-          rounded
-          onClick={() => {
-            trackEvent({
-              category: EVENT.CATEGORIES.ONBOARDING,
-              event: EVENT_NAMES.ONBOARDING_WALLET_CREATION_COMPLETE,
-              properties: {
-                method: firstTimeFlowType,
-              },
-            });
-            history.push(ONBOARDING_PIN_EXTENSION_ROUTE);
-          }}
+          {t('learnMoreUpperCase')}
+        </a>
+        <Typography variant={TypographyVariant.H4}>
+          {t('walletCreationSuccessDetailTwo')}
+        </Typography>
+        <a
+          href="https://community.metamask.io/t/what-is-a-secret-recovery-phrase-and-how-to-keep-your-crypto-wallet-secure/3440"
+          target="_blank"
+          type="link"
+          className='btn-link'
+          rel="noopener noreferrer"
         >
-          {t('gotIt')}
-        </Button>
+          {t('leaveYourselfAHint')}
+        </a>
       </Box>
+      <div className="onboarding-pin-extension__buttons">
+        <Button
+          large={true}
+          data-testid='pin-extension-done'
+          type="primary"
+          onClick={handleClick}
+        >
+          {t('done')}
+        </Button>
+      </div>
     </div>
   );
 }

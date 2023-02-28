@@ -61,35 +61,6 @@ export default function RecoveryPhrase({ secretRecoveryPhrase }) {
           {t('seedPhraseWriteDownDetails')}
         </Typography>
       </Box>
-      <Box
-        textAlign={TEXT_ALIGN.LEFT}
-        marginBottom={4}
-        className="recovery-phrase__tips"
-      >
-        <Typography
-          variant={TypographyVariant.H4}
-          fontWeight={FONT_WEIGHT.BOLD}
-        >
-          {t('tips')}:
-        </Typography>
-        <ul>
-          <li>
-            <Typography variant={TypographyVariant.H4}>
-              {t('seedPhraseIntroSidebarBulletOne')}
-            </Typography>
-          </li>
-          <li>
-            <Typography variant={TypographyVariant.H4}>
-              {t('seedPhraseIntroSidebarBulletThree')}
-            </Typography>
-          </li>
-          <li>
-            <Typography variant={TypographyVariant.H4}>
-              {t('seedPhraseIntroSidebarBulletFour')}
-            </Typography>
-          </li>
-        </ul>
-      </Box>
       <RecoveryPhraseChips
         secretRecoveryPhrase={secretRecoveryPhrase.split(' ')}
         phraseRevealed={phraseRevealed && !hiddenPhrase}
@@ -99,7 +70,7 @@ export default function RecoveryPhrase({ secretRecoveryPhrase }) {
         {phraseRevealed ? (
           <div className="recovery-phrase__footer__copy-and-hide">
             <div className="recovery-phrase__footer__copy-and-hide__area">
-              <Button
+              {/* <Button
                 type="link"
                 icon={
                   <i
@@ -113,17 +84,11 @@ export default function RecoveryPhrase({ secretRecoveryPhrase }) {
                 }}
               >
                 {hiddenPhrase ? t('revealTheSeedPhrase') : t('hideSeedPhrase')}
-              </Button>
+              </Button> */}
               <Button
                 onClick={() => {
                   handleCopy(secretRecoveryPhrase);
                 }}
-                icon={
-                  <Icon
-                    name={copied ? ICON_NAMES.COPY_SUCCESS : ICON_NAMES.COPY}
-                    color={IconColor.primaryDefault}
-                  />
-                }
                 className="recovery-phrase__footer__copy-and-hide__button recovery-phrase__footer__copy-and-hide__button__copy-to-clipboard"
                 type="link"
               >
@@ -145,7 +110,7 @@ export default function RecoveryPhrase({ secretRecoveryPhrase }) {
                 );
               }}
             >
-              {t('next')}
+              {t('revealSeedWords')}
             </Button>
           </div>
         ) : (

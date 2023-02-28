@@ -825,6 +825,9 @@
   "learnMore": {
     "message": "Matuto pa"
   },
+  "leaveYourselfAHint": {
+    "message": ""
+  },
   "ledgerAccountRestriction": {
     "message": "Kailangan mong gamitin ang huli mong account bago ka magdagdag ng panibago."
   },
