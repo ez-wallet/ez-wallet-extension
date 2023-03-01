@@ -17,19 +17,19 @@ import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 
 const WalletOverview = ({
-  selectedIdentity,
+  token,
   balance,
   buttons,
   className,
-  // icon,
-  // loading,
+  icon,
+  loading,
 }) => {
   const t = useContext(I18nContext);
   const [copied, setCopied] = useState(false);
   const dispatch = useDispatch();
   const trackEvent = useContext(MetaMetricsContext);
 
-  const checkSummedAddress = toChecksumHexAddress(selectedIdentity.address);
+  const checkSummedAddress = toChecksumHexAddress(token.address);
 
   useEffect(() => {
     let copyTimeout;
@@ -45,13 +45,13 @@ const WalletOverview = ({
     <div className={classnames('wallet-overview', className)}>
       <div className="wallet-overview__container">
         <div className="wallet-overview__name-container">
-          <div className="wallet-overview__name">{selectedIdentity.name}</div>
+          <div className="wallet-overview__name">{token.name}</div>
           <AccountButton />
         </div>
 
         <p className="wallet-overview__title">{t('yourBalance')}</p>
         <div className="wallet-overview__balance">
-          {/* {loading ? null : icon} */}
+          {loading ? null : icon}
           {balance}
         </div>
         <div className="wallet-overview__actions">
@@ -104,12 +104,12 @@ const WalletOverview = ({
 };
 
 WalletOverview.propTypes = {
-  selectedIdentity: PropTypes.object,
+  token: PropTypes.object,
   balance: PropTypes.element.isRequired,
   buttons: PropTypes.element.isRequired,
   className: PropTypes.string,
-  // icon: PropTypes.element.isRequired,
-  // loading: PropTypes.bool,
+  icon: PropTypes.element.isRequired,
+  loading: PropTypes.bool,
 };
 
 WalletOverview.defaultProps = {

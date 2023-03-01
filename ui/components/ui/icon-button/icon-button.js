@@ -26,7 +26,7 @@ export default function IconButton({
       {renderWrapper(
         <>
           <div className="icon-button__circle">{Icon}</div>
-          <span>{label}</span>
+          <div className="text-black">{label}</div>
         </>,
       )}
     </button>

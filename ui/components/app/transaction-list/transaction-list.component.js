@@ -165,10 +165,8 @@ export default function TransactionList({
                 ),
               )
           ) : (
-            <div className="transaction-list__empty">
-              <div className="transaction-list__empty-text">
-                {t('noTransactions')}
-              </div>
+            <div className="text-grey text-[13px] text-center">
+              {t('noTransactions')}
             </div>
           )}
           {completedTransactions.length > limit && (

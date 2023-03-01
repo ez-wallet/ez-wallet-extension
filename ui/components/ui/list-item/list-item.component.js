@@ -15,7 +15,6 @@ export default function ListItem({
   'data-testid': dataTestId,
 }) {
   const primaryClassName = classnames(
-    'list-item',
     className,
     subtitle || children ? '' : 'list-item--single-content-row',
   );

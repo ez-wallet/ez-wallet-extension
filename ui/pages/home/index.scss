@@ -20,27 +20,13 @@
     }
   }
   &__bottom-view {
-    border-radius: 20px;
-    background: var(--colors-primary-grey_05);
     overflow: hidden;
     .tabs {
       background: transparent;
     }
     .tabs__list {
       background: transparent;
-    }
-    .home__tab {
-      @include H6;
-      color: var(--color-text-neutral-black_01);
-      flex-grow: 1;
-      color: var(--color-text-neutral-grey_01);
-      font-weight: 500;
-    }
-    .home__tab--active {
-      font-size: 15px;
-      color: var(--color-text-neutral-black_01);
-      font-weight: 500;
-      border-bottom: 3px solid var(--colors-primary-green_02);
+      border: none;
     }
     .list-item {
       background: transparent;

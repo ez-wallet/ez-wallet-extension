@@ -39,7 +39,7 @@ const Asset = () => {
   } else {
     content = <Redirect to={{ pathname: DEFAULT_ROUTE }} />;
   }
-  return <div className="main-container asset__container">{content}</div>;
+  return <div className="w-full">{content}</div>;
 };
 
 export default Asset;

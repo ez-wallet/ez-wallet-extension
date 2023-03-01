@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getAccountLink } from '@metamask/etherscan-link';
 import TransactionList from '../../../components/app/transaction-list';
-import { EthOverview } from '../../../components/app/wallet-overview';
+import { TokenOverview } from '../../../components/app/wallet-overview';
 import {
   getSelectedIdentity,
   getCurrentChainId,
@@ -33,6 +33,7 @@ export default function NativeAsset({ nativeCurrency }) {
   const accountLink = getAccountLink(address, chainId, rpcPrefs);
   const trackEvent = useContext(MetaMetricsContext);
   const isCustomNetwork = useSelector(getIsCustomNetwork);
+  const selectedIdentity = useSelector(getSelectedIdentity);
 
   return (
     <>
@@ -64,7 +65,7 @@ export default function NativeAsset({ nativeCurrency }) {
           />
         }
       />
-      <EthOverview className="asset__overview" />
+      <TokenOverview token={selectedIdentity} />
       <TransactionList hideTokenTransactions />
     </>
   );

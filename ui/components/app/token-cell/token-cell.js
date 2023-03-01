@@ -38,7 +38,7 @@ export default function TokenCell({
 
   return (
     <AssetListItem
-      className={classnames('token-cell', {
+      className={classnames({
         'token-cell--outdated': Boolean(balanceError),
       })}
       iconClassName="token-cell__icon"
