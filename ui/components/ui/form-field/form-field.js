@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import Typography from '../typography/typography';
 import Box from '../box/box';
 import {
@@ -43,6 +42,13 @@ export default function FormField({
   inputProps,
   wrappingLabelProps,
 }) {
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const onSetShowPassword = () => {
+    setShowPassword(!showPassword);
+  }
+
   return (
     <div
       className={classNames('form-field', {
@@ -117,7 +123,7 @@ export default function FormField({
             })}
             onChange={(e) => onChange(e.target.value)}
             value={value}
-            type={password ? 'password' : 'text'}
+            type={password && !showPassword ? 'password' : 'text'}
             autoFocus={autoFocus}
             disabled={disabled}
             data-testid={dataTestId}
@@ -126,6 +132,10 @@ export default function FormField({
             {...inputProps}
           />
         )}
+        <div className='form-field__eye'>
+          {password && !showPassword ? <img onClick={onSetShowPassword} src="./images/eye-slash.svg" /> :
+            <img onClick={onSetShowPassword} src="./images/eye.svg" />}
+        </div>
         {error && (
           <Typography
             color={TextColor.errorDefault}

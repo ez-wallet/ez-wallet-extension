@@ -164,10 +164,14 @@ export default function CreatePassword({
     }
   };
 
+  const onSetShowPassword = () => {
+    setShowPassword(!showPassword);
+  }
+
   return (
     <div className="create-password__wrapper" data-testid="create-password">
       {secretRecoveryPhrase &&
-      firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT ? (
+        firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT ? (
         <TwoStepProgressBar
           stage={twoStepStages.PASSWORD_CREATE}
           marginBottom={4}
@@ -195,20 +199,6 @@ export default function CreatePassword({
             password={!showPassword}
             titleText={t('newPassword')}
             value={password}
-            titleDetail={
-              <Typography variant={TypographyVariant.H7}>
-                <a
-                  href=""
-                  className="create-password__form--password-button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setShowPassword(!showPassword);
-                  }}
-                >
-                  {showPassword ? t('hide') : t('show')}
-                </a>
-              </Typography>
-            }
           />
           <FormField
             dataTestId="create-password-confirm"
@@ -260,7 +250,7 @@ export default function CreatePassword({
           <Button
             data-testid={
               secretRecoveryPhrase &&
-              firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
+                firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
                 ? 'create-password-import'
                 : 'create-password-wallet'
             }
@@ -271,7 +261,7 @@ export default function CreatePassword({
             onClick={handleCreate}
           >
             {secretRecoveryPhrase &&
-            firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
+              firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
               ? t('importMyWallet')
               : t('createNewWallet')}
           </Button>

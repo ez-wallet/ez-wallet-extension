@@ -27,18 +27,6 @@ export default function CreationSuccessful() {
   const dispatch = useDispatch();
   const firstTimeFlowType = useSelector(getFirstTimeFlowType);
 
-  // const onCreateClick = () => {
-  //   dispatch(setFirstTimeFlowType('create'));
-  //   trackEvent({
-  //     category: EVENT.CATEGORIES.ONBOARDING,
-  //     event: EVENT_NAMES.ONBOARDING_WALLET_CREATION_STARTED,
-  //     properties: {
-  //       account_type: 'metamask',
-  //     },
-  //   });
-  //   history.push(ONBOARDING_CREATE_PASSWORD_ROUTE);
-  // };
-
   const handleClick = async () => {
     await dispatch(setCompletedOnboarding());
     trackEvent({

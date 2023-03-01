@@ -1,4 +1,6 @@
 .form-field {
+  position: relative;
+
   &__heading {
     display: flex;
     align-items: center;
@@ -24,6 +26,10 @@
     }
   }
 
+  &__password {
+    color: 'red';
+  }
+
   &__error,
   &__error h6 {
     color: var(--color-error-default) !important;
@@ -40,6 +46,12 @@
     color: var(--color-icon-default);
     font-size: $font-size-h7;
     margin-bottom: 10px;
+  }
+
+  &__eye {
+    position: absolute;
+    top: 48px;
+    right: 10px;
   }
 
   &__input {
