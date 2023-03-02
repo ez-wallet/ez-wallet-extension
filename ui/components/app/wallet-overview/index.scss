@@ -1,20 +1,45 @@
 .wallet-overview {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex: 1;
-  min-height: 209px;
+  min-height: 183px;
   min-width: 0;
   padding-top: 10px;
   flex-direction: column;
   width: 100%;
+  p {
+    font-size: 13px;
+  }
+  &__container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background: linear-gradient(297.81deg, #ffe600 -49.55%, #17e586 59.38%);
+  }
+  &__name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-text-neutral-black_01);
+  }
 
   &__balance {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
+  }
+  &__clickable {
+    width: 100%;
+    background: var(--colors-primary-green_06);
+    color: var(--color-text-neutral-black_01);
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+  &__address {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--color-text-neutral-black_01);
   }
 
   &__buttons {
@@ -43,9 +68,7 @@
     flex-direction: column;
     min-width: 0;
     position: relative;
-    align-items: center;
     margin: 16px 0;
-    padding: 0 16px;
     max-width: 100%;
   }
 
@@ -54,11 +77,11 @@
   }
 
   &__primary-balance {
-    @include H2;
-
-    color: var(--color-text-default);
     width: 100%;
-    justify-content: center;
+    font-size: 44px;
+    line-height: 54px;
+    font-weight: 600;
+    color: var(--color-text-neutral-black_01);
   }
 
   &__cached-star {
@@ -83,23 +106,27 @@
   }
 
   &__button {
-    margin-right: 24px;
+    margin-right: 24px; 
+
+    .icon-button__circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background: var(--colors-primary-grey_06);
+      div{
+        color: inherit;
+      }
+    }
   }
 
   &__button:last-of-type {
     margin-right: 0;
   }
 
-  &__circle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 36px;
-    width: 36px;
-    background: var(--color-primary-default);
-    border-radius: 18px;
-    margin-top: 6px;
-  }
+
 }
 
 .token-overview {
@@ -108,18 +135,17 @@
     flex-direction: column;
     min-width: 0;
     position: relative;
-    align-items: center;
     margin: 16px 0;
-    padding: 0 16px;
     max-width: 100%;
   }
 
   &__primary-balance {
-    @include H2;
-
     color: var(--color-text-default);
     width: 100%;
-    justify-content: center;
+    font-size: 44px;
+    line-height: 54px;
+    font-weight: 600;
+    color: var(--color-text-neutral-black_01);
   }
 
   &__secondary-balance {

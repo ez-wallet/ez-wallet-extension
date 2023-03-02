@@ -40,6 +40,7 @@ class SelectedAccount extends Component {
 
     return (
       <div className="selected-account">
+        <div className="selected-account__name">{selectedIdentity.name}</div>
         <Tooltip
           wrapperClassName="selected-account__tooltip-wrapper"
           position="bottom"
@@ -59,9 +60,6 @@ class SelectedAccount extends Component {
               copyToClipboard(checksummedAddress);
             }}
           >
-            <div className="selected-account__name">
-              {selectedIdentity.name}
-            </div>
             <div className="selected-account__address">
               {shortenAddress(checksummedAddress)}
               <div className="selected-account__copy">

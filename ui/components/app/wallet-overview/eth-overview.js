@@ -22,6 +22,7 @@ import {
   getIsBuyableChain,
   getNativeCurrencyImage,
   getSelectedAccountCachedBalance,
+  getSelectedIdentity,
 } from '../../../selectors';
 import { setSwapsFromToken } from '../../../ducks/swaps/swaps';
 import IconButton from '../../ui/icon-button';
@@ -51,6 +52,7 @@ const EthOverview = ({ className }) => {
   const isBuyableChain = useSelector(getIsBuyableChain);
   const primaryTokenImage = useSelector(getNativeCurrencyImage);
   const defaultSwapsToken = useSelector(getSwapsDefaultToken);
+  const selectedIdentity = useSelector(getSelectedIdentity);
 
   return (
     <>
@@ -58,6 +60,7 @@ const EthOverview = ({ className }) => {
         <DepositPopover onClose={() => setShowDepositPopover(false)} />
       )}
       <WalletOverview
+        selectedIdentity={selectedIdentity}
         loading={!balance}
         balance={
           <Tooltip
@@ -108,9 +111,7 @@ const EthOverview = ({ className }) => {
           <>
             <IconButton
               className="eth-overview__button"
-              Icon={
-                <Icon name={ICON_NAMES.CARD} color={IconColor.primaryInverse} />
-              }
+              Icon={<Icon name="wallet" />}
               disabled={!isBuyableChain}
               label={t('buy')}
               onClick={() => {
@@ -129,10 +130,7 @@ const EthOverview = ({ className }) => {
               className="eth-overview__button"
               data-testid="eth-overview-send"
               Icon={
-                <Icon
-                  name={ICON_NAMES.ARROW_2_RIGHT}
-                  color={IconColor.primaryInverse}
-                />
+                <Icon name="wallet-square" color="colors-primary-green_01" />
               }
               label={t('send')}
               onClick={() => {

@@ -2,7 +2,7 @@ import React, { useState, useContext, useRef } from 'react';
 import browser from 'webextension-polyfill';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import SelectedAccount from '../selected-account';
+// import SelectedAccount from '../selected-account';
 import ConnectedStatusIndicator from '../connected-status-indicator';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
@@ -34,7 +34,8 @@ export default function MenuBar() {
           onClick={() => history.push(CONNECTED_ACCOUNTS_ROUTE)}
         />
       ) : null}
-      <SelectedAccount />
+      {/* <SelectedAccount /> */}
+      Your wallet
       <span style={{ display: 'inherit' }} ref={ref}>
         <ButtonIcon
           iconName={ICON_NAMES.MORE_VERTICAL}

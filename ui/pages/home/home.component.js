@@ -34,7 +34,6 @@ import {
 } from '../../helpers/constants/design-system';
 import { SECOND } from '../../../shared/constants/time';
 import { ButtonLink, ICON_NAMES } from '../../components/component-library';
-
 import {
   ASSET_ROUTE,
   RESTORE_VAULT_ROUTE,
