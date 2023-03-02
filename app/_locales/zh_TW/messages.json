@@ -1236,6 +1236,18 @@
   "seedPhraseIntroSidebarCopyTwo": {
     "message": "永遠永遠不要洩漏您的助憶詞，即使是 MetaMask 官方也一樣！"
   },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "什麼是助憶詞？"
   },
@@ -1244,18 +1256,6 @@
   },
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "我該如何存放我的助憶詞？"
-  },
-  "seedPhraseIntroSidebarTitleFour": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipOne": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipTwo": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipThree": {
-    "message": ""
   },
   "seedPhraseIntroTitle": {
     "message": "保護您的錢包"
@@ -1669,6 +1669,9 @@
   },
   "walletConnectionGuide": {
     "message": "我們的硬體錢包連線指南"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "web3ShimUsageNotification": {
     "message": "我們注意到目前的網站試著要使用已經移除的 window.web3 API。如果網站看起來壞了，請$1了解更多資訊。",

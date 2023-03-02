@@ -147,5 +147,8 @@
   },
   "viewAccount": {
     "message": "ఖాతాను వీక్షించండి"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   }
 }

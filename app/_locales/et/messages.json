@@ -424,11 +424,11 @@
   "learnMore": {
     "message": "Lisateave"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Lisateave"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Enne uue konto loomist peate kasutama eelmist kontot."
@@ -912,6 +912,9 @@
   },
   "visitWebSite": {
     "message": "Külastage meie veebilehte"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Tere tulemast tagasi!"

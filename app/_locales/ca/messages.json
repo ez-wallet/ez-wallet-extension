@@ -415,11 +415,11 @@
   "learnMore": {
     "message": "Saber més"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Saber més"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Has de fer servir el teu últim compte abans de poder afegir-ne un altre."
@@ -891,6 +891,9 @@
   },
   "visitWebSite": {
     "message": "Visita el nostre lloc web"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Benvingut de nou!"

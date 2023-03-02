@@ -415,11 +415,11 @@
   "learnMore": {
     "message": "Zjistěte více."
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Zjistěte více."
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Skôr ako budete môcť pridať nový účet, musíte použiť svoj posledný účet."
@@ -888,6 +888,9 @@
   },
   "visitWebSite": {
     "message": "Navštivte naši stránku"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Vitajte späť!"

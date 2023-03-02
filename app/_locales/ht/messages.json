@@ -286,11 +286,11 @@
   "learnMore": {
     "message": "Aprann plis"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Aprann plis"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Ou bezwen sèvi ak dènye kont ou anvan ou ka ajoute yon nouvo."
@@ -636,6 +636,9 @@
   },
   "visitWebSite": {
     "message": "Vizite sit entènèt nou an"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Bon Retou!"

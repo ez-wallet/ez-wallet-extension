@@ -192,11 +192,11 @@
   "learnMore": {
     "message": "Zjistěte více."
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Zjistěte více."
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "likeToImportTokens": {
     "message": "Chcete přidat tyto tokeny?"
@@ -407,6 +407,9 @@
   },
   "visitWebSite": {
     "message": "Navštivte naši stránku"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "youSign": {
     "message": "Podepisujete"

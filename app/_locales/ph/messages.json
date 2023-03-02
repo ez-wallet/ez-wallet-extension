@@ -1332,6 +1332,18 @@
   "seedPhraseIntroSidebarCopyTwo": {
     "message": "Huwag kailanmang ibahagi ang iyong recovery phrase kahit na sa MetaMask!"
   },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "Ano ang recovery phrase?"
   },
@@ -1340,18 +1352,6 @@
   },
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "Paano ko mase-save ang aking recovery phrase?"
-  },
-  "seedPhraseIntroSidebarTitleFour": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipOne": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipTwo": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipThree": {
-    "message": ""
   },
   "seedPhraseIntroTitle": {
     "message": "I-secure ang iyong wallet"
@@ -2003,6 +2003,9 @@
   },
   "walletConnectionGuide": {
     "message": "ang aming gabay sa pagkonekta ng hardware wallet"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "web3ShimUsageNotification": {
     "message": "Napansin naming sinubukang gamitin ng kasalukuyang website ang tinanggal na window.web3 API. Kung mukhang sira ang site, paki-click ang $1 para sa higit pang impormasyon.",

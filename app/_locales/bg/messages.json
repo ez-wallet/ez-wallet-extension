@@ -424,11 +424,11 @@
   "learnMore": {
     "message": "Научете повече"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Научете повече"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Трябва да използвате последния си акаунт, преди да можете да добавите нов."
@@ -918,6 +918,9 @@
   },
   "visitWebSite": {
     "message": "Посетете нашият уеб сайт"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Добре дошли отново!"

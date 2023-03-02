@@ -422,11 +422,11 @@
   "learnMore": {
     "message": "Preberite več"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Preberite več"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Za dodajanje novega računa morate uporabiti zadnji račun."
@@ -910,6 +910,9 @@
   },
   "visitWebSite": {
     "message": "Obiščite našo spletno stran"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Dobrodošli nazaj!"

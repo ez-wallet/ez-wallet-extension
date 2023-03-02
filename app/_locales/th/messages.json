@@ -226,11 +226,11 @@
   "learnMore": {
     "message": "เรียนรู้เพิ่มเติม"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "เรียนรู้เพิ่มเติม"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "likeToImportTokens": {
     "message": "คุณต้องการเพิ่มโทเค็นเหล่านี้หรือไม่?"
@@ -456,6 +456,9 @@
   },
   "visitWebSite": {
     "message": "เยี่ยมชมเว็บไซต์ของเรา"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "youSign": {
     "message": "คุณกำลังเซ็นชื่อ"

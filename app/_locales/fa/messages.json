@@ -428,11 +428,11 @@
   "learnMore": {
     "message": "بیشتر بدانید"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "بیشتر بدانید"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "لازم است تا حساب قبلی تان را قبل از اینکه جدید اضافه کنید، مورد استفاده قرار دهید."
@@ -922,6 +922,9 @@
   },
   "visitWebSite": {
     "message": "از وب سایت ما دیدن نمایید"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "بازگشت شما را خوش‌آمد می‌گوییم!"

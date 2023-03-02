@@ -381,11 +381,11 @@
   "learnMore": {
     "message": "Matuto pa"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Matuto pa"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Kailangan mong gamitin ang iyong dating account bago ka makapagdagdag ng bago."
@@ -831,6 +831,9 @@
   },
   "visitWebSite": {
     "message": "Bisitahin ang aming web site"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Welcome Ulit!"

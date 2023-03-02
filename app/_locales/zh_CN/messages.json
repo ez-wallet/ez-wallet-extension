@@ -1739,9 +1739,6 @@
   "learnMore": {
     "message": "了解更多"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreAboutGas": {
     "message": "想了解有关燃料费的 $1？",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -1751,6 +1748,9 @@
   },
   "learnScamRisk": {
     "message": "诈骗和安全风险的信息。"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "您需要先使用最后一个账户，然后才能添加新账户。"
@@ -3022,6 +3022,18 @@
   "seedPhraseIntroSidebarCopyTwo": {
     "message": "切勿分享您的账户助记词，包括也不能与 MetaMask 分享！"
   },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "什么是账户助记词？"
   },
@@ -3030,18 +3042,6 @@
   },
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "如何保存我的账户助记词？"
-  },
-  "seedPhraseIntroSidebarTitleFour": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipOne": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipTwo": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipThree": {
-    "message": ""
   },
   "seedPhraseIntroTitle": {
     "message": "保护您的钱包安全"
@@ -4311,6 +4311,9 @@
   },
   "walletCreationSuccessTitle": {
     "message": "钱包创建成功"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "wantToAddThisNetwork": {
     "message": "想要添加此网络吗？"

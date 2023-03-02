@@ -428,11 +428,11 @@
   "learnMore": {
     "message": "Lisätietoa"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Lisätietoa"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Sinun tarvitsee käyttää edellistä tiliäsi ennen kuin voit lisätä uuden."
@@ -919,6 +919,9 @@
   },
   "visitWebSite": {
     "message": "Vieraile verkkosivustollamme"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Tervetuloa takaisin!"

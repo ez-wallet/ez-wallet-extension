@@ -428,11 +428,11 @@
   "learnMore": {
     "message": "আরও জানুন"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "আরও জানুন"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "একটি নতুন অ্যা কাউন্ট যোগ করার আগে আপনাকে আপনার শেষ অ্যাকাউন্ট ব্যবহার করে ফেলতে হবে।"
@@ -922,6 +922,9 @@
   },
   "visitWebSite": {
     "message": "আমাদের ওয়েবসাইট দেখুন"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "পুনরায় স্বাগত!"

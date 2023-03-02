@@ -1247,9 +1247,6 @@
   "learnMore": {
     "message": "más información"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreAboutGas": {
     "message": "¿Quiere $1 sobre el gas?",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -1259,6 +1256,9 @@
   },
   "learnScamRisk": {
     "message": "estafas y riesgos de seguridad."
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Debe usar su última cuenta antes de poder agregar una nueva."
@@ -2060,6 +2060,18 @@
   "seedPhraseIntroSidebarCopyTwo": {
     "message": "Nunca comparta su frase secreta de recuperación, ¡ni siquiera con MetaMask!"
   },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "¿Qué es una frase de recuperación?"
   },
@@ -2068,18 +2080,6 @@
   },
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "¿Cómo guardo mi frase secreta de recuperación?"
-  },
-  "seedPhraseIntroSidebarTitleFour": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipOne": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipTwo": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipThree": {
-    "message": ""
   },
   "seedPhraseIntroTitle": {
     "message": "Proteger su cartera"
@@ -2996,6 +2996,9 @@
   },
   "walletCreationSuccessTitle": {
     "message": "Creación exitosa de la cartera"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "web3ShimUsageNotification": {
     "message": "Parece que el sitio web actual intentó utilizar la API de window.web3 que se eliminó. Si el sitio no funciona, haga clic en $1 para obtener más información.",

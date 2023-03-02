@@ -1739,9 +1739,6 @@
   "learnMore": {
     "message": "saiba mais"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreAboutGas": {
     "message": "Quer $1 sobre gás?",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -1751,6 +1748,9 @@
   },
   "learnScamRisk": {
     "message": "golpes e riscos de segurança."
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Você precisa usar sua última conta antes de adicionar uma nova."
@@ -3022,6 +3022,18 @@
   "seedPhraseIntroSidebarCopyTwo": {
     "message": "Jamais compartilhe a sua Frase de Recuperação Secreta, nem mesmo com a MetaMask!"
   },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "O que é uma Frase de Recuperação Secreta?"
   },
@@ -3030,18 +3042,6 @@
   },
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "Como salvo minha Frase de Recuperação Secreta?"
-  },
-  "seedPhraseIntroSidebarTitleFour": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipOne": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipTwo": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipThree": {
-    "message": ""
   },
   "seedPhraseIntroTitle": {
     "message": "Proteja sua carteira"
@@ -4311,6 +4311,9 @@
   },
   "walletCreationSuccessTitle": {
     "message": "Carteira criada com sucesso"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "wantToAddThisNetwork": {
     "message": "Desejar adicionar esta rede?"

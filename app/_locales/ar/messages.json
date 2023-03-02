@@ -428,11 +428,11 @@
   "learnMore": {
     "message": "اكتشف المزيد"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "اكتشف المزيد"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "أنت بحاجة إلى استخدام حسابك الأخير قبل أن تتمكن من إضافة حساب جديد."
@@ -919,6 +919,9 @@
   },
   "visitWebSite": {
     "message": "قم بزيارة موقعنا على الإنترنت"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "نرحب بعودتك!"
