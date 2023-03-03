@@ -12,6 +12,7 @@
   padding: 6px 3px;
   flex: 0 0 auto;
   display: flex;
+  border-radius: 16px;
 
   &.ethereum-network .menu-icon-circle div {
     background-color: rgba(3, 135, 137, 0.7) !important;
@@ -49,9 +50,11 @@
 
 .network-droppo {
   background-color: var(--color-background-default);
-  border-radius: 4px;
-  right: 2px;
-
+  box-shadow: var(--shadow-size-sm) var(--color-shadow-default);
+  border-radius: 10px;
+  .menu-droppo {
+    padding: 16px 0;
+  }
   .color-indicator {
     margin: 0 14px 0 4px;
   }
@@ -183,7 +186,24 @@
     left: -6px;
   }
 }
-
+.network__add-network-button-container{
+  padding: 16px;
+}
+.network-dropdown-content--dismiss{
+  border: 1px solid var(--color-text-neutral-grey_01);
+  padding: 5px 16px;
+  border-radius: 40px;
+  background: none;
+  font-size: 13px;
+}
 .network__add-network-button {
-  padding: 0 16px;
+  padding: 16px 0;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 50px;
+  color: var(--color-text-neutral-black_01);
+  background-color: var(--colors-primary-green_03);
 }

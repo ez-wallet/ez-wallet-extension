@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
-
 import Identicon from '../../ui/identicon';
 import { I18nContext } from '../../../contexts/i18n';
 import {
@@ -34,7 +33,6 @@ import { startNewDraftTransaction } from '../../../ducks/send';
 import { AssetType } from '../../../../shared/constants/transaction';
 import DepositPopover from '../deposit-popover';
 import { Icon, ICON_NAMES } from '../../component-library';
-import { IconColor } from '../../../helpers/constants/design-system';
 import WalletOverview from './wallet-overview';
 
 const EthOverview = ({ className }) => {
@@ -53,7 +51,7 @@ const EthOverview = ({ className }) => {
   const primaryTokenImage = useSelector(getNativeCurrencyImage);
   const defaultSwapsToken = useSelector(getSwapsDefaultToken);
   const selectedIdentity = useSelector(getSelectedIdentity);
-
+  console.log({ balance });
   return (
     <>
       {showDepositPopover && (
@@ -108,10 +106,25 @@ const EthOverview = ({ className }) => {
           </Tooltip>
         }
         buttons={
-          <>
+          <Fragment>
             <IconButton
               className="eth-overview__button"
-              Icon={<Icon name="wallet" />}
+              data-testid="eth-overview-receive"
+              Icon={
+                <Icon
+                  name="directbox-receive"
+                  size="lg"
+                  color="colors-primary-green_01"
+                />
+              }
+              label={t('receive')}
+              // onClick={() => {}}
+            />
+            <IconButton
+              className="eth-overview__button"
+              Icon={
+                <Icon name="wallet" size="lg" color="colors-accent-purple_01" />
+              }
               disabled={!isBuyableChain}
               label={t('buy')}
               onClick={() => {
@@ -130,7 +143,11 @@ const EthOverview = ({ className }) => {
               className="eth-overview__button"
               data-testid="eth-overview-send"
               Icon={
-                <Icon name="wallet-square" color="colors-primary-green_01" />
+                <Icon
+                  name="wallet-square"
+                  size="lg"
+                  color="colors-accent-blue_01"
+                />
               }
               label={t('send')}
               onClick={() => {
@@ -155,8 +172,9 @@ const EthOverview = ({ className }) => {
               disabled={!isSwapsChain}
               Icon={
                 <Icon
+                  size="lg"
                   name={ICON_NAMES.SWAP_HORIZONTAL}
-                  color={IconColor.primaryInverse}
+                  color="colors-primary-yellow_01"
                 />
               }
               onClick={() => {
@@ -192,7 +210,7 @@ const EthOverview = ({ className }) => {
                     )
               }
             />
-          </>
+          </Fragment>
         }
         className={className}
         icon={<Identicon diameter={32} image={primaryTokenImage} imageBorder />}

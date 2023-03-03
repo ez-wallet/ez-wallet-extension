@@ -4,6 +4,8 @@
   min-height: 183px;
   min-width: 0;
   padding-top: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
   flex-direction: column;
   width: 100%;
   p {
@@ -15,6 +17,10 @@
     flex-direction: column;
     border-radius: 20px;
     background: linear-gradient(297.81deg, #ffe600 -49.55%, #17e586 59.38%);
+  }
+  &__name-container {
+    display: flex;
+    justify-content: space-between;
   }
   &__name {
     font-size: 15px;
@@ -45,8 +51,8 @@
   &__buttons {
     display: flex;
     flex-direction: row;
-    height: 68px;
-    margin-bottom: 24px;
+    justify-content: space-between;
+    padding: 16px 24px;
   }
 }
 
@@ -106,27 +112,24 @@
   }
 
   &__button {
-    margin-right: 24px; 
+    margin-right: 24px;
 
     .icon-button__circle {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 40px;
-      width: 40px;
+      height: 44px;
+      width: 44px;
       border-radius: 50%;
+      margin-top: 0;
+      margin-bottom: 8px;
       background: var(--colors-primary-grey_06);
-      div{
-        color: inherit;
-      }
     }
   }
 
   &__button:last-of-type {
     margin-right: 0;
   }
-
-
 }
 
 .token-overview {

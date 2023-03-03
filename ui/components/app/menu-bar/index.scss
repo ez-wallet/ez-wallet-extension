@@ -2,20 +2,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px;
+  padding: 0px 16px;
   height: 64px;
-
+  h1{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 32px;
+    color: var(--color-text-neutral-black_01);
+  }
   .menu-bar__account-options {
     background: none;
     font-size: inherit;
     padding: 0 8px 0 5px;
     place-self: center end;
-    color: var(--color-text-default);
-  }
-
-  .selected-account {
-    grid-column: 2 / span 1;
-    place-self: center stretch;
+    color: var(--color-text-neutral-black_01);
   }
 }
 

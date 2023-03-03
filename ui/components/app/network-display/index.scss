@@ -1,3 +1,9 @@
+.network-display-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-neutral-black_01);
+  line-height: 17px;
+}
 .network-display {
   display: flex;
   align-items: center;
@@ -14,12 +20,15 @@
   &.chip {
     margin: 0;
     max-width: 100%;
+    box-shadow: none;
+    gap: 0;
   }
 
   & .chip__label {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 13px;
   }
 
   & .chip__left-icon {

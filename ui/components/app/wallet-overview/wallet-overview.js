@@ -9,6 +9,7 @@ import { shortenAddress } from '../../../helpers/utils/util';
 import { SECOND } from '../../../../shared/constants/time';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import { I18nContext } from '../../../contexts/i18n';
+import AccountButton from '../account-button';
 
 const WalletOverview = ({
   selectedIdentity,
@@ -36,7 +37,11 @@ const WalletOverview = ({
   return (
     <div className={classnames('wallet-overview', className)}>
       <div className="wallet-overview__container">
-        <div className="wallet-overview__name">{selectedIdentity.name}</div>
+        <div className="wallet-overview__name-container">
+          <div className="wallet-overview__name">{selectedIdentity.name}</div>
+          <AccountButton />
+        </div>
+
         <p className="wallet-overview__title">Your balance</p>
         <div className="wallet-overview__balance">
           {/* {loading ? null : icon} */}

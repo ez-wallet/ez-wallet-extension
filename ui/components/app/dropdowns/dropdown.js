@@ -15,10 +15,6 @@ export class Dropdown extends Component {
     } = this.props;
 
     const innerStyleDefaults = {
-      borderRadius: '4px',
-      padding: '8px 16px',
-      background: 'var(--color-background-default)',
-      boxShadow: 'var(--shadow-size-sm) var(--color-shadow-default)',
       ...innerStyle,
     };
 
@@ -32,15 +28,6 @@ export class Dropdown extends Component {
         style={style}
         innerStyle={innerStyleDefaults}
       >
-        <style>
-          {`
-            li.dropdown-menu-item:hover {
-              color:var(--color-text-default);
-              background-color: var(--color-background-default-hover);
-              border-radius: 4px;
-            }
-          `}
-        </style>
         {children}
       </MenuDroppo>
     );

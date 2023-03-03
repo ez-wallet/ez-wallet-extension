@@ -161,12 +161,7 @@ const TokenOverview = ({ className, token }) => {
                   }
                 }
               }}
-              Icon={
-                <Icon
-                  name={ICON_NAMES.ARROW_2_RIGHT}
-                  color={IconColor.primaryInverse}
-                />
-              }
+              Icon={<Icon name={ICON_NAMES.ARROW_2_RIGHT} />}
               label={t('send')}
               data-testid="eth-overview-send"
               disabled={token.isERC721}

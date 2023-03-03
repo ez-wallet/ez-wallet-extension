@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useSelector } from 'react-redux';
@@ -36,55 +36,58 @@ export default function NetworkDisplay({
 
   const { nickname: networkNickname, type: networkType } =
     targetNetwork ?? currentNetwork;
-
   return (
-    <Chip
-      dataTestId="network-display"
-      borderColor={
-        onClick ? BorderColor.borderDefault : BorderColor.borderMuted
-      }
-      onClick={onClick}
-      leftIcon={
-        <LoadingIndicator
-          alt={t('attemptingConnect')}
-          title={t('attemptingConnect')}
-          isLoading={networkIsLoading}
-        >
-          <ColorIndicator
-            color={
-              networkType === NETWORK_TYPES.RPC
-                ? IconColor.iconMuted
-                : networkType
-            }
-            size={indicatorSize}
-            type={ColorIndicator.TYPES.FILLED}
-            iconClassName={
-              networkType === NETWORK_TYPES.RPC && indicatorSize !== Size.XS
-                ? 'fa fa-question'
-                : undefined
-            }
-          />
-        </LoadingIndicator>
-      }
-      rightIcon={
-        onClick ? (
-          <Icon name={ICON_NAMES.ARROW_DOWN} size={ICON_SIZES.XS} />
-        ) : null
-      }
-      label={
-        networkType === NETWORK_TYPES.RPC
-          ? networkNickname ?? t('privateNetwork')
-          : t(networkType)
-      }
-      className={classnames('network-display', {
-        'network-display--disabled': disabled,
-        'network-display--clickable': typeof onClick === 'function',
-      })}
-      labelProps={{
-        variant: TypographyVariant.H7,
-        ...labelProps,
-      }}
-    />
+    <Fragment>
+      <div className="network-display-title">Wallet</div>
+      <Chip
+        dataTestId="network-display"
+        borderColor={
+          onClick ? BorderColor.borderDefault : BorderColor.borderMuted
+        }
+        onClick={onClick}
+        leftIcon={
+          <LoadingIndicator
+            alt={t('attemptingConnect')}
+            title={t('attemptingConnect')}
+            isLoading={networkIsLoading}
+          >
+            <ColorIndicator
+              color={
+                networkType === NETWORK_TYPES.RPC
+                  ? IconColor.iconMuted
+                  : 'colors-primary-green_01'
+              }
+              size={indicatorSize}
+              type={ColorIndicator.TYPES.FILLED}
+              iconClassName={
+                networkType === NETWORK_TYPES.RPC && indicatorSize !== Size.XS
+                  ? 'fa fa-question'
+                  : undefined
+              }
+            />
+          </LoadingIndicator>
+        }
+        rightIcon={
+          onClick ? (
+            <Icon name={ICON_NAMES.ARROW_DOWN} size={ICON_SIZES.XS} />
+          ) : null
+        }
+        label={
+          networkType === NETWORK_TYPES.RPC
+            ? networkNickname ?? t('privateNetwork')
+            : t(networkType)
+        }
+        className={classnames('network-display', {
+          'network-display--disabled': disabled,
+          'network-display--clickable': typeof onClick === 'function',
+        })}
+        labelProps={{
+          variant: TypographyVariant.H7,
+          color: 'color-text-neutral-grey_01',
+          ...labelProps,
+        }}
+      />
+    </Fragment>
   );
 }
 NetworkDisplay.propTypes = {

@@ -1,29 +1,29 @@
 .account-menu {
   position: absolute;
   z-index: 100;
-  top: 58px;
-  width: 320px;
+  top: 100%;
+  right: 20px;
   border-radius: 4px;
   background: var(--color-background-default);
   box-shadow: var(--shadow-size-sm) var(--color-shadow-default);
-  min-width: 150px;
+  min-width: 250px;
   color: var(--color-text-default);
 
-  @include screen-sm-max {
-    right: 16px;
-  }
+  // @include screen-sm-max {
+  //   right: 16px;
+  // }
 
-  @include screen-sm-min {
-    right: calc((100vw - 85vw) / 2);
-  }
+  // @include screen-sm-min {
+  //   right: calc((100vw - 85vw) / 2);
+  // }
 
-  @include screen-md-min {
-    right: calc((100vw - 80vw) / 2);
-  }
+  // @include screen-md-min {
+  //   right: calc((100vw - 80vw) / 2);
+  // }
 
-  @include screen-lg-min {
-    right: calc((100vw - 65vw) / 2);
-  }
+  // @include screen-lg-min {
+  //   right: calc((100vw - 65vw) / 2);
+  // }
 
   &__item {
     padding: 18px;

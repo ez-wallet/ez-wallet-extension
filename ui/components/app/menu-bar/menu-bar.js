@@ -34,8 +34,7 @@ export default function MenuBar() {
           onClick={() => history.push(CONNECTED_ACCOUNTS_ROUTE)}
         />
       ) : null}
-      {/* <SelectedAccount /> */}
-      Your wallet
+      <h1>Your wallet</h1>
       <span style={{ display: 'inherit' }} ref={ref}>
         <ButtonIcon
           iconName={ICON_NAMES.MORE_VERTICAL}
