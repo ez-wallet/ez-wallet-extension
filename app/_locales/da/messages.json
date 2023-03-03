@@ -421,11 +421,11 @@
   "learnMore": {
     "message": "Lær mere"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Lær mere"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Du skal benytte din tidligere konto, før du kan tilføje en ny."
@@ -891,6 +891,9 @@
   },
   "visitWebSite": {
     "message": "Besøg vores webside"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Velkommen tilbage!"

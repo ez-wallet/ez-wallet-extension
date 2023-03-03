@@ -1,19 +1,17 @@
 .unlock-page {
   color: var(--color-text-default);
+  background: var(--colors-primary-grey_06);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 357px;
-  padding: 30px;
+  width: 100%;
   font-weight: 400;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 45px;
 
   &__container {
-    display: flex;
-    align-self: stretch;
-    justify-content: center;
-    flex: 1 0 auto;
-    background: var(--color-background-default);
+    background: var(--colors-primary-grey_06);
+    width: 100%;
   }
 
   &__mascot-container {
@@ -33,25 +31,70 @@
       text-transform: uppercase;
     }
   }
+  &__image-container {
+    position: relative;
+    width: 100%;
+    height: 390px;
+    overflow-x: hidden;
+    margin-bottom: 30px;
+  }
+  &__image {
+    position: absolute;
+    right: -18%;
+  }
 
   &__title {
-    @include H2;
-
-    margin-top: 5px;
-    font-weight: 800;
-    color: var(--color-text-alternative);
+    position: absolute;
+    word-break: break-all;
+    line-height: 100%;
+    max-width: 8ch;
+    padding-left: 16px;
+    bottom: 0;
   }
 
   &__form {
     width: 100%;
-    margin: 56px 0 8px;
+    .form-field__input {
+      width: 100%;
+    }
+    label {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .form-field__eye {
+      text-align: center;
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: inherit;
+      right: 16px;
+    }
+  }
+  &__submit-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    img {
+      position: absolute;
+      right: 16px;
+    }
   }
 
   &__links {
     margin-top: 15px;
     width: 100%;
     text-align: center;
-    font-size: 0.75rem;
+    color: var(--color-text-neutral-grey_01);
+    font-size: 15px;
+    a {
+      color: var(--colors-primary-blue_01);
+      font-weight: 700;
+      margin-right: 5px;
+      margin-left: 5px;
+    }
   }
 
   &__link {

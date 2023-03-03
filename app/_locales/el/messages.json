@@ -1739,9 +1739,6 @@
   "learnMore": {
     "message": "μάθε περισσότερα"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreAboutGas": {
     "message": "Θέλετε να $1 για το τέλος συναλλαγής;",
     "description": "$1 will be replaced by the learnMore translation key"
@@ -1751,6 +1748,9 @@
   },
   "learnScamRisk": {
     "message": "απάτες και κίνδυνοι ασφάλειας."
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Πρέπει να χρησιμοποιήσετε τον τελευταίο σας λογαριασμό πριν προσθέσετε έναν νέο."
@@ -3022,6 +3022,18 @@
   "seedPhraseIntroSidebarCopyTwo": {
     "message": "Ποτέ μα ποτέ μην μοιραστείτε ποτέ Μυστική Φράση Αποκατάστασης σας, ούτε καν με το MetaMask!"
   },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": ""
+  },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": ""
+  },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "Τι είναι μια Μυστική Φράση Ανάκτησης;"
   },
@@ -3030,18 +3042,6 @@
   },
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "Πώς μπορώ να αποθηκεύσω τη Μυστική Φράση Ανάκτησης μου;"
-  },
-  "seedPhraseIntroSidebarTitleFour": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipOne": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipTwo": {
-    "message": ""
-  },
-  "seedPhraseIntroSidebarTipThree": {
-    "message": ""
   },
   "seedPhraseIntroTitle": {
     "message": "Ασφαλίστε το πορτοφόλι σας"
@@ -4311,6 +4311,9 @@
   },
   "walletCreationSuccessTitle": {
     "message": "Επιτυχής δημιουργία πορτοφολιού"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "wantToAddThisNetwork": {
     "message": "Θέλετε να προσθέσετε αυτό το δίκτυο;"

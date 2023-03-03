@@ -147,5 +147,8 @@
   },
   "viewAccount": {
     "message": "അക്കൗണ്ട് കാണുക"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   }
 }

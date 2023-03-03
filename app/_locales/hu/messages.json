@@ -424,11 +424,11 @@
   "learnMore": {
     "message": "Tudjon meg többet"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Tudjon meg többet"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Használnia kell a korábbi fiókját, mielőtt újat adhat hozzá. "
@@ -912,6 +912,9 @@
   },
   "visitWebSite": {
     "message": "Látogass el weboldalunkra"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Üdvözöljük újra!"

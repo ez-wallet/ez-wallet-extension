@@ -424,11 +424,11 @@
   "learnMore": {
     "message": "Uzzināt vairāk"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Uzzināt vairāk"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Jums jāizmanto pēdējais konts pirms varat pievienot jaunu."
@@ -918,6 +918,9 @@
   },
   "visitWebSite": {
     "message": "Apmeklējiet mūsu tīmekļa vietni"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Ar atgriešanos!"

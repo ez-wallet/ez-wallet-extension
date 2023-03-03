@@ -428,11 +428,11 @@
   "learnMore": {
     "message": "Dowiedz się więcej"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Dowiedz się więcej"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Musisz użyć swojego poprzedniego konta zanim dodasz kolejne."
@@ -910,6 +910,9 @@
   },
   "visitWebSite": {
     "message": "Odwiedź naszą stronę"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Witaj z powrotem!"

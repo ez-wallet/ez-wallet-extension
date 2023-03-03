@@ -361,6 +361,9 @@
   "visitWebSite": {
     "message": "हमारी वेब साइट पर जाएं"
   },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
+  },
   "youSign": {
     "message": "आप हस्ताक्षर कर रहे हैं"
   }

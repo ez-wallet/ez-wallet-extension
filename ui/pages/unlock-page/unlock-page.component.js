@@ -2,16 +2,15 @@ import { EventEmitter } from 'events';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../components/ui/button';
-import TextField from '../../components/ui/text-field';
-import Mascot from '../../components/ui/mascot';
-import { DEFAULT_ROUTE } from '../../helpers/constants/routes';
+import FormField from '../../components/ui/form-field';
+import Typography from '../../components/ui/typography/typography';
 import {
-  EVENT,
-  EVENT_NAMES,
-  CONTEXT_PROPS,
-} from '../../../shared/constants/metametrics';
-import { SUPPORT_LINK } from '../../../shared/lib/ui-utils';
-import { isBeta } from '../../helpers/utils/build-types';
+  TypographyVariant,
+  FONT_WEIGHT,
+  TEXT_ALIGN,
+} from '../../helpers/constants/design-system';
+import { DEFAULT_ROUTE } from '../../helpers/constants/routes';
+import { EVENT, EVENT_NAMES } from '../../../shared/constants/metametrics';
 import { getCaretCoordinates } from './unlock-page.util';
 
 export default class UnlockPage extends Component {
@@ -138,17 +137,18 @@ export default class UnlockPage extends Component {
 
   renderSubmitButton() {
     const style = {
-      backgroundColor: 'var(--color-primary-default)',
-      color: 'var(--color-primary-inverse)',
-      marginTop: '20px',
-      height: '60px',
-      fontWeight: '400',
+      backgroundColor: 'var(--colors-primary-green_03)',
+      color: 'var(--color-text-neutral-black_01)',
+      marginTop: '90px',
+      height: '62px',
+      fontWeight: '700',
       boxShadow: 'none',
       borderRadius: '100px',
     };
 
     return (
       <Button
+        className="unlock-page__submit-btn"
         type="submit"
         data-testid="unlock-submit"
         style={style}
@@ -158,6 +158,7 @@ export default class UnlockPage extends Component {
         onClick={this.handleSubmit}
       >
         {this.context.t('unlock')}
+        <img alt="icon" src="./images/icons/unlock.svg" />
       </Button>
     );
   }
@@ -169,48 +170,58 @@ export default class UnlockPage extends Component {
 
     return (
       <div className="unlock-page__container">
+        <div className="unlock-page__image-container">
+          <img className="unlock-page__image" src="images/unlock-bg.svg" />
+          <Typography
+            className="unlock-page__title"
+            variant={TypographyVariant.H2}
+            align={TEXT_ALIGN.LEFT}
+            fontWeight={FONT_WEIGHT.BOLD}
+          >
+            {t('welcomeBack')}
+          </Typography>
+        </div>
         <div className="unlock-page" data-testid="unlock-page">
-          <div className="unlock-page__mascot-container">
-            <Mascot
-              animationEventEmitter={this.animationEventEmitter}
-              width="120"
-              height="120"
-            />
-            {isBeta() ? (
-              <div className="unlock-page__mascot-container__beta">
-                {t('beta')}
-              </div>
-            ) : null}
-          </div>
-          <h1 className="unlock-page__title">{t('welcomeBack')}</h1>
-          <div>{t('unlockMessage')}</div>
           <form className="unlock-page__form" onSubmit={this.handleSubmit}>
-            <TextField
+            <FormField
               id="password"
+              className="unlock-page__password-input"
               data-testid="unlock-password"
-              label={t('password')}
-              type="password"
-              value={password}
-              onChange={(event) => this.handleInputChange(event)}
-              error={error}
               autoFocus
-              autoComplete="current-password"
-              theme="material"
-              fullWidth
+              onChange={(value) => {
+                this.handleInputChange({
+                  target: {
+                    value,
+                  },
+                });
+              }}
+              placeholder={t('password')}
+              error={error}
+              value={password}
             />
           </form>
           {this.renderSubmitButton()}
           <div className="unlock-page__links">
-            <Button
+            {t('walletWontUnlock')}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                onRestore();
+              }}
+            >
+              {t('resetWallet')}
+            </a>
+            {/* <Button
               type="link"
               key="import-account"
               className="unlock-page__link"
               onClick={() => onRestore()}
             >
               {t('forgotPassword')}
-            </Button>
+            </Button> */}
           </div>
-          <div className="unlock-page__support">
+          {/* <div className="unlock-page__support">
             {t('needHelp', [
               <a
                 href={SUPPORT_LINK}
@@ -237,7 +248,7 @@ export default class UnlockPage extends Component {
                 {t('needHelpLinkText')}
               </a>,
             ])}
-          </div>
+          </div> */}
         </div>
       </div>
     );

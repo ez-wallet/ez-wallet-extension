@@ -428,11 +428,11 @@
   "learnMore": {
     "message": "למדו עוד"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "למדו עוד"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "עליך להשתמש בחשבון האחרון שלך לפני שתוכל/י להוסיף חשבון חדש."
@@ -919,6 +919,9 @@
   },
   "visitWebSite": {
     "message": "בקר/י באתר שלנו"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "ברוך שובך!"

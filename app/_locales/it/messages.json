@@ -1194,11 +1194,11 @@
   "learnMore": {
     "message": "Scopri di più"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Scopri di più"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "E' necessario utilizzare l'ultimo account prima di poterne aggiungere uno nuovo."
@@ -2068,6 +2068,9 @@
   },
   "walletConnectionGuide": {
     "message": "la nostra guida al collegamento del portafoglio hardware"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "web3ShimUsageNotification": {
     "message": "Abbiamo notato che il sito corrente ha provato ad usare la API window.web3 rimossa. Se il sito ti sembra non funzionare, clicca $1 per più informazioni.",

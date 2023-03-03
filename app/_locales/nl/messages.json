@@ -351,6 +351,9 @@
   "visitWebSite": {
     "message": "Bezoek onze website"
   },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
+  },
   "youSign": {
     "message": "U ondertekent"
   }

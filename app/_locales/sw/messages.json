@@ -415,11 +415,11 @@
   "learnMore": {
     "message": "Jifunze zaidi"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Jifunze zaidi"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Unapaswa kutumia akaunti yako ya mwisho kabla hujaongeza mpya."
@@ -900,6 +900,9 @@
   },
   "visitWebSite": {
     "message": "Tembelea Tovuti yetu"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Karibu Tena!"

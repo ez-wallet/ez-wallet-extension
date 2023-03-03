@@ -24,6 +24,10 @@
    --colors-primary-grey_06: #F3F3F9;
    --colors-primary-grey_07: #EEEEF8;
 
+   /* blue */
+   --colors-primary-blue_01: #408DFF;
+
+   /* text */
    --color-text-neutral-black_01: #35353A;
    --color-text-neutral-grey_01: #8C8C99;
 }

@@ -417,11 +417,11 @@
   "learnMore": {
     "message": "Maklumat lanjut"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "Maklumat lanjut"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "ledgerAccountRestriction": {
     "message": "Anda perlu menggunakan akaun terakhir anda sebelum anda boleh menambah yang baru."
@@ -899,6 +899,9 @@
   },
   "visitWebSite": {
     "message": "Kunjungi laman web kami"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "welcomeBack": {
     "message": "Selamat Kembali!"

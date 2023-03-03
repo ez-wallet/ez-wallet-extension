@@ -226,11 +226,11 @@
   "learnMore": {
     "message": "மேலும் அறிக"
   },
-  "leaveYourselfAHint": {
-    "message": ""
-  },
   "learnMoreUpperCase": {
     "message": "மேலும் அறிக"
+  },
+  "leaveYourselfAHint": {
+    "message": ""
   },
   "likeToImportTokens": {
     "message": "இந்த டோக்கன்களைச் சேர்க்க விரும்புகிறீர்களா?"
@@ -483,6 +483,9 @@
   },
   "visitWebSite": {
     "message": "எங்கள் வலைத்தளத்தைப் பார்வையிடவும்"
+  },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
   },
   "youSign": {
     "message": "நீங்கள் கையெழுத்திடுகிறீர்கள்"

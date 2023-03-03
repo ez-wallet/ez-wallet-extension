@@ -164,6 +164,9 @@
   "viewAccount": {
     "message": "Ver Conta"
   },
+  "walletWontUnlock": {
+    "message": "Wallet won’t unlock? You can ERASE your current wallet and setup a new one."
+  },
   "welcomeBack": {
     "message": "Bem-vindo de volta!"
   }
