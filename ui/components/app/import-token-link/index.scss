@@ -1,8 +1,14 @@
 .import-token-link {
-  & &__link {
-    @include H6;
-
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  a {
+    font-weight: 500;
+    font-size: 15px;
     display: inline;
-    padding: 0 5px 16px;
+    color: var(--colors-accent-blue_01);
+    text-transform: capitalize;
   }
 }

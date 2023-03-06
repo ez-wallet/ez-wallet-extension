@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import Button from '../../ui/button';
 import * as actions from '../../../store/actions';
 import { openAlert as displayInvalidCustomNetworkAlert } from '../../../ducks/alerts/invalid-custom-network';
 import {
@@ -127,25 +126,23 @@ class NetworkDropdown extends Component {
   renderAddCustomButton() {
     const { onAddClick } = this.props;
     return (
-      <div className="network__add-network-button">
-        <Button
-          type="secondary"
-          onClick={() => {
-            if (onAddClick) {
-              onAddClick();
-            } else {
-              getEnvironmentType() === ENVIRONMENT_TYPE_POPUP
-                ? global.platform.openExtensionInBrowser(
-                    ADD_POPULAR_CUSTOM_NETWORK,
-                  )
-                : this.props.history.push(ADD_POPULAR_CUSTOM_NETWORK);
-            }
-            this.props.hideNetworkDropdown();
-          }}
-        >
-          {this.context.t('addNetwork')}
-        </Button>
-      </div>
+      <button
+        className="network__add-network-button"
+        onClick={() => {
+          if (onAddClick) {
+            onAddClick();
+          } else {
+            getEnvironmentType() === ENVIRONMENT_TYPE_POPUP
+              ? global.platform.openExtensionInBrowser(
+                  ADD_POPULAR_CUSTOM_NETWORK,
+                )
+              : this.props.history.push(ADD_POPULAR_CUSTOM_NETWORK);
+          }
+          this.props.hideNetworkDropdown();
+        }}
+      >
+        {this.context.t('addNetwork')}
+      </button>
     );
   }
 
@@ -306,14 +303,13 @@ class NetworkDropdown extends Component {
         style={
           this.props.dropdownStyles || {
             position: 'absolute',
-            top: '58px',
-            width: '309px',
+            top: '-16px',
+            width: '360px',
+            left: '50%',
+            marginLeft: '-180px',
             zIndex: '55',
           }
         }
-        innerStyle={{
-          padding: '16px 0',
-        }}
       >
         <div className="network-dropdown-header">
           {hideElementsForOnboarding ? null : (
@@ -338,12 +334,12 @@ class NetworkDropdown extends Component {
                   {t('showHide')}
                 </a>,
               ])}
-              <Button
+              <button
                 onClick={hideTestNetMessage}
                 className="network-dropdown-content--dismiss"
               >
                 {t('dismiss')}
-              </Button>
+              </button>
             </div>
           ) : null}
         </div>
@@ -368,8 +364,9 @@ class NetworkDropdown extends Component {
             </>
           )}
         </div>
-
-        {this.renderAddCustomButton()}
+        <div className="network__add-network-button-container">
+          {this.renderAddCustomButton()}
+        </div>
       </Dropdown>
     );
   }

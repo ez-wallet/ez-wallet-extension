@@ -24,7 +24,6 @@ import CreateAccountPage from '../create-account';
 import Loading from '../../components/ui/loading-screen';
 import LoadingNetwork from '../../components/app/loading-network-screen';
 import NetworkDropdown from '../../components/app/dropdowns/network-dropdown';
-import AccountMenu from '../../components/app/account-menu';
 import { Modal } from '../../components/app/modals';
 import Alert from '../../components/ui/alert';
 import AppHeader from '../../components/app/app-header';
@@ -428,8 +427,13 @@ export default class Routes extends Component {
           />
         )}
         {this.showOnboardingHeader() && <OnboardingAppHeader />}
-        {completedOnboarding ? <NetworkDropdown /> : null}
-        <AccountMenu />
+        <div
+          style={{
+            position: 'relative',
+          }}
+        >
+          {completedOnboarding ? <NetworkDropdown /> : null}
+        </div>
         <div className="main-container-wrapper">
           {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
           {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}

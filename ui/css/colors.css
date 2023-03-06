@@ -30,4 +30,16 @@
    /* text */
    --color-text-neutral-black_01: #35353A;
    --color-text-neutral-grey_01: #8C8C99;
+   --color-text-neutral-grey_07: #EEEEF8;
+
+   /* blue */
+   --colors-accent-blue_01: #408DFF;
+
+   /* yellow */
+   --colors-primary-yellow_01: #FFCC00;
+
+   --colors-accent-purple_01: #6640FF;
+
+
+   --colors-neutral-white_01: #FFFFFF;
 }

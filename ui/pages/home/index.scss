@@ -1,41 +1,80 @@
 .home {
   &__container {
     display: flex;
+    flex-direction: column;
     min-height: 100%;
   }
 
   &__main-view {
     flex: 1 1 66.5%;
-    background: var(--color-background-default);
     min-width: 0;
     display: flex;
     flex-direction: column;
+
+    .asset-list-item {
+      background: transparent;
+      padding: 16px 10px;
+      h2 h3 {
+        font-size: 13px;
+      }
+    }
+  }
+  &__bottom-view {
+    border-radius: 20px;
+    background: var(--colors-primary-grey_05);
+    margin: 16px 8px;
+    overflow: hidden;
+    padding-bottom: 100px;
+    .tabs {
+      background: transparent;
+    }
+    .tabs__list {
+      background: transparent;
+    }
+    .home__tab {
+      @include H6;
+      color: var(--color-text-neutral-black_01);
+      flex-grow: 1;
+      color: var(--color-text-neutral-grey_01);
+      font-weight: 500;
+    }
+    .home__tab--active {
+      font-size: 15px;
+      color: var(--color-text-neutral-black_01);
+      font-weight: 500;
+      border-bottom: 3px solid var(--colors-primary-green_02);
+    }
+    .list-item {
+      background: transparent;
+    }
   }
 
   &__balance-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
     flex: 0 0 auto;
   }
 
   // TODO: fix style import order so this isn't required to override specificity of `tab` class
-  &__main-view &__tabs {
+  &__main-view {
     border: none;
-    box-shadow: var(--shadow-size-xs) var(--color-shadow-default);
+    background: transparent;
+    // box-shadow: var(--shadow-size-xs) var(--color-shadow-default);
   }
 
-  &__main-view &__tab {
+  &__main-view {
     @include H6;
-
+    color: var(--color-text-neutral-black_01);
     flex-grow: 1;
-    color: var(--color-icon-default);
+    color: var(--color-text-neutral-grey_01);
     font-weight: 500;
   }
 
-  &__main-view &__tab--active {
-    color: var(--color-primary-default);
+  &__main-view {
+    font-size: 15px;
+    color: var(--color-text-neutral-black_01);
+    font-weight: 500;
   }
 
   &__main-view &__tab button {

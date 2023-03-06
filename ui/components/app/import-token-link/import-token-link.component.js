@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { IMPORT_TOKEN_ROUTE } from '../../../helpers/constants/routes';
-import Button from '../../ui/button';
+import { Icon } from '../../component-library';
 import Box from '../../ui/box/box';
 import { TEXT_ALIGN } from '../../../helpers/constants/design-system';
-import { detectNewTokens } from '../../../store/actions';
+// import { detectNewTokens } from '../../../store/actions';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 import {
@@ -31,7 +31,7 @@ export default function ImportTokenLink() {
 
   return (
     <Box className="import-token-link" textAlign={TEXT_ALIGN.CENTER}>
-      {isTokenDetectionAvailable && (
+      {/* {isTokenDetectionAvailable && (
         <>
           <Button
             className="import-token-link__link"
@@ -43,12 +43,13 @@ export default function ImportTokenLink() {
           </Button>
           {t('or')}
         </>
-      )}
-      <Button
-        className="import-token-link__link"
+      )} */}
+      <Icon name="import" size="lg" color="colors-accent-blue_01" />
+      <a
         data-testid="import-token-button"
-        type="link"
-        onClick={() => {
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
           history.push(IMPORT_TOKEN_ROUTE);
           trackEvent({
             event: EVENT_NAMES.TOKEN_IMPORT_BUTTON_CLICKED,
@@ -63,7 +64,7 @@ export default function ImportTokenLink() {
           ? t('importTokens')
           : t('importTokens').charAt(0).toUpperCase() +
             t('importTokens').slice(1)}
-      </Button>
+      </a>
     </Box>
   );
 }

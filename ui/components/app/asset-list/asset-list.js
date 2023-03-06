@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import ImportTokenLink from '../import-token-link';
 import TokenList from '../token-list';
 import AssetListItem from '../asset-list-item';
 import { PRIMARY, SECONDARY } from '../../../helpers/constants/common';
@@ -15,23 +14,12 @@ import {
 } from '../../../selectors';
 import { getNativeCurrency } from '../../../ducks/metamask/metamask';
 import { useCurrencyDisplay } from '../../../hooks/useCurrencyDisplay';
-import Typography from '../../ui/typography/typography';
-import Box from '../../ui/box/box';
-import {
-  Color,
-  TypographyVariant,
-  FONT_WEIGHT,
-  JustifyContent,
-} from '../../../helpers/constants/design-system';
-import { useI18nContext } from '../../../hooks/useI18nContext';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 import DetectedToken from '../detected-token/detected-token';
 import DetectedTokensLink from './detetcted-tokens-link/detected-tokens-link';
 
 const AssetList = ({ onClickAsset }) => {
-  const t = useI18nContext();
-
   const [showDetectedTokens, setShowDetectedTokens] = useState(false);
 
   const selectedAccountBalance = useSelector(getSelectedAccountCachedBalance);
@@ -100,18 +88,6 @@ const AssetList = ({ onClickAsset }) => {
         !istokenDetectionInactiveOnNonMainnetSupportedNetwork && (
           <DetectedTokensLink setShowDetectedTokens={setShowDetectedTokens} />
         )}
-      <Box marginTop={detectedTokens.length > 0 ? 0 : 4}>
-        <Box justifyContent={JustifyContent.center}>
-          <Typography
-            color={Color.textAlternative}
-            variant={TypographyVariant.H6}
-            fontWeight={FONT_WEIGHT.NORMAL}
-          >
-            {t('missingToken')}
-          </Typography>
-        </Box>
-        <ImportTokenLink />
-      </Box>
       {showDetectedTokens && (
         <DetectedToken setShowDetectedTokens={setShowDetectedTokens} />
       )}
