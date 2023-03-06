@@ -34,6 +34,24 @@
     flex-direction: column;
     width: 100%;
   }
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  &__tooltip-wrapper {
+    flex: 1;
+  }
+  &__qr-code {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--colors-primary-green_06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__clickable {
     width: 100%;
     background: var(--colors-primary-green_06);
@@ -123,7 +141,8 @@
       border-radius: 50%;
       margin-top: 0;
       margin-bottom: 8px;
-      background: var(--colors-primary-grey_06);
+      background-color: var(--colors-primary-grey_06);
+      filter: drop-shadow(-5px -5px 10px rgba(255, 255, 255, 0.5)) drop-shadow(5px 5px 10px rgba(170, 170, 204, 0.15)) drop-shadow(10px 10px 20px rgba(170, 170, 204, 0.3)) drop-shadow(-10px -10px 20px rgba(255, 255, 255, 0.5));
     }
   }
 

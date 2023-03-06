@@ -111,23 +111,6 @@ export default function AccountOptionsMenu({ anchorElement, onClose }) {
         </MenuItem>
       )}
       <MenuItem
-        data-testid="account-options-menu__account-details"
-        onClick={() => {
-          dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
-          trackEvent({
-            event: EVENT_NAMES.NAV_ACCOUNT_DETAILS_OPENED,
-            category: EVENT.CATEGORIES.NAVIGATION,
-            properties: {
-              location: 'Account Options',
-            },
-          });
-          onClose();
-        }}
-        iconName={ICON_NAMES.SCAN_BARCODE}
-      >
-        {t('accountDetails')}
-      </MenuItem>
-      <MenuItem
         data-testid="account-options-menu__connected-sites"
         onClick={() => {
           trackEvent({

@@ -11,7 +11,7 @@ import { CONNECTED_ACCOUNTS_ROUTE } from '../../../helpers/constants/routes';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { getOriginOfCurrentTab } from '../../../selectors';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
-import { ButtonIcon, ICON_NAMES } from '../../component-library';
+import { Icon } from '../../component-library';
 import AccountOptionsMenu from './account-options-menu';
 
 export default function MenuBar() {
@@ -35,24 +35,26 @@ export default function MenuBar() {
         />
       ) : null}
       <h1>{t('yourWallet')}</h1>
-      <span style={{ display: 'inherit' }} ref={ref}>
-        <ButtonIcon
-          iconName={ICON_NAMES.MORE_VERTICAL}
-          className="menu-bar__account-options"
-          data-testid="account-options-menu-button"
-          ariaLabel={t('accountOptions')}
-          onClick={() => {
-            trackEvent({
-              event: EVENT_NAMES.NAV_ACCOUNT_MENU_OPENED,
-              category: EVENT.CATEGORIES.NAVIGATION,
-              properties: {
-                location: 'Home',
-              },
-            });
-            setAccountOptionsMenuOpen(true);
-          }}
-        />
-      </span>
+
+      <button
+        ref={ref}
+        className="menu-bar__account-options"
+        data-testid="account-options-menu-button"
+        ariaLabel={t('accountOptions')}
+        onClick={() => {
+          trackEvent({
+            event: EVENT_NAMES.NAV_ACCOUNT_MENU_OPENED,
+            category: EVENT.CATEGORIES.NAVIGATION,
+            properties: {
+              location: 'Home',
+            },
+          });
+          setAccountOptionsMenuOpen(true);
+        }}
+      >
+        <Icon name="menu" />
+      </button>
+
       {accountOptionsMenuOpen ? (
         <AccountOptionsMenu
           anchorElement={ref.current}

@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import copyToClipboard from 'copy-to-clipboard';
+import { showModal } from '../../../store/actions';
 import Tooltip from '../../ui/tooltip';
 import { Icon, ICON_NAMES, ICON_SIZES } from '../../component-library';
 import { IconColor } from '../../../helpers/constants/design-system';
@@ -10,6 +13,8 @@ import { SECOND } from '../../../../shared/constants/time';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import { I18nContext } from '../../../contexts/i18n';
 import AccountButton from '../account-button';
+import { MetaMetricsContext } from '../../../contexts/metametrics';
+import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 
 const WalletOverview = ({
   selectedIdentity,
@@ -21,6 +26,8 @@ const WalletOverview = ({
 }) => {
   const t = useContext(I18nContext);
   const [copied, setCopied] = useState(false);
+  const dispatch = useDispatch();
+  const trackEvent = useContext(MetaMetricsContext);
 
   const checkSummedAddress = toChecksumHexAddress(selectedIdentity.address);
 
@@ -47,31 +54,48 @@ const WalletOverview = ({
           {/* {loading ? null : icon} */}
           {balance}
         </div>
-        <Tooltip
-          wrapperClassName="wallet-overview__tooltip-wrapper"
-          position="bottom"
-          title={copied ? t('copiedExclamation') : t('copyToClipboard')}
-        >
+        <div className="wallet-overview__actions">
+          <Tooltip
+            wrapperClassName="wallet-overview__tooltip-wrapper"
+            position="bottom"
+            title={copied ? t('copiedExclamation') : t('copyToClipboard')}
+          >
+            <button
+              className="wallet-overview__clickable"
+              data-testid="wallet-overview-click"
+              onClick={() => {
+                setCopied(true);
+                copyToClipboard(checkSummedAddress);
+              }}
+            >
+              <div className="wallet-overview__address">
+                {shortenAddress(checkSummedAddress)}
+                <div className="wallet-overview__copy">
+                  <Icon
+                    name={copied ? ICON_NAMES.COPY_SUCCESS : ICON_NAMES.COPY}
+                    size={ICON_SIZES.SM}
+                    color={IconColor.iconAlternative}
+                  />
+                </div>
+              </div>
+            </button>
+          </Tooltip>
           <button
-            className="wallet-overview__clickable"
-            data-testid="wallet-overview-click"
+            className="wallet-overview__qr-code"
             onClick={() => {
-              setCopied(true);
-              copyToClipboard(checkSummedAddress);
+              dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+              trackEvent({
+                event: EVENT_NAMES.NAV_ACCOUNT_DETAILS_OPENED,
+                category: EVENT.CATEGORIES.NAVIGATION,
+                properties: {
+                  location: 'Account Options',
+                },
+              });
             }}
           >
-            <div className="wallet-overview__address">
-              {shortenAddress(checkSummedAddress)}
-              <div className="wallet-overview__copy">
-                <Icon
-                  name={copied ? ICON_NAMES.COPY_SUCCESS : ICON_NAMES.COPY}
-                  size={ICON_SIZES.SM}
-                  color={IconColor.iconAlternative}
-                />
-              </div>
-            </div>
+            <Icon name="qr-code" />
           </button>
-        </Tooltip>
+        </div>
       </div>
 
       <div className="wallet-overview__buttons">{buttons}</div>
