@@ -1793,15 +1793,15 @@
   "lastSold": {
     "message": "Last sold"
   },
+  "learn": {
+    "message": "Learn"
+  },
   "learnCancelSpeeedup": {
     "message": "Learn how to $1",
     "description": "$1 is link to cancel or speed up transactions"
   },
   "learnMore": {
     "message": "learn more"
-  },
-  "leaveYourselfAHint": {
-    "message": "Leave yourself a hint?"
   },
   "learnMoreAboutGas": {
     "message": "Want to $1 about gas?",
@@ -1812,6 +1812,9 @@
   },
   "learnScamRisk": {
     "message": "scams and security risks."
+  },
+  "leaveYourselfAHint": {
+    "message": "Leave yourself a hint?"
   },
   "ledgerAccountRestriction": {
     "message": "You need to make use your last account before you can add a new one."
@@ -3146,6 +3149,18 @@
   "seedPhraseIntroSidebarCopyTwo": {
     "message": "Doesn't have to be paper!"
   },
+  "seedPhraseIntroSidebarTipOne": {
+    "message": "Store in bank vault "
+  },
+  "seedPhraseIntroSidebarTipThree": {
+    "message": "Store in multiple secret places"
+  },
+  "seedPhraseIntroSidebarTipTwo": {
+    "message": "Store in a safe"
+  },
+  "seedPhraseIntroSidebarTitleFour": {
+    "message": "Tips:"
+  },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "Manual"
   },
@@ -3154,18 +3169,6 @@
   },
   "seedPhraseIntroSidebarTitleTwo": {
     "message": "Risks are:"
-  },
-  "seedPhraseIntroSidebarTitleFour": {
-    "message": "Tips:"
-  },
-  "seedPhraseIntroSidebarTipOne": {
-    "message": "Store in bank vault "
-  },
-  "seedPhraseIntroSidebarTipTwo": {
-    "message": "Store in a safe"
-  },
-  "seedPhraseIntroSidebarTipThree": {
-    "message": "Store in multiple secret places"
   },
   "seedPhraseIntroTitle": {
     "message": "Secure your wallet"
@@ -4100,6 +4103,9 @@
   "tokenSymbol": {
     "message": "Token symbol"
   },
+  "tokens": {
+    "message": "Tokens"
+  },
   "tokensFoundTitle": {
     "message": "$1 new tokens found",
     "description": "$1 is the number of new tokens detected"
@@ -4229,6 +4235,9 @@
   },
   "transferFrom": {
     "message": "Transfer from"
+  },
+  "trend": {
+    "message": "Trend"
   },
   "troubleConnectingToWallet": {
     "message": "We had trouble connecting to your $1, try reviewing $2 and try again.",
@@ -4431,6 +4440,9 @@
   "visitWebSite": {
     "message": "Visit our website"
   },
+  "wallet": {
+    "message": "Wallet"
+  },
   "walletConnectionGuide": {
     "message": "our hardware wallet connection guide"
   },
@@ -4534,6 +4546,9 @@
   "youSign": {
     "message": "You are signing"
   },
+  "yourBalance": {
+    "message": "Your balance"
+  },
   "yourFundsMayBeAtRisk": {
     "message": "Your funds may be at risk"
   },
@@ -4542,6 +4557,9 @@
   },
   "yourPrivateSeedPhrase": {
     "message": "Your Secret Recovery Phrase"
+  },
+  "yourWallet": {
+    "message": "Your Wallet"
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "Zero gas price on speed up"

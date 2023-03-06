@@ -32,9 +32,10 @@
    --colors-accent-blue_01: #408DFF;
 
    /* yellow */
-   --colors-primary-yellow_01:#FFCC00;
+   --colors-primary-yellow_01: #FFCC00;
 
-   --colors-accent-purple_01:#6640FF;
+   --colors-accent-purple_01: #6640FF;
 
 
+   --colors-neutral-white_01: #FFFFFF;
 }

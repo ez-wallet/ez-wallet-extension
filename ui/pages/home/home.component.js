@@ -1,16 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
-import {
-  EVENT,
-  EVENT_NAMES,
-  CONTEXT_PROPS,
-} from '../../../shared/constants/metametrics';
 import AssetList from '../../components/app/asset-list';
 import NftsTab from '../../components/app/nfts-tab';
 import HomeNotification from '../../components/app/home-notification';
 import MultipleNotifications from '../../components/app/multiple-notifications';
-import TransactionList from '../../components/app/transaction-list';
+// import TransactionList from '../../components/app/transaction-list';
 import MenuBar from '../../components/app/menu-bar';
 import Popover from '../../components/ui/popover';
 import Button from '../../components/ui/button';
@@ -27,13 +22,14 @@ import {
   TypographyVariant,
   FONT_WEIGHT,
   DISPLAY,
-  BLOCK_SIZES,
-  Size,
-  TextVariant,
+  // BLOCK_SIZES,
+  // Size,
+  // TextVariant,
   TextColor,
 } from '../../helpers/constants/design-system';
 import { SECOND } from '../../../shared/constants/time';
-import { ButtonLink, ICON_NAMES } from '../../components/component-library';
+// import { ButtonLink, ICON_NAMES } from '../../components/component-library';
+import ImportTokenLink from '../../components/app/import-token-link';
 import {
   ASSET_ROUTE,
   RESTORE_VAULT_ROUTE,
@@ -51,15 +47,7 @@ import {
 } from '../../helpers/constants/routes';
 import ZENDESK_URLS from '../../helpers/constants/zendesk-url';
 import Tooltip from '../../components/ui/tooltip';
-///: BEGIN:ONLY_INCLUDE_IN(main)
-import { SUPPORT_LINK } from '../../../shared/lib/ui-utils';
-///: END:ONLY_INCLUDE_IN
-///: BEGIN:ONLY_INCLUDE_IN(beta)
-import BetaHomeFooter from './beta/beta-home-footer.component';
-///: END:ONLY_INCLUDE_IN
-///: BEGIN:ONLY_INCLUDE_IN(flask)
-import FlaskHomeFooter from './flask/flask-home-footer.component';
-///: END:ONLY_INCLUDE_IN
+import Toolbar from '../../components/app/toolbar';
 
 function shouldCloseNotificationPopup({
   isNotification,
@@ -667,6 +655,9 @@ export default class Home extends PureComponent {
             <div className="home__balance-wrapper">
               <EthOverview />
             </div>
+          </div>
+
+          <div className="home__bottom-view">
             <Tabs
               t={this.context.t}
               defaultActiveTabKey={defaultHomeActiveTabName}
@@ -708,36 +699,7 @@ export default class Home extends PureComponent {
                     </div>
                   }
                 >
-                  <ButtonLink
-                    className="home__subheader-link"
-                    data-testid="home__portfolio-site"
-                    onClick={async () => {
-                      const portfolioUrl = process.env.PORTFOLIO_URL;
-                      global.platform.openTab({
-                        url: `${portfolioUrl}?metamaskEntry=ext`,
-                      });
-                      this.context.trackEvent(
-                        {
-                          category: EVENT.CATEGORIES.HOME,
-                          event: EVENT_NAMES.PORTFOLIO_LINK_CLICKED,
-                          properties: {
-                            url: portfolioUrl,
-                          },
-                        },
-                        {
-                          contextPropsIntoEventProperties: [
-                            CONTEXT_PROPS.PAGE_TITLE,
-                          ],
-                        },
-                      );
-                    }}
-                    iconName={ICON_NAMES.DIAGRAM}
-                    width={BLOCK_SIZES.FULL}
-                    size={Size.MD}
-                    textProps={{ variant: TextVariant.bodySm }}
-                  >
-                    {t('portfolioSite')}
-                  </ButtonLink>
+                  <ImportTokenLink />
                 </Tooltip>
               }
             >
@@ -745,13 +707,26 @@ export default class Home extends PureComponent {
                 activeClassName="home__tab--active"
                 className="home__tab"
                 data-testid="home__asset-tab"
-                name={this.context.t('assets')}
+                name={this.context.t('tokens')}
                 tabKey="assets"
               >
                 <AssetList
                   onClickAsset={(asset) =>
                     history.push(`${ASSET_ROUTE}/${asset}`)
                   }
+                />
+              </Tab>
+              <Tab
+                activeClassName="home__tab--active"
+                className="home__tab"
+                data-testid="home__nfts-tab"
+                name={this.context.t('nfts')}
+                tabKey="nfts"
+              >
+                <NftsTab
+                  onAddNFT={() => {
+                    history.push(ADD_NFT_ROUTE);
+                  }}
                 />
               </Tab>
               {process.env.NFTS_V1 ? (
@@ -769,7 +744,7 @@ export default class Home extends PureComponent {
                   />
                 </Tab>
               ) : null}
-              <Tab
+              {/* <Tab
                 activeClassName="home__tab--active"
                 className="home__tab"
                 data-testid="home__activity-tab"
@@ -777,52 +752,10 @@ export default class Home extends PureComponent {
                 tabKey="activity"
               >
                 <TransactionList />
-              </Tab>
+              </Tab> */}
             </Tabs>
-            <div className="home__support">
-              {
-                ///: BEGIN:ONLY_INCLUDE_IN(main)
-                t('needHelp', [
-                  <a
-                    href={SUPPORT_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    key="need-help-link"
-                    onClick={() => {
-                      this.context.trackEvent(
-                        {
-                          category: EVENT.CATEGORIES.HOME,
-                          event: EVENT_NAMES.SUPPORT_LINK_CLICKED,
-                          properties: {
-                            url: SUPPORT_LINK,
-                          },
-                        },
-                        {
-                          contextPropsIntoEventProperties: [
-                            CONTEXT_PROPS.PAGE_TITLE,
-                          ],
-                        },
-                      );
-                    }}
-                  >
-                    {t('needHelpLinkText')}
-                  </a>,
-                ])
-                ///: END:ONLY_INCLUDE_IN
-              }
-              {
-                ///: BEGIN:ONLY_INCLUDE_IN(beta)
-                <BetaHomeFooter />
-                ///: END:ONLY_INCLUDE_IN
-              }
-              {
-                ///: BEGIN:ONLY_INCLUDE_IN(flask)
-                <FlaskHomeFooter />
-                ///: END:ONLY_INCLUDE_IN
-              }
-            </div>
           </div>
-
+          <Toolbar />
           {this.renderNotifications()}
         </div>
       </div>

@@ -51,7 +51,7 @@ const EthOverview = ({ className }) => {
   const primaryTokenImage = useSelector(getNativeCurrencyImage);
   const defaultSwapsToken = useSelector(getSwapsDefaultToken);
   const selectedIdentity = useSelector(getSelectedIdentity);
-  console.log({ balance });
+
   return (
     <>
       {showDepositPopover && (

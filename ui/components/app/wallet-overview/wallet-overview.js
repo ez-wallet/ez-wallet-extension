@@ -42,7 +42,7 @@ const WalletOverview = ({
           <AccountButton />
         </div>
 
-        <p className="wallet-overview__title">Your balance</p>
+        <p className="wallet-overview__title">{t('yourBalance')}</p>
         <div className="wallet-overview__balance">
           {/* {loading ? null : icon} */}
           {balance}
