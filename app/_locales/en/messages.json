@@ -115,7 +115,7 @@
     "description": "$1 is the url of the site requesting ability to spend"
   },
   "accessYourWalletWithSRP": {
-    "message": "Access your wallet with your Secret Recovery Phrase"
+    "message": "Import from seed"
   },
   "accessYourWalletWithSRPDescription": {
     "message": "MetaMask cannot recover your password. We will use your Secret Recovery Phrase to validate your ownership, restore your wallet and set up a new password. First, enter the Secret Recovery Phrase that you were given when you created your wallet. $1",

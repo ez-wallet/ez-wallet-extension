@@ -3,14 +3,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../components/ui/button';
 import FormField from '../../components/ui/form-field';
-import Typography from '../../components/ui/typography/typography';
-import {
-  TypographyVariant,
-  FONT_WEIGHT,
-  TEXT_ALIGN,
-} from '../../helpers/constants/design-system';
 import { DEFAULT_ROUTE } from '../../helpers/constants/routes';
 import { EVENT, EVENT_NAMES } from '../../../shared/constants/metametrics';
+import { Icon } from '../../components/component-library';
 import { getCaretCoordinates } from './unlock-page.util';
 
 export default class UnlockPage extends Component {
@@ -31,7 +26,7 @@ export default class UnlockPage extends Component {
     /**
      * onClick handler for "Forgot password?" link
      */
-    onRestore: PropTypes.func,
+    // onRestore: PropTypes.func,
     /**
      * onSubmit handler when form is submitted
      */
@@ -135,73 +130,53 @@ export default class UnlockPage extends Component {
     }
   }
 
-  renderSubmitButton() {
-    const style = {
-      backgroundColor: 'var(--colors-primary-green_03)',
-      color: 'var(--color-text-neutral-black_01)',
-      marginTop: '90px',
-      height: '62px',
-      fontWeight: '700',
-      boxShadow: 'none',
-      borderRadius: '100px',
-    };
-
-    return (
-      <Button
-        className="unlock-page__submit-btn"
-        type="submit"
-        data-testid="unlock-submit"
-        style={style}
-        disabled={!this.state.password}
-        variant="contained"
-        size="large"
-        onClick={this.handleSubmit}
-      >
-        {this.context.t('unlock')}
-        <img alt="icon" src="./images/icons/unlock.svg" />
-      </Button>
-    );
-  }
-
   render() {
     const { password, error } = this.state;
     const { t } = this.context;
-    const { onRestore } = this.props;
+    // const { onRestore } = this.props;
 
     return (
-      <div className="unlock-page__container">
-        <div className="unlock-page__image-container">
-          <img className="unlock-page__image" src="images/unlock-bg.svg" />
-          <Typography
-            className="unlock-page__title"
-            variant={TypographyVariant.H2}
-            align={TEXT_ALIGN.LEFT}
-            fontWeight={FONT_WEIGHT.BOLD}
-          >
+      <div className="w-full max-w-sm flex flex-col py-[30px] bg-grey-6">
+        <div className="flex items-end justify-start min-w-max h-[350px] bg-[url('./images/unlock-bg.svg')] bg-cover ml-4 mb-[30px]">
+          <h1 className="text-[45px] w-[215px] break-all font-bold text-black leading-none">
             {t('welcomeBack')}
-          </Typography>
+          </h1>
         </div>
-        <div className="unlock-page" data-testid="unlock-page">
-          <form className="unlock-page__form" onSubmit={this.handleSubmit}>
-            <FormField
-              id="password"
-              className="unlock-page__password-input"
-              data-testid="unlock-password"
-              autoFocus
-              onChange={(value) => {
-                this.handleInputChange({
-                  target: {
-                    value,
-                  },
-                });
-              }}
-              placeholder={t('password')}
-              error={error}
-              value={password}
-            />
-          </form>
-          {this.renderSubmitButton()}
-          <div className="unlock-page__links">
+
+        <form
+          className="w-full grid grid-cols-1 gap-[90px] px-4"
+          onSubmit={this.handleSubmit}
+        >
+          <FormField
+            id="password"
+            data-testid="unlock-password"
+            autoFocus
+            password
+            onChange={(value) => {
+              this.handleInputChange({
+                target: {
+                  value,
+                },
+              });
+            }}
+            placeholder={t('password')}
+            error={error}
+            value={password}
+          />
+          <Button
+            type="primary"
+            data-testid="unlock-submit"
+            disabled={!this.state.password}
+            large
+            onClick={this.handleSubmit}
+            className="relative"
+            icon={<Icon className="absolute right-4" size="sm" name="unlock" />}
+          >
+            {this.context.t('unlock')}
+          </Button>
+        </form>
+
+        {/* <div className="unlock-page__links">
             {t('walletWontUnlock')}
             <a
               href="#"
@@ -219,9 +194,9 @@ export default class UnlockPage extends Component {
               onClick={() => onRestore()}
             >
               {t('forgotPassword')}
-            </Button> */}
+            </Button> 
           </div>
-          {/* <div className="unlock-page__support">
+          <div className="unlock-page__support">
             {t('needHelp', [
               <a
                 href={SUPPORT_LINK}
@@ -248,8 +223,7 @@ export default class UnlockPage extends Component {
                 {t('needHelpLinkText')}
               </a>,
             ])}
-          </div> */}
-        </div>
+          </div>*/}
       </div>
     );
   }

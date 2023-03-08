@@ -15,9 +15,6 @@ body {
   overflow: auto;
 }
 
-html {
-  min-height: 500px;
-}
 
 .mouse-user-styles {
   button:focus,
@@ -47,11 +44,6 @@ html {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--color-background-alternative);
-
-  @include screen-sm-max {
-    background-color: var(--color-background-default);
-  }
 }
 /* stylelint-enable */
 
@@ -121,4 +113,10 @@ input.form-control {
 /** Default Typography on base elements **/
 * {
   font-family: $font-family;
+}
+
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }

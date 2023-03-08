@@ -1,14 +1,8 @@
-import EventEmitter from 'events';
-import React, { useState, useEffect, useContext } from 'react';
+// import EventEmitter from 'events';
+import React, { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from '../../../components/ui/button';
-import Typography from '../../../components/ui/typography/typography';
-import {
-  TypographyVariant,
-  FONT_WEIGHT,
-  TEXT_ALIGN,
-} from '../../../helpers/constants/design-system';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
@@ -17,7 +11,7 @@ import {
   ONBOARDING_METAMETRICS,
   ONBOARDING_SECURE_YOUR_WALLET_ROUTE,
   ONBOARDING_COMPLETION_ROUTE,
-  ONBOARDING_CREATE_PASSWORD_ROUTE
+  ONBOARDING_CREATE_PASSWORD_ROUTE,
 } from '../../../helpers/constants/routes';
 import { FIRST_TIME_FLOW_TYPES } from '../../../helpers/constants/onboarding';
 import { getFirstTimeFlowType, getCurrentKeyring } from '../../../selectors';
@@ -26,7 +20,7 @@ export default function OnboardingWelcome() {
   const t = useI18nContext();
   const dispatch = useDispatch();
   const history = useHistory();
-  const [eventEmitter] = useState(new EventEmitter());
+  // const [eventEmitter] = useState(new EventEmitter());
   const currentKeyring = useSelector(getCurrentKeyring);
   const firstTimeFlowType = useSelector(getFirstTimeFlowType);
 
@@ -77,39 +71,33 @@ export default function OnboardingWelcome() {
   });
 
   return (
-    <div className="onboarding-welcome" data-testid="onboarding-welcome">
-      <div className="onboarding-welcome__header">
-        <Typography
-          variant={TypographyVariant.H2}
-          align={TEXT_ALIGN.CENTER}
-          fontWeight={FONT_WEIGHT.BOLD}
-        >
+    <div className="h-full px-4 flex flex-col gap-[395px]">
+      <div>
+        <h2 className="text-[45px] leading-[45px] font-bold text-black max-w-[8ch]">
           {t('welcomeToEzWallet')}
-        </Typography>
-        <Typography align={TEXT_ALIGN.CENTER} marginLeft={6} marginRight={6}>
-          {t('welcomeToEzWalletIntro')}
-        </Typography>
+        </h2>
+        <p className="text-[15px]  text-grey">{t('welcomeToEzWalletIntro')}</p>
       </div>
-      <ul className="onboarding-welcome__buttons">
-        <li>
-          <Button
-            data-testid="onboarding-import-wallet"
-            onClick={onImportClick}
-          >
-            {t('onboardingImportWallet')}
-          </Button>
-        </li>
-        <li>
-          <Button
-            data-testid="onboarding-create-wallet"
-            type="primary"
-            // className="onboarding-welcome__button-create"
-            onClick={onCreateClick}
-          >
-            {t('onboardingCreateWallet')}
-          </Button>
-        </li>
-      </ul>
+
+      <div className="grow flex flex-col gap-5">
+        <Button
+          data-testid="onboarding-import-wallet"
+          type="default"
+          large
+          onClick={onImportClick}
+        >
+          {t('onboardingImportWallet')}
+        </Button>
+
+        <Button
+          data-testid="onboarding-create-wallet"
+          type="primary"
+          large
+          onClick={onCreateClick}
+        >
+          {t('onboardingCreateWallet')}
+        </Button>
+      </div>
     </div>
   );
 }

@@ -5,20 +5,11 @@ import zxcvbn from 'zxcvbn';
 import { useSelector } from 'react-redux';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import Button from '../../../components/ui/button';
-import Typography from '../../../components/ui/typography';
-import {
-  TEXT_ALIGN,
-  TypographyVariant,
-  JustifyContent,
-  FONT_WEIGHT,
-  AlignItems,
-} from '../../../helpers/constants/design-system';
 import {
   ONBOARDING_COMPLETION_ROUTE,
   ONBOARDING_SECURE_YOUR_WALLET_ROUTE,
 } from '../../../helpers/constants/routes';
 import FormField from '../../../components/ui/form-field';
-import Box from '../../../components/ui/box';
 import CheckBox from '../../../components/ui/check-box';
 import {
   ThreeStepProgressBar,
@@ -46,7 +37,6 @@ export default function CreatePassword({
   const [passwordStrengthText, setPasswordStrengthText] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const [termsChecked, setTermsChecked] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
   const firstTimeFlowType = useSelector(getFirstTimeFlowType);
   const trackEvent = useContext(MetaMetricsContext);
@@ -164,14 +154,10 @@ export default function CreatePassword({
     }
   };
 
-  const onSetShowPassword = () => {
-    setShowPassword(!showPassword);
-  }
-
   return (
-    <div className="create-password__wrapper" data-testid="create-password">
+    <div className="px-4" data-testid="create-password">
       {secretRecoveryPhrase &&
-        firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT ? (
+      firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT ? (
         <TwoStepProgressBar
           stage={twoStepStages.PASSWORD_CREATE}
           marginBottom={4}
@@ -182,91 +168,80 @@ export default function CreatePassword({
           marginBottom={4}
         />
       )}
-      <Typography variant={TypographyVariant.H2} fontWeight={FONT_WEIGHT.BOLD}>
-        {t('createPassword')}
-      </Typography>
-      <Typography variant={TypographyVariant.H4} align={TEXT_ALIGN.CENTER}>
-        {t('passwordSetupDetails')}
-      </Typography>
-      <Box justifyContent={JustifyContent.center} marginTop={3}>
-        <form className="create-password__form" onSubmit={handleCreate}>
-          <FormField
-            dataTestId="create-password-new"
-            autoFocus
-            passwordStrength={passwordStrength}
-            passwordStrengthText={passwordStrengthText}
-            onChange={handlePasswordChange}
-            password={!showPassword}
-            titleText={t('newPassword')}
-            value={password}
+      <p className="text-[24px] font-bold text-black">{t('createPassword')}</p>
+      <p className="text-[15px] text-grey">{t('passwordSetupDetails')}</p>
+
+      <form
+        className="grid grid-cols-1 w-full mt-[30px] gap-[30px]"
+        onSubmit={handleCreate}
+      >
+        <FormField
+          dataTestId="create-password-new"
+          autoFocus
+          password
+          passwordStrength={passwordStrength}
+          passwordStrengthText={passwordStrengthText}
+          onChange={handlePasswordChange}
+          titleText={t('newPassword')}
+          value={password}
+        />
+        <FormField
+          dataTestId="create-password-confirm"
+          onChange={handleConfirmPasswordChange}
+          error={confirmPasswordError}
+          password
+          titleText={t('confirmPassword')}
+          value={confirmPassword}
+          titleDetail={
+            isValid && (
+              <div className="create-password__form--checkmark">
+                <i className="fas fa-check" />
+              </div>
+            )
+          }
+        />
+
+        <label className="create-password__form__terms-label">
+          <CheckBox
+            className="rounded-sm"
+            dataTestId="create-password-terms"
+            onClick={() => setTermsChecked(!termsChecked)}
+            checked={termsChecked}
           />
-          <FormField
-            dataTestId="create-password-confirm"
-            onChange={handleConfirmPasswordChange}
-            password={!showPassword}
-            error={confirmPasswordError}
-            titleText={t('confirmPassword')}
-            value={confirmPassword}
-            titleDetail={
-              isValid && (
-                <div className="create-password__form--checkmark">
-                  <i className="fas fa-check" />
-                </div>
-              )
-            }
-          />
-          <Box
-            alignItems={AlignItems.center}
-            justifyContent={JustifyContent.spaceBetween}
-            marginBottom={4}
-            marginTop={4}
-          >
-            <label className="create-password__form__terms-label">
-              <CheckBox
-                dataTestId="create-password-terms"
-                onClick={() => setTermsChecked(!termsChecked)}
-                checked={termsChecked}
-              />
-              <Typography
-                variant={TypographyVariant.H5}
-                boxProps={{ marginLeft: 3 }}
+          <div className="ml-4 text-grey text-[15px]">
+            {t('passwordTermsWarning', [
+              <a
+                onClick={(e) => e.stopPropagation()}
+                key="create-password__link-text"
+                href={ZENDESK_URLS.PASSWORD_ARTICLE}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {t('passwordTermsWarning', [
-                  <a
-                    onClick={(e) => e.stopPropagation()}
-                    key="create-password__link-text"
-                    href={ZENDESK_URLS.PASSWORD_ARTICLE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="create-password__link-text">
-                      {t('learnMoreUpperCase')}
-                    </span>
-                  </a>,
-                ])}
-              </Typography>
-            </label>
-          </Box>
-          <Button
-            data-testid={
-              secretRecoveryPhrase &&
-                firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
-                ? 'create-password-import'
-                : 'create-password-wallet'
-            }
-            type="primary"
-            large
-            className="create-password__form--submit-button"
-            disabled={!isValid || !termsChecked}
-            onClick={handleCreate}
-          >
-            {secretRecoveryPhrase &&
-              firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
-              ? t('importMyWallet')
-              : t('createNewWallet')}
-          </Button>
-        </form>
-      </Box>
+                <span className="text-blue">{t('learnMoreUpperCase')}</span>
+              </a>,
+            ])}
+          </div>
+        </label>
+
+        <Button
+          data-testid={
+            secretRecoveryPhrase &&
+            firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
+              ? 'create-password-import'
+              : 'create-password-wallet'
+          }
+          type="primary"
+          large
+          className="create-password__form--submit-button"
+          disabled={!isValid || !termsChecked}
+          onClick={handleCreate}
+        >
+          {secretRecoveryPhrase &&
+          firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
+            ? t('importMyWallet')
+            : t('createNewWallet')}
+        </Button>
+      </form>
     </div>
   );
 }

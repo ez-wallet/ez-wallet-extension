@@ -62,7 +62,7 @@ export default function OnboardingMetametrics() {
 
   return (
     <div
-      className="onboarding-metametrics"
+      className="px-4 flex flex-col items-center justify-center"
       data-testid="onboarding-metametrics"
     >
       <Typography
@@ -164,7 +164,7 @@ export default function OnboardingMetametrics() {
         ])}
       </Typography>
 
-      <div className="onboarding-metametrics__buttons">
+      <div className="w-full grid grid-cols-2 gap-5">
         <Button
           data-testid="metametrics-i-agree"
           type="primary"
@@ -173,12 +173,7 @@ export default function OnboardingMetametrics() {
         >
           {t('onboardingMetametricsAgree')}
         </Button>
-        <Button
-          data-testid="metametrics-no-thanks"
-          type="secondary"
-          large
-          onClick={onCancel}
-        >
+        <Button data-testid="metametrics-no-thanks" large onClick={onCancel}>
           {t('onboardingMetametricsDisagree')}
         </Button>
       </div>

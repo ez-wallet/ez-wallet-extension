@@ -3,10 +3,6 @@ $progress-bar-position-left: calc(-50% + 17px); // -50% + ((circle size / 2) + c
 
 .progressbar {
   counter-reset: step;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  gap: 45px;
 }
 
 ul.two-steps {

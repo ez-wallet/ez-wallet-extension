@@ -2,18 +2,14 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import InfoTooltip from '../info-tooltip';
-import InfoTooltipIcon from '../info-tooltip/info-tooltip-icon';
+import { Icon } from '../../component-library';
 
-const CLASSNAME_WARNING = 'actionable-message--warning';
-const CLASSNAME_DANGER = 'actionable-message--danger';
-const CLASSNAME_SUCCESS = 'actionable-message--success';
 const CLASSNAME_WITH_RIGHT_BUTTON = 'actionable-message--with-right-button';
-
-export const typeHash = {
-  warning: CLASSNAME_WARNING,
-  danger: CLASSNAME_DANGER,
-  success: CLASSNAME_SUCCESS,
-  default: '',
+const ICON = {
+  warning: 'info',
+  danger: 'danger',
+  success: 'check',
+  info: 'info',
 };
 
 export default function ActionableMessage({
@@ -27,7 +23,6 @@ export default function ActionableMessage({
   type = 'default',
   useIcon = false,
   icon,
-  iconFillColor = '',
   roundedButtons,
   dataTestId,
   autoHideTime = 0,
@@ -52,14 +47,6 @@ export default function ActionableMessage({
     [autoHideTime, onAutoHide],
   );
 
-  const actionableMessageClassName = classnames(
-    'actionable-message',
-    typeHash[type],
-    withRightButton ? CLASSNAME_WITH_RIGHT_BUTTON : null,
-    className,
-    { 'actionable-message--with-icon': useIcon },
-  );
-
   const onlyOneAction =
     (primaryAction && !secondaryAction) || (secondaryAction && !primaryAction);
 
@@ -68,16 +55,25 @@ export default function ActionableMessage({
   }
 
   return (
-    <div className={actionableMessageClassName} data-testid={dataTestId}>
-      {useIcon ? icon || <InfoTooltipIcon fillColor={iconFillColor} /> : null}
-      {infoTooltipText && (
-        <InfoTooltip
-          position="left"
-          contentText={infoTooltipText}
-          wrapperClassName="actionable-message__info-tooltip-wrapper"
-        />
+    <div
+      className={classnames(
+        'text-[13px] border-0 flex py-2 px-3 rounded-lg gap-3',
+        {
+          'bg-yellow-5 text-yellow-7': type === 'warning',
+          'bg-red-3 text-red': type === 'danger',
+          'bg-green-6 text-green-7': type === 'success',
+          'bg-blue-3 text-blue': type === 'info',
+        },
+        withRightButton ? CLASSNAME_WITH_RIGHT_BUTTON : null,
+        className,
       )}
-      <div className="actionable-message__message">{message}</div>
+      data-testid={dataTestId}
+    >
+      {useIcon ? icon || <Icon name={ICON[type]} /> : null}
+      {infoTooltipText && (
+        <InfoTooltip position="left" contentText={infoTooltipText} />
+      )}
+      <div>{message}</div>
       {primaryActionV2 && (
         <button
           className="actionable-message__action-v2"
@@ -162,7 +158,7 @@ ActionableMessage.propTypes = {
   /**
    * change color theme for the component that already predefined in css
    */
-  type: PropTypes.oneOf(Object.keys(typeHash)),
+  type: PropTypes.oneOf(['warning', 'danger', 'success', 'info']),
   /**
    * change text align to left and button to bottom right
    */
@@ -179,10 +175,6 @@ ActionableMessage.propTypes = {
    * Custom icon component
    */
   icon: PropTypes.node,
-  /**
-   * change tooltip icon color
-   */
-  iconFillColor: PropTypes.string,
   /**
    * Whether the buttons are rounded
    */

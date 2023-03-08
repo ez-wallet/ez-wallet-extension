@@ -68,6 +68,7 @@ export default function ConfirmRecoveryPhrase({ secretRecoveryPhrase = '' }) {
         stage={threeStepStages.RECOVERY_PHRASE_CONFIRM}
         marginBottom={4}
       />
+      <div className="w-full h-[1px] bg-grey-5 my-5 box-border" />
       <Box
         justifyContent={JustifyContent.center}
         textAlign={TEXT_ALIGN.CENTER}

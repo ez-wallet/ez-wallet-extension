@@ -414,31 +414,34 @@ export default class Routes extends Component {
         <QRHardwarePopover />
         <Modal />
         <Alert visible={this.props.alertOpen} msg={alertMessage} />
-        {!this.hideAppHeader() && (
-          <AppHeader
-            hideNetworkIndicator={this.onInitializationUnlockPage()}
-            disableNetworkIndicator={this.onSwapsPage()}
-            onClick={this.onAppHeaderClick}
-            disabled={
-              this.onConfirmPage() ||
-              this.onEditTransactionPage() ||
-              (this.onSwapsPage() && !this.onSwapsBuildQuotePage())
-            }
-          />
-        )}
-        {this.showOnboardingHeader() && <OnboardingAppHeader />}
-        <div
-          style={{
-            position: 'relative',
-          }}
-        >
-          {completedOnboarding ? <NetworkDropdown /> : null}
+        <div className="max-w-sm w-full bg-grey-6 pb-4 my-4">
+          {!this.hideAppHeader() && (
+            <AppHeader
+              hideNetworkIndicator={this.onInitializationUnlockPage()}
+              disableNetworkIndicator={this.onSwapsPage()}
+              onClick={this.onAppHeaderClick}
+              disabled={
+                this.onConfirmPage() ||
+                this.onEditTransactionPage() ||
+                (this.onSwapsPage() && !this.onSwapsBuildQuotePage())
+              }
+            />
+          )}
+          {this.showOnboardingHeader() && <OnboardingAppHeader />}
+          <div
+            style={{
+              position: 'relative',
+            }}
+          >
+            {completedOnboarding ? <NetworkDropdown /> : null}
+          </div>
+          <div className="h-full">
+            {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
+            {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}
+            {this.renderRoutes()}
+          </div>
         </div>
-        <div className="main-container-wrapper">
-          {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
-          {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}
-          {this.renderRoutes()}
-        </div>
+
         {isUnlocked ? <Alerts history={this.props.history} /> : null}
       </div>
     );

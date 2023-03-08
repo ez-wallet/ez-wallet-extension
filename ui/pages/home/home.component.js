@@ -632,7 +632,7 @@ export default class Home extends PureComponent {
       !portfolioTooltipWasShownInThisSession &&
       Object.keys(newCustomNetworkAdded).length === 0;
     return (
-      <div className="main-container">
+      <div className="">
         <Route path={CONNECTED_ROUTE} component={ConnectedSites} exact />
         <Route
           path={CONNECTED_ACCOUNTS_ROUTE}
