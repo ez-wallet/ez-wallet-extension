@@ -14,7 +14,7 @@ export default function OnboardingAppHeader() {
   // });
 
   return (
-    <div className="max-w-sm w-full p-4 ">
+    <div className="w-full p-4 ">
       <MetaFoxLogo unsetIconHeight isOnboarding />
       {/* <Dropdown
           id="select-locale"

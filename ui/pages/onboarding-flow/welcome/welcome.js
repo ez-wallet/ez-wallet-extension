@@ -71,15 +71,15 @@ export default function OnboardingWelcome() {
   });
 
   return (
-    <div className="h-full px-4 flex flex-col gap-[395px]">
+    <div className="px-4 w-full h-full flex flex-col justify-between">
       <div>
         <h2 className="text-[45px] leading-[45px] font-bold text-black max-w-[8ch]">
           {t('welcomeToEzWallet')}
         </h2>
-        <p className="text-[15px]  text-grey">{t('welcomeToEzWalletIntro')}</p>
+        <p className="text-[15px] text-grey">{t('welcomeToEzWalletIntro')}</p>
       </div>
 
-      <div className="grow flex flex-col gap-5">
+      <div className="flex flex-col gap-5">
         <Button
           data-testid="onboarding-import-wallet"
           type="default"

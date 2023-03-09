@@ -89,6 +89,7 @@ export default function OnboardingFlow() {
       unlockAndGetSeedPhrase(password),
     );
     setSecretRecoveryPhrase(retrievedSecretRecoveryPhrase);
+    console.log({ retrievedSecretRecoveryPhrase });
     history.push(nextRoute);
   };
 

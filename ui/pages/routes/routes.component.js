@@ -396,7 +396,7 @@ export default class Routes extends Component {
 
     return (
       <div
-        className={classnames('app', {
+        className={classnames('app pb-4 bg-grey-6', {
           [`os-${os}`]: os,
           [`browser-${browser}`]: browser,
           'mouse-user-styles': isMouseUser,
@@ -414,33 +414,27 @@ export default class Routes extends Component {
         <QRHardwarePopover />
         <Modal />
         <Alert visible={this.props.alertOpen} msg={alertMessage} />
-        <div className="max-w-sm w-full bg-grey-6 pb-4 my-4">
-          {!this.hideAppHeader() && (
-            <AppHeader
-              hideNetworkIndicator={this.onInitializationUnlockPage()}
-              disableNetworkIndicator={this.onSwapsPage()}
-              onClick={this.onAppHeaderClick}
-              disabled={
-                this.onConfirmPage() ||
-                this.onEditTransactionPage() ||
-                (this.onSwapsPage() && !this.onSwapsBuildQuotePage())
-              }
-            />
-          )}
-          {this.showOnboardingHeader() && <OnboardingAppHeader />}
-          <div
-            style={{
-              position: 'relative',
-            }}
-          >
-            {completedOnboarding ? <NetworkDropdown /> : null}
-          </div>
-          <div className="h-full">
-            {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
-            {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}
-            {this.renderRoutes()}
-          </div>
+
+        {!this.hideAppHeader() && (
+          <AppHeader
+            hideNetworkIndicator={this.onInitializationUnlockPage()}
+            disableNetworkIndicator={this.onSwapsPage()}
+            onClick={this.onAppHeaderClick}
+            disabled={
+              this.onConfirmPage() ||
+              this.onEditTransactionPage() ||
+              (this.onSwapsPage() && !this.onSwapsBuildQuotePage())
+            }
+          />
+        )}
+        {this.showOnboardingHeader() && <OnboardingAppHeader />}
+        <div className="relative">
+          {completedOnboarding ? <NetworkDropdown /> : null}
         </div>
+
+        {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
+        {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}
+        {this.renderRoutes()}
 
         {isUnlocked ? <Alerts history={this.props.history} /> : null}
       </div>

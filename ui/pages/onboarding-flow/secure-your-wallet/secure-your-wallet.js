@@ -71,66 +71,69 @@ export default function SecureYourWallet() {
         marginBottom={4}
       />
       <div className="w-full h-[1px] bg-grey-5 my-5 box-border" />
+      <div className="px-4">
+        <h1 className="text-[24px] text-black">{t('seedPhraseIntroTitle')}</h1>
+        <p className="text-[15px] text-black">
+          {t('seedPhraseIntroTitleCopy')}
+        </p>
+        <div className="grid grid-cols-1 gap-4 bg-grey-6 py-5 px-4 rounded-xl shadow-neumorphic mb-6 mt-4">
+          <div className="w-full">
+            <p className="text-[13px] text-black font-bold">
+              {t('seedPhraseIntroSidebarTitleOne')}
+            </p>
+            <p className="text-[13px] text-grey">
+              {t('seedPhraseIntroSidebarCopyOne')}
+            </p>
+          </div>
+          <div className="w-full">
+            <p className="text-[13px] text-black font-bold">
+              {t('seedPhraseIntroSidebarTitleTwo')}
+            </p>
+            <ul className="text-[13px] text-grey list-disc px-4">
+              <li>{t('seedPhraseIntroSidebarBulletOne')}</li>
+              <li>{t('seedPhraseIntroSidebarBulletThree')}</li>
+              <li>{t('seedPhraseIntroSidebarBulletFour')}</li>
+            </ul>
+          </div>
+          <div className="w-full">
+            <p className="text-[13px] text-black font-bold">
+              {t('seedPhraseIntroSidebarTitleThree')}
+            </p>
+            <p className="text-[13px] text-grey">
+              {t('seedPhraseIntroSidebarCopyTwo')}
+            </p>
+          </div>
+          <div className="w-full">
+            <p className="text-[13px] text-black font-bold">
+              {t('seedPhraseIntroSidebarTitleFour')}
+            </p>
+            <ul className="text-[13px] text-grey list-disc px-4">
+              <li>{t('seedPhraseIntroSidebarTipOne')}</li>
+              <li>{t('seedPhraseIntroSidebarTipTwo')}</li>
+              <li>{t('seedPhraseIntroSidebarTipThree')}</li>
+            </ul>
+          </div>
+        </div>
 
-      <h1 className="text-[24px] text-black">{t('seedPhraseIntroTitle')}</h1>
-      <p className="text-[15px] text-black">{t('seedPhraseIntroTitleCopy')}</p>
-      <div className="grid grid-cols-1 gap-4 bg-grey-6 py-5 px-4 rounded-xl shadow-neumorphic mb-6 mt-4">
-        <div className="w-full">
-          <p className="text-[13px] text-black font-bold">
-            {t('seedPhraseIntroSidebarTitleOne')}
-          </p>
-          <p className="text-[13px] text-grey">
-            {t('seedPhraseIntroSidebarCopyOne')}
-          </p>
+        <div className="w-full grid grid-cols-1 gap-5">
+          <Button
+            data-testid="secure-wallet-recommended"
+            type="primary"
+            rounded
+            large
+            onClick={handleClickRecommended}
+          >
+            {t('seedPhraseIntroRecommendedButtonCopy')}
+          </Button>
+          <a
+            data-testid="secure-wallet-later"
+            type="default"
+            className="text-center text-blue"
+            onClick={handleClickNotRecommended}
+          >
+            {t('seedPhraseIntroNotRecommendedButtonCopy')}
+          </a>
         </div>
-        <div className="w-full">
-          <p className="text-[13px] text-black font-bold">
-            {t('seedPhraseIntroSidebarTitleTwo')}
-          </p>
-          <ul className="text-[13px] text-grey list-disc px-4">
-            <li>{t('seedPhraseIntroSidebarBulletOne')}</li>
-            <li>{t('seedPhraseIntroSidebarBulletThree')}</li>
-            <li>{t('seedPhraseIntroSidebarBulletFour')}</li>
-          </ul>
-        </div>
-        <div className="w-full">
-          <p className="text-[13px] text-black font-bold">
-            {t('seedPhraseIntroSidebarTitleThree')}
-          </p>
-          <p className="text-[13px] text-grey">
-            {t('seedPhraseIntroSidebarCopyTwo')}
-          </p>
-        </div>
-        <div className="w-full">
-          <p className="text-[13px] text-black font-bold">
-            {t('seedPhraseIntroSidebarTitleFour')}
-          </p>
-          <ul className="text-[13px] text-grey list-disc px-4">
-            <li>{t('seedPhraseIntroSidebarTipOne')}</li>
-            <li>{t('seedPhraseIntroSidebarTipTwo')}</li>
-            <li>{t('seedPhraseIntroSidebarTipThree')}</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="w-full grid grid-cols-1 gap-5">
-        <Button
-          data-testid="secure-wallet-recommended"
-          type="primary"
-          rounded
-          large
-          onClick={handleClickRecommended}
-        >
-          {t('seedPhraseIntroRecommendedButtonCopy')}
-        </Button>
-        <a
-          data-testid="secure-wallet-later"
-          type="default"
-          className="text-center text-blue"
-          onClick={handleClickNotRecommended}
-        >
-          {t('seedPhraseIntroNotRecommendedButtonCopy')}
-        </a>
       </div>
     </div>
   );
