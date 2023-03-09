@@ -5,6 +5,13 @@ import InfoTooltip from '../info-tooltip';
 import { Icon } from '../../component-library';
 
 const CLASSNAME_WITH_RIGHT_BUTTON = 'actionable-message--with-right-button';
+const TYPE_HASH = {
+  warning: 'warning',
+  danger: 'danger',
+  success: 'success',
+  info: 'info',
+};
+
 const ICON = {
   warning: 'info',
   danger: 'danger',
@@ -59,10 +66,10 @@ export default function ActionableMessage({
       className={classnames(
         'text-[13px] border-0 flex py-2 px-3 rounded-lg gap-3',
         {
-          'bg-yellow-5 text-yellow-7': type === 'warning',
-          'bg-red-3 text-red': type === 'danger',
-          'bg-green-6 text-green-7': type === 'success',
-          'bg-blue-3 text-blue': type === 'info',
+          'bg-yellow-5 text-yellow-7': type === TYPE_HASH.warning,
+          'bg-red-3 text-red': type === TYPE_HASH.danger,
+          'bg-green-6 text-green-7': type === TYPE_HASH.success,
+          'bg-blue-3 text-blue': type === TYPE_HASH.info,
         },
         withRightButton ? CLASSNAME_WITH_RIGHT_BUTTON : null,
         className,
@@ -158,7 +165,7 @@ ActionableMessage.propTypes = {
   /**
    * change color theme for the component that already predefined in css
    */
-  type: PropTypes.oneOf(['warning', 'danger', 'success', 'info']),
+  type: PropTypes.oneOf(Object.keys(TYPE_HASH)),
   /**
    * change text align to left and button to bottom right
    */

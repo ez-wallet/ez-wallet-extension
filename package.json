@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "yarn build:dev dev --apply-lavamoat=false --snow=false",
-    "tailwind": "npx tailwindcss -i ./tailwind.css -o ./dist/chrome/tailwind.css --watch",
+    "tailwind:chrome": "npx tailwindcss -i ./tailwind.css -o ./dist/chrome/tailwind.css",
+    "tailwind:firefox": "npx tailwindcss -i ./tailwind.css -o ./dist/firefox/tailwind.css",
     "start:lavamoat": "yarn build:dev dev --apply-lavamoat=true",
     "start:mv3": "ENABLE_MV3=true yarn build:dev dev --apply-lavamoat=false",
     "dist": "yarn build dist",
