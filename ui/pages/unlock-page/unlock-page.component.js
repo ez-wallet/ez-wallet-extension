@@ -136,7 +136,7 @@ export default class UnlockPage extends Component {
     // const { onRestore } = this.props;
 
     return (
-      <div className="flex flex-col">
+      <div className="w-full flex flex-col">
         <div className="flex items-end justify-start min-w-max h-[200px] bg-[length:600px_100%] bg-[url('./images/unlock-bg.svg')] ml-4 mb-[30px]">
           <h1 className="text-[45px] w-[215px] break-all font-bold text-black leading-none">
             {t('welcomeBack')}

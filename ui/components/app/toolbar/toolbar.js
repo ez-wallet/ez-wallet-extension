@@ -14,7 +14,7 @@ const Toolbar = () => {
   const [activeTab, setActiveTab] = useState(TABS.WALLET);
 
   return (
-    <div className="fixed bottom-[10px] p-4 w-full">
+    <div className="sticky bottom-0 w-full px-4 z-10">
       <div className="toolbar">
         <a
           href="#"

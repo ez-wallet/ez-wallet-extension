@@ -632,7 +632,7 @@ export default class Home extends PureComponent {
       !portfolioTooltipWasShownInThisSession &&
       Object.keys(newCustomNetworkAdded).length === 0;
     return (
-      <div className="">
+      <div className="w-full">
         <Route path={CONNECTED_ROUTE} component={ConnectedSites} exact />
         <Route
           path={CONNECTED_ACCOUNTS_ROUTE}
@@ -657,7 +657,7 @@ export default class Home extends PureComponent {
             </div>
           </div>
 
-          <div className="home__bottom-view">
+          <div className="home__bottom-view mx-4">
             <Tabs
               t={this.context.t}
               defaultActiveTabKey={defaultHomeActiveTabName}
