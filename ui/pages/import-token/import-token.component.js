@@ -12,18 +12,12 @@ import {
   CONFIRM_IMPORT_TOKEN_ROUTE,
   SECURITY_ROUTE,
 } from '../../helpers/constants/routes';
-import TextField from '../../components/ui/text-field';
+import FormField from '../../components/ui/form-field';
 import PageContainer from '../../components/ui/page-container';
 import { Tabs, Tab } from '../../components/ui/tabs';
 import { addHexPrefix } from '../../../app/scripts/lib/util';
 import { isValidHexAddress } from '../../../shared/modules/hexstring-utils';
 import ActionableMessage from '../../components/ui/actionable-message/actionable-message';
-import Typography from '../../components/ui/typography';
-import {
-  TypographyVariant,
-  FONT_WEIGHT,
-} from '../../helpers/constants/design-system';
-import Button from '../../components/ui/button';
 import { TokenStandard } from '../../../shared/constants/transaction';
 import { STATIC_MAINNET_TOKEN_LIST } from '../../../shared/constants/tokens';
 import TokenSearch from './token-search';
@@ -35,6 +29,39 @@ const MIN_DECIMAL_VALUE = 0;
 const MAX_DECIMAL_VALUE = 36;
 
 class ImportToken extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      customAddress: '',
+      customSymbol: '',
+      customDecimals: 0,
+      searchResults: [],
+      selectedTokens: {},
+      standard: TokenStandard.NONE,
+      tokenSelectorError: null,
+      customAddressError: null,
+      customSymbolError: null,
+      customDecimalsError: null,
+      nftAddressError: null,
+      forceEditSymbol: false,
+      symbolAutoFilled: false,
+      decimalAutoFilled: false,
+      mainnetTokenWarning: null,
+    };
+    this.handleCustomAddressChange = this.handleCustomAddressChange.bind(this);
+    this.handleCustomSymbolChange = this.handleCustomSymbolChange.bind(this);
+    this.handleCustomDecimalsChange =
+      this.handleCustomDecimalsChange.bind(this);
+    this.handleToggleToken = this.handleToggleToken.bind(this);
+    this.hasError = this.hasError.bind(this);
+    this.hasSelected = this.hasSelected.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.attemptToAutoFillTokenParams =
+      this.attemptToAutoFillTokenParams.bind(this);
+    this.renderCustomTokenForm = this.renderCustomTokenForm.bind(this);
+    this.renderSearchToken = this.renderSearchToken.bind(this);
+  }
+
   static contextTypes = {
     t: PropTypes.func,
   };
@@ -120,24 +147,6 @@ class ImportToken extends Component {
 
   static defaultProps = {
     tokenList: {},
-  };
-
-  state = {
-    customAddress: '',
-    customSymbol: '',
-    customDecimals: 0,
-    searchResults: [],
-    selectedTokens: {},
-    standard: TokenStandard.NONE,
-    tokenSelectorError: null,
-    customAddressError: null,
-    customSymbolError: null,
-    customDecimalsError: null,
-    nftAddressError: null,
-    forceEditSymbol: false,
-    symbolAutoFilled: false,
-    decimalAutoFilled: false,
-    mainnetTokenWarning: null,
   };
 
   componentDidMount() {
@@ -428,35 +437,33 @@ class ImportToken extends Component {
       : t('etherscan');
 
     return (
-      <div className="import-token__custom-token-form">
+      <div className="grid grid-cols-1 gap-[30px] p-4">
         {tokenDetectionInactiveOnNonMainnetSupportedNetwork ? (
           <ActionableMessage
             type="warning"
             message={t('customTokenWarningInTokenDetectionNetworkWithTDOFF', [
-              <Button
-                type="link"
+              <a
                 key="import-token-security-risk"
-                className="import-token__link"
+                className="text-blue"
                 rel="noopener noreferrer"
                 target="_blank"
                 href={ZENDESK_URLS.TOKEN_SAFETY_PRACTICES}
               >
                 {t('tokenScamSecurityRisk')}
-              </Button>,
-              <Button
-                type="link"
+              </a>,
+              <a
                 key="import-token-token-detection-announcement"
-                className="import-token__link"
-                onClick={() =>
-                  history.push(`${SECURITY_ROUTE}#token-description`)
-                }
+                className="text-blue"
+                onClick={(e) => {
+                  e.preventDefault();
+                  history.push(`${SECURITY_ROUTE}#token-description`);
+                }}
               >
                 {t('inYourSettings')}
-              </Button>,
+              </a>,
             ])}
             withRightButton
             useIcon
-            iconFillColor="var(--color-warning-default)"
           />
         ) : (
           <ActionableMessage
@@ -466,41 +473,36 @@ class ImportToken extends Component {
                 ? 'customTokenWarningInTokenDetectionNetwork'
                 : 'customTokenWarningInNonTokenDetectionNetwork',
               [
-                <Button
-                  type="link"
+                <a
                   key="import-token-fake-token-warning"
-                  className="import-token__link"
+                  type="link"
+                  className="text-blue"
                   rel="noopener noreferrer"
                   target="_blank"
                   href={ZENDESK_URLS.TOKEN_SAFETY_PRACTICES}
                 >
                   {t('learnScamRisk')}
-                </Button>,
+                </a>,
               ],
             )}
             withRightButton
             useIcon
-            iconFillColor={
-              isDynamicTokenListAvailable
-                ? 'var(--color-warning-default)'
-                : 'var(--color-info-default)'
-            }
           />
         )}
-        <TextField
+        <FormField
           id="custom-address"
-          label={t('tokenContractAddress')}
+          titleText={t('tokenContractAddress')}
           type="text"
           value={customAddress}
-          onChange={(e) => this.handleCustomAddressChange(e.target.value)}
+          onChange={this.handleCustomAddressChange}
           error={customAddressError || mainnetTokenWarning || nftAddressError}
           fullWidth
           autoFocus
           margin="normal"
         />
-        <TextField
+        <FormField
           id="custom-symbol"
-          label={
+          titleText={
             <div className="import-token__custom-symbol__label-wrapper">
               <span className="import-token__custom-symbol__label">
                 {t('tokenSymbol')}
@@ -517,18 +519,18 @@ class ImportToken extends Component {
           }
           type="text"
           value={customSymbol}
-          onChange={(e) => this.handleCustomSymbolChange(e.target.value)}
+          onChange={this.handleCustomSymbolChange}
           error={customSymbolError}
           fullWidth
           margin="normal"
           disabled={symbolAutoFilled && !forceEditSymbol}
         />
-        <TextField
+        <FormField
           id="custom-decimals"
-          label={t('decimal')}
+          titleText={t('decimal')}
           type="number"
           value={customDecimals}
-          onChange={(e) => this.handleCustomDecimalsChange(e.target.value)}
+          onChange={this.handleCustomDecimalsChange}
           error={customDecimals ? customDecimalsError : null}
           fullWidth
           margin="normal"
@@ -540,29 +542,22 @@ class ImportToken extends Component {
           <ActionableMessage
             message={
               <>
-                <Typography
-                  variant={TypographyVariant.H7}
-                  fontWeight={FONT_WEIGHT.BOLD}
-                >
+                <p className="text-[13px] text-grey">
                   {t('tokenDecimalFetchFailed')}
-                </Typography>
-                <Typography
-                  variant={TypographyVariant.H7}
-                  fontWeight={FONT_WEIGHT.NORMAL}
-                >
+                </p>
+                <p className="text-[13px] text-grey">
                   {t('verifyThisTokenDecimalOn', [
-                    <Button
-                      type="link"
+                    <a
                       key="import-token-verify-token-decimal"
-                      className="import-token__link"
+                      className="text-blue"
                       rel="noopener noreferrer"
                       target="_blank"
                       href={blockExplorerTokenLink}
                     >
                       {blockExplorerLabel}
-                    </Button>,
+                    </a>,
                   ])}
-                </Typography>
+                </p>
               </>
             }
             type="warning"
@@ -579,13 +574,12 @@ class ImportToken extends Component {
     const { tokenList, history, useTokenDetection, networkName } = this.props;
     const { tokenSelectorError, selectedTokens, searchResults } = this.state;
     return (
-      <div className="import-token__search-token">
+      <div className="grid grid-cols-1 p-4">
         {!useTokenDetection && (
           <ActionableMessage
             message={t('enhancedTokenDetectionAlertMessage', [
               networkName,
-              <Button
-                type="link"
+              <a
                 key="token-detection-announcement"
                 className="import-token__link"
                 onClick={() =>
@@ -593,7 +587,7 @@ class ImportToken extends Component {
                 }
               >
                 {t('enableFromSettings')}
-              </Button>,
+              </a>,
             ])}
             withRightButton
             useIcon
@@ -648,8 +642,10 @@ class ImportToken extends Component {
         title={this.context.t('importTokensCamelCase')}
         tabsComponent={this.renderTabs()}
         onSubmit={() => this.handleNext()}
-        hideCancel
+        hideCancel={false}
         disabled={Boolean(this.hasError()) || !this.hasSelected()}
+        cancelText={this.context.t('cancel')}
+        submitText={this.context.t('import')}
         onClose={() => {
           clearPendingTokens();
           history.push(mostRecentOverviewPage);

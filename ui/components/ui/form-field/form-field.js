@@ -41,6 +41,7 @@ export default function FormField({
   id,
   inputProps,
   wrappingLabelProps,
+  leadingIcon,
 }) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -95,6 +96,9 @@ export default function FormField({
           )}
         </div>
         <div className="flex items-center bg-grey-6 shadow-input rounded-full h-[60px] py-2 px-4 w-full gap-1 mb-3">
+          {leadingIcon && (
+            <Icon className="text-grey text-[15px]" name={leadingIcon} />
+          )}
           {numeric ? (
             <NumericInput
               error={error}
@@ -128,13 +132,15 @@ export default function FormField({
               {...inputProps}
             />
           )}
-          <button className="w-fit h-fit" onClick={onSetShowPassword}>
-            {password && !showPassword ? (
-              <Icon name="eye-slash" />
-            ) : (
-              <Icon name="eye" />
-            )}
-          </button>
+          {password && (
+            <button className="w-fit h-fit" onClick={onSetShowPassword}>
+              {showPassword === false ? (
+                <Icon name="eye-slash" />
+              ) : (
+                <Icon name="eye" />
+              )}
+            </button>
+          )}
         </div>
         {error && (
           <p className="text-[13px] border border-red text-red">{error}</p>
@@ -262,4 +268,5 @@ FormField.propTypes = {
    * If used ensure the id prop is set on the input and a label element is present using htmlFor with the same id to ensure accessibility.
    */
   wrappingLabelProps: PropTypes.object,
+  leadingIcon: PropTypes.string,
 };

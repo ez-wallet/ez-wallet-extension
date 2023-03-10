@@ -15,11 +15,16 @@ const Tab = (props) => {
   } = props;
 
   return (
-    <li
-      className={classnames('tab', className, {
-        'tab--active': isActive,
-        [activeClassName]: activeClassName && isActive,
-      })}
+    <div
+      className={classnames(
+        'text-center py-4 text-[15px] cursor-pointer',
+        {
+          'border-b-[3px] border-green-2': isActive,
+          'text-black border-b border-grey-5': !isActive,
+          [activeClassName]: activeClassName && isActive,
+        },
+        className,
+      )}
       data-testid={dataTestId}
       onClick={(event) => {
         event.preventDefault();
@@ -27,8 +32,8 @@ const Tab = (props) => {
       }}
       key={tabKey}
     >
-      <button>{name}</button>
-    </li>
+      {name}
+    </div>
   );
 };
 

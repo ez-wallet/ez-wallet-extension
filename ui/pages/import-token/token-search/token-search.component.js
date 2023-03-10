@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Fuse from 'fuse.js';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import TextField from '../../../components/ui/text-field';
+import FormField from '../../../components/ui/form-field';
 import { isEqualCaseInsensitive } from '../../../../shared/modules/string-utils';
-import SearchIcon from '../../../components/ui/icon/search-icon';
 
 export default class TokenSearch extends Component {
   static contextTypes = {
@@ -29,6 +27,7 @@ export default class TokenSearch extends Component {
     super(props);
     const { tokenList } = this.props;
     this.tokenList = Object.values(tokenList);
+    this.handleSearch = this.handleSearch.bind(this);
     this.tokenSearchFuse = new Fuse(this.tokenList, {
       shouldSort: true,
       threshold: 0.45,
@@ -57,30 +56,21 @@ export default class TokenSearch extends Component {
     this.props.onSearch({ searchQuery, results });
   }
 
-  renderAdornment() {
-    return (
-      <InputAdornment position="start" style={{ marginRight: '12px' }}>
-        <SearchIcon color="var(--color-icon-muted)" />
-      </InputAdornment>
-    );
-  }
-
   render() {
     const { error } = this.props;
     const { searchQuery } = this.state;
 
     return (
-      <TextField
+      <FormField
         id="search-tokens"
         placeholder={this.context.t('searchTokens')}
         type="text"
         value={searchQuery}
-        onChange={(e) => this.handleSearch(e.target.value)}
+        onChange={(value) => this.handleSearch(value)}
         error={error}
-        fullWidth
         autoFocus
         autoComplete="off"
-        startAdornment={this.renderAdornment()}
+        leadingIcon="search"
       />
     );
   }

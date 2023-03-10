@@ -10,6 +10,7 @@ const TYPE_HASH = {
   danger: 'danger',
   success: 'success',
   info: 'info',
+  default: 'default',
 };
 
 const ICON = {
@@ -17,6 +18,7 @@ const ICON = {
   danger: 'danger',
   success: 'check',
   info: 'info',
+  default: 'info',
 };
 
 export default function ActionableMessage({
@@ -67,6 +69,7 @@ export default function ActionableMessage({
         'text-[13px] border-0 flex py-2 px-3 rounded-lg gap-3',
         {
           'bg-yellow-5 text-yellow-7': type === TYPE_HASH.warning,
+          'bg-grey-5 text-grey': type === TYPE_HASH.default,
           'bg-red-3 text-red': type === TYPE_HASH.danger,
           'bg-green-6 text-green-7': type === TYPE_HASH.success,
           'bg-blue-3 text-blue': type === TYPE_HASH.info,
