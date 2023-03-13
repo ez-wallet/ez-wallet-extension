@@ -396,7 +396,7 @@ export default class Routes extends Component {
 
     return (
       <div
-        className={classnames('app', {
+        className={classnames('app pb-4 bg-grey-6', {
           [`os-${os}`]: os,
           [`browser-${browser}`]: browser,
           'mouse-user-styles': isMouseUser,
@@ -414,6 +414,7 @@ export default class Routes extends Component {
         <QRHardwarePopover />
         <Modal />
         <Alert visible={this.props.alertOpen} msg={alertMessage} />
+
         {!this.hideAppHeader() && (
           <AppHeader
             hideNetworkIndicator={this.onInitializationUnlockPage()}
@@ -427,18 +428,14 @@ export default class Routes extends Component {
           />
         )}
         {this.showOnboardingHeader() && <OnboardingAppHeader />}
-        <div
-          style={{
-            position: 'relative',
-          }}
-        >
+        <div className="relative">
           {completedOnboarding ? <NetworkDropdown /> : null}
         </div>
-        <div className="main-container-wrapper">
-          {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
-          {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}
-          {this.renderRoutes()}
-        </div>
+
+        {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
+        {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}
+        {this.renderRoutes()}
+
         {isUnlocked ? <Alerts history={this.props.history} /> : null}
       </div>
     );

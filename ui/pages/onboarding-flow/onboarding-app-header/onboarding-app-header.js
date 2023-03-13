@@ -1,23 +1,22 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import MetaFoxLogo from '../../../components/ui/metafox-logo';
-import locales from '../../../../app/_locales/index.json';
+// import locales from '../../../../app/_locales/index.json';
 
 export default function OnboardingAppHeader() {
-  const dispatch = useDispatch();
-  // const currentLocale = useSelector(getCurrentLocale);
-  const localeOptions = locales.map((locale) => {
-    return {
-      name: locale.name,
-      value: locale.code,
-    };
-  });
+  // const dispatch = useDispatch();
+  // // const currentLocale = useSelector(getCurrentLocale);
+  // const localeOptions = locales.map((locale) => {
+  //   return {
+  //     name: locale.name,
+  //     value: locale.code,
+  //   };
+  // });
 
   return (
-    <div className="onboarding-app-header">
-      <div className="onboarding-app-header__contents">
-        <MetaFoxLogo unsetIconHeight isOnboarding />
-        {/* <Dropdown
+    <div className="w-full p-4 ">
+      <MetaFoxLogo unsetIconHeight isOnboarding />
+      {/* <Dropdown
           id="select-locale"
           options={localeOptions}
           selectedOption={currentLocale}
@@ -25,7 +24,6 @@ export default function OnboardingAppHeader() {
             dispatch(updateCurrentLocale(newLocale))
           }
         /> */}
-      </div>
     </div>
   );
 }

@@ -1,26 +1,18 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Fragment } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Box from '../../../components/ui/box';
 import Button from '../../../components/ui/button';
-import Typography from '../../../components/ui/typography';
+import { Icon } from '../../../components/component-library';
 import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { ONBOARDING_CONFIRM_SRP_ROUTE } from '../../../helpers/constants/routes';
 import {
-  TEXT_ALIGN,
-  TypographyVariant,
-  JustifyContent,
-  FONT_WEIGHT,
-  IconColor,
-} from '../../../helpers/constants/design-system';
-import {
   ThreeStepProgressBar,
   threeStepStages,
 } from '../../../components/app/step-progress-bar';
+
 import { EVENT_NAMES, EVENT } from '../../../../shared/constants/metametrics';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
-import { Icon, ICON_NAMES } from '../../../components/component-library';
 import RecoveryPhraseChips from './recovery-phrase-chips';
 
 export default function RecoveryPhrase({ secretRecoveryPhrase }) {
@@ -37,98 +29,85 @@ export default function RecoveryPhrase({ secretRecoveryPhrase }) {
   const trackEvent = useContext(MetaMetricsContext);
 
   return (
-    <div className="recovery-phrase" data-testid="recovery-phrase">
+    <div className="h-full" data-testid="recovery-phrase">
       <ThreeStepProgressBar stage={threeStepStages.RECOVERY_PHRASE_REVIEW} />
-      <Box
-        justifyContent={JustifyContent.center}
-        textAlign={TEXT_ALIGN.CENTER}
-        marginBottom={4}
-      >
-        <Typography
-          variant={TypographyVariant.H2}
-          fontWeight={FONT_WEIGHT.BOLD}
-          className="recovery-phrase__header"
-        >
-          {t('seedPhraseWriteDownHeader')}
-        </Typography>
-      </Box>
-      <Box
-        justifyContent={JustifyContent.center}
-        textAlign={TEXT_ALIGN.CENTER}
-        marginBottom={4}
-      >
-        <Typography variant={TypographyVariant.H4}>
-          {t('seedPhraseWriteDownDetails')}
-        </Typography>
-      </Box>
-      <RecoveryPhraseChips
-        secretRecoveryPhrase={secretRecoveryPhrase.split(' ')}
-        phraseRevealed={phraseRevealed && !hiddenPhrase}
-        hiddenPhrase={hiddenPhrase}
-      />
-      <div className="recovery-phrase__footer">
-        {phraseRevealed ? (
-          <div className="recovery-phrase__footer__copy-and-hide">
-            <div className="recovery-phrase__footer__copy-and-hide__area">
-              {/* <Button
-                type="link"
-                icon={
-                  <i
-                    className={`far fa-eye${hiddenPhrase ? '' : '-slash'}`}
-                    color="var(--color-primary-default)"
-                  />
-                }
-                className="recovery-phrase__footer__copy-and-hide__button recovery-phrase__footer__copy-and-hide__button__hide-seed"
-                onClick={() => {
-                  setHiddenPhrase(!hiddenPhrase);
-                }}
-              >
-                {hiddenPhrase ? t('revealTheSeedPhrase') : t('hideSeedPhrase')}
-              </Button> */}
+      <div className="w-full h-[1px] bg-grey-5 my-5 box-border" />
+      <div className="px-4">
+        <div>
+          <h1 className="text-[24px] text-black mb-4">
+            {t('seedPhraseWriteDownHeader')}
+          </h1>
+
+          <p className="text-[13px] text-grey mb-4">
+            {t('seedPhraseWriteDownDetails')}
+          </p>
+          <RecoveryPhraseChips
+            secretRecoveryPhrase={secretRecoveryPhrase.split(' ')}
+            phraseRevealed={phraseRevealed && !hiddenPhrase}
+            hiddenPhrase={hiddenPhrase}
+          />
+        </div>
+
+        <div className="w-full mt-8">
+          {phraseRevealed ? (
+            <Fragment>
+              <div className="flex items-center justify-between">
+                <Button
+                  type="link"
+                  icon={<Icon name={hiddenPhrase ? 'eye' : 'eye-slash'} />}
+                  onClick={() => {
+                    setHiddenPhrase(!hiddenPhrase);
+                  }}
+                >
+                  {hiddenPhrase
+                    ? t('revealTheSeedPhrase')
+                    : t('hideSeedPhrase')}
+                </Button>
+                <Button
+                  onClick={() => {
+                    handleCopy(secretRecoveryPhrase);
+                  }}
+                  type="link"
+                >
+                  {copied ? t('copiedExclamation') : t('copyToClipboard')}
+                </Button>
+              </div>
+
               <Button
+                data-testid="recovery-phrase-next"
+                type="primary"
+                large
                 onClick={() => {
-                  handleCopy(secretRecoveryPhrase);
+                  trackEvent({
+                    category: EVENT.CATEGORIES.ONBOARDING,
+                    event:
+                      EVENT_NAMES.ONBOARDING_WALLET_SECURITY_PHRASE_WRITTEN_DOWN,
+                  });
+                  history.push(
+                    `${ONBOARDING_CONFIRM_SRP_ROUTE}${isFromReminderParam}`,
+                  );
                 }}
-                className="recovery-phrase__footer__copy-and-hide__button recovery-phrase__footer__copy-and-hide__button__copy-to-clipboard"
-                type="link"
               >
-                {copied ? t('copiedExclamation') : t('copyToClipboard')}
+                {t('revealSeedWords')}
               </Button>
-            </div>
+            </Fragment>
+          ) : (
             <Button
-              data-testid="recovery-phrase-next"
+              data-testid="recovery-phrase-reveal"
               type="primary"
-              className="recovery-phrase__footer--button"
+              large
               onClick={() => {
                 trackEvent({
                   category: EVENT.CATEGORIES.ONBOARDING,
-                  event:
-                    EVENT_NAMES.ONBOARDING_WALLET_SECURITY_PHRASE_WRITTEN_DOWN,
+                  event: EVENT_NAMES.ONBOARDING_WALLET_SECURITY_PHRASE_REVEALED,
                 });
-                history.push(
-                  `${ONBOARDING_CONFIRM_SRP_ROUTE}${isFromReminderParam}`,
-                );
+                setPhraseRevealed(true);
               }}
             >
               {t('revealSeedWords')}
             </Button>
-          </div>
-        ) : (
-          <Button
-            data-testid="recovery-phrase-reveal"
-            type="primary"
-            className="recovery-phrase__footer--button"
-            onClick={() => {
-              trackEvent({
-                category: EVENT.CATEGORIES.ONBOARDING,
-                event: EVENT_NAMES.ONBOARDING_WALLET_SECURITY_PHRASE_REVEALED,
-              });
-              setPhraseRevealed(true);
-            }}
-          >
-            {t('revealSeedWords')}
-          </Button>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

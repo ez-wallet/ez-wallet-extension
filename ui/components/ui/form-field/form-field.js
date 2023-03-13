@@ -7,13 +7,13 @@ import {
   TEXT_ALIGN,
   DISPLAY,
   TypographyVariant,
-  FONT_WEIGHT,
   AlignItems,
   TextColor,
 } from '../../../helpers/constants/design-system';
 
 import NumericInput from '../numeric-input/numeric-input.component';
 import InfoTooltip from '../info-tooltip/info-tooltip';
+import { Icon } from '../../component-library';
 
 export default function FormField({
   dataTestId,
@@ -41,13 +41,13 @@ export default function FormField({
   id,
   inputProps,
   wrappingLabelProps,
+  leadingIcon,
 }) {
-
   const [showPassword, setShowPassword] = useState(false);
 
   const onSetShowPassword = () => {
     setShowPassword(!showPassword);
-  }
+  };
 
   return (
     <div
@@ -56,7 +56,7 @@ export default function FormField({
       })}
     >
       <Box as="label" {...wrappingLabelProps}>
-        <div className="form-field__heading">
+        <div className="form-field__heading mb-3">
           <Box
             className="form-field__heading-title"
             display={DISPLAY.FLEX}
@@ -64,16 +64,9 @@ export default function FormField({
           >
             {TitleTextCustomComponent ||
               (titleText && (
-                <Typography
-                  tag="label"
-                  htmlFor={id}
-                  html
-                  fontWeight={FONT_WEIGHT.BOLD}
-                  variant={TypographyVariant.H6}
-                  boxProps={{ display: DISPLAY.INLINE_BLOCK }}
-                >
+                <label className="text-[15px] font-medium text-black">
                   {titleText}
-                </Typography>
+                </label>
               ))}
             {TitleUnitCustomComponent ||
               (titleUnit && (
@@ -102,75 +95,64 @@ export default function FormField({
             </Box>
           )}
         </div>
-        {numeric ? (
-          <NumericInput
-            error={error}
-            onChange={onChange}
-            value={value}
-            detailText={detailText}
-            autoFocus={autoFocus}
-            allowDecimals={allowDecimals}
-            disabled={disabled}
-            dataTestId={dataTestId}
-            placeholder={placeholder}
-            id={id}
-          />
-        ) : (
-          <input
-            className={classNames('form-field__input', {
-              'form-field__input--error': error,
-              'form-field__input--warning': warning,
-            })}
-            onChange={(e) => onChange(e.target.value)}
-            value={value}
-            type={password && !showPassword ? 'password' : 'text'}
-            autoFocus={autoFocus}
-            disabled={disabled}
-            data-testid={dataTestId}
-            placeholder={placeholder}
-            id={id}
-            {...inputProps}
-          />
-        )}
-        <div className='form-field__eye'>
-          {password && !showPassword ? <img onClick={onSetShowPassword} src="./images/eye-slash.svg" /> :
-            <img onClick={onSetShowPassword} src="./images/eye.svg" />}
+        <div className="flex items-center bg-grey-6 shadow-input rounded-full h-[60px] py-2 px-4 w-full gap-1 mb-3">
+          {leadingIcon && (
+            <Icon className="text-grey text-[15px]" name={leadingIcon} />
+          )}
+          {numeric ? (
+            <NumericInput
+              error={error}
+              onChange={onChange}
+              value={value}
+              detailText={detailText}
+              autoFocus={autoFocus}
+              allowDecimals={allowDecimals}
+              disabled={disabled}
+              dataTestId={dataTestId}
+              placeholder={placeholder}
+              id={id}
+            />
+          ) : (
+            <input
+              className={classNames(
+                'border-0 bg-transparent box-border w-full focus:outline-0 text-[15px]',
+                {
+                  'form-field__input--error': error,
+                  'form-field__input--warning': warning,
+                },
+              )}
+              onChange={(e) => onChange(e.target.value)}
+              value={value}
+              type={password && !showPassword ? 'password' : 'text'}
+              autoFocus={autoFocus}
+              disabled={disabled}
+              data-testid={dataTestId}
+              placeholder={placeholder}
+              id={id}
+              {...inputProps}
+            />
+          )}
+          {password && (
+            <button className="w-fit h-fit" onClick={onSetShowPassword}>
+              {showPassword === false ? (
+                <Icon name="eye-slash" />
+              ) : (
+                <Icon name="eye" />
+              )}
+            </button>
+          )}
         </div>
         {error && (
-          <Typography
-            color={TextColor.errorDefault}
-            variant={TypographyVariant.H7}
-            className="form-field__error"
-          >
-            {error}
-          </Typography>
+          <p className="text-[13px] border border-red text-red">{error}</p>
         )}
         {warning && (
-          <Typography
-            color={TextColor.textAlternative}
-            variant={TypographyVariant.H7}
-            className="form-field__warning"
-          >
+          <p className="text-[13px] border border-yellow text-yellow">
             {warning}
-          </Typography>
+          </p>
         )}
-        {passwordStrength && (
-          <Typography
-            color={TextColor.textDefault}
-            variant={TypographyVariant.H7}
-            className="form-field__password-strength"
-          >
-            {passwordStrength}
-          </Typography>
-        )}
+        {passwordStrength && <p className="text-[13px]">{passwordStrength}</p>}
         {passwordStrengthText && (
-          <Typography
-            color={TextColor.textAlternative}
-            variant={TypographyVariant.H8}
-            className="form-field__password-strength-text"
-          >
-            {passwordStrengthText}
-          </Typography>
+          <p className="text-[13px]">{passwordStrengthText}</p>
         )}
       </Box>
     </div>
@@ -286,4 +268,5 @@ FormField.propTypes = {
    * If used ensure the id prop is set on the input and a label element is present using htmlFor with the same id to ensure accessibility.
    */
   wrappingLabelProps: PropTypes.object,
+  leadingIcon: PropTypes.string,
 };

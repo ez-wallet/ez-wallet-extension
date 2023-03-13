@@ -31,10 +31,11 @@ const mapStateToProps = (state) => {
 
   const isTokenDetectionInactiveOnMainnet =
     getIsTokenDetectionInactiveOnMainnet(state);
-  const showSearchTab =
-    getIsTokenDetectionSupported(state) ||
-    isTokenDetectionInactiveOnMainnet ||
-    Boolean(process.env.IN_TEST);
+  // const showSearchTab =
+  //   getIsTokenDetectionSupported(state) ||
+  //   isTokenDetectionInactiveOnMainnet ||
+  //   Boolean(process.env.IN_TEST);
+  const showSearchTab = true;
 
   return {
     identities,

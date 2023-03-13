@@ -10,11 +10,11 @@ export function ChipWithInput({
   borderColor = BorderColor.borderDefault,
   inputValue,
   setInputValue,
-  itemNumber,
+  // itemNumber,
 }) {
   return (
     <Chip
-      className={classnames(className, 'chip--with-input')}
+      className={classnames('chip--with-input', className)}
       borderColor={borderColor}
     >
       {/* {itemNumber} */}
@@ -39,5 +39,5 @@ ChipWithInput.propTypes = {
   className: PropTypes.string,
   inputValue: PropTypes.string,
   setInputValue: PropTypes.func,
-  itemNumber: PropTypes.string,
+  // itemNumber: PropTypes.string,
 };

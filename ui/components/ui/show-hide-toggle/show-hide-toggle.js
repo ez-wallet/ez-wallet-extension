@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
-import IconEye from '../icon/icon-eye';
-import IconEyeSlash from '../icon/icon-eye-slash';
+import { Icon } from '../../component-library';
 
 const ShowHideToggle = ({
   id,
@@ -29,15 +27,9 @@ const ShowHideToggle = ({
       />
       <label htmlFor={id} className="show-hide-toggle__label" title={title}>
         {shown ? (
-          <IconEye
-            ariaLabel={ariaLabelShown}
-            className="show-hide-toggle__icon"
-          />
+          <Icon ariaLabel={ariaLabelShown} name="eye" />
         ) : (
-          <IconEyeSlash
-            ariaLabel={ariaLabelHidden}
-            className="show-hide-toggle__icon"
-          />
+          <Icon ariaLabel={ariaLabelHidden} name="eye-slash" />
         )}
       </label>
     </div>

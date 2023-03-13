@@ -2,26 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const CLASSNAME_DEFAULT = 'btn-default';
-const CLASSNAME_PRIMARY = 'btn-primary';
-const CLASSNAME_SECONDARY = 'btn-secondary';
-const CLASSNAME_RAISED = 'btn-raised';
-const CLASSNAME_LARGE = 'btn--large';
-const CLASSNAME_ROUNDED = 'btn--rounded';
-const CLASSNAME_INLINE = 'btn--inline';
-
-const typeHash = {
-  default: CLASSNAME_DEFAULT,
-  primary: CLASSNAME_PRIMARY,
-  secondary: CLASSNAME_SECONDARY,
-  warning: 'btn-warning',
-  danger: 'btn-danger',
-  'danger-primary': 'btn-danger-primary',
-  link: 'btn-link',
-  inline: CLASSNAME_INLINE,
-  raised: CLASSNAME_RAISED,
+const BUTTON_TYPE = {
+  default: 'default',
+  primary: 'primary',
+  secondary: 'secondary',
+  warning: 'warning',
+  danger: 'danger',
+  link: 'link',
+  inline: 'inline',
+  raised: 'raised',
 };
-
 const Button = ({
   type,
   submit = false,
@@ -38,7 +28,7 @@ const Button = ({
   // we know to be erroneous attributes for a link. We will likely want to extract Link
   // to its own component in the future.
   let Tag = 'button';
-  if (type === 'link') {
+  if (type === BUTTON_TYPE.link) {
     Tag = 'a';
   } else if (submit) {
     buttonProps.type = 'submit';
@@ -55,16 +45,26 @@ const Button = ({
   return (
     <Tag
       className={classnames(
-        'button',
-        doRounding && CLASSNAME_ROUNDED,
-        typeHash[type] || CLASSNAME_DEFAULT,
-        large && CLASSNAME_LARGE,
+        'text-[15px] py-4 px-3 flex justify-center whitespace-nowrap',
+        {
+          'bg-transparent text-black border border-grey-1':
+            type === BUTTON_TYPE.default || !type,
+          'bg-green-2 text-black ': type === BUTTON_TYPE.primary,
+          'bg-purple text-white': type === BUTTON_TYPE.secondary,
+          'bg-yellow-3 text-black': type === BUTTON_TYPE.warning,
+          'bg-red text-white': type === BUTTON_TYPE.danger,
+          'bg-transparent text-blue': type === BUTTON_TYPE.link,
+          'inline p-0': type === BUTTON_TYPE.inline,
+          'bg-green-2 text-black p-3 shadow-sm': type === BUTTON_TYPE.raised,
+          'rounded-full': doRounding,
+          'w-full': large,
+        },
         className,
       )}
       {...buttonProps}
     >
-      {icon ? <span className="button__icon">{icon}</span> : null}
-      {children}
+      {icon && icon}
+      <div>{children}</div>
     </Tag>
   );
 };

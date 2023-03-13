@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { capitalize } from 'lodash';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import Box from '../../ui/box';
-import { BLOCK_SIZES } from '../../../helpers/constants/design-system';
+import { Icon } from '../../component-library';
 
 export const threeStepStages = {
   PASSWORD_CREATE: 1,
@@ -23,23 +23,41 @@ export function ThreeStepProgressBar({ stage, ...boxProps }) {
   const t = useI18nContext();
   return (
     <Box {...boxProps}>
-      <ul className="progressbar">
+      <ul className="progressbar grid grid-cols-3 gap-5">
         <li
-          className={classnames({
-            active: stage >= 1,
-            complete: stage > 1,
-          })}
+          className={classnames(
+            {
+              active: stage >= 1,
+              complete: stage > 1,
+            },
+            'relative',
+          )}
         >
           {capitalize(t('createPassword'))}
+          <Icon
+            className="mt-[5px] absolute -right-5 text-grey"
+            size="sm"
+            name="arrow-right"
+          />
         </li>
+
         <li
-          className={classnames({
-            active: stage >= 2,
-            complete: stage > 3,
-          })}
+          className={classnames(
+            {
+              active: stage >= 2,
+              complete: stage > 3,
+            },
+            'relative',
+          )}
         >
           {capitalize(t('secureWallet'))}
+          <Icon
+            className="mt-[5px] absolute -right-5 text-grey"
+            size="sm"
+            name="arrow-right"
+          />
         </li>
+
         <li
           className={classnames({
             active: stage >= 4,
@@ -53,18 +71,26 @@ export function ThreeStepProgressBar({ stage, ...boxProps }) {
   );
 }
 
-export function TwoStepProgressBar({ stage, ...boxProps }) {
+export function TwoStepProgressBar({ stage }) {
   const t = useI18nContext();
   return (
-    <Box width={BLOCK_SIZES.FULL} {...boxProps}>
-      <ul className="progressbar two-steps">
+    <div>
+      <ul className="progressbar grid grid-cols-2 gap-5">
         <li
-          className={classnames({
-            active: stage >= 1,
-            complete: stage > 1,
-          })}
+          className={classnames(
+            {
+              active: stage >= 1,
+              complete: stage > 1,
+            },
+            'relative',
+          )}
         >
           {capitalize(t('confirmRecoveryPhrase'))}
+          <Icon
+            className="mt-[5px] absolute -right-5 text-grey"
+            size="sm"
+            name="arrow-right"
+          />
         </li>
         <li
           className={classnames('two-steps', {
@@ -75,7 +101,7 @@ export function TwoStepProgressBar({ stage, ...boxProps }) {
           {capitalize(t('createPassword'))}
         </li>
       </ul>
-    </Box>
+    </div>
   );
 }
 

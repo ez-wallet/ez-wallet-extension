@@ -23,9 +23,11 @@ const Dropdown = ({
   );
 
   return (
-    <div className={classnames('dropdown', className)}>
+    <div
+      className={classnames('relative h-[40px] flex items-center', className)}
+    >
       <select
-        className="dropdown__select"
+        className="border-0 shadow-input h-[40px] text-[13px] rounded-full pl-4 pr-6"
         data-testid={dataTestId}
         disabled={disabled}
         title={title}
@@ -42,9 +44,9 @@ const Dropdown = ({
         })}
       </select>
       <Icon
+        className="absolute right-2"
         name={ICON_NAMES.ARROW_DOWN}
         size={ICON_SIZES.SM}
-        className="dropdown__icon-caret-down"
       />
     </div>
   );

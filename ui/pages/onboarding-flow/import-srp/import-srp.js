@@ -6,17 +6,9 @@ import {
   TwoStepProgressBar,
   twoStepStages,
 } from '../../../components/app/step-progress-bar';
-import Box from '../../../components/ui/box';
 import Button from '../../../components/ui/button';
-import Typography from '../../../components/ui/typography';
-import {
-  FONT_WEIGHT,
-  TEXT_ALIGN,
-  TypographyVariant,
-} from '../../../helpers/constants/design-system';
 import { ONBOARDING_CREATE_PASSWORD_ROUTE } from '../../../helpers/constants/routes';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
 import SrpInput from '../../../components/app/srp-input';
 import { getCurrentKeyring } from '../../../selectors';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
@@ -36,58 +28,37 @@ export default function ImportSRP({ submitSecretRecoveryPhrase }) {
   const trackEvent = useContext(MetaMetricsContext);
 
   return (
-    <div className="import-srp" data-testid="import-srp">
+    <div
+      className="flex flex-col items-center justify-center"
+      data-testid="import-srp"
+    >
       <TwoStepProgressBar
         stage={twoStepStages.RECOVERY_PHRASE_CONFIRM}
         marginBottom={4}
       />
-      <div className="import-srp__header">
-        <Typography
-          variant={TypographyVariant.H2}
-          fontWeight={FONT_WEIGHT.BOLD}
+      <div className="w-full h-[1px] bg-grey-5 my-5 box-border" />
+      <div className="px-4">
+        <SrpInput
+          onChange={setSecretRecoveryPhrase}
+          srpText={t('accessYourWalletWithSRP')}
+        />
+        <Button
+          type="primary"
+          className="mt-[70px]"
+          data-testid="import-srp-confirm"
+          large
+          onClick={() => {
+            submitSecretRecoveryPhrase(secretRecoveryPhrase);
+            trackEvent({
+              category: EVENT.CATEGORIES.ONBOARDING,
+              event: EVENT_NAMES.ONBOARDING_WALLET_SECURITY_PHRASE_CONFIRMED,
+            });
+            history.replace(ONBOARDING_CREATE_PASSWORD_ROUTE);
+          }}
+          disabled={!secretRecoveryPhrase.trim()}
         >
-          {t('accessYourWalletWithSRP')}
-        </Typography>
-      </div>
-      <div className="import-srp__description">
-        <Typography variant={TypographyVariant.H4}>
-          {t('accessYourWalletWithSRPDescription', [
-            <a
-              key="learnMore"
-              type="link"
-              href={ZENDESK_URLS.SECRET_RECOVERY_PHRASE}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t('learnMoreUpperCase')}
-            </a>,
-          ])}
-        </Typography>
-      </div>
-      <div className="import-srp__actions">
-        <Box textAlign={TEXT_ALIGN.LEFT}>
-          <SrpInput
-            onChange={setSecretRecoveryPhrase}
-            srpText={t('typeYourSRP')}
-          />
-          <Button
-            className="import-srp__confirm-button"
-            type="primary"
-            data-testid="import-srp-confirm"
-            large
-            onClick={() => {
-              submitSecretRecoveryPhrase(secretRecoveryPhrase);
-              trackEvent({
-                category: EVENT.CATEGORIES.ONBOARDING,
-                event: EVENT_NAMES.ONBOARDING_WALLET_SECURITY_PHRASE_CONFIRMED,
-              });
-              history.replace(ONBOARDING_CREATE_PASSWORD_ROUTE);
-            }}
-            disabled={!secretRecoveryPhrase.trim()}
-          >
-            {t('confirmRecoveryPhrase')}
-          </Button>
-        </Box>
+          {t('confirmRecoveryPhrase')}
+        </Button>
       </div>
     </div>
   );

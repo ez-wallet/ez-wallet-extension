@@ -3,15 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { debounce } from 'lodash';
 import PropTypes from 'prop-types';
-import Box from '../../../components/ui/box';
 import Button from '../../../components/ui/button';
-import Typography from '../../../components/ui/typography';
-import {
-  TEXT_ALIGN,
-  TypographyVariant,
-  JustifyContent,
-  FONT_WEIGHT,
-} from '../../../helpers/constants/design-system';
 import {
   ThreeStepProgressBar,
   threeStepStages,
@@ -60,48 +52,32 @@ export default function ConfirmRecoveryPhrase({ secretRecoveryPhrase = '' }) {
   };
 
   return (
-    <div
-      className="recovery-phrase__confirm"
-      data-testid="confirm-recovery-phrase"
-    >
+    <div className="h-full" data-testid="confirm-recovery-phrase">
       <ThreeStepProgressBar
         stage={threeStepStages.RECOVERY_PHRASE_CONFIRM}
         marginBottom={4}
       />
-      <Box
-        justifyContent={JustifyContent.center}
-        textAlign={TEXT_ALIGN.CENTER}
-        marginBottom={4}
-      >
-        <Typography
-          variant={TypographyVariant.H2}
-          fontWeight={FONT_WEIGHT.BOLD}
-        >
+      <div className="px-4">
+        <div className="w-full h-[1px] bg-grey-5 my-5 box-border" />
+        <h1 className="text-[24px] text-black mb-4">
           {t('seedPhraseConfirm')}
-        </Typography>
-      </Box>
-      <Box
-        justifyContent={JustifyContent.center}
-        textAlign={TEXT_ALIGN.CENTER}
-        marginBottom={4}
-      >
-        <Typography variant={TypographyVariant.H4}>
+        </h1>
+        <p className="text-[13px] text-grey mb-4">
           {t('seedPhraseEnterMissingWords')}
-        </Typography>
-      </Box>
-      <RecoveryPhraseChips
-        secretRecoveryPhrase={splitSecretRecoveryPhrase}
-        confirmPhase
-        setInputValue={handleSetPhraseElements}
-        inputValue={phraseElements}
-        indicesToCheck={indicesToCheck}
-      />
-      <div className="recovery-phrase__footer__confirm">
+        </p>
+        <RecoveryPhraseChips
+          secretRecoveryPhrase={splitSecretRecoveryPhrase}
+          confirmPhase
+          setInputValue={handleSetPhraseElements}
+          inputValue={phraseElements}
+          indicesToCheck={indicesToCheck}
+        />
+
         <Button
           data-testid="recovery-phrase-confirm"
           type="primary"
           large
-          className="recovery-phrase__footer__confirm--button"
+          className="mt-8"
           onClick={async () => {
             await dispatch(setSeedPhraseBackedUp(true));
             trackEvent({

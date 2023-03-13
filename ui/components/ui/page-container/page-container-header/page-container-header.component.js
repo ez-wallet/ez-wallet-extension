@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Button from '../../button';
+import { Icon } from '../../../component-library';
 
 export default class PageContainerHeader extends Component {
   static propTypes = {
@@ -20,8 +21,10 @@ export default class PageContainerHeader extends Component {
 
   renderTabs() {
     const { tabs } = this.props;
-
-    return tabs ? <ul className="page-container__tabs">{tabs}</ul> : null;
+    const numberOfTabs = React.Children.count(tabs);
+    return tabs ? (
+      <div className={`grid grid-cols-${numberOfTabs}`}>{tabs}</div>
+    ) : null;
   }
 
   renderCloseAction() {
@@ -48,10 +51,12 @@ export default class PageContainerHeader extends Component {
     return (
       onClose && (
         <button
-          className="page-container__header-close"
+          className="rounded-full shadow-neumorphic h-[48px] w-[68px] bg-grey-6 flex justify-center items-center"
           onClick={() => onClose()}
           aria-label="close"
-        />
+        >
+          <Icon name="close" />
+        </button>
       )
     );
   }
@@ -89,11 +94,13 @@ export default class PageContainerHeader extends Component {
         })}
         data-testid="page-container__header"
       >
+        <div className="flex justify-end py-2">{this.renderCloseAction()}</div>
+
         {this.renderHeaderRow()}
 
         {title && (
           <div
-            className={classnames('page-container__title', {
+            className={classnames('text-[32px] font-bold text-black', {
               'page-container__title--no-margin-right': hideClose,
             })}
           >
@@ -103,8 +110,6 @@ export default class PageContainerHeader extends Component {
         {subtitle ? (
           <div className="page-container__subtitle">{subtitle}</div>
         ) : null}
-
-        {this.renderCloseAction()}
 
         {this.renderTabs()}
       </div>

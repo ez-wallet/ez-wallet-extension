@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-
+import Button from '../button';
 import PageContainerHeader from './page-container-header';
-import PageContainerFooter from './page-container-footer';
 
 export default class PageContainer extends PureComponent {
   static contextTypes = {
@@ -61,7 +60,6 @@ export default class PageContainer extends PureComponent {
             isActive:
               numberOfTabs > 1 && tabIndex === this.state.activeTabIndex,
             key: tabIndex,
-            className: 'page-container__tab',
           })
         );
       },
@@ -120,7 +118,7 @@ export default class PageContainer extends PureComponent {
     } = this.props;
     const tabSubmitText = this.getTabSubmitText();
     return (
-      <div className="page-container">
+      <div className="w-full h-full">
         <PageContainerHeader
           title={title}
           subtitle={subtitle}
@@ -132,16 +130,16 @@ export default class PageContainer extends PureComponent {
           tabs={this.renderTabs()}
           headerCloseText={headerCloseText}
         />
-        <div className="page-container__bottom">
-          <div className="page-container__content">{this.renderContent()}</div>
-          <PageContainerFooter
-            onCancel={onCancel}
-            cancelText={cancelText}
-            hideCancel={hideCancel}
-            onSubmit={onSubmit}
-            submitText={tabSubmitText || submitText}
-            disabled={disabled}
-          />
+        {this.renderContent()}
+        <div className="grid grid-cols-1 gap-3 p-4">
+          <Button large type="primary" onClick={onSubmit} disabled={disabled}>
+            {tabSubmitText || submitText}
+          </Button>
+          {hideCancel && (
+            <Button large type="default" onClick={onCancel} disabled={disabled}>
+              {cancelText}
+            </Button>
+          )}
         </div>
       </div>
     );

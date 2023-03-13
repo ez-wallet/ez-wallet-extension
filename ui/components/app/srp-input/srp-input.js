@@ -2,17 +2,10 @@ import { isValidMnemonic } from '@ethersproject/hdnode';
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import TextField from '../../ui/text-field';
 import { clearClipboard } from '../../../helpers/utils/util';
 import ActionableMessage from '../../ui/actionable-message';
 import Dropdown from '../../ui/dropdown';
-import Typography from '../../ui/typography';
 import ShowHideToggle from '../../ui/show-hide-toggle';
-import {
-  FONT_WEIGHT,
-  TEXT_ALIGN,
-  TypographyVariant,
-} from '../../../helpers/constants/design-system';
 import { parseSecretRecoveryPhrase } from './parse-secret-recovery-phrase';
 
 const defaultNumberOfWords = 12;
@@ -127,53 +120,52 @@ export default function SrpInput({ onChange, srpText }) {
   }
 
   return (
-    <div className="import-srp__container">
-      <label className="import-srp__srp-label">
-        <Typography
-          align={TEXT_ALIGN.LEFT}
-          variant={TypographyVariant.H4}
-          fontWeight={FONT_WEIGHT.BOLD}
-        >
-          {srpText}
-        </Typography>
-      </label>
+    <div>
+      <div className="flex">
+        <h1 className="text-[24px] font-bold">{srpText}</h1>
+        <Dropdown
+          className=""
+          onChange={(newSelectedOption) => {
+            const newNumberOfWords = parseInt(newSelectedOption, 10);
+            if (Number.isNaN(newNumberOfWords)) {
+              throw new Error('Unable to parse option as integer');
+            }
+
+            let newDraftSrp = draftSrp.slice(0, newNumberOfWords);
+            if (newDraftSrp.length < newNumberOfWords) {
+              newDraftSrp = newDraftSrp.concat(
+                new Array(newNumberOfWords - newDraftSrp.length).fill(''),
+              );
+            }
+            setNumberOfWords(newNumberOfWords);
+            setShowSrp(new Array(newNumberOfWords).fill(false));
+            onSrpChange(newDraftSrp);
+          }}
+          options={numberOfWordsOptions}
+          selectedOption={`${numberOfWords}`}
+        />
+      </div>
+
       <ActionableMessage
-        className="import-srp__paste-tip"
-        iconFillColor="var(--color-info-default)"
+        className="my-[18px]"
+        type="info"
         message={t('srpPasteTip')}
         useIcon
       />
-      <Dropdown
-        className="import-srp__number-of-words-dropdown"
-        onChange={(newSelectedOption) => {
-          const newNumberOfWords = parseInt(newSelectedOption, 10);
-          if (Number.isNaN(newNumberOfWords)) {
-            throw new Error('Unable to parse option as integer');
-          }
 
-          let newDraftSrp = draftSrp.slice(0, newNumberOfWords);
-          if (newDraftSrp.length < newNumberOfWords) {
-            newDraftSrp = newDraftSrp.concat(
-              new Array(newNumberOfWords - newDraftSrp.length).fill(''),
-            );
-          }
-          setNumberOfWords(newNumberOfWords);
-          setShowSrp(new Array(newNumberOfWords).fill(false));
-          onSrpChange(newDraftSrp);
-        }}
-        options={numberOfWordsOptions}
-        selectedOption={`${numberOfWords}`}
-      />
-      <div className="import-srp__srp">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {[...Array(numberOfWords).keys()].map((index) => {
           const id = `import-srp__srp-word-${index}`;
           return (
-            <div key={index} className="import-srp__srp-word">
-              <label htmlFor={id} className="import-srp__srp-word-label">
-                <Typography>{`${index + 1}.`}</Typography>
-              </label>
-              <TextField
+            <div
+              key={index}
+              className="flex items-center bg-grey-6 shadow-input rounded-full h-[40px] py-2 px-4 w-full gap-1"
+            >
+              <span>{index + 1}.</span>
+              <input
+                key={index}
                 id={id}
+                className="border-0 bg-transparent box-border w-full"
                 data-testid={id}
                 type={showSrp[index] ? 'text' : 'password'}
                 onChange={(e) => {
@@ -205,18 +197,10 @@ export default function SrpInput({ onChange, srpText }) {
         })}
       </div>
       {srpError ? (
-        <ActionableMessage
-          className="import-srp__srp-error"
-          iconFillColor="var(--color-error-default)"
-          message={srpError}
-          type="danger"
-          useIcon
-        />
+        <ActionableMessage message={srpError} type="danger" useIcon />
       ) : null}
       {pasteFailed ? (
         <ActionableMessage
-          className="import-srp__srp-too-many-words-error"
-          iconFillColor="var(--color-error-default)"
           message={t('srpPasteFailedTooManyWords')}
           primaryAction={{
             label: t('dismiss'),

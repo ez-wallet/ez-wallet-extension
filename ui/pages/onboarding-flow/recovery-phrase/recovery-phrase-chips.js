@@ -1,19 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import Chip from '../../../components/ui/chip';
-import Box from '../../../components/ui/box';
-import Typography from '../../../components/ui/typography';
 import { ChipWithInput } from '../../../components/ui/chip/chip-with-input';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import {
-  TypographyVariant,
-  BorderStyle,
-  Size,
-  DISPLAY,
-  BorderColor,
-  Color,
-} from '../../../helpers/constants/design-system';
 
 export default function RecoveryPhraseChips({
   secretRecoveryPhrase,
@@ -27,15 +16,11 @@ export default function RecoveryPhraseChips({
   const t = useI18nContext();
   const hideSeedPhrase = phraseRevealed === false;
   return (
-    <Box
-      display={DISPLAY.GRID}
-      marginBottom={4}
-      className="recovery-phrase__secret"
-    >
+    <div className="relative">
       <div
-        data-testid="recovery-phrase-chips"
-        className={classnames('recovery-phrase__chips', {
-          'recovery-phrase__chips--hidden': hideSeedPhrase,
+        data-testid="recovery-phrase-chips "
+        className={classnames('grid grid-cols-3 gap-3 p-2', {
+          blur: hideSeedPhrase,
         })}
       >
         {secretRecoveryPhrase.map((word, index) => {
@@ -45,29 +30,22 @@ export default function RecoveryPhraseChips({
             indicesToCheck.includes(index)
           ) {
             return (
-              <div className="recovery-phrase__chip-item" key={index}>
-                <ChipWithInput
-                  dataTestId={`recovery-phrase-input-${index}`}
-                  borderColor={BorderColor.primaryDefault}
-                  className="recovery-phrase__chip--with-input"
-                  inputValue={inputValue[index]}
-                  itemNumber={`${index + 1}.`}
-                  setInputValue={(value) => {
-                    setInputValue({ ...inputValue, [index]: value });
-                  }}
-                />
-              </div>
+              <ChipWithInput
+                key={index}
+                dataTestId={`recovery-phrase-input-${index}`}
+                className="w-full rounded-full shadow-input p-2"
+                inputValue={inputValue[index]}
+                itemNumber={`${index + 1}.`}
+                setInputValue={(value) => {
+                  setInputValue({ ...inputValue, [index]: value });
+                }}
+              />
             );
           }
+
           return (
-            <div className="recovery-phrase__chip-item" key={index}>
-              <Chip
-                dataTestId={`recovery-phrase-chip-${index}`}
-                className="recovery-phrase__chip"
-                borderColor={BorderColor.borderDefault}
-              >
-                {`${index + 1}.${word}`}
-              </Chip>
+            <div className="w-full rounded-full shadow-input p-2" key={index}>
+              {`${index + 1}. ${word}`}
             </div>
           );
         })}
@@ -78,18 +56,14 @@ export default function RecoveryPhraseChips({
           {!hiddenPhrase && (
             <>
               <i className="far fa-eye" color="white" />
-              <Typography
-                variant={TypographyVariant.H6}
-                color={Color.overlayInverse}
-                className="recovery-phrase__secret-blocker--text"
-              >
+              <p className="text-[15px] text-white">
                 {t('makeSureNoOneWatching')}
-              </Typography>
+              </p>
             </>
           )}
         </div>
       )}
-    </Box>
+    </div>
   );
 }
 

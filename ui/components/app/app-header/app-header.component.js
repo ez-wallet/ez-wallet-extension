@@ -51,20 +51,14 @@ export default class AppHeader extends PureComponent {
       this.props;
 
     return (
-      <>
-        <div className="app-header">
-          <div className="app-header__contents">
-            {!hideNetworkIndicator && (
-              <div className="app-header__network-component-wrapper">
-                <NetworkDisplay
-                  onClick={(event) => this.handleNetworkIndicatorClick(event)}
-                  disabled={disabled || disableNetworkIndicator}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-      </>
+      <div className="w-full flex flex-col items-center justify-center p-4">
+        {!hideNetworkIndicator && (
+          <NetworkDisplay
+            onClick={(event) => this.handleNetworkIndicatorClick(event)}
+            disabled={disabled || disableNetworkIndicator}
+          />
+        )}
+      </div>
     );
   }
 }
