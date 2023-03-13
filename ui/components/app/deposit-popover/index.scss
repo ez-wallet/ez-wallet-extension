@@ -1,6 +1,9 @@
 .deposit-popover {
   min-width: 328px;
-  max-width: 850px;
+  max-width: 360px;
+  height: fit-content;
+  max-height: 500px;
+  margin-top: 50px;
 
   @include screen-md-min {
     width: 100% !important;

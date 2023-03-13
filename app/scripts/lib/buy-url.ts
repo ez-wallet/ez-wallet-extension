@@ -112,7 +112,7 @@ const createMoonPayUrl = async (
     showOnlyCurrencies,
   });
   const queryParams = new URLSearchParams({
-    url: `https://buy.moonpay.com?${moonPayQueryParams}`,
+    url: `https://${}sandbox.moonpay.com?${moonPayQueryParams}`,
     context: 'extension',
   });
   const moonPaySignUrl = `${SWAPS_API_V2_BASE_URL}/moonpaySign/?${queryParams}`;

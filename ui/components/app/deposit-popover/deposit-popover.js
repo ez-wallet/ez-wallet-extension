@@ -102,16 +102,13 @@ const DepositPopover = ({ onClose, token }) => {
   return (
     <Popover
       title={t('depositCrypto', [symbol])}
-      subtitle={isTokenDeposit ? '' : t('needCryptoInWallet', [symbol])}
       onClose={onClose}
-      className="deposit-popover"
+      className="deposit-popover bg-grey-6"
     >
-      <ul>
+      <div className="grid grid-cols-1 gap-5 p-4">
         <OnRampItem
           logo={<LogoCoinbasePay />}
-          title={t('buyCryptoWithCoinbasePay', [symbol])}
-          text={t('buyCryptoWithCoinbasePayDescription', [symbol])}
-          buttonLabel={t('continueToCoinbasePay')}
+          title="CoinbasePay"
           onButtonClick={() => {
             trackEvent({
               category: EVENT.CATEGORIES.ACCOUNTS,
@@ -130,9 +127,7 @@ const DepositPopover = ({ onClose, token }) => {
         />
         <OnRampItem
           logo={<LogoTransak />}
-          title={t('buyCryptoWithTransak', [symbol])}
-          text={t('buyCryptoWithTransakDescription', [symbol])}
-          buttonLabel={t('continueToTransak')}
+          title="Transak"
           onButtonClick={() => {
             trackEvent({
               category: EVENT.CATEGORIES.ACCOUNTS,
@@ -151,9 +146,7 @@ const DepositPopover = ({ onClose, token }) => {
         />
         <OnRampItem
           logo={<LogoMoonPay />}
-          title={t('buyCryptoWithMoonPay', [symbol])}
-          text={t('buyCryptoWithMoonPayDescription', [symbol])}
-          buttonLabel={t('continueToMoonPay')}
+          title="MoonPay"
           onButtonClick={() => {
             trackEvent({
               category: EVENT.CATEGORIES.ACCOUNTS,
@@ -172,9 +165,7 @@ const DepositPopover = ({ onClose, token }) => {
         />
         <OnRampItem
           logo={<LogoWyre />}
-          title={t('buyWithWyre', [symbol])}
-          text={t('buyWithWyreDescription', [symbol])}
-          buttonLabel={t('continueToWyre')}
+          title="Wyre"
           onButtonClick={() => {
             trackEvent({
               category: EVENT.CATEGORIES.ACCOUNTS,
@@ -220,7 +211,7 @@ const DepositPopover = ({ onClose, token }) => {
             hide={!isTestnet}
           />
         )}
-      </ul>
+      </div>
     </Popover>
   );
 };
