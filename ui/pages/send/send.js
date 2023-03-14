@@ -146,6 +146,40 @@ export default function SendTransactionScreen() {
           dispatch(showQrScanner());
         }}
       />
+      <DomainInput
+        userInput={userInput}
+        className="send__to-row"
+        onChange={(address) => dispatch(updateRecipientUserInput(address))}
+        onValidAddressTyped={async (address) => {
+          dispatch(
+            addHistoryEntry(`sendFlow - Valid address typed ${address}`),
+          );
+          await dispatch(updateRecipientUserInput(address));
+          dispatch(updateRecipient({ address, nickname: '' }));
+        }}
+        internalSearch={isUsingMyAccountsForRecipientSearch}
+        selectedAddress={recipient.address}
+        selectedName={recipient.nickname}
+        onPaste={(text) => {
+          dispatch(
+            addHistoryEntry(
+              `sendFlow - User pasted ${text} into address field`,
+            ),
+          );
+        }}
+        onReset={() => dispatch(resetRecipientInput())}
+        scanQrCode={() => {
+          trackEvent({
+            event: 'Used QR scanner',
+            category: EVENT.CATEGORIES.TRANSACTIONS,
+            properties: {
+              action: 'Edit Screen',
+              legacy_event: true,
+            },
+          });
+          dispatch(showQrScanner());
+        }}
+      />
       {content}
     </div>
   );

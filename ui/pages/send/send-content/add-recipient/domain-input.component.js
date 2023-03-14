@@ -103,16 +103,10 @@ export default class DomainInput extends Component {
             'ens-input__wrapper--valid': hasSelectedAddress,
           })}
         >
-          {hasSelectedAddress ? (
+          {hasSelectedAddress && (
             <i
               className="ens-input__wrapper__status-icon fa fa-check-circle"
               style={{ color: 'var(--color-success-default)' }}
-            />
-          ) : (
-            <Icon
-              name={ICON_NAMES.SEARCH}
-              color={IconColor.iconMuted}
-              className="ens-input__wrapper__status-icon"
             />
           )}
           {hasSelectedAddress ? (

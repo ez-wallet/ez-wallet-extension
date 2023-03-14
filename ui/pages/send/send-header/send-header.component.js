@@ -32,7 +32,7 @@ export default function SendHeader() {
     draftTransactionExists === false ||
     [SEND_STAGES.ADD_RECIPIENT, SEND_STAGES.INACTIVE].includes(stage)
   ) {
-    title = t('sendTo');
+    title = '';
   } else if (stage === SEND_STAGES.EDIT) {
     title = t('edit');
   }
@@ -43,7 +43,7 @@ export default function SendHeader() {
       onClose={onClose}
       title={title}
       headerCloseText={
-        stage === SEND_STAGES.EDIT ? t('cancelEdit') : t('cancel')
+        stage === SEND_STAGES.EDIT ? t('cancelEdit') : 'x'
       }
       hideClose={stage === SEND_STAGES.DRAFT}
     />
