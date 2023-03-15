@@ -1,3 +1,5 @@
+const themes = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./ui/**/*.{html,js}'],
@@ -10,6 +12,9 @@ module.exports = {
       white: '#FFFFFF',
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', ...themes.fontFamily.sans],
+      },
       colors: {
         green: {
           DEFAULT: '#00E67B',

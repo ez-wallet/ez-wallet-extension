@@ -8,8 +8,7 @@
   },
   "scripts": {
     "start": "yarn build:dev dev --apply-lavamoat=false --snow=false",
-    "tailwind:chrome": "npx tailwindcss -i ./tailwind.css -o ./dist/chrome/tailwind.css",
-    "tailwind:firefox": "npx tailwindcss -i ./tailwind.css -o ./dist/firefox/tailwind.css",
+    "tailwind": "npx tailwindcss -i ./tailwind.css -o ./tailwind-output.css && mv ./tailwind-output.css ./ui/css",
     "start:lavamoat": "yarn build:dev dev --apply-lavamoat=true",
     "start:mv3": "ENABLE_MV3=true yarn build:dev dev --apply-lavamoat=false",
     "dist": "yarn build dist",
@@ -351,6 +350,7 @@
     "ses": "^0.12.4",
     "single-call-balance-checker-abi": "^1.0.0",
     "swappable-obj-proxy": "^1.1.0",
+    "tailwindcss": "^3.2.7",
     "unicode-confusables": "^0.1.1",
     "uuid": "^8.3.2",
     "valid-url": "^1.0.9",
