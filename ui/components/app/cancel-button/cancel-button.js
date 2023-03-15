@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import classnames from 'classnames';
-import Button from '../../ui/button';
 import { getMaximumGasTotalInHexWei } from '../../../../shared/modules/gas.utils';
 import { getConversionRate } from '../../../ducks/metamask/metamask';
 import { useI18nContext } from '../../../hooks/useI18nContext';
@@ -31,10 +30,13 @@ export default function CancelButton({
   });
 
   const btn = (
-    <Button
-      onClick={cancelTransaction}
+    <a
+      onClick={(e) => {
+        e.preventDefault();
+        cancelTransaction();
+      }}
       type="secondary"
-      className={classnames({
+      className={classnames('text-[13px] text-grey hover:text-grey-3', {
         'transaction-list-item__header-button': !detailsModal,
         'transaction-list-item-details__header-button-rounded-button':
           detailsModal,
@@ -43,7 +45,7 @@ export default function CancelButton({
       data-testid="cancel-button"
     >
       {t('cancel')}
-    </Button>
+    </a>
   );
   return hasEnoughCancelGas ? (
     btn

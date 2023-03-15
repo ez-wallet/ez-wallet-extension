@@ -32,24 +32,36 @@ export default function ListItem({
         }
       }}
     >
-      {icon ? <div className="list-item__icon">{icon}</div> : null}
-      <div className="list-item__heading">
-        {React.isValidElement(title) ? (
-          title
-        ) : (
-          <h2 className="list-item__title">{title}</h2>
-        )}
-        {titleIcon && (
-          <div className="list-item__heading-wrap">{titleIcon}</div>
-        )}
+      {icon ? (
+        <div
+          className={classnames(
+            'w-[40px] h-[40px] rounded-full bg flex items-center justify-center',
+          )}
+        >
+          {icon}
+        </div>
+      ) : null}
+      <div className="flex-grow">
+        <div className="list-item__heading">
+          {React.isValidElement(title) ? (
+            title
+          ) : (
+            <h2 className="list-item__title">{title}</h2>
+          )}
+          {titleIcon && (
+            <div className="list-item__heading-wrap">{titleIcon}</div>
+          )}
+        </div>
+
+        {subtitle ? (
+          <div className="list-item__subheading">{subtitle}</div>
+        ) : null}
+        {children ? <div className="list-item__actions">{children}</div> : null}
+        {midContent ? (
+          <div className="list-item__mid-content">{midContent}</div>
+        ) : null}
       </div>
-      {subtitle ? (
-        <div className="list-item__subheading">{subtitle}</div>
-      ) : null}
-      {children ? <div className="list-item__actions">{children}</div> : null}
-      {midContent ? (
-        <div className="list-item__mid-content">{midContent}</div>
-      ) : null}
+
       {rightContent ? (
         <div className="list-item__right-content">{rightContent}</div>
       ) : null}

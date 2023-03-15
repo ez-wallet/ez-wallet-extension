@@ -29,7 +29,6 @@ import {
 } from '../../../contexts/transaction-modal';
 import { checkNetworkAndAccountSupports1559 } from '../../../selectors';
 import { isLegacyTransaction } from '../../../helpers/utils/transactions.util';
-import Button from '../../ui/button';
 import AdvancedGasFeePopover from '../advanced-gas-fee-popover';
 import CancelButton from '../cancel-button';
 import CancelSpeedupPopover from '../cancel-speedup-popover';
@@ -126,7 +125,7 @@ function TransactionListItemInner({
   const isUnapproved = status === TransactionStatus.unapproved;
   const isSwap = category === TransactionGroupCategory.swap;
 
-  const className = classnames('transaction-list-item', {
+  const className = classnames('flex items-center gap-3', {
     'transaction-list-item--unconfirmed':
       isPending ||
       [
@@ -149,13 +148,21 @@ function TransactionListItemInner({
       return null;
     }
     return (
-      <Button
-        type="primary"
-        onClick={hasCancelled ? cancelTransaction : retryTransaction}
+      <a
+        className="text-green-3 hover:text-green text-[13px]"
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          if (hasCancelled) {
+            cancelTransaction();
+          } else {
+            retryTransaction();
+          }
+        }}
         style={hasCancelled ? { width: 'auto' } : null}
       >
         {hasCancelled ? t('speedUpCancellation') : t('speedUp')}
-      </Button>
+      </a>
     );
   }, [
     shouldShowSpeedUp,
@@ -170,29 +177,41 @@ function TransactionListItemInner({
   const showCancelButton = !hasCancelled && isPending && !isUnapproved;
 
   return (
-    <>
+    <div className="px-4 py-2 bg-white shadow-neumorphic rounded-xl">
+      <span className="text-[13px] text-grey">{date}</span>
       <ListItem
         onClick={toggleShowDetails}
         className={className}
         title={title}
         icon={
-          <TransactionIcon category={category} status={displayedStatusKey} />
+          <div
+            className={classnames(
+              'w-[40px] h-[40px] rounded-full bg flex items-center justify-center',
+              {
+                'bg-green': category === TransactionGroupCategory.send,
+                'bg-blue': category === TransactionGroupCategory.receive,
+              },
+            )}
+          >
+            <TransactionIcon category={category} status={displayedStatusKey} />
+          </div>
         }
         subtitle={
           <h3>
-            <TransactionStatusLabel
-              isPending={isPending}
-              isEarliestNonce={isEarliestNonce}
-              error={err}
-              date={date}
-              status={displayedStatusKey}
-            />
             {subtitleContainsOrigin ? (
               <SiteOrigin siteOrigin={subtitle} />
             ) : (
-              <span className="transaction-list-item__address" title={subtitle}>
-                {subtitle}
-              </span>
+              <div className="flex flex-col" title={subtitle}>
+                <div className="text-[13px] text-black">{subtitle}</div>
+                <TransactionStatusLabel
+                  className="text-[13px]"
+                  isPending={isPending}
+                  isEarliestNonce={isEarliestNonce}
+                  error={err}
+                  status={displayedStatusKey}
+                  statusOnly
+                />
+              </div>
             )}
           </h3>
         }
@@ -213,7 +232,7 @@ function TransactionListItemInner({
           )
         }
       >
-        <div className="transaction-list-item__pending-actions">
+        <div className="transaction-list-item__pending-actions gap-2">
           {speedUpButton}
           {showCancelButton && (
             <CancelButton
@@ -263,7 +282,7 @@ function TransactionListItemInner({
           transaction={transactionGroup.primaryTransaction}
         />
       )}
-    </>
+    </div>
   );
 }
 

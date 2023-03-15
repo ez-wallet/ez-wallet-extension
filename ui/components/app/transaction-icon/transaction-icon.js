@@ -25,7 +25,7 @@ const ICON_MAP = {
 
 const FAIL_COLOR = 'var(--color-error-default)';
 const PENDING_COLOR = 'var(--color-icon-default)';
-const OK_COLOR = 'var(--color-primary-default)';
+const OK_COLOR = 'var(--color-text-neutral-black_01)';
 
 const COLOR_MAP = {
   [TransactionGroupStatus.pending]: PENDING_COLOR,
@@ -53,7 +53,7 @@ export default function TransactionIcon({ status, category }) {
     return <div className="transaction-icon__grey-circle" />;
   }
 
-  return <Icon color={color} size={28} />;
+  return <Icon color={color} size={18} />;
 }
 
 TransactionIcon.propTypes = {
