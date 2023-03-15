@@ -16,6 +16,7 @@ import {
   COINBASEPAY_API_KEY,
 } from '../constants/on-ramp';
 import { formatMoonpaySymbol } from '../../../ui/helpers/utils/moonpay';
+import { MOONPAY_URL } from '../constants/url';
 
 const fetchWithTimeout = getFetchWithTimeout();
 
@@ -112,7 +113,7 @@ const createMoonPayUrl = async (
     showOnlyCurrencies,
   });
   const queryParams = new URLSearchParams({
-    url: `https://buy.moonpay.com?${moonPayQueryParams}`,
+    url: `${MOONPAY_URL}?${moonPayQueryParams}`,
     context: 'extension',
   });
   const moonPaySignUrl = `${SWAPS_API_V2_BASE_URL}/moonpaySign/?${queryParams}`;

@@ -116,8 +116,8 @@ export default function TransactionList({
   );
 
   return (
-    <div className="transaction-list">
-      <div className="transaction-list__transactions">
+    <div className="flex flex-col flex-1 gap-5 px-4">
+      <div className="transaction-list__transactions ">
         {pendingTransactions.length > 0 && (
           <div className="transaction-list__pending-transactions">
             <div className="transaction-list__header">
@@ -142,7 +142,7 @@ export default function TransactionList({
             )}
           </div>
         )}
-        <div className="transaction-list__completed-transactions">
+        <div className="flex flex-col flex-1 gap-3">
           {pendingTransactions.length > 0 ? (
             <div className="transaction-list__header">{t('history')}</div>
           ) : null}
@@ -165,10 +165,8 @@ export default function TransactionList({
                 ),
               )
           ) : (
-            <div className="transaction-list__empty">
-              <div className="transaction-list__empty-text">
-                {t('noTransactions')}
-              </div>
+            <div className="text-grey text-[13px] text-center">
+              {t('noTransactions')}
             </div>
           )}
           {completedTransactions.length > limit && (

@@ -61,7 +61,7 @@ const Popover = ({
   const Header = () => (
     <Box
       {...{ ...defaultHeaderProps, ...headerProps }}
-      className="popover-header"
+      className="popover-header bg-transparent"
     >
       <Box
         display={DISPLAY.FLEX}

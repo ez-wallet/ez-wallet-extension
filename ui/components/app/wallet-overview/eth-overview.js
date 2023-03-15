@@ -58,7 +58,7 @@ const EthOverview = ({ className }) => {
         <DepositPopover onClose={() => setShowDepositPopover(false)} />
       )}
       <WalletOverview
-        selectedIdentity={selectedIdentity}
+        token={selectedIdentity}
         loading={!balance}
         balance={
           <Tooltip
@@ -122,25 +122,6 @@ const EthOverview = ({ className }) => {
             />
             <IconButton
               className="eth-overview__button"
-              Icon={
-                <Icon name="wallet" size="lg" color="colors-accent-purple_01" />
-              }
-              disabled={!isBuyableChain}
-              label={t('buy')}
-              onClick={() => {
-                trackEvent({
-                  event: EVENT_NAMES.NAV_BUY_BUTTON_CLICKED,
-                  category: EVENT.CATEGORIES.NAVIGATION,
-                  properties: {
-                    location: 'Home',
-                    text: 'Buy',
-                  },
-                });
-                setShowDepositPopover(true);
-              }}
-            />
-            <IconButton
-              className="eth-overview__button"
               data-testid="eth-overview-send"
               Icon={
                 <Icon
@@ -167,6 +148,26 @@ const EthOverview = ({ className }) => {
                 });
               }}
             />
+            <IconButton
+              className="eth-overview__button"
+              Icon={
+                <Icon name="wallet" size="lg" color="colors-accent-purple_01" />
+              }
+              disabled={!isBuyableChain}
+              label={t('buy')}
+              onClick={() => {
+                trackEvent({
+                  event: EVENT_NAMES.NAV_BUY_BUTTON_CLICKED,
+                  category: EVENT.CATEGORIES.NAVIGATION,
+                  properties: {
+                    location: 'Home',
+                    text: 'Buy',
+                  },
+                });
+                setShowDepositPopover(true);
+              }}
+            />
+
             <IconButton
               className="eth-overview__button"
               disabled={!isSwapsChain}

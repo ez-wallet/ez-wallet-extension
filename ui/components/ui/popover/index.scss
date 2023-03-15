@@ -13,8 +13,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    width: 328px;
-    max-height: 94vh;
+    width: 360px;
     box-shadow: var(--shadow-size-lg) var(--color-shadow-default);
     border-radius: 10px;
     background: var(--color-background-default);
@@ -46,7 +45,6 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     z-index: 1050;
   }
 

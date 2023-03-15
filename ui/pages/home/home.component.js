@@ -657,12 +657,12 @@ export default class Home extends PureComponent {
             </div>
           </div>
 
-          <div className="home__bottom-view mx-4">
+          <div className="home__bottom-view mx-4 bg-grey-7 rounded-[20px]">
             <Tabs
               t={this.context.t}
               defaultActiveTabKey={defaultHomeActiveTabName}
               onTabClick={onTabClick}
-              tabsClassName="home__tabs"
+              tabsClassName="grid grid-cols-2"
               subHeader={
                 <Tooltip
                   position="bottom"
@@ -704,7 +704,6 @@ export default class Home extends PureComponent {
               }
             >
               <Tab
-                activeClassName="home__tab--active"
                 className="home__tab"
                 data-testid="home__asset-tab"
                 name={this.context.t('tokens')}
