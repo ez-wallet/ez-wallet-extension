@@ -39,12 +39,9 @@ export default function SendHeader() {
 
   return (
     <PageContainerHeader
-      className="send__header"
       onClose={onClose}
       title={title}
-      headerCloseText={
-        stage === SEND_STAGES.EDIT ? t('cancelEdit') : 'x'
-      }
+      // headerCloseText={stage === SEND_STAGES.EDIT ? t('cancelEdit') : 'x'}
       hideClose={stage === SEND_STAGES.DRAFT}
     />
   );

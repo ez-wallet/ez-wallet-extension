@@ -11,7 +11,6 @@ import {
 import { NETWORK_TO_NAME_MAP } from '../../../../shared/constants/network';
 
 import { PageContainerFooter } from '../../ui/page-container';
-import Button from '../../ui/button';
 import ActionableMessage from '../../ui/actionable-message/actionable-message';
 import SenderToRecipient from '../../ui/sender-to-recipient';
 
@@ -20,8 +19,6 @@ import EditGasFeePopover from '../edit-gas-fee-popover/edit-gas-fee-popover';
 import EditGasPopover from '../edit-gas-popover';
 import ErrorMessage from '../../ui/error-message';
 import { INSUFFICIENT_FUNDS_ERROR_KEY } from '../../../helpers/constants/error-keys';
-import Typography from '../../ui/typography';
-import { TypographyVariant } from '../../../helpers/constants/design-system';
 
 import NetworkAccountBalanceHeader from '../network-account-balance-header/network-account-balance-header';
 import DepositPopover from '../deposit-popover/deposit-popover';
@@ -152,7 +149,7 @@ const ConfirmPageContainer = (props) => {
 
   return (
     <GasFeeContextProvider transaction={currentTransaction}>
-      <div className="page-container" data-testid="page-container">
+      <div className="w-full px-4" data-testid="page-container">
         <ConfirmPageContainerNavigation />
         {assetStandard === TokenStandard.ERC20 ||
         assetStandard === TokenStandard.ERC721 ||
@@ -193,7 +190,7 @@ const ConfirmPageContainer = (props) => {
             image={image}
             titleComponent={titleComponent}
             subtitleComponent={subtitleComponent}
-            hideSubtitle={hideSubtitle}
+            hideSubtitle
             detailsComponent={detailsComponent}
             dataComponent={dataComponent}
             dataHexComponent={dataHexComponent}
@@ -230,31 +227,33 @@ const ConfirmPageContainer = (props) => {
             <ActionableMessage
               message={
                 isBuyableChain ? (
-                  <Typography variant={TypographyVariant.H7} align="left">
+                  <p className="text-[13px]">
                     {t('insufficientCurrencyBuyOrDeposit', [
                       nativeCurrency,
                       networkName,
-                      <Button
-                        type="inline"
-                        className="confirm-page-container-content__link"
-                        onClick={() => setShowDepositPopover(true)}
+                      <a
+                        href="#"
+                        className="text-blue"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setShowDepositPopover(true);
+                        }}
                         key={`${nativeCurrency}-buy-button`}
                       >
                         {t('buyAsset', [nativeCurrency])}
-                      </Button>,
+                      </a>,
                     ])}
-                  </Typography>
+                  </p>
                 ) : (
-                  <Typography variant={TypographyVariant.H7} align="left">
+                  <p className="text-[13px]">
                     {t('insufficientCurrencyDeposit', [
                       nativeCurrency,
                       networkName,
                     ])}
-                  </Typography>
+                  </p>
                 )
               }
               useIcon
-              iconFillColor="var(--color-error-default)"
               type="danger"
             />
           </div>

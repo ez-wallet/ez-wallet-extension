@@ -7,28 +7,14 @@
     justify-content: center;
     background-color: var(--color-background-alternative);
     border-bottom: none;
-    padding: 14px 0 3px 0;
 
     .page-container__title {
       @include H4;
-
       text-align: center;
     }
 
     .page-container__header-close-text {
       @include H5;
-
-      position: absolute;
-      right: 1rem;
-      width: 68px;
-      height: 47px;
-      font-size: 0.75rem;
-      white-space: nowrap;
-      top: 0rem;
-      background: #F3F3F9;
-      /* Button Shadow Neumorphic */
-      box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5), 5px 5px 10px rgba(170, 170, 204, 0.15), 10px 10px 20px rgba(170, 170, 204, 0.3), -10px -10px 20px rgba(255, 255, 255, 0.5);
-      border-radius: 50px;
     }
   }
 
@@ -52,7 +38,6 @@
 
   &__to-row {
     margin: 0;
-    padding: 0.5rem;
     flex: 0 0 auto;
     background-color: var(--color-background-alternative);
     border-bottom: 1px solid var(--color-border-muted);
@@ -195,29 +180,29 @@
     }
 
     &__input {
-      @include H6;
+      // @include H6;
 
-      flex: 1 1 auto;
-      width: 0;
-      border: 0;
-      outline: none;
-      color: var(--color-text-default);
-      background-color: var(--colors-primary-grey_06);
+      // flex: 1 1 auto;
+      // width: 0;
+      // border: 0;
+      // outline: none;
+      // color: var(--color-text-default);
+      // background-color: var(--colors-primary-grey_06);
 
-      &::placeholder {
-        color: var(--color-text-muted);
-      }
+      // &::placeholder {
+      //   color: var(--color-text-muted);
+      // }
     }
 
     &__action-icon-button {
-      background: none;
-      border: none;
-      padding: 0 8px;
-      height: 24px;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      // background: none;
+      // border: none;
+      // padding: 0 8px;
+      // height: 24px;
+      // font-size: 16px;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
     }
 
     &--valid {
@@ -229,7 +214,7 @@
 
           @include H7;
 
-          color: var(--color-primary-default);
+          // color: var(--color-primary-default);
         }
       }
     }

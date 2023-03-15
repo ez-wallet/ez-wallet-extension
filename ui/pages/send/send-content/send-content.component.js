@@ -71,7 +71,7 @@ export default class SendContent extends Component {
 
     return (
       <PageContainerContent>
-        <div className="send-v2__form">
+        <div className="flex flex-col gap-5">
           {assetError ? this.renderError(assetError) : null}
           {isEthGasPrice
             ? this.renderWarning(ETH_GAS_PRICE_FETCH_WARNING_KEY)
@@ -109,7 +109,6 @@ export default class SendContent extends Component {
         <ActionableMessage
           type="danger"
           useIcon
-          iconFillColor="var(--color-error-default)"
           primaryActionV2={{
             label: t('tooltipApproveButton'),
             onClick: acknowledgeRecipientWarning,

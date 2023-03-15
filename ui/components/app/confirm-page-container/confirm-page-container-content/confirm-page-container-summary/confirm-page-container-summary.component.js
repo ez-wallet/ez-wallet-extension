@@ -90,14 +90,19 @@ const ConfirmPageContainerSummary = (props) => {
   };
 
   return (
-    <div className={classnames('confirm-page-container-summary', className)}>
-      {origin === ORIGIN_METAMASK ? null : (
+    <div
+      className={classnames(
+        'confirm-page-container-summary bg-transparent',
+        className,
+      )}
+    >
+      {/* {origin === ORIGIN_METAMASK ? null : (
         <SiteOrigin
           className="confirm-page-container-summary__origin"
           siteOrigin={origin}
         />
-      )}
-      <div className="confirm-page-container-summary__action-row">
+      )} */}
+      {/* <div className="confirm-page-container-summary__action-row">
         <div className="confirm-page-container-summary__action">
           {isContractTypeTransaction && toName && (
             <span className="confirm-page-container-summary__action__contract-address">
@@ -126,22 +131,12 @@ const ConfirmPageContainerSummary = (props) => {
             {`#${nonce}`}
           </div>
         )}
-      </div>
+      </div> */}
       <>
         <div className="confirm-page-container-summary__title">
-          {renderImage()}
+          {/* {renderImage()} */}
           {!hideTitle ? (
-            <Typography
-              className="confirm-page-container-summary__title-text"
-              variant={
-                title && title.length < 10
-                  ? TypographyVariant.H1
-                  : TypographyVariant.H3
-              }
-              title={title}
-            >
-              {titleComponent || title}
-            </Typography>
+            <div className="text-[45px] w-full">{titleComponent || title}</div>
           ) : null}
         </div>
         {hideSubtitle ? null : (

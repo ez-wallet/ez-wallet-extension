@@ -117,12 +117,9 @@ export default class SendAssetRow extends Component {
     const { t } = this.context;
 
     return (
-      <SendRowWrapper label={`${t('asset')}:`}>
-        <div className="send-v2__asset-dropdown">
-          <div
-            className="send-v2__asset-dropdown__input-wrapper"
-            onClick={this.openDropdown}
-          >
+      <SendRowWrapper label={t('asset')}>
+        <div className="flex items-center bg-grey-6 shadow-input rounded-full h-[60px] py-2 px-4 gap-1 mb-3">
+          <div className="w-full" onClick={this.openDropdown}>
             {this.renderSendAsset()}
           </div>
           {[...this.state.sendableTokens, ...this.state.sendableNfts].length > 0
@@ -195,28 +192,20 @@ export default class SendAssetRow extends Component {
     const sendableAssets = [...sendableTokens, ...sendableNfts];
     return (
       <div
-        className={
-          sendableAssets.length > 0
-            ? 'send-v2__asset-dropdown__asset'
-            : 'send-v2__asset-dropdown__single-asset'
-        }
+        className="flex items-center gap-2 px-2"
         onClick={() => this.selectToken(AssetType.native)}
       >
-        <div className="send-v2__asset-dropdown__asset-icon">
-          <Identicon
-            diameter={36}
-            image={nativeCurrencyImage}
-            address={nativeCurrency}
-          />
-        </div>
-        <div className="send-v2__asset-dropdown__asset-data">
-          <div className="send-v2__asset-dropdown__symbol">
+        <Identicon
+          diameter={36}
+          image={nativeCurrencyImage}
+          address={nativeCurrency}
+        />
+        <div className="flex-grow">
+          <div className="text-[13px] text-black font-semibold">
             {nativeCurrency}
           </div>
-          <div className="send-v2__asset-dropdown__name">
-            <span className="send-v2__asset-dropdown__name__label">
-              {`${t('balance')}:`}
-            </span>
+          <div className="flex text-[13px] text-black">
+            <span>{`${t('balance')}:`}</span>
             <UserPreferencedCurrencyDisplay
               value={balanceValue}
               type={PRIMARY}
@@ -224,7 +213,7 @@ export default class SendAssetRow extends Component {
           </div>
         </div>
         {!insideDropdown && sendableAssets.length > 0 && (
-          <i className="fa fa-caret-down fa-lg send-v2__asset-dropdown__caret" />
+          <i className="fa fa-caret-down fa-md" />
         )}
       </div>
     );
@@ -237,24 +226,18 @@ export default class SendAssetRow extends Component {
     return (
       <div
         key={address}
-        className="send-v2__asset-dropdown__asset"
+        className="flex items-center gap-2 px-2"
         onClick={() => this.selectToken(AssetType.token, token)}
       >
-        <div className="send-v2__asset-dropdown__asset-icon">
-          <Identicon address={address} diameter={36} image={image} />
-        </div>
-        <div className="send-v2__asset-dropdown__asset-data">
-          <div className="send-v2__asset-dropdown__symbol">{symbol}</div>
-          <div className="send-v2__asset-dropdown__name">
-            <span className="send-v2__asset-dropdown__name__label">
-              {`${t('balance')}:`}
-            </span>
+        <Identicon address={address} diameter={36} image={image} />
+        <div className="flex-grow">
+          <div className="text-[13px] text-black font-semibold">{symbol}</div>
+          <div className="text-[13px] text-black">
+            <span>{`${t('balance')}:`}</span>
             <TokenBalance token={token} />
           </div>
         </div>
-        {!insideDropdown && (
-          <i className="fa fa-caret-down fa-lg send-v2__asset-dropdown__caret" />
-        )}
+        {!insideDropdown && <i className="fa fa-caret-down fa-md" />}
       </div>
     );
   }
@@ -267,27 +250,21 @@ export default class SendAssetRow extends Component {
     );
     return (
       <div
+        className="flex items-center gap-2 px-2"
         key={address}
-        className="send-v2__asset-dropdown__asset"
         onClick={() => this.selectToken(AssetType.NFT, nft)}
       >
-        <div className="send-v2__asset-dropdown__asset-icon">
-          <Identicon address={address} diameter={36} image={image} />
-        </div>
-        <div className="send-v2__asset-dropdown__asset-data">
-          <div className="send-v2__asset-dropdown__symbol">
+        <Identicon address={address} diameter={36} image={image} />
+        <div className="flex-grow">
+          <div className="text-[13px] text-black font-semibold">
             {nftCollection.name || name}
           </div>
-          <div className="send-v2__asset-dropdown__name">
-            <span className="send-v2__asset-dropdown__name__label">
-              {`${t('tokenId')}:`}
-            </span>
+          <div className="text-[13px] text-black">
+            <span>{`${t('tokenId')}:`}</span>
             {tokenId}
           </div>
         </div>
-        {!insideDropdown && (
-          <i className="fa fa-caret-down fa-lg send-v2__asset-dropdown__caret" />
-        )}
+        {!insideDropdown && <i className="fa fa-caret-down fa-md" />}
       </div>
     );
   }

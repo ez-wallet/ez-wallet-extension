@@ -102,7 +102,11 @@ export default function SendTransactionScreen() {
           showHexData={showHexData}
           gasIsExcessive={gasIsExcessive}
         />
-        <SendFooter key="send-footer" history={history} />
+        <SendFooter
+          key="send-footer"
+          cancelButtonType="default"
+          history={history}
+        />
       </>
     );
   } else {
@@ -110,45 +114,10 @@ export default function SendTransactionScreen() {
   }
 
   return (
-    <div className="page-container">
+    <div className="w-full px-4">
       <SendHeader history={history} />
       <DomainInput
         userInput={userInput}
-        className="send__to-row"
-        onChange={(address) => dispatch(updateRecipientUserInput(address))}
-        onValidAddressTyped={async (address) => {
-          dispatch(
-            addHistoryEntry(`sendFlow - Valid address typed ${address}`),
-          );
-          await dispatch(updateRecipientUserInput(address));
-          dispatch(updateRecipient({ address, nickname: '' }));
-        }}
-        internalSearch={isUsingMyAccountsForRecipientSearch}
-        selectedAddress={recipient.address}
-        selectedName={recipient.nickname}
-        onPaste={(text) => {
-          dispatch(
-            addHistoryEntry(
-              `sendFlow - User pasted ${text} into address field`,
-            ),
-          );
-        }}
-        onReset={() => dispatch(resetRecipientInput())}
-        scanQrCode={() => {
-          trackEvent({
-            event: 'Used QR scanner',
-            category: EVENT.CATEGORIES.TRANSACTIONS,
-            properties: {
-              action: 'Edit Screen',
-              legacy_event: true,
-            },
-          });
-          dispatch(showQrScanner());
-        }}
-      />
-      <DomainInput
-        userInput={userInput}
-        className="send__to-row"
         onChange={(address) => dispatch(updateRecipientUserInput(address))}
         onValidAddressTyped={async (address) => {
           dispatch(

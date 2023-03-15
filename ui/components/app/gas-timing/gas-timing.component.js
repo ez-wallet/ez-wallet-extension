@@ -164,14 +164,13 @@ export default function GasTiming({
   }
 
   return (
-    <Typography
-      variant={TypographyVariant.H7}
+    <p
       className={classNames('gas-timing', {
         [`gas-timing--${attitude}`]: attitude,
       })}
     >
       {text}
-    </Typography>
+    </p>
   );
 }
 

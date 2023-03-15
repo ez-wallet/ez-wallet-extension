@@ -8,18 +8,6 @@ import { PRIMARY, SECONDARY } from '../../../helpers/constants/common';
 import UserPreferencedCurrencyDisplay from '../../../components/app/user-preferenced-currency-display';
 import GasTiming from '../../../components/app/gas-timing';
 import InfoTooltip from '../../../components/ui/info-tooltip';
-import Typography from '../../../components/ui/typography';
-import Button from '../../../components/ui/button';
-import Box from '../../../components/ui/box';
-import {
-  TypographyVariant,
-  DISPLAY,
-  FLEX_DIRECTION,
-  BLOCK_SIZES,
-  Color,
-  FONT_STYLE,
-  FONT_WEIGHT,
-} from '../../../helpers/constants/design-system';
 import { TokenStandard } from '../../../../shared/constants/transaction';
 import LoadingHeartBeat from '../../../components/ui/loading-heartbeat';
 import TransactionDetailItem from '../../../components/app/transaction-detail-item';
@@ -120,12 +108,7 @@ export default function GasDisplay({ gasError }) {
 
   if (draftTransaction?.asset.type === 'NATIVE') {
     detailTotal = (
-      <Box
-        height={BLOCK_SIZES.MAX}
-        display={DISPLAY.FLEX}
-        flexDirection={FLEX_DIRECTION.COLUMN}
-        className="gas-display__total-value"
-      >
+      <div className="flex flex-col font-bold text-black">
         <LoadingHeartBeat estimateUsed={transactionData?.userFeeLevel} />
         <UserPreferencedCurrencyDisplay
           type={PRIMARY}
@@ -133,7 +116,7 @@ export default function GasDisplay({ gasError }) {
           value={hexTransactionTotal}
           hideLabel={!useNativeCurrencyAsPrimaryCurrency}
         />
-      </Box>
+      </div>
     );
     maxAmount = (
       <UserPreferencedCurrencyDisplay
@@ -152,41 +135,30 @@ export default function GasDisplay({ gasError }) {
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-5">
       {showDepositPopover && (
         <DepositPopover onClose={() => setShowDepositPopover(false)} />
       )}
-      <Box className="gas-display">
+      <div className="w-full shadow-neumorphic bg-grey-6 rounded-xl overflow-hidden">
         <TransactionDetail
           userAcknowledgedGasMissing={false}
           rows={[
             <TransactionDetailItem
               key="gas-item"
               detailTitle={
-                <Box display={DISPLAY.FLEX}>
-                  <Box marginRight={1}>{t('gas')}</Box>
-                  <Typography
-                    as="span"
-                    marginTop={0}
-                    color={Color.textMuted}
-                    fontStyle={FONT_STYLE.ITALIC}
-                    fontWeight={FONT_WEIGHT.NORMAL}
-                    className="gas-display__title__estimate"
-                  >
-                    ({t('transactionDetailGasInfoV2')})
-                  </Typography>
+                <div className="flex">
+                  <div>{t('gas')}</div>
+                  <span>({t('transactionDetailGasInfoV2')})</span>
                   <InfoTooltip
                     contentText={
                       <>
-                        <Typography variant={TypographyVariant.H7}>
+                        <p>
                           {t('transactionDetailGasTooltipIntro', [
                             isMainnet ? t('networkNameEthereum') : '',
                           ])}
-                        </Typography>
-                        <Typography variant={TypographyVariant.H7}>
-                          {t('transactionDetailGasTooltipExplanation')}
-                        </Typography>
-                        <Typography variant={TypographyVariant.H7}>
+                        </p>
+                        <p>{t('transactionDetailGasTooltipExplanation')}</p>
+                        <p>
                           <a
                             href="https://community.metamask.io/t/what-is-gas-why-do-transactions-take-so-long/3172"
                             target="_blank"
@@ -194,56 +166,50 @@ export default function GasDisplay({ gasError }) {
                           >
                             {t('transactionDetailGasTooltipConversion')}
                           </a>
-                        </Typography>
+                        </p>
                       </>
                     }
                     position="right"
                   />
-                </Box>
+                </div>
               }
-              detailTitleColor={Color.textDefault}
               detailText={
                 showCurrencyRateCheck && (
-                  <Box className="gas-display__currency-container">
+                  <div className="text-[15px] text-black font-bold">
                     <LoadingHeartBeat estimateUsed={estimateUsed} />
                     <UserPreferencedCurrencyDisplay
                       type={SECONDARY}
                       value={hexMinimumTransactionFee}
                       hideLabel={Boolean(useNativeCurrencyAsPrimaryCurrency)}
                     />
-                  </Box>
+                  </div>
                 )
               }
               detailTotal={
-                <Box className="gas-display__currency-container">
+                <div className="text-[15px] text-black font-bold">
                   <LoadingHeartBeat estimateUsed={estimateUsed} />
                   <UserPreferencedCurrencyDisplay
                     type={PRIMARY}
                     value={hexMinimumTransactionFee}
                     hideLabel={!useNativeCurrencyAsPrimaryCurrency}
                   />
-                </Box>
+                </div>
               }
               subText={
                 <>
-                  <Box
-                    key="editGasSubTextFeeLabel"
-                    display={DISPLAY.INLINE_FLEX}
-                    className={classNames('gas-display__gas-fee-label', {
-                      'gas-display__gas-fee-warning': estimateUsed === 'high',
+                  <div
+                    className={classNames('flex text-[13px] text-grey', {
+                      'text-yellow-2': estimateUsed === 'high',
                     })}
                   >
                     <LoadingHeartBeat estimateUsed={estimateUsed} />
-                    <Box marginRight={1}>
-                      <strong>
+                    <div className="text-[13px] text-grey">
+                      <p>
                         {estimateUsed === 'high' && '⚠ '}
                         {t('editGasSubTextFeeLabel')}
-                      </strong>
-                    </Box>
-                    <Box
-                      key="editGasSubTextFeeValue"
-                      className="gas-display__currency-container"
-                    >
+                      </p>
+                    </div>
+                    <div className="text-[13px] text-grey">
                       <LoadingHeartBeat estimateUsed={estimateUsed} />
                       <UserPreferencedCurrencyDisplay
                         key="editGasSubTextFeeAmount"
@@ -251,8 +217,8 @@ export default function GasDisplay({ gasError }) {
                         value={hexMaximumTransactionFee}
                         hideLabel={!useNativeCurrencyAsPrimaryCurrency}
                       />
-                    </Box>
-                  </Box>
+                    </div>
+                  </div>
                 </>
               }
               subTitle={
@@ -272,12 +238,7 @@ export default function GasDisplay({ gasError }) {
                 detailTitle={t('total')}
                 detailText={
                   showCurrencyRateCheck && (
-                    <Box
-                      height={BLOCK_SIZES.MAX}
-                      display={DISPLAY.FLEX}
-                      flexDirection={FLEX_DIRECTION.COLUMN}
-                      className="gas-display__total-value"
-                    >
+                    <div className="flex flex-col text-[15px] font-bold text-black">
                       <LoadingHeartBeat
                         estimateUsed={transactionData?.userFeeLevel}
                       />
@@ -287,77 +248,65 @@ export default function GasDisplay({ gasError }) {
                         value={hexTransactionTotal}
                         hideLabel={Boolean(useNativeCurrencyAsPrimaryCurrency)}
                       />
-                    </Box>
+                    </div>
                   )
                 }
                 detailTotal={detailTotal}
                 subTitle={t('transactionDetailGasTotalSubtitle')}
                 subText={
-                  <Box
-                    height={BLOCK_SIZES.MAX}
-                    display={DISPLAY.FLEX}
-                    flexDirection={FLEX_DIRECTION.COLUMN}
-                    className="gas-display__total-amount"
-                  >
+                  <div className="flex text-[13px] text-grey">
                     <LoadingHeartBeat
                       estimateUsed={
                         transactionData?.userFeeLevel ?? estimateUsed
                       }
                     />
-                    <strong key="editGasSubTextAmountLabel">
+                    <p key="editGasSubTextAmountLabel">
                       {t('editGasSubTextAmountLabel')}
-                    </strong>{' '}
+                    </p>
                     {maxAmount}
-                  </Box>
+                  </div>
                 }
               />
             ),
           ]}
         />
-      </Box>
+      </div>
       {(gasError || isInsufficientTokenError) && currentNetworkName && (
-        <Box
-          className="gas-display__warning-message"
-          data-testid="gas-warning-message"
-        >
-          <Box
-            paddingTop={0}
-            paddingRight={4}
-            paddingBottom={4}
-            paddingLeft={4}
-            className="gas-display__confirm-approve-content__warning"
-          >
+        <div data-testid="gas-warning-message">
+          <div className="gas-display__confirm-approve-content__warning">
             <ActionableMessage
               message={
                 isBuyableChain && draftTransaction.asset.type === 'NATIVE' ? (
-                  <Typography variant={TypographyVariant.H7} align="left">
+                  <div className="flex">
                     {t('insufficientCurrencyBuyOrReceive', [
                       nativeCurrency,
                       currentNetworkName,
-                      <Button
-                        type="inline"
-                        className="confirm-page-container-content__link"
-                        onClick={() => {
+                      <a
+                        href="#"
+                        className="text-blue"
+                        onClick={(e) => {
+                          e.preventDefault();
                           setShowDepositPopover(true);
                         }}
                         key={`${nativeCurrency}-buy-button`}
                       >
                         {t('buyAsset', [nativeCurrency])}
-                      </Button>,
-                      <Button
-                        type="inline"
-                        className="gas-display__link"
-                        onClick={() =>
-                          dispatch(showModal({ name: 'ACCOUNT_DETAILS' }))
-                        }
+                      </a>,
+                      <a
+                        href="#"
+                        className="text-blue"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+                        }}
                         key="receive-button"
                       >
                         {t('deposit')}
-                      </Button>,
+                      </a>,
                     ])}
-                  </Typography>
+                  </div>
                 ) : (
-                  <Typography variant={TypographyVariant.H7} align="left">
+                  <div className="flex">
                     {t('insufficientCurrencyBuyOrReceive', [
                       draftTransaction.asset.details?.symbol ?? nativeCurrency,
                       currentNetworkName,
@@ -365,28 +314,28 @@ export default function GasDisplay({ gasError }) {
                         draftTransaction.asset.details?.symbol ??
                           nativeCurrency,
                       ])}`,
-                      <Button
-                        type="inline"
-                        className="gas-display__link"
-                        onClick={() =>
-                          dispatch(showModal({ name: 'ACCOUNT_DETAILS' }))
-                        }
+                      <a
+                        href="#"
+                        className="text-blue"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+                        }}
                         key="receive-button"
                       >
                         {t('deposit')}
-                      </Button>,
+                      </a>,
                     ])}
-                  </Typography>
+                  </div>
                 )
               }
               useIcon
-              iconFillColor="var(--color-error-default)"
               type="danger"
             />
-          </Box>
-        </Box>
+          </div>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 GasDisplay.propTypes = {

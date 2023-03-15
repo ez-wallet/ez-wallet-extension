@@ -118,3 +118,12 @@ select {
   -moz-appearance: none;
   -webkit-appearance: none;
 }
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: none;
+}
