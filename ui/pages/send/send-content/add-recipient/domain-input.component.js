@@ -103,7 +103,7 @@ export default class DomainInput extends Component {
         {hasSelectedAddress && <i className="text-green fa fa-check-circle" />}
         {hasSelectedAddress ? (
           <>
-            <div className="flex flex-grow">
+            <div className="flex flex-grow flex-col">
               <div className="ens-input__selected-input__title">
                 {selectedName || selectedAddress}
               </div>
