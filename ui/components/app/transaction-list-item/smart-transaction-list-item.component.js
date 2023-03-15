@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import classnames from 'classnames';
 import ListItem from '../../ui/list-item';
 import TransactionStatusLabel from '../transaction-status-label/transaction-status-label';
 import TransactionIcon from '../transaction-icon';
@@ -46,33 +47,47 @@ export default function SmartTransactionListItem({
   }
   const showCancelSwapLink =
     smartTransaction.cancellable && !cancelSwapLinkClicked;
-  const className = 'transaction-list-item transaction-list-item--unconfirmed';
+  const className =
+    'transaction-list-item transaction-list-item--unconfirmed flex items-center gap-3';
   const toggleShowDetails = useCallback(() => {
     setShowDetails((prev) => !prev);
   }, []);
   return (
-    <>
+    <div className="px-4 py-2 bg-white shadow-neumorphic rounded-xl">
+      <span className="text-[13px] text-grey">{date}</span>
       <ListItem
         className={className}
         title={title}
         onClick={toggleShowDetails}
         icon={
-          <TransactionIcon category={category} status={displayedStatusKey} />
+          <div
+            className={classnames(
+              'w-[40px] h-[40px] rounded-full bg-grey-2 bg flex items-center justify-center',
+              {
+                'bg-green': category === TransactionGroupCategory.send,
+                'bg-blue': category === TransactionGroupCategory.receive,
+              },
+            )}
+          >
+            <TransactionIcon category={category} status={displayedStatusKey} />
+          </div>
         }
         subtitle={
-          <h3>
+          <div className="flex flex-col">
+            <div className="text-[13px] text-black">{subtitle}</div>
             <TransactionStatusLabel
-              isPending
+              className="text-[13px]"
+              isPending={isPending}
               isEarliestNonce={isEarliestNonce}
-              date={date}
               status={displayedStatusKey}
+              statusOnly
             />
             <SiteOrigin
               className="transaction-list-item__origin"
               siteOrigin={subtitle}
               title={subtitle}
             />
-          </h3>
+          </div>
         }
       >
         {displayedStatusKey === TransactionGroupStatus.pending &&
@@ -109,7 +124,7 @@ export default function SmartTransactionListItem({
           )}
         />
       )}
-    </>
+    </div>
   );
 }
 
