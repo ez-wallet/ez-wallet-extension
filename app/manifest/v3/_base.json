@@ -9,10 +9,10 @@
       "128": "images/icon-ez-wallet.png",
       "512": "images/icon-ez-wallet.png"
     },
-    "default_title": "MetaMask",
+    "default_title": "EZWallet",
     "default_popup": "popup.html"
   },
-  "author": "https://metamask.io",
+  "author": "https://EZWallet.io",
   "background": {
     "service_worker": "app-init.js"
   },
@@ -28,7 +28,11 @@
   },
   "content_scripts": [
     {
-      "matches": ["file://*/*", "http://*/*", "https://*/*"],
+      "matches": [
+        "file://*/*",
+        "http://*/*",
+        "https://*/*"
+      ],
       "js": [
         "disable-console.js",
         "globalthis.js",
@@ -41,8 +45,12 @@
       "all_frames": true
     },
     {
-      "matches": ["*://connect.trezor.io/*/popup.html"],
-      "js": ["vendor/trezor/content-script.js"]
+      "matches": [
+        "*://connect.trezor.io/*/popup.html"
+      ],
+      "js": [
+        "vendor/trezor/content-script.js"
+      ]
     }
   ],
   "default_locale": "en",

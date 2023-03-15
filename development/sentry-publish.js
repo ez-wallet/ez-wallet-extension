@@ -30,12 +30,12 @@ async function start() {
         })
         .option('build-type', {
           default: BuildType.main,
-          description: 'The MetaMask extension build type',
+          description: 'The EZWallet extension build type',
           choices: Object.values(BuildType),
         })
         .option('build-version', {
           default: 0,
-          description: 'The MetaMask extension build version',
+          description: 'The EZWallet extension build version',
           type: 'number',
         }),
   );
