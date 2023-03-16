@@ -90,9 +90,8 @@ export default function GasDisplay({ gasError }) {
   } else if (
     draftTransaction?.asset.details?.standard === TokenStandard.ERC20
   ) {
-    title = `${hexWEIToDecETH(draftTransaction.amount.value)} ${
-      draftTransaction?.asset.details?.symbol
-    }`;
+    title = `${hexWEIToDecETH(draftTransaction.amount.value)} ${draftTransaction?.asset.details?.symbol
+      }`;
   }
 
   const ethTransactionTotalMaxAmount = Number(
@@ -135,7 +134,7 @@ export default function GasDisplay({ gasError }) {
   }
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 mx-4 my-[1.3rem]">
       {showDepositPopover && (
         <DepositPopover onClose={() => setShowDepositPopover(false)} />
       )}
@@ -312,7 +311,7 @@ export default function GasDisplay({ gasError }) {
                       currentNetworkName,
                       `${t('buyAsset', [
                         draftTransaction.asset.details?.symbol ??
-                          nativeCurrency,
+                        nativeCurrency,
                       ])}`,
                       <a
                         href="#"

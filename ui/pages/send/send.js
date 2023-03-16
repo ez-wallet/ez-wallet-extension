@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import {
@@ -31,6 +31,7 @@ const sendSliceIsCustomPriceExcessive = (state) =>
   isCustomPriceExcessive(state, true);
 
 export default function SendTransactionScreen() {
+
   const history = useHistory();
   const startedNewDraftTransaction = useRef(false);
   const stage = useSelector(getSendStage);
@@ -102,11 +103,13 @@ export default function SendTransactionScreen() {
           showHexData={showHexData}
           gasIsExcessive={gasIsExcessive}
         />
-        <SendFooter
-          key="send-footer"
-          cancelButtonType="default"
-          history={history}
-        />
+        <div className='mx-4'>
+          <SendFooter
+            key='send-footer'
+            cancelButtonType='default'
+            history={history}
+          />
+        </div>
       </>
     );
   } else {
@@ -114,41 +117,45 @@ export default function SendTransactionScreen() {
   }
 
   return (
-    <div className="w-full px-4">
-      <SendHeader history={history} />
-      <DomainInput
-        userInput={userInput}
-        onChange={(address) => dispatch(updateRecipientUserInput(address))}
-        onValidAddressTyped={async (address) => {
-          dispatch(
-            addHistoryEntry(`sendFlow - Valid address typed ${address}`),
-          );
-          await dispatch(updateRecipientUserInput(address));
-          dispatch(updateRecipient({ address, nickname: '' }));
-        }}
-        internalSearch={isUsingMyAccountsForRecipientSearch}
-        selectedAddress={recipient.address}
-        selectedName={recipient.nickname}
-        onPaste={(text) => {
-          dispatch(
-            addHistoryEntry(
-              `sendFlow - User pasted ${text} into address field`,
-            ),
-          );
-        }}
-        onReset={() => dispatch(resetRecipientInput())}
-        scanQrCode={() => {
-          trackEvent({
-            event: 'Used QR scanner',
-            category: EVENT.CATEGORIES.TRANSACTIONS,
-            properties: {
-              action: 'Edit Screen',
-              legacy_event: true,
-            },
-          });
-          dispatch(showQrScanner());
-        }}
-      />
+    <div className='w-full'>
+      <div className='mx-4'>
+        <SendHeader history={history} />
+      </div>
+      <div className='mx-4'>
+        <DomainInput
+          userInput={userInput}
+          onChange={(address) => dispatch(updateRecipientUserInput(address))}
+          onValidAddressTyped={async (address) => {
+            dispatch(
+              addHistoryEntry(`sendFlow - Valid address typed ${address}`),
+            );
+            await dispatch(updateRecipientUserInput(address));
+            dispatch(updateRecipient({ address, nickname: '' }));
+          }}
+          internalSearch={isUsingMyAccountsForRecipientSearch}
+          selectedAddress={recipient.address}
+          selectedName={recipient.nickname}
+          onPaste={(text) => {
+            dispatch(
+              addHistoryEntry(
+                `sendFlow - User pasted ${text} into address field`,
+              ),
+            );
+          }}
+          onReset={() => dispatch(resetRecipientInput())}
+          scanQrCode={() => {
+            trackEvent({
+              event: 'Used QR scanner',
+              category: EVENT.CATEGORIES.TRANSACTIONS,
+              properties: {
+                action: 'Edit Screen',
+                legacy_event: true,
+              },
+            });
+            dispatch(showQrScanner());
+          }}
+        />
+      </div>
       {content}
     </div>
   );
