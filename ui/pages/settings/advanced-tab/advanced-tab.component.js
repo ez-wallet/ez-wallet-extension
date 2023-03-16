@@ -735,20 +735,20 @@ export default class AdvancedTab extends PureComponent {
     return (
       <div className="settings-page__body">
         {warning ? <div className="settings-tab__error">{warning}</div> : null}
-        {this.renderStateLogs()}
+        {/* {this.renderStateLogs()}
         {this.renderMobileSync()}
         {this.renderResetAccount()}
         {this.renderAdvancedGasInputInline()}
         {this.renderHexDataOptIn()}
-        {this.renderShowConversionInTestnets()}
+        {this.renderShowConversionInTestnets()} */}
         {this.renderToggleTestNetworks()}
-        {this.renderUseNonceOptIn()}
+        {/* {this.renderUseNonceOptIn()}
         {this.renderAutoLockTimeLimit()}
         {this.renderUserDataBackup()}
         {this.renderRestoreUserData()}
         {notUsingFirefox ? this.renderLedgerLiveControl() : null}
         {this.renderDismissSeedBackupReminderControl()}
-        {this.renderToggleEthSignControl()}
+        {this.renderToggleEthSignControl()} */}
       </div>
     );
   }

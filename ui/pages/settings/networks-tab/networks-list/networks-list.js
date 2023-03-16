@@ -30,7 +30,7 @@ const NetworksList = ({
 
   return (
     <div
-      className={classnames('networks-tab__networks-list', {
+      className={classnames('w-full grid grid-cols-1 gap-5', {
         'networks-tab__networks-list--selection':
           networkIsSelected && !networkDefaultedToProvider,
       })}

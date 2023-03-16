@@ -26,7 +26,7 @@ export default class MenuDroppoComponent extends Component {
 
     return (
       <div
-        className="menu-droppo"
+        className="menu-droppo bg-grey-6 rounded-[20px] shadow-neumorphic"
         key="menu-droppo-drawer"
         data-testid="menu-droppo"
         style={innerStyle}

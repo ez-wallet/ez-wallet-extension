@@ -120,36 +120,41 @@ class SettingsPage extends PureComponent {
 
     return (
       <div
-        className={classnames('main-container settings-page', {
+        className={classnames('w-full', {
           'settings-page--selected': currentPath !== SETTINGS_ROUTE,
         })}
       >
-        <div className="settings-page__header">
+        <div className="w-full px-4">
           <div className="settings-page__header__title-container">
             {currentPath !== SETTINGS_ROUTE && (
-              <ButtonIcon
-                ariaLabel={t('back')}
-                name={ICON_NAMES.ARROW_LEFT}
-                size={ICON_SIZES.XL}
-                color={Color.iconDefault}
-                onClick={() => history.push(backRoute)}
-              />
+              <div className="h-[48px] w-[68px] bg-grey-6 rounded-[50px] shadow-neumorphic flex items-center justify-center">
+                <Icon
+                  size="sm"
+                  name={ICON_NAMES.ARROW_LEFT}
+                  onClick={() => history.push(backRoute)}
+                />
+              </div>
             )}
-
+            {currentPath === SETTINGS_ROUTE && (
+              <div className="h-[48px] w-[68px] " />
+            )}
             {this.renderTitle()}
-            <div
-              className="settings-page__header__title-container__close-button"
-              onClick={() => {
-                if (addNewNetwork) {
-                  history.push(NETWORKS_ROUTE);
-                } else {
-                  history.push(mostRecentOverviewPage);
-                }
-              }}
-            />
+            <div className="h-[48px] w-[68px] bg-grey-6 rounded-[50px] shadow-neumorphic flex items-center justify-center">
+              <Icon
+                name="close"
+                size="sm"
+                onClick={() => {
+                  if (addNewNetwork) {
+                    history.push(NETWORKS_ROUTE);
+                  } else {
+                    history.push(mostRecentOverviewPage);
+                  }
+                }}
+              />
+            </div>
           </div>
 
-          <div className="settings-page__header__search">
+          {/* <div className="settings-page__header__search">
             <SettingsSearch
               onSearch={({ searchQuery = '', results = [] }) => {
                 this.setState({
@@ -166,17 +171,21 @@ class SettingsPage extends PureComponent {
                 onClickSetting={(setting) => this.handleClickSetting(setting)}
               />
             )}
-          </div>
+          </div> */}
         </div>
 
-        <div className="settings-page__content">
-          <div className="settings-page__content__tabs">
-            {this.renderTabs()}
-          </div>
-          <div className="settings-page__content__modules">
-            {isSnapViewPage ? null : this.renderSubHeader()}
-            {this.renderContent()}
-          </div>
+        <div className="settings-page__content px-4">
+          {currentPath === SETTINGS_ROUTE && (
+            <div className="settings-page__content__tabs">
+              {this.renderTabs()}
+            </div>
+          )}
+          {currentPath !== SETTINGS_ROUTE && (
+            <div className="settings-page__content__modules">
+              {/* {isSnapViewPage ? null : this.renderSubHeader()} */}
+              {this.renderContent()}
+            </div>
+          )}
         </div>
       </div>
     );
@@ -193,12 +202,14 @@ class SettingsPage extends PureComponent {
       titleText = t('details');
     } else if (pathnameI18nKey && isPopup) {
       titleText = t(pathnameI18nKey);
+    } else if (pathnameI18nKey) {
+      titleText = t(pathnameI18nKey);
     } else {
       titleText = t('settings');
     }
 
     return (
-      <div className="settings-page__header__title-container__title">
+      <div className="flex-grow text-center text-[19px] font-bold text-black">
         {titleText}
       </div>
     );
@@ -266,58 +277,59 @@ class SettingsPage extends PureComponent {
     const tabs = [
       {
         content: t('general'),
-        icon: <i className="fa fa-cog" />,
+        icon: <Icon name="setting" />,
         key: GENERAL_ROUTE,
       },
       {
         content: t('advanced'),
-        icon: <i className="fas fa-sliders-h" />,
+        icon: <Icon name="messages" />,
         key: ADVANCED_ROUTE,
       },
-      {
-        content: t('contacts'),
-        icon: <Icon name={ICON_NAMES.BOOK} />,
-        key: CONTACT_LIST_ROUTE,
-      },
+
       ///: BEGIN:ONLY_INCLUDE_IN(flask)
-      {
-        content: t('snaps'),
-        icon: (
-          <i className="fa fa-flask" title={t('snapsSettingsDescription')} />
-        ),
-        key: SNAPS_LIST_ROUTE,
-      },
+      // {
+      //   content: t('snaps'),
+      //   icon: (
+      //     <i className="fa fa-flask" title={t('snapsSettingsDescription')} />
+      //   ),
+      //   key: SNAPS_LIST_ROUTE,
+      // },
       ///: END:ONLY_INCLUDE_IN
       {
         content: t('securityAndPrivacy'),
-        icon: <i className="fa fa-lock" />,
+        icon: <Icon name="lock" />,
         key: SECURITY_ROUTE,
       },
       {
-        content: t('alerts'),
-        icon: <Icon name={ICON_NAMES.NOTIFICATION} />,
-        key: ALERTS_ROUTE,
+        content: t('contacts'),
+        icon: <Icon name="call-received" />,
+        key: CONTACT_LIST_ROUTE,
       },
+      // {
+      //   content: t('alerts'),
+      //   icon: <Icon name={ICON_NAMES.NOTIFICATION} />,
+      //   key: ALERTS_ROUTE,
+      // },
       {
         content: t('networks'),
-        icon: <i className="fa fa-plug" />,
+        icon: <Icon name="cloud-connection" />,
         key: NETWORKS_ROUTE,
       },
     ];
 
-    if (this.shouldRenderExperimentalTab) {
-      tabs.push({
-        content: t('experimental'),
-        icon: <i className="fa fa-flask" />,
-        key: EXPERIMENTAL_ROUTE,
-      });
-    }
+    // if (this.shouldRenderExperimentalTab) {
+    //   tabs.push({
+    //     content: t('experimental'),
+    //     icon: <i className="fa fa-flask" />,
+    //     key: EXPERIMENTAL_ROUTE,
+    //   });
+    // }
 
-    tabs.push({
-      content: t('about'),
-      icon: <i className="fa fa-info-circle" />,
-      key: ABOUT_US_ROUTE,
-    });
+    // tabs.push({
+    //   content: t('about'),
+    //   icon: <i className="fa fa-info-circle" />,
+    //   key: ABOUT_US_ROUTE,
+    // });
 
     return (
       <TabBar

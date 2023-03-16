@@ -331,7 +331,7 @@ export default class AccountMenu extends Component {
     ///: END:ONLY_INCLUDE_IN
 
     return (
-      <div className="account-menu">
+      <div className="account-menu bg-grey-6 rounded-[20px] shadow-neumorphic overflow-hidden">
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
         <AccountMenuItem className="account-menu__header">
           {t('myAccounts')}
@@ -361,7 +361,7 @@ export default class AccountMenu extends Component {
           {this.renderScrollButton()}
         </div>
         <div className="account-menu__divider" />
-        <AccountMenuItem
+        {/* <AccountMenuItem
           onClick={() => {
             toggleAccountMenu();
             trackEvent({
@@ -397,14 +397,14 @@ export default class AccountMenu extends Component {
             history.push(IMPORT_ACCOUNT_ROUTE);
           }}
           icon={
-            <IconImport
+            <Icon
               color="var(--color-icon-alternative)"
               ariaLabel={t('importAccount')}
             />
           }
           text={t('importAccount')}
-        />
-        <AccountMenuItem
+        /> */}
+        {/* <AccountMenuItem
           onClick={() => {
             toggleAccountMenu();
             trackEvent({
@@ -450,7 +450,7 @@ export default class AccountMenu extends Component {
             <div className="account-menu__divider" />
           </>
           ///: END:ONLY_INCLUDE_IN
-        }
+        } */}
         <AccountMenuItem
           onClick={() => {
             trackEvent(
@@ -467,9 +467,7 @@ export default class AccountMenu extends Component {
             );
             global.platform.openTab({ url: supportLink });
           }}
-          icon={
-            <Icon name={ICON_NAMES.MESSAGES} color={Color.iconAlternative} />
-          }
+          icon={<Icon name="head-phone" />}
           text={supportText}
         />
 
@@ -485,12 +483,7 @@ export default class AccountMenu extends Component {
               },
             });
           }}
-          icon={
-            <IconCog
-              color="var(--color-icon-alternative)"
-              ariaLabel={t('settings')}
-            />
-          }
+          icon={<Icon name="setting" />}
           text={t('settings')}
         />
       </div>

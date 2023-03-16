@@ -94,16 +94,11 @@ const NetworksTab = ({ addNewNetwork }) => {
   }, [dispatch]);
 
   return (
-    <div className="networks-tab__body">
+    <div className="w-full grid grid-cols-1 gap-5">
       {isFullScreen ? (
         <NetworksFormSubheader addNewNetwork={addNewNetwork} />
       ) : null}
-      <div
-        className={classnames('networks-tab__content', {
-          'networks-tab__content--with-networks-list-popup-footer':
-            !isFullScreen && !shouldRenderNetworkForm,
-        })}
-      >
+      <div className={classnames('w-full grid grid-cols-1 gap-5')}>
         {addNewNetwork ? (
           <NetworksForm
             networksToRender={networksToRender}
@@ -112,7 +107,7 @@ const NetworksTab = ({ addNewNetwork }) => {
             cancelCallback={() => history.push(NETWORKS_ROUTE)}
           />
         ) : (
-          <>
+          <div className="w-full grid grid-cols-1 gap-5">
             <NetworksTabContent
               networkDefaultedToProvider={networkDefaultedToProvider}
               networkIsSelected={networkIsSelected}
@@ -137,7 +132,7 @@ const NetworksTab = ({ addNewNetwork }) => {
                 </Button>
               </div>
             ) : null}
-          </>
+          </div>
         )}
       </div>
     </div>
