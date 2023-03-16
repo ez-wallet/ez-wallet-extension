@@ -10,6 +10,9 @@ module.exports = {
       white: '#FFFFFF',
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter'],
+      },
       colors: {
         green: {
           DEFAULT: '#00E67B',

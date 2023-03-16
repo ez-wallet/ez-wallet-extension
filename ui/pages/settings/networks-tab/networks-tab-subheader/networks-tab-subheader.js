@@ -10,7 +10,7 @@ const NetworksFormSubheader = ({ addNewNetwork }) => {
   const history = useHistory();
 
   return addNewNetwork ? (
-    <div className="networks-tab__subheader">
+    <div className="w-full flex justify-between items-center">
       <span className="networks-tab__sub-header-text">{t('networks')}</span>
       <span className="networks-tab__sub-header-text">{'  >  '}</span>
       <div className="networks-tab__sub-header-text">{t('addANetwork')}</div>
@@ -20,7 +20,7 @@ const NetworksFormSubheader = ({ addNewNetwork }) => {
       </div>
     </div>
   ) : (
-    <div className="settings-page__sub-header">
+    <div className="w-full flex justify-between items-center">
       <span className="settings-page__sub-header-text">{t('networks')}</span>
       <div className="networks-tab__add-network-header-button-wrapper">
         <Button

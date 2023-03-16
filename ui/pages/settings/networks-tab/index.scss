@@ -78,11 +78,7 @@
   }
 
   &__network-form {
-    padding: 16px 24px;
 
-    @include screen-sm-min {
-      padding: 16px;
-    }
 
     .page-container__footer {
       border-top: none;

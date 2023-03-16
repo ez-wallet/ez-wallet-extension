@@ -233,18 +233,19 @@
   &__content {
     display: flex;
     flex-flow: row nowrap;
+    flex-direction: column;
     height: 100%;
     overflow: auto;
-    border-top: 1px solid var(--color-border-muted);
+    padding-top: 20px;
+    padding-bottom: 20px;
 
     &__tabs {
       display: flex;
       flex-direction: column;
       flex: 1 1 auto;
-
+      
       @include screen-sm-min {
-        flex: 0 0 40%;
-        max-width: 197px;
+        width: 100%;
         padding-top: 13px;
       }
 

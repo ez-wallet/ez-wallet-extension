@@ -507,10 +507,10 @@ export default class SecurityTab extends PureComponent {
         <span className="settings-page__security-tab-sub-header">
           {this.context.t('networkProvider')}
         </span>
-        <div className="settings-page__content-padded">
+        {/* <div className="settings-page__content-padded">
           {this.renderChooseYourNetworkButton()}
           {this.renderIpfsGatewayControl()}
-        </div>
+        </div> */}
         <span className="settings-page__security-tab-sub-header">
           {this.context.t('tokenAutoDetection')}
         </span>
@@ -521,9 +521,9 @@ export default class SecurityTab extends PureComponent {
         <span className="settings-page__security-tab-sub-header">
           {this.context.t('metrics')}
         </span>
-        <div className="settings-page__content-padded">
+        {/* <div className="settings-page__content-padded">
           {this.renderMetaMetricsOptIn()}
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -394,10 +394,10 @@ export default class SettingsTab extends PureComponent {
       <div className="settings-page__body">
         {warning ? <div className="settings-tab__error">{warning}</div> : null}
         {this.renderCurrentConversion()}
-        {this.renderUsePrimaryCurrencyOptions()}
-        {this.renderCurrentLocale()}
-        {this.renderTheme()}
-        {this.renderBlockieOptIn()}
+        {/* {this.renderUsePrimaryCurrencyOptions()} */}
+        {/* {this.renderCurrentLocale()} */}
+        {/* {this.renderTheme()} */}
+        {/* {this.renderBlockieOptIn()} */}
         {this.renderHideZeroBalanceTokensOptIn()}
       </div>
     );
