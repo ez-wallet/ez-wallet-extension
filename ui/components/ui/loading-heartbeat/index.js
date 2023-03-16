@@ -10,10 +10,7 @@ import { useShouldAnimateGasEstimations } from '../../../hooks/useShouldAnimateG
 const BASE_CLASS = 'loading-heartbeat';
 const LOADING_CLASS = `${BASE_CLASS}--active`;
 
-export default function LoadingHeartBeat({
-  estimateUsed,
-  backgroundColor = 'var(--color-background-default)',
-}) {
+export default function LoadingHeartBeat({ estimateUsed }) {
   useShouldAnimateGasEstimations();
   const active = useSelector(getGasLoadingAnimationIsShowing);
 
@@ -26,19 +23,17 @@ export default function LoadingHeartBeat({
 
   return (
     <div
-      className={classNames('loading-heartbeat', {
+      className={classNames('loading-heartbeat bg-grey-6', {
         [LOADING_CLASS]: active,
       })}
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
       }}
-      style={{ backgroundColor }}
     ></div>
   );
 }
 
 LoadingHeartBeat.propTypes = {
-  backgroundColor: PropTypes.string,
   estimateUsed: PropTypes.string,
 };

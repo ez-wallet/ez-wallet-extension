@@ -575,7 +575,7 @@ export default class ConfirmTransactionBase extends Component {
     );
 
     return (
-      <div className="confirm-page-container-content__details">
+      <div className="rounded-xl bg-grey-6 shadow-neumorphic mb-5">
         <TransactionAlerts
           setUserAcknowledgedGasMissing={() =>
             this.setUserAcknowledgedGasMissing()
@@ -588,6 +588,7 @@ export default class ConfirmTransactionBase extends Component {
         />
         <TransactionDetail
           disabled={isDisabled()}
+          disableEditGasFeeButton
           userAcknowledgedGasMissing={userAcknowledgedGasMissing}
           onEdit={
             renderSimulationFailureWarning || isMultiLayerFeeNetwork

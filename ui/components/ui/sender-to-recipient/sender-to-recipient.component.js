@@ -47,7 +47,7 @@ function SenderAddress({
   return (
     <div
       className={classnames(
-        'sender-to-recipient__party sender-to-recipient__party--sender',
+        'px-4 py-2 h-[60px] rounded-full shadow-input flex gap-3 items-center',
       )}
       onClick={() => {
         setAddressCopied(true);
@@ -70,14 +70,11 @@ function SenderAddress({
         containerClassName="sender-to-recipient__tooltip-container"
         onHidden={() => setAddressCopied(false)}
       >
-        <div className="sender-to-recipient__name">
-          {addressOnly ? (
-            <span>
-              {`${senderName || shortenAddress(checksummedSenderAddress)}`}
-            </span>
-          ) : (
-            senderName
-          )}
+        <div className="flex-grow flex flex-col">
+          <p className="text-[15px] text-black">{senderName}</p>
+          <p className="text-[13px] text-grey">
+            {shortenAddress(checksummedSenderAddress)}
+          </p>
         </div>
       </Tooltip>
       {warnUserOnAccountMismatch && (
@@ -126,7 +123,7 @@ export function RecipientWithAddress({
   return (
     <>
       <div
-        className="sender-to-recipient__party sender-to-recipient__party--recipient sender-to-recipient__party--recipient-with-address"
+        className="px-4 py-2 h-[60px] rounded-full shadow-input flex gap-3 items-center"
         onClick={() => {
           if (recipientIsOwnedAccount) {
             setAddressCopied(true);
@@ -150,22 +147,16 @@ export function RecipientWithAddress({
           containerClassName="sender-to-recipient__tooltip-container"
           onHidden={() => setAddressCopied(false)}
         >
-          <div
-            className="sender-to-recipient__name"
-            data-testid="sender-to-recipient__name"
-          >
-            {addressOnly
-              ? recipientName ||
-                recipientNickname ||
-                recipientMetadataName ||
-                recipientEns ||
-                shortenAddress(checksummedRecipientAddress)
-              : recipientName ||
-                recipientNickname ||
-                recipientMetadataName ||
-                recipientEns ||
-                shortenAddress(checksummedRecipientAddress) ||
-                t('newContract')}
+          <div className="flex-grow flex flex-col">
+            <p className="text-[15px] text-black">
+              {recipientName ??
+                recipientNickname ??
+                recipientMetadataName ??
+                recipientEns}
+            </p>
+            <p className="text-[13px] text-grey">
+              {shortenAddress(checksummedRecipientAddress)}
+            </p>
           </div>
         </Tooltip>
       </div>
@@ -229,7 +220,10 @@ export default function SenderToRecipient({
 
   return (
     <div
-      className={classnames('sender-to-recipient', variantHash[variant])}
+      className={classnames(
+        'w-full grid grid-cols-1 gap-4 py-4 bg-transparent',
+        variantHash[variant],
+      )}
       data-testid="sender-to-recipient"
     >
       <SenderAddress
@@ -240,7 +234,7 @@ export default function SenderToRecipient({
         senderAddress={senderAddress}
         warnUserOnAccountMismatch={warnUserOnAccountMismatch}
       />
-      <Arrow variant={variant} />
+
       {recipientAddress ? (
         <RecipientWithAddress
           checksummedRecipientAddress={checksummedRecipientAddress}

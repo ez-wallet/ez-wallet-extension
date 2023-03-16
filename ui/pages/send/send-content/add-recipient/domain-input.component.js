@@ -10,7 +10,6 @@ import {
 } from '../../../../../shared/modules/hexstring-utils';
 import {
   ButtonIcon,
-  Icon,
   ICON_NAMES,
 } from '../../../../components/component-library';
 import { IconColor } from '../../../../helpers/constants/design-system';
@@ -95,85 +94,68 @@ export default class DomainInput extends Component {
     const hasSelectedAddress = Boolean(selectedAddress);
 
     return (
-      <div className={classnames('ens-input', className)}>
-        <div
-          className={classnames('ens-input__wrapper', {
-            'ens-input__wrapper__status-icon--error': false,
-            'ens-input__wrapper__status-icon--valid': false,
-            'ens-input__wrapper--valid': hasSelectedAddress,
-          })}
-        >
-          {hasSelectedAddress ? (
-            <i
-              className="ens-input__wrapper__status-icon fa fa-check-circle"
-              style={{ color: 'var(--color-success-default)' }}
-            />
-          ) : (
-            <Icon
-              name={ICON_NAMES.SEARCH}
-              color={IconColor.iconMuted}
-              className="ens-input__wrapper__status-icon"
-            />
-          )}
-          {hasSelectedAddress ? (
-            <>
-              <div className="ens-input__wrapper__input ens-input__wrapper__input--selected">
-                <div className="ens-input__selected-input__title">
-                  {selectedName || selectedAddress}
-                </div>
-                {selectedName !== selectedAddress && (
-                  <div className="ens-input__selected-input__subtitle">
-                    {selectedAddress}
-                  </div>
-                )}
+      <div
+        className={classnames(
+          'flex items-center bg-grey-6 shadow-input rounded-full h-[60px] py-2 px-4 w-full gap-1 mb-3',
+          className,
+        )}
+      >
+        {hasSelectedAddress && <i className="text-green fa fa-check-circle" />}
+        {hasSelectedAddress ? (
+          <>
+            <div className="flex flex-col flex-grow">
+              <div className="ens-input__selected-input__title">
+                {selectedName || selectedAddress}
               </div>
-              <button
-                onClick={this.props.onReset}
-                className="ens-input__wrapper__action-icon-button"
-              >
-                <i
-                  className="fa fa-times"
-                  style={{
-                    color: 'var(--color-icon-default)',
-                  }}
-                  title={t('close')}
-                />
-              </button>
-            </>
-          ) : (
-            <>
-              <input
-                className="ens-input__wrapper__input"
-                type="text"
-                dir="auto"
-                placeholder={t('recipientAddressPlaceholder')}
-                onChange={this.onChange}
-                onPaste={this.onPaste}
-                spellCheck="false"
-                value={selectedAddress || userInput}
-                autoFocus
-                data-testid="ens-input"
-              />
-              <ButtonIcon
-                className="ens-input__wrapper__action-icon-button"
-                onClick={() => {
-                  if (userInput) {
-                    this.props.onReset();
-                  } else {
-                    this.props.scanQrCode();
-                  }
+              {selectedName !== selectedAddress && (
+                <div className="ens-input__selected-input__subtitle">
+                  {selectedAddress}
+                </div>
+              )}
+            </div>
+            <button
+              onClick={this.props.onReset}
+              className="ens-input__wrapper__action-icon-button"
+            >
+              <i
+                className="fa fa-times"
+                style={{
+                  color: 'var(--color-icon-default)',
                 }}
-                iconName={
-                  userInput ? ICON_NAMES.CLOSE : ICON_NAMES.SCAN_BARCODE
-                }
-                ariaLabel={t(userInput ? 'close' : 'scanQrCode')}
-                color={
-                  userInput ? IconColor.iconDefault : IconColor.primaryDefault
-                }
+                title={t('close')}
               />
-            </>
-          )}
-        </div>
+            </button>
+          </>
+        ) : (
+          <div className="flex w-full">
+            <input
+              className="flex-grow border-0 bg-transparent box-border w-full focus:outline-0 text-[15px]"
+              type="text"
+              dir="auto"
+              placeholder={t('recipientAddressPlaceholder')}
+              onChange={this.onChange}
+              onPaste={this.onPaste}
+              spellCheck="false"
+              value={selectedAddress || userInput}
+              autoFocus
+              data-testid="ens-input"
+            />
+            <ButtonIcon
+              onClick={() => {
+                if (userInput) {
+                  this.props.onReset();
+                } else {
+                  this.props.scanQrCode();
+                }
+              }}
+              iconName={userInput ? ICON_NAMES.CLOSE : ICON_NAMES.SCAN_BARCODE}
+              ariaLabel={t(userInput ? 'close' : 'scanQrCode')}
+              color={
+                userInput ? IconColor.iconDefault : IconColor.primaryDefault
+              }
+            />
+          </div>
+        )}
       </div>
     );
   }

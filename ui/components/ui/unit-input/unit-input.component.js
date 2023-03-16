@@ -93,16 +93,19 @@ export default class UnitInput extends PureComponent {
 
     return (
       <div
-        className={classnames('unit-input', { 'unit-input--error': error })}
+        className={classnames(
+          'flex items-center bg-grey-6 shadow-input rounded-full h-[60px] py-2 px-4 gap-1 mb-3',
+          { 'border-red': error },
+        )}
         onClick={this.handleFocus}
       >
-        <div className="unit-input__inputs">
-          <div className="unit-input__input-container">
+        <div className="flex-grow">
+          <div className="flex items-center">
             <input
               data-testid={dataTestId}
               type="number"
               dir="ltr"
-              className={classnames('unit-input__input')}
+              className="text-black bg-transparent"
               value={value}
               placeholder={placeholder}
               onChange={this.handleChange}

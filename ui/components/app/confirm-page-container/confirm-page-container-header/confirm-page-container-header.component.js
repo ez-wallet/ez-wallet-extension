@@ -9,7 +9,7 @@ import NetworkDisplay from '../../network-display';
 import Identicon from '../../../ui/identicon';
 import { shortenAddress } from '../../../../helpers/utils/util';
 import AccountMismatchWarning from '../../../ui/account-mismatch-warning/account-mismatch-warning.component';
-import { useI18nContext } from '../../../../hooks/useI18nContext';
+// import { useI18nContext } from '../../../../hooks/useI18nContext';
 import { Icon, ICON_NAMES } from '../../../component-library';
 
 export default function ConfirmPageContainerHeader({
@@ -19,7 +19,7 @@ export default function ConfirmPageContainerHeader({
   showAccountInHeader,
   children,
 }) {
-  const t = useI18nContext();
+  // const t = useI18nContext();
   const windowType = getEnvironmentType();
   const isFullScreen =
     windowType !== ENVIRONMENT_TYPE_NOTIFICATION &&
@@ -29,39 +29,27 @@ export default function ConfirmPageContainerHeader({
     return children;
   }
   return (
-    <div
-      className="confirm-page-container-header"
-      data-testid="header-container"
-    >
-      <div className="confirm-page-container-header__row">
+    <div data-testid="header-container">
+      <div>
         {showAccountInHeader ? (
-          <div className="confirm-page-container-header__address-container">
+          <div>
             <div className="confirm-page-container-header__address-identicon">
               <Identicon address={accountAddress} diameter={24} />
             </div>
-            <div
-              className="confirm-page-container-header__address"
-              data-testid="header-address"
-            >
+            <div className="" data-testid="header-address">
               {shortenAddress(accountAddress)}
             </div>
             <AccountMismatchWarning address={accountAddress} />
           </div>
         ) : (
           <div
-            className="confirm-page-container-header__back-button-container"
+            className="h-[48px] w-[68px] rounded-[50px] flex items-center justify-center shadow-neumorphic bg-grey-6"
             style={{
               visibility: showEdit ? 'initial' : 'hidden',
             }}
+            onClick={() => onEdit()}
           >
-            <Icon name={ICON_NAMES.ARROW_LEFT} />
-            <span
-              data-testid="confirm-page-back-edit-button"
-              className="confirm-page-container-header__back-button"
-              onClick={() => onEdit()}
-            >
-              {t('edit')}
-            </span>
+            <Icon size="sm" name={ICON_NAMES.ARROW_LEFT} />
           </div>
         )}
         {isFullScreen ? null : <NetworkDisplay />}

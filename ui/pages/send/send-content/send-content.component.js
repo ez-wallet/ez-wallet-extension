@@ -71,20 +71,22 @@ export default class SendContent extends Component {
 
     return (
       <PageContainerContent>
-        <div className="send-v2__form">
-          {assetError ? this.renderError(assetError) : null}
-          {isEthGasPrice
-            ? this.renderWarning(ETH_GAS_PRICE_FETCH_WARNING_KEY)
-            : null}
-          {error ? this.renderError(error) : null}
-          {warning ? this.renderWarning() : null}
-          {showKnownRecipientWarning && !recipientWarningAcknowledged
-            ? this.renderRecipientWarning()
-            : null}
-          <SendAssetRow />
-          <SendAmountRow />
-          {networkOrAccountNotSupports1559 ? <SendGasRow /> : null}
-          {showHexData ? <SendHexDataRow /> : null}
+        <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 px-4">
+            {assetError ? this.renderError(assetError) : null}
+            {isEthGasPrice
+              ? this.renderWarning(ETH_GAS_PRICE_FETCH_WARNING_KEY)
+              : null}
+            {error ? this.renderError(error) : null}
+            {warning ? this.renderWarning() : null}
+            {showKnownRecipientWarning && !recipientWarningAcknowledged
+              ? this.renderRecipientWarning()
+              : null}
+            <SendAssetRow />
+            <SendAmountRow />
+            {networkOrAccountNotSupports1559 ? <SendGasRow /> : null}
+            {showHexData ? <SendHexDataRow /> : null}
+          </div>
           <GasDisplay gasError={gasError} />
         </div>
       </PageContainerContent>
@@ -109,7 +111,6 @@ export default class SendContent extends Component {
         <ActionableMessage
           type="danger"
           useIcon
-          iconFillColor="var(--color-error-default)"
           primaryActionV2={{
             label: t('tooltipApproveButton'),
             onClick: acknowledgeRecipientWarning,

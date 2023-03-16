@@ -24,18 +24,20 @@ export default class SendHexDataRow extends Component {
     const { t } = this.context;
 
     return (
-      <SendRowWrapper
-        label={`${t('hexData')}:`}
-        showError={inError}
-        errorType="amount"
-      >
-        <textarea
-          onInput={this.onInput}
-          placeholder={t('optional')}
-          className="send-v2__hex-data__input"
-          defaultValue={data || ''}
-        />
-      </SendRowWrapper>
+      <div className='mx-4'>
+        <SendRowWrapper
+          label={`${t('hexData')}:`}
+          showError={inError}
+          errorType="amount"
+        >
+          <textarea
+            onInput={this.onInput}
+            placeholder={t('optional')}
+            className="send-v2__hex-data__input"
+            defaultValue={data || ''}
+          />
+        </SendRowWrapper>
+      </div>
     );
   }
 }

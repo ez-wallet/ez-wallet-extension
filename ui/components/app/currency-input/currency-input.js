@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import UnitInput from '../../ui/unit-input';
+import { Icon } from '../../component-library';
 import CurrencyDisplay from '../../ui/currency-display';
 import { I18nContext } from '../../../contexts/i18n';
 import {
@@ -156,7 +157,7 @@ export default function CurrencyInput({
           data-testid="currency-swap"
           onClick={swap}
         >
-          <i className="fa fa-retweet fa-lg" />
+          <Icon name="swap-solid" size="md" />
         </button>
       }
     >

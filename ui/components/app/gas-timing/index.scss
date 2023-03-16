@@ -1,18 +1,18 @@
-.typography.gas-timing {
-  color: var(--color-text-alternative);
+.gas-timing {
+  color: var(--colors-primary-grey_01);
+  font-size: 13px;
 
   &--positive {
-    color: var(--color-success-default);
-    font-weight: bold;
+    color: var(--colors-primary-green_07);
+   
   }
 
   &--warning {
-    color: var(--color-warning-default);
+    color: var(--colors-primary-yellow_01);
   }
 
   &--negative {
-    color: var(--color-warning-default);
-    font-weight: bold;
+    color: var(--colors-primary-yellow_01t);
   }
 
   .info-tooltip {
