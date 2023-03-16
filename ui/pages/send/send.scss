@@ -7,22 +7,14 @@
     justify-content: center;
     background-color: var(--color-background-alternative);
     border-bottom: none;
-    padding: 14px 0 3px 0;
 
     .page-container__title {
       @include H4;
-
       text-align: center;
     }
 
     .page-container__header-close-text {
       @include H5;
-
-      position: absolute;
-      right: 1rem;
-      width: min-content;
-      font-size: 0.75rem;
-      white-space: nowrap;
     }
   }
 
@@ -46,7 +38,6 @@
 
   &__to-row {
     margin: 0;
-    padding: 0.5rem;
     flex: 0 0 auto;
     background-color: var(--color-background-alternative);
     border-bottom: 1px solid var(--color-border-muted);
@@ -108,7 +99,6 @@
       background-color: var(--color-background-alternative);
       color: var(--color-text-alternative);
       padding: 0.5rem 1rem;
-      border-bottom: 1px solid var(--color-border-muted);
 
       &:first-of-type {
         border-top: 1px solid var(--color-border-muted);
@@ -121,7 +111,6 @@
 
       padding: 0.75rem 1rem;
       align-items: center;
-      border-bottom: 1px solid var(--color-border-muted);
       cursor: pointer;
 
       &:hover {
@@ -178,6 +167,9 @@
     padding: 0.75rem 0.5rem;
     border: 1px solid var(--color-border-muted);
     transition: border-color 150ms ease-in-out;
+    background: var(--colors-primary-grey_06);
+    box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.5), inset 2px 2px 4px rgba(170, 170, 204, 0.25), inset 5px 5px 10px rgba(170, 170, 204, 0.2), inset -5px -5px 10px #FFFFFF;
+    border-radius: 40px;
 
     &:focus-within {
       border-color: var(--color-border-default);
@@ -188,29 +180,29 @@
     }
 
     &__input {
-      @include H6;
+      // @include H6;
 
-      flex: 1 1 auto;
-      width: 0;
-      border: 0;
-      outline: none;
-      color: var(--color-text-default);
-      background-color: var(--color-background-default);
+      // flex: 1 1 auto;
+      // width: 0;
+      // border: 0;
+      // outline: none;
+      // color: var(--color-text-default);
+      // background-color: var(--colors-primary-grey_06);
 
-      &::placeholder {
-        color: var(--color-text-muted);
-      }
+      // &::placeholder {
+      //   color: var(--color-text-muted);
+      // }
     }
 
     &__action-icon-button {
-      background: none;
-      border: none;
-      padding: 0 8px;
-      height: 24px;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      // background: none;
+      // border: none;
+      // padding: 0 8px;
+      // height: 24px;
+      // font-size: 16px;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
     }
 
     &--valid {
@@ -222,7 +214,7 @@
 
           @include H7;
 
-          color: var(--color-primary-default);
+          // color: var(--color-primary-default);
         }
       }
     }

@@ -2887,7 +2887,7 @@
     "message": "Receive"
   },
   "recents": {
-    "message": "Recents"
+    "message": "Recent transactions"
   },
   "recipientAddressPlaceholder": {
     "message": "Search, public address (0x), or ENS"

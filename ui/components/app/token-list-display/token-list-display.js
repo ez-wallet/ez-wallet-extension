@@ -36,16 +36,16 @@ export default function TokenListDisplay({ clickHandler }) {
         return (
           <div
             key={address}
-            className="token-list-item"
+            className="flex items-center gap-2 px-2"
             onClick={() => clickHandler(tokenData)}
           >
             <Identicon address={address} diameter={36} image={image} />
-            <div className="token-list-item__data">
-              <div className="token-list-item__symbol">{symbol}</div>
-              <div className="token-list-item__balance">
-                <span className="token-list-item__balance__label">
-                  {`${t('balance')}:`}
-                </span>
+            <div className="flex-grow">
+              <div className="text-[13px] text-black font-semibold">
+                {symbol}
+              </div>
+              <div className="text-[13px] text-black">
+                <span>{`${t('balance')}:`}</span>
                 <TokenBalance token={tokenData} />
               </div>
             </div>

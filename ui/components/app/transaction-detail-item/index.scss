@@ -14,6 +14,8 @@
 
       .currency-display-component {
         margin-left: 4px;
+        color: inherit;
+        font-weight: inherit;
       }
     }
   }
@@ -40,6 +42,8 @@
 
   .currency-display-component {
     display: inline;
+    color: inherit;
+    font-weight: inherit;
   }
 
   &:first-of-type {

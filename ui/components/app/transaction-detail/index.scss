@@ -1,22 +1,22 @@
 .transaction-detail {
-  position: relative;
+  // position: relative;
 
-  .transaction-detail-edit {
-    text-align: end;
-    padding-top: 20px;
+  // .transaction-detail-edit {
+  //   text-align: end;
+  //   padding-top: 20px;
 
-    button {
-      @include H7;
+  //   button {
+  //     @include H7;
 
-      color: var(--color-primary-default);
-      background: transparent;
-      border: 0;
-      padding-inline-end: 0;
-      text-transform: uppercase;
-    }
-  }
+  //     color: var(--color-primary-default);
+  //     background: transparent;
+  //     border: 0;
+  //     padding-inline-end: 0;
+  //     text-transform: uppercase;
+  //   }
+  // }
 
-  &-rows {
-    margin-top: 10px;
-  }
+  // &-rows {
+  //   margin-top: 10px;
+  // }
 }

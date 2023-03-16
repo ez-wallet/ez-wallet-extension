@@ -22,12 +22,12 @@ export default class SendRowWrapper extends Component {
     const customLabelContent = children.length > 1 ? children[0] : null;
 
     return (
-      <div className="send-v2__form-row">
-        <div className="send-v2__form-label">
+      <div className="grid grid-cols-1 gap-2">
+        <div className="text-[15px] font-medium text-black flex justify-between">
           {label}
           {customLabelContent}
         </div>
-        <div className="send-v2__form-field-container">
+        <div className="w-full">
           <div className="send-v2__form-field">{formField}</div>
           <div>
             {showError ? <SendRowErrorMessage errorType={errorType} /> : null}
@@ -47,13 +47,13 @@ export default class SendRowWrapper extends Component {
       (Array.isArray(children) && children.length) > 1 ? children[0] : null;
 
     return (
-      <div className="send-v2__form-row">
-        <div className="send-v2__form-label">
+      <div className="grid grid-cols-1 gap-2">
+        <div className="text-[15px] font-medium text-black">
           {label}
           {showError ? <SendRowErrorMessage errorType={errorType} /> : null}
           {customLabelContent}
         </div>
-        <div className="send-v2__form-field">{formField}</div>
+        <div className="w-full">{formField}</div>
       </div>
     );
   }

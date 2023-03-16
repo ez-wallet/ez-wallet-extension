@@ -39,7 +39,7 @@ export default class PageContainerHeader extends Component {
         onClose && (
           <Button
             type="link"
-            className="page-container__header-close-text"
+            className="rounded-full shadow-neumorphic h-[48px] w-[68px] bg-grey-6 flex justify-center items-center"
             onClick={() => onClose()}
           >
             {headerCloseText}
