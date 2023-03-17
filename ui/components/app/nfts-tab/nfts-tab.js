@@ -27,46 +27,46 @@ import { useNftsCollections } from '../../../hooks/useNftsCollections';
 import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
 
 export default function NftsTab({ onAddNFT }) {
-  const useNftDetection = useSelector(getUseNftDetection);
-  const isMainnet = useSelector(getIsMainnet);
-  const history = useHistory();
-  const t = useI18nContext();
-  const dispatch = useDispatch();
+  // const useNftDetection = useSelector(getUseNftDetection);
+  // const isMainnet = useSelector(getIsMainnet);
+  // const history = useHistory();
+  // const t = useI18nContext();
+  // const dispatch = useDispatch();
 
-  const { nftsLoading, collections, previouslyOwnedCollection } =
-    useNftsCollections();
+  // const { nftsLoading, collections, previouslyOwnedCollection } =
+  //   useNftsCollections();
 
-  const onEnableAutoDetect = () => {
-    history.push(EXPERIMENTAL_ROUTE);
-  };
+  // const onEnableAutoDetect = () => {
+  //   history.push(EXPERIMENTAL_ROUTE);
+  // };
 
-  const onRefresh = () => {
-    if (isMainnet) {
-      dispatch(detectNfts());
-    }
-    checkAndUpdateAllNftsOwnershipStatus();
-  };
+  // const onRefresh = () => {
+  //   if (isMainnet) {
+  //     dispatch(detectNfts());
+  //   }
+  //   checkAndUpdateAllNftsOwnershipStatus();
+  // };
 
-  if (nftsLoading) {
-    return <div className="nfts-tab__loading">{t('loadingNFTs')}</div>;
-  }
+  // if (nftsLoading) {
+  //   return <div className="nfts-tab__loading">{t('loadingNFTs')}</div>;
+  // }
 
   return (
     <Box className="nfts-tab">
-      {Object.keys(collections).length > 0 ||
-      previouslyOwnedCollection.nfts.length > 0 ? (
+      {/* {Object.keys(collections).length > 0 ||
+        previouslyOwnedCollection.nfts.length > 0 ? (
         <NftsItems
           collections={collections}
           previouslyOwnedCollection={previouslyOwnedCollection}
         />
-      ) : (
-        <>
-          {isMainnet && !useNftDetection ? <NftsDetectionNotice /> : null}
-          <Box padding={12}>
-            <Box justifyContent={JustifyContent.center}>
-              <img src="./images/no-nfts.svg" />
-            </Box>
-            <Box
+      ) : ( */}
+      <>
+        {/* {isMainnet && !useNftDetection ? <NftsDetectionNotice /> : null} */}
+        <Box padding={12}>
+          <Box justifyContent={JustifyContent.center}>
+            <img src="./images/coming-soon-nft.svg" />
+          </Box>
+          {/* <Box
               marginTop={4}
               marginBottom={12}
               justifyContent={JustifyContent.center}
@@ -89,11 +89,11 @@ export default function NftsTab({ onAddNFT }) {
               >
                 {t('learnMoreUpperCase')}
               </Button>
-            </Box>
-          </Box>
-        </>
-      )}
-      <Box
+            </Box> */}
+        </Box>
+      </>
+      {/* )} */}
+      {/* <Box
         marginBottom={4}
         justifyContent={JustifyContent.center}
         flexDirection={FLEX_DIRECTION.COLUMN}
@@ -143,7 +143,7 @@ export default function NftsTab({ onAddNFT }) {
             </Button>
           </Box>
         </Box>
-      </Box>
+      </Box> */}
     </Box>
   );
 }

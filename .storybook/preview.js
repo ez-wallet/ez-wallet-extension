@@ -66,7 +66,7 @@ const proxiedBackground = new Proxy(
     get(_, method) {
       return function () {
         action(`Background call: ${method}`)();
-        return new Promise(() => {});
+        return new Promise(() => { });
       };
     },
   },

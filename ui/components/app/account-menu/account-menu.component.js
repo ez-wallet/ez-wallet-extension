@@ -331,7 +331,7 @@ export default class AccountMenu extends Component {
     ///: END:ONLY_INCLUDE_IN
 
     return (
-      <div className="account-menu bg-grey-6 rounded-[20px] shadow-neumorphic overflow-hidden">
+      <div className="account-menu bg-grey-6 rounded-[20px] overflow-hidden">
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
         <AccountMenuItem className="account-menu__header">
           {t('myAccounts')}

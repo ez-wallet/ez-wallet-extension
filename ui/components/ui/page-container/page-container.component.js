@@ -119,18 +119,20 @@ export default class PageContainer extends PureComponent {
     const tabSubmitText = this.getTabSubmitText();
     return (
       <div className="w-full h-full">
-        <PageContainerHeader
-          title={title}
-          subtitle={subtitle}
-          onClose={onClose}
-          showBackButton={showBackButton}
-          onBackButtonClick={onBackButtonClick}
-          backButtonStyles={backButtonStyles}
-          backButtonString={backButtonString}
-          tabs={this.renderTabs()}
-          headerCloseText={headerCloseText}
-        />
-        {this.renderContent()}
+        <div className='px-4'>
+          <PageContainerHeader
+            title={title}
+            subtitle={subtitle}
+            onClose={onClose}
+            showBackButton={showBackButton}
+            onBackButtonClick={onBackButtonClick}
+            backButtonStyles={backButtonStyles}
+            backButtonString={backButtonString}
+            tabs={this.renderTabs()}
+            headerCloseText={headerCloseText}
+          />
+          {this.renderContent()}
+        </div>
         <div className="grid grid-cols-1 gap-3 p-4">
           <Button large type="primary" onClick={onSubmit} disabled={disabled}>
             {tabSubmitText || submitText}

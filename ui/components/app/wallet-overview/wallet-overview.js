@@ -83,7 +83,7 @@ const WalletOverview = ({
           <button
             className="wallet-overview__qr-code"
             onClick={() => {
-              dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+              dispatch(showModal({ name: 'ACCOUNT_QR' }));
               trackEvent({
                 event: EVENT_NAMES.NAV_ACCOUNT_DETAILS_OPENED,
                 category: EVENT.CATEGORIES.NAVIGATION,
