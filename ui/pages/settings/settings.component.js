@@ -25,15 +25,15 @@ import {
   ADD_POPULAR_CUSTOM_NETWORK,
 } from '../../helpers/constants/routes';
 
-import { getSettingsRoutes } from '../../helpers/utils/settings-search';
+// import { getSettingsRoutes } from '../../helpers/utils/settings-search';
 import AddNetwork from '../../components/app/add-network/add-network';
 import {
   Icon,
-  ButtonIcon,
-  ICON_SIZES,
+  // ButtonIcon,
+  // ICON_SIZES,
   ICON_NAMES,
 } from '../../components/component-library';
-import { Color } from '../../helpers/constants/design-system';
+// import { Color } from '../../helpers/constants/design-system';
 import SettingsTab from './settings-tab';
 import AlertsTab from './alerts-tab';
 import NetworksTab from './networks-tab';
@@ -46,8 +46,8 @@ import ExperimentalTab from './experimental-tab';
 import SnapListTab from './flask/snaps-list-tab';
 import ViewSnap from './flask/view-snap';
 ///: END:ONLY_INCLUDE_IN
-import SettingsSearch from './settings-search';
-import SettingsSearchList from './settings-search-list';
+// import SettingsSearch from './settings-search';
+// import SettingsSearchList from './settings-search-list';
 
 class SettingsPage extends PureComponent {
   static propTypes = {
@@ -72,10 +72,10 @@ class SettingsPage extends PureComponent {
   };
 
   state = {
-    isSearchList: false,
+    // isSearchList: false,
     lastFetchedConversionDate: null,
-    searchResults: [],
-    searchText: '',
+    // searchResults: [],
+    // searchText: '',
   };
 
   shouldRenderExperimentalTab =
@@ -100,8 +100,8 @@ class SettingsPage extends PureComponent {
     const { history } = this.props;
     history.push(setting.route);
     this.setState({
-      isSearchList: '',
-      searchResults: '',
+      // isSearchList: '',
+      // searchResults: '',
     });
   }
 
@@ -112,11 +112,11 @@ class SettingsPage extends PureComponent {
       currentPath,
       mostRecentOverviewPage,
       addNewNetwork,
-      isSnapViewPage,
+      // isSnapViewPage,
     } = this.props;
 
-    const { searchResults, isSearchList, searchText } = this.state;
-    const { t } = this.context;
+    // const { searchResults, isSearchList, searchText } = this.state;
+    // const { t } = this.context;
 
     return (
       <div

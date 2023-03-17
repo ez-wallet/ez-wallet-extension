@@ -61,7 +61,7 @@ const ConfirmPageContainer = (props) => {
     image,
     titleComponent,
     subtitleComponent,
-    hideSubtitle,
+    // hideSubtitle,
     detailsComponent,
     dataComponent,
     dataHexComponent,
@@ -322,7 +322,7 @@ const ConfirmPageContainer = (props) => {
 ConfirmPageContainer.propTypes = {
   // Header
   action: PropTypes.string,
-  hideSubtitle: PropTypes.bool,
+  // hideSubtitle: PropTypes.bool,
   onEdit: PropTypes.func,
   showEdit: PropTypes.bool,
   subtitleComponent: PropTypes.node,

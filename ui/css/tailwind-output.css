@@ -651,9 +651,18 @@ html {
   margin-bottom: 1.25rem;
 }
 
+.my-\[1\.3rem\] {
+  margin-top: 1.3rem;
+  margin-bottom: 1.3rem;
+}
+
 .my-\[18px\] {
   margin-top: 18px;
   margin-bottom: 18px;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-3 {
@@ -662,6 +671,10 @@ html {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .mb-6 {
@@ -1105,6 +1118,11 @@ html {
   padding: 1rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -1144,12 +1162,20 @@ html {
   padding-bottom: 1rem;
 }
 
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
 }
 
 .pr-6 {
   padding-right: 1.5rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-left {
@@ -1178,6 +1204,10 @@ html {
 
 .text-\[24px\] {
   font-size: 24px;
+}
+
+.text-\[30px\] {
+  font-size: 30px;
 }
 
 .text-\[32px\] {
@@ -1327,6 +1357,11 @@ html {
 
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.hover\:bg-grey-4:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(210 210 218 / var(--tw-bg-opacity));
 }
 
 .hover\:text-green:hover {
