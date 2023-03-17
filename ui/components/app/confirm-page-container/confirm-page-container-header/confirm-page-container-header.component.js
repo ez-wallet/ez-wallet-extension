@@ -32,7 +32,7 @@ export default function ConfirmPageContainerHeader({
     <div data-testid="header-container">
       <div>
         {showAccountInHeader ? (
-          <div>
+          <div className='mt-[15px]'>
             <div className="confirm-page-container-header__address-identicon">
               <Identicon address={accountAddress} diameter={24} />
             </div>

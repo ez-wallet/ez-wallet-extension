@@ -51,7 +51,7 @@ export default class PageContainerHeader extends Component {
     return (
       onClose && (
         <button
-          className="rounded-full shadow-neumorphic h-[48px] w-[68px] bg-grey-6 flex justify-center items-center"
+          className="h-[48px] w-[68px] bg-grey-6 rounded-[50px] shadow-neumorphic flex items-center justify-center"
           onClick={() => onClose()}
           aria-label="close"
         >

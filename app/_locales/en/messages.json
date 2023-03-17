@@ -172,7 +172,7 @@
     "message": "Add a nickname"
   },
   "addAcquiredTokens": {
-    "message": "Add the tokens you've acquired using MetaMask"
+    "message": "Add the tokens you've acquired using EZWallet"
   },
   "addAlias": {
     "message": "Add alias"
@@ -4074,7 +4074,7 @@
     "message": "Token autodetection"
   },
   "tokenContractAddress": {
-    "message": "Token contract address"
+    "message": "Token address"
   },
   "tokenDecimalFetchFailed": {
     "message": "Token decimal required."

@@ -16,7 +16,7 @@ export default class TokenListPlaceholder extends Component {
         <div className="token-list-placeholder__text">
           {this.context.t('addAcquiredTokens')}
         </div>
-        <Button
+        {/* <Button
           type="link"
           className="token-list-placeholder__link"
           href={ZENDESK_URLS.ADD_CUSTOM_TOKENS}
@@ -24,7 +24,7 @@ export default class TokenListPlaceholder extends Component {
           rel="noopener noreferrer"
         >
           {this.context.t('learnMoreUpperCase')}
-        </Button>
+        </Button> */}
       </div>
     );
   }

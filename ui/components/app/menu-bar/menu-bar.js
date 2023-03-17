@@ -7,7 +7,7 @@ import ConnectedStatusIndicator from '../connected-status-indicator';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
-import { CONNECTED_ACCOUNTS_ROUTE } from '../../../helpers/constants/routes';
+import { CONNECTED_ACCOUNTS_ROUTE, SETTINGS_ROUTE } from '../../../helpers/constants/routes';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { getOriginOfCurrentTab } from '../../../selectors';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
@@ -42,14 +42,15 @@ export default function MenuBar() {
         data-testid="account-options-menu-button"
         ariaLabel={t('accountOptions')}
         onClick={() => {
-          trackEvent({
-            event: EVENT_NAMES.NAV_ACCOUNT_MENU_OPENED,
-            category: EVENT.CATEGORIES.NAVIGATION,
-            properties: {
-              location: 'Home',
-            },
-          });
-          setAccountOptionsMenuOpen(true);
+          history.push(SETTINGS_ROUTE);
+          // trackEvent({
+          //   event: EVENT_NAMES.NAV_ACCOUNT_MENU_OPENED,
+          //   category: EVENT.CATEGORIES.NAVIGATION,
+          //   properties: {
+          //     location: 'Home',
+          //   },
+          // });
+          // setAccountOptionsMenuOpen(true);
         }}
       >
         <Icon name="menu" />
