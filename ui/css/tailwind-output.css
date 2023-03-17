@@ -765,6 +765,10 @@ html {
   height: 60px;
 }
 
+.h-\[80px\] {
+  height: 80px;
+}
+
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -1357,6 +1361,10 @@ html {
 
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.first\:w-full:first-child {
+  width: 100%;
 }
 
 .hover\:bg-grey-4:hover {

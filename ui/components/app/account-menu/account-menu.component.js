@@ -8,7 +8,7 @@ import classnames from 'classnames';
 import {
   EVENT,
   EVENT_NAMES,
-  CONTEXT_PROPS,
+  // CONTEXT_PROPS,
 } from '../../../../shared/constants/metametrics';
 // import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import Identicon from '../../ui/identicon';
@@ -17,35 +17,34 @@ import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display
 import {
   PRIMARY,
   ///: BEGIN:ONLY_INCLUDE_IN(beta,flask)
-  SUPPORT_REQUEST_LINK,
+  // SUPPORT_REQUEST_LINK,
   ///: END:ONLY_INCLUDE_IN
 } from '../../../helpers/constants/common';
 import {
-  SETTINGS_ROUTE,
-  // NEW_ACCOUNT_ROUTE,
-  // IMPORT_ACCOUNT_ROUTE,
+  // SETTINGS_ROUTE,
+  NEW_ACCOUNT_ROUTE,
+  IMPORT_ACCOUNT_ROUTE,
   // CONNECT_HARDWARE_ROUTE,
-  DEFAULT_ROUTE,
+  // DEFAULT_ROUTE,
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
   // NOTIFICATIONS_ROUTE,
   ///: END:ONLY_INCLUDE_IN
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
-import IconCheck from '../../ui/icon/icon-check';
+// import IconCheck from '../../ui/icon/icon-check';
 // import IconCog from '../../ui/icon/icon-cog';
 // import IconImport from '../../ui/icon/icon-import';
 
-import Button from '../../ui/button';
+// import Button from '../../ui/button';
 import SearchIcon from '../../ui/icon/search-icon';
-import { SUPPORT_LINK } from '../../../../shared/lib/ui-utils';
+// import { SUPPORT_LINK } from '../../../../shared/lib/ui-utils';
 // import { Color } from '../../../helpers/constants/design-system';
-import {
-  Icon,
-  // ICON_NAMES,
-  ///: BEGIN:ONLY_INCLUDE_IN(flask)
-  // ICON_SIZES,
-  ///: END:ONLY_INCLUDE_IN
-} from '../../component-library';
+import // Icon,
+// ICON_NAMES,
+///: BEGIN:ONLY_INCLUDE_IN(flask)
+// ICON_SIZES,
+///: END:ONLY_INCLUDE_IN
+'../../component-library';
 import KeyRingLabel from './keyring-label';
 
 export function AccountMenuItem(props) {
@@ -90,7 +89,7 @@ export default class AccountMenu extends Component {
     history: PropTypes.object,
     isAccountMenuOpen: PropTypes.bool,
     keyrings: PropTypes.array,
-    lockMetamask: PropTypes.func,
+    // lockMetamask: PropTypes.func,
     selectedAddress: PropTypes.string,
     setSelectedAccount: PropTypes.func,
     toggleAccountMenu: PropTypes.func,
@@ -215,7 +214,10 @@ export default class AccountMenu extends Component {
 
       return (
         <button
-          className="account-menu__account account-menu__item--clickable"
+          className={classnames('account-menu__account', {
+            'bg-grey-5': isSelected,
+            'bg-grey-6': !isSelected,
+          })}
           onClick={() => {
             this.context.trackEvent({
               category: EVENT.CATEGORIES.NAVIGATION,
@@ -229,20 +231,19 @@ export default class AccountMenu extends Component {
           key={identity.address}
           data-testid="account-menu__account"
         >
-          <div className="account-menu__check-mark">
-            {isSelected ? (
-              <IconCheck color="var(--color-success-default)" />
-            ) : null}
-          </div>
-          <Identicon address={identity.address} diameter={24} />
-          <div className="account-menu__account-info">
-            <div className="account-menu__name">{identity.name || ''}</div>
-            <UserPreferencedCurrencyDisplay
-              className="account-menu__balance"
-              data-testid="account-menu__balance"
-              value={identity.balance}
-              type={PRIMARY}
-            />
+          <Identicon address={identity.address} diameter={44} />
+          <div className="flex flex-col flex-grow">
+            <div className="text-[15px] text-black text-left">
+              {identity.name || ''}
+            </div>
+            <div className="text-[13px] text-grey text-left">
+              <UserPreferencedCurrencyDisplay
+                className="account-menu__balance"
+                data-testid="account-menu__balance"
+                value={identity.balance}
+                type={PRIMARY}
+              />
+            </div>
           </div>
           <KeyRingLabel keyring={keyring} />
           {iconAndNameForOpenSubject ? (
@@ -312,7 +313,7 @@ export default class AccountMenu extends Component {
       shouldShowAccountsSearch,
       isAccountMenuOpen,
       toggleAccountMenu,
-      lockMetamask,
+      // lockMetamask,
       history,
       ///: BEGIN:ONLY_INCLUDE_IN(flask)
       // unreadNotificationsCount,
@@ -323,29 +324,17 @@ export default class AccountMenu extends Component {
       return null;
     }
 
-    let supportText = t('support');
-    let supportLink = SUPPORT_LINK;
+    // let supportText = t('support');
+    // let supportLink = SUPPORT_LINK;
     ///: BEGIN:ONLY_INCLUDE_IN(beta,flask)
-    supportText = t('needHelpSubmitTicket');
-    supportLink = SUPPORT_REQUEST_LINK;
+    // supportText = t('needHelpSubmitTicket');
+    // supportLink = SUPPORT_REQUEST_LINK;
     ///: END:ONLY_INCLUDE_IN
 
     return (
       <div className="account-menu bg-grey-6 rounded-[20px] shadow-neumorphic overflow-hidden">
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
-        <AccountMenuItem className="account-menu__header">
-          {t('myAccounts')}
-          <Button
-            className="account-menu__lock-button"
-            type="secondary"
-            onClick={() => {
-              lockMetamask();
-              history.push(DEFAULT_ROUTE);
-            }}
-          >
-            {t('lock')}
-          </Button>
-        </AccountMenuItem>
+        <div className="p-4 text-[19px] text-black">{t('myAccounts')}</div>
         <div className="account-menu__divider" />
         <div className="account-menu__accounts-container">
           {shouldShowAccountsSearch ? this.renderAccountsSearch() : null}
@@ -361,7 +350,9 @@ export default class AccountMenu extends Component {
           {this.renderScrollButton()}
         </div>
         <div className="account-menu__divider" />
-        {/* <AccountMenuItem
+
+        <AccountMenuItem
+          className="flex items-center gap-4 p-4 cursor-pointer hover:bg-grey-4"
           onClick={() => {
             toggleAccountMenu();
             trackEvent({
@@ -374,16 +365,13 @@ export default class AccountMenu extends Component {
             });
             history.push(NEW_ACCOUNT_ROUTE);
           }}
-          icon={
-            <Icon
-              name={ICON_NAMES.ADD}
-              color={Color.iconAlternative}
-              ariaLabel={t('createAccount')}
-            />
-          }
-          text={t('createAccount')}
-        />
+        >
+          <div className="flex-grow text-[15px] text-black font-medium">
+            {t('createAccount')}
+          </div>
+        </AccountMenuItem>
         <AccountMenuItem
+          className="flex items-center gap-4 p-4 cursor-pointer hover:bg-grey-4"
           onClick={() => {
             toggleAccountMenu();
             trackEvent({
@@ -396,14 +384,11 @@ export default class AccountMenu extends Component {
             });
             history.push(IMPORT_ACCOUNT_ROUTE);
           }}
-          icon={
-            <Icon
-              color="var(--color-icon-alternative)"
-              ariaLabel={t('importAccount')}
-            />
-          }
-          text={t('importAccount')}
-        /> */}
+        >
+          <div className="flex-grow text-[15px] text-black font-medium">
+            {t('importAccount')}
+          </div>
+        </AccountMenuItem>
         {/* <AccountMenuItem
           onClick={() => {
             toggleAccountMenu();
@@ -451,7 +436,7 @@ export default class AccountMenu extends Component {
           </>
           ///: END:ONLY_INCLUDE_IN
         } */}
-        <AccountMenuItem
+        {/* <AccountMenuItem
           onClick={() => {
             trackEvent(
               {
@@ -485,7 +470,7 @@ export default class AccountMenu extends Component {
           }}
           icon={<Icon name="setting" />}
           text={t('settings')}
-        />
+        /> */}
       </div>
     );
   }

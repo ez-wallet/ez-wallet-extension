@@ -5,6 +5,8 @@ import Dropdown from '../../../components/ui/dropdown';
 
 // Subviews
 import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
+import { Icon } from '../../../components/component-library';
+
 import JsonImportView from './json';
 import PrivateKeyImportView from './private-key';
 
@@ -41,9 +43,10 @@ export default class AccountImportSubview extends Component {
 
     return (
       <>
-        <div className="page-container__header">
-          <div className="page-container__title">{t('importAccount')}</div>
-          <div className="page-container__subtitle">
+        <div className="w-full flex flex-col p-4 bg-green-6">
+          <Icon name="import" size="xl" />
+          <div className="text-[32px] text-black">{t('importAccount')}</div>
+          <div className="page-container__subtitle text-[13px] text-black">
             {t('importAccountMsg')}
             <span
               className="new-account-info-link"
@@ -57,13 +60,11 @@ export default class AccountImportSubview extends Component {
             </span>
           </div>
         </div>
-        <div className="new-account-import-form">
-          <div className="new-account-import-form__select-section">
-            <div className="new-account-import-form__select-label">
-              {t('selectType')}
-            </div>
+        <div className="p-4">
+          <div className="flex items-center justify-between">
+            <div className="flex-grow text-[13px]">{t('selectType')}</div>
             <Dropdown
-              className="new-account-import-form__select"
+              className="first:w-full"
               options={menuItems.map((text) => ({ value: text }))}
               selectedOption={type || menuItems[0]}
               onChange={(value) => {
