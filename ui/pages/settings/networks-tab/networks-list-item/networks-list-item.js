@@ -117,10 +117,9 @@ const NetworksListItem = ({
         />
       )}
       <div
-        className={classnames('networks-tab__networks-list-name', {
-          'networks-tab__networks-list-name--selected':
-            displayNetworkListItemAsSelected,
-          'networks-tab__networks-list-name--disabled':
+        className={classnames('text-[15px] text-black', {
+          'font-semibold': displayNetworkListItemAsSelected,
+          'networks-tab__networks-list-name--disabled text-grey':
             currentProviderType !== NETWORK_TYPES.RPC &&
             !displayNetworkListItemAsSelected,
         })}

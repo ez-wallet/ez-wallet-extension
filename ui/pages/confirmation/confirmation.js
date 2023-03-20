@@ -268,7 +268,7 @@ export default function ConfirmationPage({
         );
 
   return (
-    <div className="confirmation-page">
+    <div className="confirmation-page bg-grey-6">
       {pendingConfirmations.length > 1 && (
         <div className="confirmation-page__navigation">
           <p>
@@ -300,7 +300,7 @@ export default function ConfirmationPage({
           </button>
         </div>
       )}
-      <div className="confirmation-page__content">
+      <div className="confirmation-page__content p-4">
         {templatedValues.networkDisplay ? (
           <Box justifyContent="center" marginTop={2}>
             <NetworkDisplay

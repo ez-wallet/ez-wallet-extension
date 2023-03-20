@@ -1,7 +1,7 @@
 import { pick } from 'lodash';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { BorderColor, Size } from '../../../helpers/constants/design-system';
+import { Size } from '../../../helpers/constants/design-system';
 import Box from '../box';
 import Button from '../button';
 import DefinitionList from '../definition-list/definition-list';
@@ -19,13 +19,7 @@ export default function TruncatedDefinitionList({
 
   return (
     <>
-      <Box
-        margin={6}
-        padding={4}
-        paddingBottom={3}
-        borderRadius={Size.LG}
-        borderColor={BorderColor.borderMuted}
-      >
+      <div className="p-4 shadow-input rounded-xl bg-grey-6">
         <DefinitionList
           dictionary={pick(dictionary, prefaceKeys)}
           tooltips={tooltips}
@@ -37,7 +31,7 @@ export default function TruncatedDefinitionList({
         >
           {t('viewAllDetails')}
         </Button>
-      </Box>
+      </div>
       {isPopoverOpen && (
         <Popover
           title={title}

@@ -3,11 +3,8 @@ import React from 'react';
 import { infuraProjectId } from '../../../../shared/constants/network';
 import {
   SEVERITIES,
-  TypographyVariant,
   TEXT_ALIGN,
   DISPLAY,
-  FLEX_DIRECTION,
-  AlignItems,
   JustifyContent,
   BackgroundColor,
 } from '../../../helpers/constants/design-system';
@@ -181,38 +178,29 @@ function getValues(pendingApproval, t, actions, history) {
         ],
       },
       {
-        element: 'Typography',
+        element: 'p',
         key: 'title',
         children: originIsMetaMask
           ? t('wantToAddThisNetwork')
           : t('addEthereumChainConfirmationTitle'),
         props: {
-          variant: TypographyVariant.H3,
-          align: 'center',
-          fontWeight: 'bold',
-          boxProps: {
-            margin: [0, 0, 4],
-          },
+          className: 'text-[19px] text-black font-bold text-center mb-3',
         },
       },
       {
-        element: 'Typography',
+        element: 'p',
         key: 'description',
         children: t('addEthereumChainConfirmationDescription'),
         props: {
-          variant: TypographyVariant.H7,
-          align: 'center',
-          boxProps: {
-            margin: originIsMetaMask ? [0, 8, 4] : [0, 0, 4],
-          },
+          className: 'text-[15px] text-grey text-center mb-3',
         },
       },
       {
-        element: 'Typography',
+        element: 'div',
         key: 'only-add-networks-you-trust',
         children: [
           {
-            element: 'b',
+            element: 'p',
             key: 'bolded-text',
             props: {
               style: { display: originIsMetaMask && '-webkit-box' },
@@ -269,6 +257,7 @@ function getValues(pendingApproval, t, actions, history) {
             key: 'learn-about-risks',
             props: {
               translationKey: 'addEthereumChainConfirmationRisksLearnMore',
+              className: 'text-center',
               variables: [
                 {
                   element: 'a',
@@ -277,6 +266,7 @@ function getValues(pendingApproval, t, actions, history) {
                   props: {
                     href: ZENDESK_URLS.USER_GUIDE_CUSTOM_NETWORKS,
                     target: '__blank',
+                    className: 'text-blue',
                   },
                 },
               ],
@@ -284,13 +274,7 @@ function getValues(pendingApproval, t, actions, history) {
           },
         ],
         props: {
-          variant: TypographyVariant.H7,
-          boxProps: {
-            margin: originIsMetaMask ? [0, 8] : 0,
-            display: DISPLAY.FLEX,
-            flexDirection: FLEX_DIRECTION.COLUMN,
-            alignItems: AlignItems.center,
-          },
+          className: 'text-center text-[15px] text-black mb-3',
         },
       },
       {

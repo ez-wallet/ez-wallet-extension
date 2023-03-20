@@ -26,7 +26,7 @@ import {
 import { defaultNetworksData } from './networks-tab.constants';
 import NetworksTabContent from './networks-tab-content';
 import NetworksForm from './networks-form';
-import NetworksFormSubheader from './networks-tab-subheader';
+// import NetworksFormSubheader from './networks-tab-subheader';
 
 const defaultNetworks = defaultNetworksData.map((network) => ({
   ...network,
@@ -95,9 +95,9 @@ const NetworksTab = ({ addNewNetwork }) => {
 
   return (
     <div className="w-full grid grid-cols-1 gap-5">
-      {isFullScreen ? (
+      {/* {isFullScreen ? (
         <NetworksFormSubheader addNewNetwork={addNewNetwork} />
-      ) : null}
+      ) : null} */}
       <div className={classnames('w-full grid grid-cols-1 gap-5')}>
         {addNewNetwork ? (
           <NetworksForm
@@ -135,6 +135,17 @@ const NetworksTab = ({ addNewNetwork }) => {
           </div>
         )}
       </div>
+      {!addNewNetwork && (
+        <Button
+          type="primary"
+          onClick={(event) => {
+            event.preventDefault();
+            history.push(ADD_POPULAR_CUSTOM_NETWORK);
+          }}
+        >
+          {t('addANetwork')}
+        </Button>
+      )}
     </div>
   );
 };

@@ -2,9 +2,9 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Fuse from 'fuse.js';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import TextField from '../../../../components/ui/text-field';
 import { I18nContext } from '../../../../contexts/i18n';
 import SearchIcon from '../../../../components/ui/icon/search-icon';
+import FormField from '../../../../components/ui/form-field/form-field';
 
 export default function CustomContentSearch({
   onSearch,
@@ -70,13 +70,13 @@ export default function CustomContentSearch({
   };
 
   return (
-    <TextField
+    <FormField
       id="search-networks"
       data-testid="search-networks"
       placeholder={t('customContentSearch')}
       type="text"
       value={searchQueryInput}
-      onChange={(e) => handleSearch(e.target.value)}
+      onChange={(value) => handleSearch(value)}
       error={error}
       fullWidth
       autoFocus
