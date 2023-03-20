@@ -27,7 +27,7 @@ const Dropdown = ({
       className={classnames('relative h-[40px] flex items-center', className)}
     >
       <select
-        className="border-0 shadow-input h-[40px] text-[13px] rounded-full pl-4 pr-6"
+        className="border-0 shadow-input h-[40px] text-[13px] rounded-full pl-4 pr-6 w-full"
         data-testid={dataTestId}
         disabled={disabled}
         title={title}

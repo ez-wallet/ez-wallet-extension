@@ -745,6 +745,10 @@ html {
   display: none;
 }
 
+.\!h-\[100px\] {
+  height: 100px !important;
+}
+
 .h-\[1px\] {
   height: 1px;
 }
@@ -919,6 +923,10 @@ html {
   gap: 30px;
 }
 
+.gap-\[48px\] {
+  gap: 48px;
+}
+
 .gap-\[90px\] {
   gap: 90px;
 }
@@ -980,12 +988,25 @@ html {
   border-radius: 0.75rem;
 }
 
+.\!border-0 {
+  border-width: 0px !important;
+}
+
 .border {
   border-width: 1px;
 }
 
 .border-0 {
   border-width: 0px;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.border-y {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
 }
 
 .border-b {

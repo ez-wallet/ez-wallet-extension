@@ -24,35 +24,26 @@ export default function RecipientGroup({
       data-testid="recipient-group"
     >
       {label && (
-        <div className="send__select-recipient-wrapper__group-label">
-          {label}
-        </div>
+        <div className="text-[15px] text-black-2 font-medium">{label}</div>
       )}
       {items.map(({ address, name }) => (
         <div
           key={address}
           onClick={() => onSelect(address, name)}
-          className={classnames({
-            'send__select-recipient-wrapper__group-item': !addressesEqual(
+          className={classnames('py-2 flex gap-3', {
+            'border-green-2 border-2 rounded-xl': addressesEqual(
               address,
               selectedAddress,
             ),
-            'send__select-recipient-wrapper__group-item--selected':
-              addressesEqual(address, selectedAddress),
           })}
         >
           <Identicon address={address} diameter={28} />
-          <div
-            className="send__select-recipient-wrapper__group-item__content"
-            data-testid="recipient"
-          >
-            <div className="send__select-recipient-wrapper__group-item__title">
+          <div className="flex flex-col flex-grow" data-testid="recipient">
+            <div className="text-[15px] text-black">
               {name || ellipsify(address)}
             </div>
             {name && (
-              <div className="send__select-recipient-wrapper__group-item__subtitle">
-                {ellipsify(address)}
-              </div>
+              <div className="text-[15px] text-grey">{ellipsify(address)}</div>
             )}
           </div>
         </div>

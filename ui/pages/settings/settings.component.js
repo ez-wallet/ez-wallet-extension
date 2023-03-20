@@ -181,7 +181,7 @@ class SettingsPage extends PureComponent {
             </div>
           )}
           {currentPath !== SETTINGS_ROUTE && (
-            <div className="settings-page__content__modules">
+            <div className="flex">
               {/* {isSnapViewPage ? null : this.renderSubHeader()} */}
               {this.renderContent()}
             </div>

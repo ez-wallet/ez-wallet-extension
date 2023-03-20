@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import Identicon from '../../../../components/ui/identicon';
-import Button from '../../../../components/ui/button/button.component';
 import TextField from '../../../../components/ui/text-field';
 import PageContainerFooter from '../../../../components/ui/page-container/page-container-footer';
 import {
   isBurnAddress,
   isValidHexAddress,
 } from '../../../../../shared/modules/hexstring-utils';
+import FormField from '../../../../components/ui/form-field/form-field';
+import Button from '../../../../components/ui/button';
 
 export default class EditContact extends PureComponent {
   static contextTypes = {
@@ -58,46 +58,31 @@ export default class EditContact extends PureComponent {
     }
 
     return (
-      <div className="settings-page__content-row address-book__edit-contact">
-        <div className="settings-page__header address-book__header--edit">
-          <Identicon address={address} diameter={60} />
-          <Button
-            type="link"
-            className="settings-page__address-book-button"
-            onClick={async () => {
-              await removeFromAddressBook(chainId, address);
-              history.push(listRoute);
-            }}
-          >
-            {t('deleteAccount')}
-          </Button>
-        </div>
-        <div className="address-book__edit-contact__content">
-          <div className="address-book__view-contact__group">
-            <div className="address-book__view-contact__group__label">
-              {t('userName')}
-            </div>
-            <TextField
+      <div className="p-4 flex flex-col">
+        <div className="flex flex-col mb-4">
+          <div className="flex flex-col">
+            <div className="text-[15px] text-black">{t('userName')}</div>
+            <FormField
               type="text"
               id="nickname"
               placeholder={this.context.t('addAlias')}
               value={this.state.newName}
-              onChange={(e) => this.setState({ newName: e.target.value })}
+              onChange={(value) => this.setState({ newName: value })}
               fullWidth
               margin="dense"
             />
           </div>
 
-          <div className="address-book__view-contact__group">
-            <div className="address-book__view-contact__group__label">
+          <div className="flex flex-col mb-4">
+            <div className="text-[15px] text-black">
               {t('ethereumPublicAddress')}
             </div>
-            <TextField
+            <FormField
               type="text"
               id="address"
               value={this.state.newAddress}
               error={this.state.error}
-              onChange={(e) => this.setState({ newAddress: e.target.value })}
+              onChange={(value) => this.setState({ newAddress: value })}
               fullWidth
               multiline
               rows={4}
@@ -110,10 +95,8 @@ export default class EditContact extends PureComponent {
             />
           </div>
 
-          <div className="address-book__view-contact__group">
-            <div className="address-book__view-contact__group__label--capitalized">
-              {t('memo')}
-            </div>
+          <div className="flex flex-col mb-4">
+            <div className="text-[15px] text-black capitalize">{t('memo')}</div>
             <TextField
               type="text"
               id="memo"
@@ -125,14 +108,14 @@ export default class EditContact extends PureComponent {
               multiline
               rows={3}
               classes={{
-                inputMultiline: 'address-book__view-contact__text-area',
-                inputRoot: 'address-book__view-contact__text-area-wrapper',
+                inputRoot: 'bg-transparent shadow-input !h-[100px] !border-0',
               }}
             />
           </div>
         </div>
+
         <PageContainerFooter
-          cancelText={this.context.t('cancel')}
+          hideCancel
           onSubmit={async () => {
             if (
               this.state.newAddress !== '' &&
@@ -168,7 +151,7 @@ export default class EditContact extends PureComponent {
           onCancel={() => {
             history.push(`${viewRoute}/${address}`);
           }}
-          submitText={this.context.t('save')}
+          submitText={this.context.t('edit')}
           disabled={
             (this.state.newName === name &&
               this.state.newAddress === address &&
@@ -176,6 +159,16 @@ export default class EditContact extends PureComponent {
             !this.state.newName.trim()
           }
         />
+        <Button
+          large
+          type="danger"
+          onClick={async () => {
+            await removeFromAddressBook(chainId, address);
+            history.push(listRoute);
+          }}
+        >
+          {this.context.t('deleteAccount')}
+        </Button>
       </div>
     );
   }

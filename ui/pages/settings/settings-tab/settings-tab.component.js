@@ -89,28 +89,24 @@ export default class SettingsTab extends PureComponent {
       this.props;
 
     return (
-      <div ref={this.settingsRefs[0]} className="settings-page__content-row">
-        <div className="settings-page__content-item">
-          <span>{t('currencyConversion')}</span>
-          <span className="settings-page__content-description">
-            {lastFetchedConversionDate
-              ? t('updatedWithDate', [
-                  new Date(lastFetchedConversionDate * 1000).toString(),
-                ])
-              : t('noConversionDateAvailable')}
-          </span>
+      <div ref={this.settingsRefs[0]} className="w-full flex flex-col gap-3">
+        <div className="text-[19px] text-black font-bold">
+          {t('currencyConversion')}
         </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <Dropdown
-              data-testid="currency-select"
-              id="select-currency"
-              options={currencyOptions}
-              selectedOption={currentCurrency}
-              onChange={(newCurrency) => setCurrentCurrency(newCurrency)}
-            />
-          </div>
+        <div className="text-[13px] text-grey">
+          {lastFetchedConversionDate
+            ? t('updatedWithDate', [
+                new Date(lastFetchedConversionDate * 1000).toString(),
+              ])
+            : t('noConversionDateAvailable')}
         </div>
+        <Dropdown
+          data-testid="currency-select"
+          id="select-currency"
+          options={currencyOptions}
+          selectedOption={currentCurrency}
+          onChange={(newCurrency) => setCurrentCurrency(newCurrency)}
+        />
       </div>
     );
   }
@@ -156,22 +152,18 @@ export default class SettingsTab extends PureComponent {
       <div
         ref={this.settingsRefs[5]}
         data-testid="hide-zero-balance-tokens"
-        className="settings-page__content-row"
+        className="w-full flex flex-col gap-3"
         id="toggle-zero-balance"
       >
-        <div className="settings-page__content-item">
-          <span>{t('hideZeroBalanceTokens')}</span>
+        <div className="text-[19px] text-black font-bold">
+          {t('hideZeroBalanceTokens')}
         </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <ToggleButton
-              value={hideZeroBalanceTokens}
-              onToggle={(value) => setHideZeroBalanceTokens(!value)}
-              offLabel={t('off')}
-              onLabel={t('on')}
-            />
-          </div>
-        </div>
+        <ToggleButton
+          value={hideZeroBalanceTokens}
+          onToggle={(value) => setHideZeroBalanceTokens(!value)}
+          offLabel={t('off')}
+          onLabel={t('on')}
+        />
       </div>
     );
   }
@@ -391,7 +383,7 @@ export default class SettingsTab extends PureComponent {
     const { warning } = this.props;
 
     return (
-      <div className="settings-page__body">
+      <div className="w-full flex flex-col gap-[48px]">
         {warning ? <div className="settings-tab__error">{warning}</div> : null}
         {this.renderCurrentConversion()}
         {/* {this.renderUsePrimaryCurrencyOptions()} */}

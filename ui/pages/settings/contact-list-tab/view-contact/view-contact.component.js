@@ -13,7 +13,6 @@ import {
 import Tooltip from '../../../../components/ui/tooltip';
 import { useI18nContext } from '../../../../hooks/useI18nContext';
 import { useCopyToClipboard } from '../../../../hooks/useCopyToClipboard';
-import { IconColor } from '../../../../helpers/constants/design-system';
 
 function quadSplit(address) {
   return `0x${address
@@ -39,55 +38,50 @@ function ViewContact({
   }
 
   return (
-    <div className="settings-page__content-row">
-      <div className="settings-page__content-item">
-        <div className="settings-page__header address-book__header">
-          <Identicon address={address} diameter={60} />
-          <div className="address-book__header__name">{name || address}</div>
+    <div className="flex flex-col p-4 gap-5">
+      <div className="flex gap-2">
+        <Identicon address={address} diameter={60} />
+        <div className="flex-grow text-[15px] text-black font-bold">
+          {name || address}
         </div>
-        <div className="address-book__view-contact__group">
-          <Button
-            type="secondary"
-            onClick={() => {
-              history.push(`${editRoute}/${address}`);
-            }}
+      </div>
+
+      <Button
+        type="secondary"
+        onClick={() => {
+          history.push(`${editRoute}/${address}`);
+        }}
+      >
+        {t('edit')}
+      </Button>
+      <div className="flex flex-col">
+        <div className="flex-grow text-[15px] text-black font-bold">
+          {t('ethereumPublicAddress')}
+        </div>
+        <div className="address-book__view-contact__group__value">
+          <div className="flex-grow text-[13px] text-grey">
+            {quadSplit(checkSummedAddress)}
+          </div>
+          <Tooltip
+            position="bottom"
+            title={copied ? t('copiedExclamation') : t('copyToClipboard')}
           >
-            {t('edit')}
-          </Button>
+            <ButtonIcon
+              ariaLabel="copy"
+              className="address-book__view-contact__group__static-address--copy-icon"
+              onClick={() => {
+                handleCopy(checkSummedAddress);
+              }}
+              iconName={copied ? ICON_NAMES.COPY_SUCCESS : ICON_NAMES.COPY}
+              size={ICON_SIZES.LG}
+            />
+          </Tooltip>
         </div>
-        <div className="address-book__view-contact__group">
-          <div className="address-book__view-contact__group__label">
-            {t('ethereumPublicAddress')}
-          </div>
-          <div className="address-book__view-contact__group__value">
-            <div className="address-book__view-contact__group__static-address">
-              {quadSplit(checkSummedAddress)}
-            </div>
-            <Tooltip
-              position="bottom"
-              title={copied ? t('copiedExclamation') : t('copyToClipboard')}
-            >
-              <ButtonIcon
-                ariaLabel="copy"
-                className="address-book__view-contact__group__static-address--copy-icon"
-                onClick={() => {
-                  handleCopy(checkSummedAddress);
-                }}
-                iconName={copied ? ICON_NAMES.COPY_SUCCESS : ICON_NAMES.COPY}
-                size={ICON_SIZES.LG}
-                color={IconColor.primaryDefault}
-              />
-            </Tooltip>
-          </div>
-        </div>
-        <div className="address-book__view-contact__group">
-          <div className="address-book__view-contact__group__label--capitalized">
-            {t('memo')}
-          </div>
-          <div className="address-book__view-contact__group__static-address">
-            {memo}
-          </div>
-        </div>
+      </div>
+
+      <div className="flex flex-col">
+        <div className="text-[15px] text-black font-bold">{t('memo')}</div>
+        <div className="flex-grow text-[13px] text-grey">{memo}</div>
       </div>
     </div>
   );

@@ -97,33 +97,29 @@ export default class SecurityTab extends PureComponent {
     const { history } = this.props;
 
     return (
-      <div ref={this.settingsRefs[0]} className="settings-page__content-row">
-        <div className="settings-page__content-item">
-          <span>{t('revealSeedWords')}</span>
+      <div ref={this.settingsRefs[0]} className="w-full flex flex-col gap-3">
+        <div className="text-[15px] font-bold text-black">
+          {t('revealSeedWords')}
         </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <Button
-              data-testid="reveal-seed-words"
-              type="danger"
-              large
-              onClick={(event) => {
-                event.preventDefault();
-                this.context.trackEvent({
-                  category: EVENT.CATEGORIES.SETTINGS,
-                  event: EVENT_NAMES.KEY_EXPORT_SELECTED,
-                  properties: {
-                    key_type: EVENT.KEY_TYPES.SRP,
-                    location: 'Settings',
-                  },
-                });
-                history.push(REVEAL_SEED_ROUTE);
-              }}
-            >
-              {t('revealSeedWords')}
-            </Button>
-          </div>
-        </div>
+        <Button
+          data-testid="reveal-seed-words"
+          type="danger"
+          large
+          onClick={(event) => {
+            event.preventDefault();
+            this.context.trackEvent({
+              category: EVENT.CATEGORIES.SETTINGS,
+              event: EVENT_NAMES.KEY_EXPORT_SELECTED,
+              properties: {
+                key_type: EVENT.KEY_TYPES.SRP,
+                location: 'Settings',
+              },
+            });
+            history.push(REVEAL_SEED_ROUTE);
+          }}
+        >
+          {t('revealSeedWords')}
+        </Button>
       </div>
     );
   }
@@ -134,44 +130,40 @@ export default class SecurityTab extends PureComponent {
       this.props;
 
     return (
-      <div ref={this.settingsRefs[1]} className="settings-page__content-row">
-        <div className="settings-page__content-item">
-          <span>{t('showIncomingTransactions')}</span>
-          <div className="settings-page__content-description">
-            {t('showIncomingTransactionsDescription', [
-              // TODO: Update to use real link
-              <a
-                href={ETHERSCAN_PRIVACY_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                key="etherscan-privacy-link"
-              >
-                {t('etherscan')}
-              </a>,
-              // TODO: Update to use real link
-              <a
-                href={CONSENSYS_PRIVACY_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                key="ic-consensys-privacy-link"
-              >
-                {t('privacyMsg')}
-              </a>,
-            ])}
-          </div>
+      <div ref={this.settingsRefs[1]} className="w-full flex flex-col gap-3">
+        <div className="text-[15px] font-bold text-black">
+          {t('showIncomingTransactions')}
         </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <ToggleButton
-              value={showIncomingTransactions}
-              onToggle={(value) =>
-                setShowIncomingTransactionsFeatureFlag(!value)
-              }
-              offLabel={t('off')}
-              onLabel={t('on')}
-            />
-          </div>
+        <div className="text-[13px] text-black">
+          {t('showIncomingTransactionsDescription', [
+            // TODO: Update to use real link
+            <a
+              href={ETHERSCAN_PRIVACY_LINK}
+              target="_blank"
+              className="text-blue"
+              rel="noopener noreferrer"
+              key="etherscan-privacy-link"
+            >
+              {t('etherscan')}
+            </a>,
+            // TODO: Update to use real link
+            <a
+              href={CONSENSYS_PRIVACY_LINK}
+              target="_blank"
+              className="text-blue"
+              rel="noopener noreferrer"
+              key="ic-consensys-privacy-link"
+            >
+              {t('privacyMsg')}
+            </a>,
+          ])}
         </div>
+        <ToggleButton
+          value={showIncomingTransactions}
+          onToggle={(value) => setShowIncomingTransactionsFeatureFlag(!value)}
+          offLabel={t('off')}
+          onLabel={t('on')}
+        />
       </div>
     );
   }
@@ -181,23 +173,19 @@ export default class SecurityTab extends PureComponent {
     const { usePhishDetect, setUsePhishDetect } = this.props;
 
     return (
-      <div ref={this.settingsRefs[2]} className="settings-page__content-row">
-        <div className="settings-page__content-item">
-          <span>{t('usePhishingDetection')}</span>
-          <div className="settings-page__content-description">
-            {t('usePhishingDetectionDescription')}
-          </div>
+      <div ref={this.settingsRefs[2]} className="w-full flex flex-col gap-3">
+        <div className="text-[15px] font-bold text-black">
+          {t('usePhishingDetection')}
         </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <ToggleButton
-              value={usePhishDetect}
-              onToggle={(value) => setUsePhishDetect(!value)}
-              offLabel={t('off')}
-              onLabel={t('on')}
-            />
-          </div>
+        <div className="text-[13px] text-black">
+          {t('usePhishingDetectionDescription')}
         </div>
+        <ToggleButton
+          value={usePhishDetect}
+          onToggle={(value) => setUsePhishDetect(!value)}
+          offLabel={t('off')}
+          onLabel={t('on')}
+        />
       </div>
     );
   }
@@ -208,7 +196,7 @@ export default class SecurityTab extends PureComponent {
       this.props;
 
     return (
-      <div ref={this.settingsRefs[3]} className="settings-page__content-row">
+      <div ref={this.settingsRefs[3]} className="w-full flex flex-col">
         <div className="settings-page__content-item">
           <span>{t('participateInMetaMetrics')}</span>
           <div className="settings-page__content-description">
@@ -235,7 +223,7 @@ export default class SecurityTab extends PureComponent {
     return (
       <div
         ref={this.settingsRefs[5]}
-        className="settings-page__content-row"
+        className="w-full flex flex-col"
         data-testid="advanced-setting-choose-your-network"
       >
         <div className="settings-page__content-item">
@@ -318,7 +306,7 @@ export default class SecurityTab extends PureComponent {
     return (
       <div
         ref={this.settingsRefs[6]}
-        className="settings-page__content-row"
+        className="w-full flex flex-col"
         data-testid="setting-ipfs-gateway"
       >
         <div className="settings-page__content-item">
@@ -350,42 +338,39 @@ export default class SecurityTab extends PureComponent {
     return (
       <div
         ref={this.settingsRefs[4]}
-        className="settings-page__content-row"
+        className="w-full flex flex-col gap-3"
         data-testid="advanced-setting-gas-fee-estimation"
       >
-        <div className="settings-page__content-item">
-          <span>{t('autoDetectTokens')}</span>
-          <div className="settings-page__content-description">
-            {t('autoDetectTokensDescription', [
-              // TODO: Update to use real link
-              <a
-                href={AUTO_DETECT_TOKEN_LEARN_MORE_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                key="cyn-consensys-privacy-link"
-              >
-                {startCase(t('learnMore'))}
-              </a>,
-            ])}
-          </div>
+        <div className="text-[15px] font-bold text-black">
+          {t('autoDetectTokens')}
         </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <ToggleButton
-              value={useTokenDetection}
-              onToggle={(value) => {
-                this.toggleSetting(
-                  value,
-                  EVENT_NAMES.KEY_AUTO_DETECT_TOKENS,
-                  EVENT_NAMES.KEY_AUTO_DETECT_TOKENS,
-                  setUseTokenDetection,
-                );
-              }}
-              offLabel={t('off')}
-              onLabel={t('on')}
-            />
-          </div>
+        <div className="text-[13px] text-black">
+          {t('autoDetectTokensDescription', [
+            // TODO: Update to use real link
+            <a
+              href={AUTO_DETECT_TOKEN_LEARN_MORE_LINK}
+              target="_blank"
+              className="text-blue"
+              rel="noopener noreferrer"
+              key="cyn-consensys-privacy-link"
+            >
+              {startCase(t('learnMore'))}
+            </a>,
+          ])}
         </div>
+        <ToggleButton
+          value={useTokenDetection}
+          onToggle={(value) => {
+            this.toggleSetting(
+              value,
+              EVENT_NAMES.KEY_AUTO_DETECT_TOKENS,
+              EVENT_NAMES.KEY_AUTO_DETECT_TOKENS,
+              setUseTokenDetection,
+            );
+          }}
+          offLabel={t('off')}
+          onLabel={t('on')}
+        />
       </div>
     );
   }
@@ -396,30 +381,26 @@ export default class SecurityTab extends PureComponent {
       this.props;
 
     return (
-      <div ref={this.settingsRefs[8]} className="settings-page__content-row">
-        <div className="settings-page__content-item">
-          <span>{t('useMultiAccountBalanceChecker')}</span>
-          <div className="settings-page__content-description">
-            {t('useMultiAccountBalanceCheckerDescription')}
-          </div>
+      <div ref={this.settingsRefs[8]} className="w-full flex flex-col gap-3">
+        <div className="text-[15px] font-bold text-black">
+          {t('useMultiAccountBalanceChecker')}
         </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <ToggleButton
-              value={useMultiAccountBalanceChecker}
-              onToggle={(value) => {
-                this.toggleSetting(
-                  value,
-                  EVENT_NAMES.KEY_BATCH_ACCOUNT_BALANCE_REQUESTS,
-                  EVENT_NAMES.KEY_BATCH_ACCOUNT_BALANCE_REQUESTS,
-                  setUseMultiAccountBalanceChecker,
-                );
-              }}
-              offLabel={t('off')}
-              onLabel={t('on')}
-            />
-          </div>
+        <div className="text-[13px] text-black">
+          {t('useMultiAccountBalanceCheckerDescription')}
         </div>
+        <ToggleButton
+          value={useMultiAccountBalanceChecker}
+          onToggle={(value) => {
+            this.toggleSetting(
+              value,
+              EVENT_NAMES.KEY_BATCH_ACCOUNT_BALANCE_REQUESTS,
+              EVENT_NAMES.KEY_BATCH_ACCOUNT_BALANCE_REQUESTS,
+              setUseMultiAccountBalanceChecker,
+            );
+          }}
+          offLabel={t('off')}
+          onLabel={t('on')}
+        />
       </div>
     );
   }
@@ -429,48 +410,48 @@ export default class SecurityTab extends PureComponent {
     const { useCurrencyRateCheck, setUseCurrencyRateCheck } = this.props;
 
     return (
-      <div ref={this.settingsRefs[9]} className="settings-page__content-row">
-        <div className="settings-page__content-item">
-          <span>{t('currencyRateCheckToggle')}</span>
-          <div className="settings-page__content-description">
-            {t('currencyRateCheckToggleDescription', [
-              <a
-                key="coingecko_link"
-                href={COINGECKO_LINK}
-                rel="noreferrer"
-                target="_blank"
-              >
-                {t('coingecko')}
-              </a>,
-              <a
-                key="cryptocompare_link"
-                href={CRYPTOCOMPARE_LINK}
-                rel="noreferrer"
-                target="_blank"
-              >
-                {t('cryptoCompare')}
-              </a>,
-              <a
-                key="privacy_policy_link"
-                href={PRIVACY_POLICY_LINK}
-                rel="noreferrer"
-                target="_blank"
-              >
-                {t('privacyMsg')}
-              </a>,
-            ])}
-          </div>
+      <div ref={this.settingsRefs[9]} className="w-full flex flex-col gap-3">
+        <div className="text-[15px] font-bold text-black">
+          {t('currencyRateCheckToggle')}
         </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <ToggleButton
-              value={useCurrencyRateCheck}
-              onToggle={(value) => setUseCurrencyRateCheck(!value)}
-              offLabel={t('off')}
-              onLabel={t('on')}
-            />
-          </div>
+        <div className="text-[13px] text-black">
+          {t('currencyRateCheckToggleDescription', [
+            <a
+              key="coingecko_link"
+              className="text-blue"
+              href={COINGECKO_LINK}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {t('coingecko')}
+            </a>,
+            <a
+              key="cryptocompare_link"
+              className="text-blue"
+              href={CRYPTOCOMPARE_LINK}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {t('cryptoCompare')}
+            </a>,
+            <a
+              key="privacy_policy_link"
+              className="text-blue"
+              href={PRIVACY_POLICY_LINK}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {t('privacyMsg')}
+            </a>,
+          ])}
         </div>
+
+        <ToggleButton
+          value={useCurrencyRateCheck}
+          onToggle={(value) => setUseCurrencyRateCheck(!value)}
+          offLabel={t('off')}
+          onLabel={t('on')}
+        />
       </div>
     );
   }
@@ -479,51 +460,57 @@ export default class SecurityTab extends PureComponent {
     const { warning } = this.props;
 
     return (
-      <div className="settings-page__body">
+      <div className="flex flex-col gap-[48px]">
         {warning ? <div className="settings-tab__error">{warning}</div> : null}
-        <span className="settings-page__security-tab-sub-header__bold">
-          {this.context.t('security')}
-        </span>
-        <div className="settings-page__content-padded">
-          {this.renderSeedWords()}
+        <div className="w-full">
+          <div className="text-[19px] text-black font-bold">
+            {this.context.t('security')}
+          </div>
+          <div className="settings-page__content-padded">
+            {this.renderSeedWords()}
+          </div>
         </div>
-        <span className="settings-page__security-tab-sub-header__bold">
-          {this.context.t('privacy')}
-        </span>
-        <div>
-          <span className="settings-page__security-tab-sub-header">Alerts</span>
-        </div>
-        <div className="settings-page__content-padded">
-          {this.renderPhishingDetectionToggle()}
-        </div>
+        <div className="w-full flex flex-col gap-[48px]">
+          <div className="text-[19px] text-black font-bold">
+            {this.context.t('privacy')}
+          </div>
+          <div className="w-full">
+            <div className="text-[15px] text-grey font-bold">Alerts</div>
+            <div className="settings-page__content-padded">
+              {this.renderPhishingDetectionToggle()}
+            </div>
+          </div>
+          <div className="w-full">
+            <div className="text-[15px] text-grey font-bold">
+              {this.context.t('transactions')}
+            </div>
+            <div className="settings-page__content-padded">
+              {this.renderCurrencyRateCheckToggle()}
+              {this.renderIncomingTransactionsOptIn()}
+            </div>
+          </div>
 
-        <span className="settings-page__security-tab-sub-header">
-          {this.context.t('transactions')}
-        </span>
-        <div className="settings-page__content-padded">
-          {this.renderCurrencyRateCheckToggle()}
-          {this.renderIncomingTransactionsOptIn()}
-        </div>
-        <span className="settings-page__security-tab-sub-header">
-          {this.context.t('networkProvider')}
-        </span>
-        {/* <div className="settings-page__content-padded">
+          <div className="text-[15px] text-grey font-bold">
+            {this.context.t('networkProvider')}
+          </div>
+          {/* <div className="settings-page__content-padded">
           {this.renderChooseYourNetworkButton()}
           {this.renderIpfsGatewayControl()}
         </div> */}
-        <span className="settings-page__security-tab-sub-header">
-          {this.context.t('tokenAutoDetection')}
-        </span>
-        <div className="settings-page__content-padded">
-          {this.renderAutoDectectTokensToggle()}
-          {this.renderBatchAccountBalanceRequestsToggle()}
-        </div>
-        <span className="settings-page__security-tab-sub-header">
+          <span className="text-[15px] font-bold text-black">
+            {this.context.t('tokenAutoDetection')}
+          </span>
+          <div className="settings-page__content-padded">
+            {this.renderAutoDectectTokensToggle()}
+            {this.renderBatchAccountBalanceRequestsToggle()}
+          </div>
+          {/* <span className="settings-page__security-tab-sub-header">
           {this.context.t('metrics')}
         </span>
-        {/* <div className="settings-page__content-padded">
+        <div className="settings-page__content-padded">
           {this.renderMetaMetricsOptIn()}
         </div> */}
+        </div>
       </div>
     );
   }
