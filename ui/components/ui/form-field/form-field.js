@@ -142,14 +142,8 @@ export default function FormField({
             </button>
           )}
         </div>
-        {error && (
-          <p className="text-[13px] border border-red text-red">{error}</p>
-        )}
-        {warning && (
-          <p className="text-[13px] border border-yellow text-yellow">
-            {warning}
-          </p>
-        )}
+        {error && <p className="text-[13px] text-red">{error}</p>}
+        {warning && <p className="text-[13px] text-yellow">{warning}</p>}
         {passwordStrength && <p className="text-[13px]">{passwordStrength}</p>}
         {passwordStrengthText && (
           <p className="text-[13px]">{passwordStrengthText}</p>

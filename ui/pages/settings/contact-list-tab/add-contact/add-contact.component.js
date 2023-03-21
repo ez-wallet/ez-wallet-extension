@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 import Identicon from '../../../../components/ui/identicon';
-import TextField from '../../../../components/ui/text-field';
 import { CONTACT_LIST_ROUTE } from '../../../../helpers/constants/routes';
 import { isValidDomainName } from '../../../../helpers/utils/util';
 import DomainInput from '../../../send/send-content/add-recipient/domain-input';
@@ -12,6 +11,7 @@ import {
   isValidHexAddress,
 } from '../../../../../shared/modules/hexstring-utils';
 import { INVALID_RECIPIENT_ADDRESS_ERROR } from '../../../send/send.constants';
+import FormField from '../../../../components/ui/form-field/form-field';
 
 export default class AddContact extends PureComponent {
   static contextTypes = {
@@ -105,44 +105,35 @@ export default class AddContact extends PureComponent {
     const errorToRender = domainError || this.state.error;
 
     return (
-      <div className="settings-page__content-row address-book__add-contact">
+      <div className="w-full flex flex-col gap-4">
         {domainResolution && (
-          <div className="address-book__view-contact__group">
+          <div className="flex flex-col gap-3">
             <Identicon address={domainResolution} diameter={60} />
-            <div className="address-book__view-contact__group__value">
-              {domainResolution}
-            </div>
+            <div className="text-[13px] text-black">{domainResolution}</div>
           </div>
         )}
-        <div className="address-book__add-contact__content">
-          <div className="address-book__view-contact__group">
-            <div className="address-book__view-contact__group__label">
-              {t('userName')}
-            </div>
-            <TextField
-              type="text"
-              id="nickname"
-              value={this.state.newName}
-              onChange={(e) => this.setState({ newName: e.target.value })}
-              fullWidth
-              margin="dense"
-            />
+        <div className="flex flex-col gap-3">
+          <div className="text-[15px] text-black">{t('userName')}</div>
+          <FormField
+            type="text"
+            id="nickname"
+            value={this.state.newName}
+            onChange={(value) => this.setState({ newName: value })}
+            fullWidth
+            margin="dense"
+          />
+        </div>
+        <div className="flex flex-col gap-3">
+          <div className="text-[15px] text-black">
+            {t('ethereumPublicAddress')}
           </div>
-
-          <div className="address-book__view-contact__group">
-            <div className="address-book__view-contact__group__label">
-              {t('ethereumPublicAddress')}
-            </div>
-            {this.renderInput()}
-            {errorToRender && (
-              <div className="address-book__add-contact__error">
-                {t(errorToRender)}
-              </div>
-            )}
-          </div>
+          {this.renderInput()}
+          {errorToRender && (
+            <div className="text-[13px] text-red">{t(errorToRender)}</div>
+          )}
         </div>
         <PageContainerFooter
-          cancelText={this.context.t('cancel')}
+          hideCancel
           disabled={Boolean(
             this.state.error ||
               !this.state.ethAddress ||

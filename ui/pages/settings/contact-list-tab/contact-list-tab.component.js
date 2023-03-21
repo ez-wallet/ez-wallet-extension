@@ -5,18 +5,13 @@ import ContactList from '../../../components/app/contact-list';
 import {
   CONTACT_ADD_ROUTE,
   CONTACT_VIEW_ROUTE,
+  CONTACT_LIST_ROUTE,
 } from '../../../helpers/constants/routes';
 import Button from '../../../components/ui/button';
 import {
   getNumberOfSettingsInSection,
   handleSettingsRefs,
 } from '../../../helpers/utils/settings-search';
-import {
-  Icon,
-  ICON_NAMES,
-  ICON_SIZES,
-} from '../../../components/component-library';
-import { Color } from '../../../helpers/constants/design-system';
 import EditContact from './edit-contact';
 import AddContact from './add-contact';
 import ViewContact from './view-contact';
@@ -76,26 +71,20 @@ export default class ContactListTab extends Component {
       );
     }
     return (
-      <div className="address-book__container">
+      <div className="w-full p-4 rounded-xl shadow-neumorphic flex flex-col gap-4">
         <div>
-          <Icon
-            name={ICON_NAMES.BOOK}
-            color={Color.iconMuted}
-            className="address-book__icon"
-            size={ICON_SIZES.XL}
-          />
-          <h4 className="address-book__title">{t('buildContactList')}</h4>
-          <p className="address-book__sub-title">
-            {t('addFriendsAndAddresses')}
-          </p>
-          <button
-            className="address-book__link"
+          <img className="w-full" alt="contact" src="./images/contact.svg" />
+          {/* <h4 className="address-book__title">{t('buildContactList')}</h4> */}
+
+          <Button
+            type="primary"
+            large
             onClick={() => {
               history.push(CONTACT_ADD_ROUTE);
             }}
           >
-            + {t('addContact')}
-          </button>
+            {t('addContact')}
+          </Button>
         </div>
       </div>
     );
@@ -105,21 +94,18 @@ export default class ContactListTab extends Component {
     const { history, viewingContact, editingContact } = this.props;
 
     return (
-      <div className="address-book-add-button">
-        <Button
-          className={classnames({
-            'address-book-add-button__button': true,
-            'address-book-add-button__button--hidden':
-              viewingContact || editingContact,
-          })}
-          type="secondary"
-          onClick={() => {
-            history.push(CONTACT_ADD_ROUTE);
-          }}
-        >
-          {this.context.t('addContact')}
-        </Button>
-      </div>
+      <Button
+        large
+        type="primary"
+        className={classnames({
+          hidden: viewingContact || editingContact,
+        })}
+        onClick={() => {
+          history.push(CONTACT_ADD_ROUTE);
+        }}
+      >
+        {this.context.t('addContact')}
+      </Button>
     );
   }
 
@@ -144,13 +130,7 @@ export default class ContactListTab extends Component {
       ContactContentComponent = AddContact;
     }
 
-    return (
-      ContactContentComponent && (
-        <div className="address-book-contact-content">
-          <ContactContentComponent />
-        </div>
-      )
-    );
+    return ContactContentComponent && <ContactContentComponent />;
   }
 
   renderAddressBookContent() {
@@ -167,12 +147,12 @@ export default class ContactListTab extends Component {
   }
 
   render() {
-    const { addingContact, addressBook } = this.props;
-
+    const { addingContact, addressBook, history } = this.props;
     return (
-      <div className="address-book-wrapper">
-        {this.renderAddressBookContent()}
-        {this.renderContactContent()}
+      <div className="w-full h-full flex flex-col gap-5">
+        {history.location.pathname === CONTACT_LIST_ROUTE
+          ? this.renderAddressBookContent()
+          : this.renderContactContent()}
         {!addingContact && addressBook.length > 0
           ? this.renderAddButton()
           : null}

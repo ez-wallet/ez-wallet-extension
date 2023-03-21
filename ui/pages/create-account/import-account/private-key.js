@@ -91,25 +91,22 @@ class PrivateKeyImportView extends Component {
 
     return (
       <div className="new-account-import-form__private-key">
-        <span className="new-account-import-form__instruction">
+        <span className="text-[13px] text-grey mb-2">
           {this.context.t('pastePrivateKey')}
         </span>
-        <div className="new-account-import-form__private-key-password-container">
-          <input
-            className="new-account-import-form__input-password"
-            type="password"
-            id="private-key-box"
-            onKeyPress={(e) => this.createKeyringOnEnter(e)}
-            onChange={() => this.checkInputEmpty()}
-            ref={this.inputRef}
-            autoFocus
-          />
-        </div>
-        <div className="new-account-import-form__buttons">
+        <input
+          className="w-full mb-5 h-[80px] border rounded-lg border-grey-5 p-2"
+          type="password"
+          id="private-key-box"
+          onKeyPress={(e) => this.createKeyringOnEnter(e)}
+          onChange={() => this.checkInputEmpty()}
+          ref={this.inputRef}
+          autoFocus
+        />
+        <div className="w-full flex flex-col gap-5">
           <Button
-            type="secondary"
+            type="default"
             large
-            className="new-account-create-form__button"
             onClick={() => {
               const { history, mostRecentOverviewPage } = this.props;
               displayWarning(null);
@@ -121,7 +118,6 @@ class PrivateKeyImportView extends Component {
           <Button
             type="primary"
             large
-            className="new-account-create-form__button"
             onClick={() => this.createNewKeychain()}
             disabled={this.state.isEmpty}
           >

@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useI18nContext } from '../../../../hooks/useI18nContext';
 import CustomContentSearch from '../custom-content-search';
-import Typography from '../../../../components/ui/typography';
-import {
-  Color,
-  TypographyVariant,
-} from '../../../../helpers/constants/design-system';
 import NetworksListItem from '../networks-list-item';
 
 const NetworksList = ({
@@ -51,36 +46,37 @@ const NetworksList = ({
         networksList={networksToRender}
         searchQueryInput={searchQuery}
       />
-      {searchedNetworksToRenderThatAreNotTestNetworks.map((network, _) => (
-        <NetworksListItem
-          key={`settings-network-list:${network.rpcUrl}`}
-          network={network}
-          networkIsSelected={networkIsSelected}
-          selectedRpcUrl={selectedRpcUrl}
-          setSearchQuery={setSearchQuery}
-          setSearchedNetworks={setSearchedNetworks}
-        />
-      ))}
-      {searchQuery === '' && (
-        <Typography
-          variant={TypographyVariant.H6}
-          marginTop={4}
-          color={Color.textAlternative}
-          className="networks-tab__networks-list__label"
-        >
-          {t('testNetworks')}
-        </Typography>
-      )}
-      {searchedNetworksToRenderThatAreTestNetworks.map((network, _) => (
-        <NetworksListItem
-          key={`settings-network-list:${network.rpcUrl}`}
-          network={network}
-          networkIsSelected={networkIsSelected}
-          selectedRpcUrl={selectedRpcUrl}
-          setSearchQuery={setSearchQuery}
-          setSearchedNetworks={setSearchedNetworks}
-        />
-      ))}
+      <div className="p-4 shadow-neumorphic bg-grey-6 rounded-xl flex flex-col gap-5">
+        <p className="text-[19px] text-black font-bold">{t('mainnet')}</p>
+        {searchedNetworksToRenderThatAreNotTestNetworks.map((network, _) => (
+          <NetworksListItem
+            key={`settings-network-list:${network.rpcUrl}`}
+            network={network}
+            networkIsSelected={networkIsSelected}
+            selectedRpcUrl={selectedRpcUrl}
+            setSearchQuery={setSearchQuery}
+            setSearchedNetworks={setSearchedNetworks}
+          />
+        ))}
+      </div>
+
+      <div className="p-4 shadow-neumorphic bg-grey-6 rounded-xl flex flex-col gap-5">
+        {searchQuery === '' && (
+          <p className="text-[19px] text-black font-bold">
+            {t('testNetworks')}
+          </p>
+        )}
+        {searchedNetworksToRenderThatAreTestNetworks.map((network, _) => (
+          <NetworksListItem
+            key={`settings-network-list:${network.rpcUrl}`}
+            network={network}
+            networkIsSelected={networkIsSelected}
+            selectedRpcUrl={selectedRpcUrl}
+            setSearchQuery={setSearchQuery}
+            setSearchedNetworks={setSearchedNetworks}
+          />
+        ))}
+      </div>
     </div>
   );
 };

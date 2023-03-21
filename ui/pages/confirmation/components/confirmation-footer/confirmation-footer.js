@@ -11,16 +11,17 @@ export default function ConfirmationFooter({
   alerts,
 }) {
   return (
-    <div className="confirmation-footer">
+    <div className="confirmation-footer px-4 mb-4">
       {alerts}
-      <div className="confirmation-footer__actions">
+      <div className="w-full flex flex-col gap-3">
         {onCancel ? (
-          <Button type="secondary" onClick={onCancel}>
+          <Button type="default" large onClick={onCancel}>
             {cancelText}
           </Button>
         ) : null}
         <Button
           type="primary"
+          large
           onClick={onSubmit}
           className={classnames({
             centered: !onCancel,

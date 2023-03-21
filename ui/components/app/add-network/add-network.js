@@ -36,6 +36,7 @@ import { FEATURED_RPCS } from '../../../../shared/constants/network';
 import { ADD_NETWORK_ROUTE } from '../../../helpers/constants/routes';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
+import { Icon } from '../../component-library';
 
 const AddNetwork = () => {
   const t = useContext(I18nContext);
@@ -129,8 +130,8 @@ const AddNetwork = () => {
           </Box>
         </Box>
       ) : (
-        <Box className="add-network__networks-container">
-          {getEnvironmentType() === ENVIRONMENT_TYPE_FULLSCREEN && (
+        <div className="w-full">
+          {/* {getEnvironmentType() === ENVIRONMENT_TYPE_FULLSCREEN && (
             <Box
               display={DISPLAY.FLEX}
               alignItems={AlignItems.center}
@@ -154,62 +155,27 @@ const AddNetwork = () => {
                 {t('addANetwork')}
               </Typography>
             </Box>
-          )}
-          <Box
-            marginTop={getEnvironmentType() === ENVIRONMENT_TYPE_POPUP ? 0 : 4}
-            marginBottom={1}
-            className="add-network__main-container"
-          >
-            <Typography
-              variant={TypographyVariant.H6}
-              color={TextColor.textAlternative}
-              margin={0}
-              marginTop={4}
-            >
-              {t('addFromAListOfPopularNetworks')}
-            </Typography>
-            <Typography
-              variant={TypographyVariant.H7}
-              color={TextColor.textMuted}
-              marginTop={4}
-              marginBottom={3}
-            >
+          )} */}
+          <div className="w-full">
+            <p className="text-[15px] text-black">
               {t('popularCustomNetworks')}
-            </Typography>
+            </p>
             {notFrequentRpcNetworks.map((item, index) => (
-              <Box
+              <div
                 key={index}
-                display={DISPLAY.FLEX}
-                alignItems={AlignItems.center}
-                justifyContent={JustifyContent.spaceBetween}
-                marginBottom={6}
-                className="add-network__list-of-networks"
+                className="flex w-full items-center justify-center py-4 gap-2"
               >
-                <Box display={DISPLAY.FLEX} alignItems={AlignItems.center}>
-                  <Box>
-                    <IconBorder size={24}>
-                      <IconWithFallback
-                        icon={item.rpcPrefs.imageUrl}
-                        name={item.nickname}
-                        size={24}
-                      />
-                    </IconBorder>
-                  </Box>
-                  <Box marginLeft={2}>
-                    <Typography
-                      variant={TypographyVariant.H7}
-                      color={TextColor.textDefault}
-                      fontWeight={FONT_WEIGHT.BOLD}
-                    >
-                      {item.nickname}
-                    </Typography>
-                  </Box>
-                </Box>
-                <Box
-                  display={DISPLAY.FLEX}
-                  alignItems={AlignItems.center}
-                  marginLeft={1}
-                >
+                <IconBorder size={24}>
+                  <IconWithFallback
+                    icon={item.rpcPrefs.imageUrl}
+                    name={item.nickname}
+                    size={24}
+                  />
+                </IconBorder>
+                <div className="text-[15px] flex-grow text-black font-medium">
+                  {item.nickname}
+                </div>
+                <div className="flex items-center gap-2">
                   {
                     // Warning for the networks that doesn't use infura.io as the RPC
                     !infuraRegex.test(item.rpcUrl) && (
@@ -217,10 +183,7 @@ const AddNetwork = () => {
                         position="top"
                         interactive
                         html={
-                          <Box
-                            margin={3}
-                            className="add-network__warning-tooltip"
-                          >
+                          <div>
                             {t('addNetworkTooltipWarning', [
                               <a
                                 key="zendesk_page_link"
@@ -231,7 +194,7 @@ const AddNetwork = () => {
                                 {t('learnMoreUpperCase')}
                               </a>,
                             ])}
-                          </Box>
+                          </div>
                         }
                         trigger="mouseenter"
                       >
@@ -242,29 +205,21 @@ const AddNetwork = () => {
                       </Tooltip>
                     )
                   }
-                  <Button
-                    type="inline"
-                    className="add-network__add-button"
+                  <Icon
+                    name="add-circle"
+                    className="text-blue cursor-pointer"
                     onClick={async () => {
                       await dispatch(requestAddNetworkApproval(item, true));
                     }}
-                  >
-                    {t('add')}
-                  </Button>
-                </Box>
-              </Box>
+                  />
+                </div>
+              </div>
             ))}
-          </Box>
-          <Box
-            padding={
-              getEnvironmentType() === ENVIRONMENT_TYPE_POPUP
-                ? [2, 0, 2, 6]
-                : [2, 0, 2, 0]
-            }
-            className="add-network__footer"
-          >
-            <Button
-              type="link"
+          </div>
+          <div>
+            <a
+              href="#"
+              className="text-blue"
               data-testid="add-network-manually"
               onClick={(event) => {
                 event.preventDefault();
@@ -273,15 +228,10 @@ const AddNetwork = () => {
                   : history.push(ADD_NETWORK_ROUTE);
               }}
             >
-              <Typography
-                variant={TypographyVariant.H6}
-                color={TextColor.primaryDefault}
-              >
-                {t('addANetworkManually')}
-              </Typography>
-            </Button>
-          </Box>
-        </Box>
+              {t('addANetworkManually')}
+            </a>
+          </div>
+        </div>
       )}
       {showPopover && (
         <Popover>

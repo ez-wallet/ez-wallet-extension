@@ -586,7 +586,7 @@ const NetworksForm = ({
 
   return (
     <div
-      className={classnames({
+      className={classnames('flex flex-col gap-5', {
         'networks-tab__network-form': !addNewNetwork,
         'networks-tab__add-network-form': addNewNetwork,
         'networks-tab__restrict-height': restrictHeight,
@@ -669,36 +669,32 @@ const NetworksForm = ({
           autoFocus={window.location.hash.split('#')[2] === 'blockExplorerUrl'}
         />
       </div>
-      <div
-        className={classnames({
-          'networks-tab__network-form-footer': !addNewNetwork,
-          'networks-tab__add-network-form-footer': addNewNetwork,
-        })}
-      >
-        {!viewOnly && (
-          <>
-            {deletable && (
-              <Button type="danger" onClick={onDelete}>
-                {t('delete')}
-              </Button>
-            )}
-            <Button
-              type="secondary"
-              onClick={onCancel}
-              disabled={stateUnchanged}
-            >
-              {t('cancel')}
+
+      {!viewOnly && (
+        <div className=" w-full flex flex-col gap-3">
+          {deletable && (
+            <Button large type="danger" onClick={onDelete}>
+              {t('delete')}
             </Button>
-            <Button
-              type="primary"
-              disabled={isSubmitDisabled}
-              onClick={onSubmit}
-            >
-              {t('save')}
-            </Button>
-          </>
-        )}
-      </div>
+          )}
+          <Button
+            type="default"
+            large
+            onClick={onCancel}
+            disabled={stateUnchanged}
+          >
+            {t('cancel')}
+          </Button>
+          <Button
+            type="primary"
+            large
+            disabled={isSubmitDisabled}
+            onClick={onSubmit}
+          >
+            {t('save')}
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

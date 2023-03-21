@@ -216,37 +216,10 @@
     }
   }
 
-  &__add-network-form {
-    padding: 16px 24px;
-    grid-column: span 2; // spread both columns of grid layout
-
-    @include screen-sm-min {
-      max-width: 400px; // but only expand to 400px
-      padding: 16px;
-    }
-
-    &__alert {
-      margin-top: 0;
-    }
-  }
-
   &__restrict-height {
     max-height: 578px;
     overflow-y: auto;
   }
 
-  &__add-network-form-footer {
-    display: flex;
-    flex-flow: row;
-    padding: 12px 0;
-    width: 60%;
 
-    .btn-secondary {
-      margin-right: 0.5rem;
-    }
-
-    .btn-primary {
-      margin-left: 0.5rem;
-    }
-  }
 }

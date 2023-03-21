@@ -71,7 +71,6 @@ const ONBOARDING_METAMETRICS = '/onboarding/metametrics';
 const INITIALIZE_EXPERIMENTAL_AREA = '/initialize/experimental-area';
 const ONBOARDING_EXPERIMENTAL_AREA = '/onboarding/experimental-area';
 ///: END:ONLY_INCLUDE_IN
-
 const CONFIRM_TRANSACTION_ROUTE = '/confirm-transaction';
 const CONFIRM_SEND_ETHER_PATH = '/send-ether';
 const CONFIRM_SEND_TOKEN_PATH = '/send-token';
@@ -85,6 +84,7 @@ const SIGNATURE_REQUEST_PATH = '/signature-request';
 const DECRYPT_MESSAGE_REQUEST_PATH = '/decrypt-message-request';
 const ENCRYPTION_PUBLIC_KEY_REQUEST_PATH = '/encryption-public-key-request';
 const CONFIRMATION_V_NEXT_ROUTE = '/confirmation';
+const ACCOUNT_ROUTE = '/account';
 
 // Used to pull a convenient name for analytics tracking events. The key must
 // be react-router ready path, and can include params such as :id for popup windows
@@ -242,4 +242,5 @@ export {
   INITIALIZE_EXPERIMENTAL_AREA,
   ONBOARDING_EXPERIMENTAL_AREA,
   ///: END:ONLY_INCLUDE_IN
+  ACCOUNT_ROUTE,
 };

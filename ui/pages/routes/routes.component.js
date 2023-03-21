@@ -35,6 +35,7 @@ import TokenDetailsPage from '../token-details';
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 import Notifications from '../notifications';
 ///: END:ONLY_INCLUDE_IN
+import AccountPage from '../account/account.component';
 
 import {
   IMPORT_TOKEN_ROUTE,
@@ -62,6 +63,7 @@ import {
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
   NOTIFICATIONS_ROUTE,
   ///: END:ONLY_INCLUDE_IN
+  ACCOUNT_ROUTE,
 } from '../../helpers/constants/routes';
 
 import {
@@ -171,6 +173,7 @@ export default class Routes extends Component {
 
     const routes = (
       <Switch>
+        <Route path={ACCOUNT_ROUTE} component={AccountPage} />
         <Route path={ONBOARDING_ROUTE} component={OnboardingFlow} />
         <Route path={LOCK_ROUTE} component={Lock} exact />
         <Initialized path={UNLOCK_ROUTE} component={UnlockPage} exact />

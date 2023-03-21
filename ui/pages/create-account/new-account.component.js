@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Button from '../../components/ui/button';
 import { EVENT, EVENT_NAMES } from '../../../shared/constants/metametrics';
 import { getAccountNameErrorMessage } from '../../helpers/utils/accounts';
+import FormField from '../../components/ui/form-field/form-field';
 
 export default class NewAccountCreateForm extends Component {
   static defaultProps = {
@@ -55,45 +56,37 @@ export default class NewAccountCreateForm extends Component {
     );
 
     return (
-      <div className="new-account-create-form">
-        <div className="new-account-create-form__input-label">
-          {this.context.t('accountName')}
-        </div>
-        <div>
-          <input
+      <div className="px-4 h-full w-full flex flex-col items-center justify-center">
+        <div className="w-full grid grid-cols-1 gap-5">
+          <FormField
+            titleText={this.context.t('accountName')}
             className={classnames({
               'new-account-create-form__input': true,
               'new-account-create-form__input__error': !isValidAccountName,
             })}
             value={newAccountName}
             placeholder={defaultAccountName}
-            onChange={(event) =>
-              this.setState({ newAccountName: event.target.value })
-            }
+            onChange={(value) => this.setState({ newAccountName: value })}
             autoFocus
           />
-          <div className="new-account-create-form__error new-account-create-form__error-amount">
-            {errorMessage}
-          </div>
-          <div className="new-account-create-form__buttons">
-            <Button
-              type="secondary"
-              large
-              className="new-account-create-form__button"
-              onClick={() => history.push(mostRecentOverviewPage)}
-            >
-              {this.context.t('cancel')}
-            </Button>
-            <Button
-              type="primary"
-              large
-              className="new-account-create-form__button"
-              onClick={createClick}
-              disabled={!isValidAccountName}
-            >
-              {this.context.t('create')}
-            </Button>
-          </div>
+          {errorMessage && (
+            <div className="text-[13px] text-red">{errorMessage}</div>
+          )}
+          <Button
+            type="default"
+            large
+            onClick={() => history.push(mostRecentOverviewPage)}
+          >
+            {this.context.t('cancel')}
+          </Button>
+          <Button
+            type="primary"
+            large
+            onClick={createClick}
+            disabled={!isValidAccountName}
+          >
+            {this.context.t('create')}
+          </Button>
         </div>
       </div>
     );
