@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
+import { showModal } from '../../../store/actions';
 import Identicon from '../../ui/identicon';
 import { I18nContext } from '../../../contexts/i18n';
 import {
@@ -81,7 +82,7 @@ const EthOverview = ({ className }) => {
                   />
                 ) : (
                   <Spinner
-                    color="var(--color-secondary-default)"
+                    color="var(--colors-primary-green_03)"
                     className="loading-overlay__spinner"
                   />
                 )}
@@ -118,7 +119,9 @@ const EthOverview = ({ className }) => {
                 />
               }
               label={t('receive')}
-              // onClick={() => {}}
+              onClick={() => {
+                dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+              }}
             />
             <IconButton
               className="eth-overview__button"
@@ -167,7 +170,7 @@ const EthOverview = ({ className }) => {
                 setShowDepositPopover(true);
               }}
             />
-
+            {/* 
             <IconButton
               className="eth-overview__button"
               disabled={!isSwapsChain}
@@ -202,15 +205,15 @@ const EthOverview = ({ className }) => {
                 isSwapsChain
                   ? null
                   : (contents) => (
-                      <Tooltip
-                        title={t('currentlyUnavailable')}
-                        position="bottom"
-                      >
-                        {contents}
-                      </Tooltip>
-                    )
+                    <Tooltip
+                      title={t('currentlyUnavailable')}
+                      position="bottom"
+                    >
+                      {contents}
+                    </Tooltip>
+                  )
               }
-            />
+            /> */}
           </Fragment>
         }
         className={className}

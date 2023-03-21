@@ -697,6 +697,10 @@ html {
   margin-top: 2rem;
 }
 
+.mt-\[15px\] {
+  margin-top: 15px;
+}
+
 .mt-\[30px\] {
   margin-top: 30px;
 }
@@ -784,6 +788,10 @@ html {
 
 .w-\[215px\] {
   width: 215px;
+}
+
+.w-\[280px\] {
+  width: 280px;
 }
 
 .w-\[40px\] {
@@ -954,6 +962,10 @@ html {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.break-words {
+  overflow-wrap: break-word;
 }
 
 .break-all {

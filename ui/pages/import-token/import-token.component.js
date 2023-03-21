@@ -437,58 +437,7 @@ class ImportToken extends Component {
       : t('etherscan');
 
     return (
-      <div className="grid grid-cols-1 gap-[30px] p-4">
-        {tokenDetectionInactiveOnNonMainnetSupportedNetwork ? (
-          <ActionableMessage
-            type="warning"
-            message={t('customTokenWarningInTokenDetectionNetworkWithTDOFF', [
-              <a
-                key="import-token-security-risk"
-                className="text-blue"
-                rel="noopener noreferrer"
-                target="_blank"
-                href={ZENDESK_URLS.TOKEN_SAFETY_PRACTICES}
-              >
-                {t('tokenScamSecurityRisk')}
-              </a>,
-              <a
-                key="import-token-token-detection-announcement"
-                className="text-blue"
-                onClick={(e) => {
-                  e.preventDefault();
-                  history.push(`${SECURITY_ROUTE}#token-description`);
-                }}
-              >
-                {t('inYourSettings')}
-              </a>,
-            ])}
-            withRightButton
-            useIcon
-          />
-        ) : (
-          <ActionableMessage
-            type={isDynamicTokenListAvailable ? 'warning' : 'default'}
-            message={t(
-              isDynamicTokenListAvailable
-                ? 'customTokenWarningInTokenDetectionNetwork'
-                : 'customTokenWarningInNonTokenDetectionNetwork',
-              [
-                <a
-                  key="import-token-fake-token-warning"
-                  type="link"
-                  className="text-blue"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href={ZENDESK_URLS.TOKEN_SAFETY_PRACTICES}
-                >
-                  {t('learnScamRisk')}
-                </a>,
-              ],
-            )}
-            withRightButton
-            useIcon
-          />
-        )}
+      <div className="grid grid-cols-1 gap-[30px] py-4">
         <FormField
           id="custom-address"
           titleText={t('tokenContractAddress')}
@@ -574,27 +523,7 @@ class ImportToken extends Component {
     const { tokenList, history, useTokenDetection, networkName } = this.props;
     const { tokenSelectorError, selectedTokens, searchResults } = this.state;
     return (
-      <div className="grid grid-cols-1 p-4">
-        {!useTokenDetection && (
-          <ActionableMessage
-            message={t('enhancedTokenDetectionAlertMessage', [
-              networkName,
-              <a
-                key="token-detection-announcement"
-                className="import-token__link"
-                onClick={() =>
-                  history.push(`${SECURITY_ROUTE}#token-description`)
-                }
-              >
-                {t('enableFromSettings')}
-              </a>,
-            ])}
-            withRightButton
-            useIcon
-            iconFillColor="var(--color-primary-default)"
-            className="import-token__token-detection-announcement"
-          />
-        )}
+      <div className="grid grid-cols-1 py-4">
         <TokenSearch
           onSearch={({ results = [] }) =>
             this.setState({ searchResults: results })

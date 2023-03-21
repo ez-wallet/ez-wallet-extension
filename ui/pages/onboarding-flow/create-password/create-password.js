@@ -157,7 +157,7 @@ export default function CreatePassword({
   return (
     <div className="px-4" data-testid="create-password">
       {secretRecoveryPhrase &&
-      firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT ? (
+        firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT ? (
         <TwoStepProgressBar
           stage={twoStepStages.PASSWORD_CREATE}
           marginBottom={4}
@@ -226,7 +226,7 @@ export default function CreatePassword({
         <Button
           data-testid={
             secretRecoveryPhrase &&
-            firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
+              firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
               ? 'create-password-import'
               : 'create-password-wallet'
           }
@@ -237,7 +237,7 @@ export default function CreatePassword({
           onClick={handleCreate}
         >
           {secretRecoveryPhrase &&
-          firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
+            firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
             ? t('importMyWallet')
             : t('createNewWallet')}
         </Button>

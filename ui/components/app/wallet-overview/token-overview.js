@@ -202,14 +202,14 @@ const TokenOverview = ({ token }) => {
               isSwapsChain
                 ? null
                 : (contents) => (
-                    <Tooltip
-                      title={t('currentlyUnavailable')}
-                      position="bottom"
-                      disabled={isSwapsChain}
-                    >
-                      {contents}
-                    </Tooltip>
-                  )
+                  <Tooltip
+                    title={t('currentlyUnavailable')}
+                    position="bottom"
+                    disabled={isSwapsChain}
+                  >
+                    {contents}
+                  </Tooltip>
+                )
             }
           />
         </div>

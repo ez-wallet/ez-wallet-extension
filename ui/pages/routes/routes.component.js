@@ -123,11 +123,11 @@ export default class Routes extends Component {
   };
 
   handleOsTheme() {
-    const osTheme = window?.matchMedia('(prefers-color-scheme: dark)')?.matches
-      ? ThemeType.dark
-      : ThemeType.light;
+    // const osTheme = window?.matchMedia('(prefers-color-scheme: dark)')?.matches
+    //   ? ThemeType.dark
+    //   : ThemeType.light;
 
-    document.documentElement.setAttribute('data-theme', osTheme);
+    document.documentElement.setAttribute('data-theme', ThemeType.light);
   }
 
   componentDidUpdate(prevProps) {

@@ -73,16 +73,17 @@ const DepositPopover = ({ onClose, token }) => {
     dispatch(hideWarning());
   };
 
-  const toCoinbasePay = () => {
-    dispatch(
-      buy({ service: 'coinbase', address, chainId, symbol: token?.symbol }),
-    );
-  };
-  const toTransak = () => {
-    dispatch(
-      buy({ service: 'transak', address, chainId, symbol: token?.symbol }),
-    );
-  };
+  // const toCoinbasePay = () => {
+  //   dispatch(
+  //     buy({ service: 'coinbase', address, chainId, symbol: token?.symbol }),
+  //   );
+  // };
+  // const toTransak = () => {
+  //   dispatch(
+  //     buy({ service: 'transak', address, chainId, symbol: token?.symbol }),
+  //   );
+  // };
+
   const toMoonPay = () => {
     dispatch(
       buy({ service: 'moonpay', address, chainId, symbol: token?.symbol }),
@@ -106,7 +107,7 @@ const DepositPopover = ({ onClose, token }) => {
       className="deposit-popover bg-grey-6"
     >
       <div className="grid grid-cols-1 gap-5 p-4">
-        <OnRampItem
+        {/* <OnRampItem
           logo={<LogoCoinbasePay />}
           title="CoinbasePay"
           onButtonClick={() => {
@@ -124,8 +125,8 @@ const DepositPopover = ({ onClose, token }) => {
               ? !isBuyableCoinbasePayChain || !isTokenBuyableCoinbasePay
               : !isBuyableCoinbasePayChain
           }
-        />
-        <OnRampItem
+        /> */}
+        {/* <OnRampItem
           logo={<LogoTransak />}
           title="Transak"
           onButtonClick={() => {
@@ -143,7 +144,7 @@ const DepositPopover = ({ onClose, token }) => {
               ? !isBuyableTransakChain || !isTokenBuyableTransak
               : !isBuyableTransakChain
           }
-        />
+        /> */}
         <OnRampItem
           logo={<LogoMoonPay />}
           title="MoonPay"

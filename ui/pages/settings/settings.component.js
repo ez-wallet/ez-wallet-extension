@@ -127,31 +127,32 @@ class SettingsPage extends PureComponent {
         <div className="w-full px-4">
           <div className="settings-page__header__title-container">
             {currentPath !== SETTINGS_ROUTE && (
-              <div className="h-[48px] w-[68px] bg-grey-6 rounded-[50px] shadow-neumorphic flex items-center justify-center">
+              <button className="h-[48px] w-[68px] bg-grey-6 rounded-[50px] shadow-neumorphic flex items-center justify-center"
+                onClick={() => history.push(backRoute)}>
                 <Icon
                   size="sm"
                   name={ICON_NAMES.ARROW_LEFT}
-                  onClick={() => history.push(backRoute)}
                 />
-              </div>
+              </button>
             )}
             {currentPath === SETTINGS_ROUTE && (
               <div className="h-[48px] w-[68px] " />
             )}
             {this.renderTitle()}
-            <div className="h-[48px] w-[68px] bg-grey-6 rounded-[50px] shadow-neumorphic flex items-center justify-center">
+            <button className="h-[48px] w-[68px] bg-grey-6 rounded-[50px] shadow-neumorphic flex items-center justify-center"
+              onClick={() => {
+                if (addNewNetwork) {
+                  history.push(NETWORKS_ROUTE);
+                } else {
+                  history.push(mostRecentOverviewPage);
+                }
+              }}
+            >
               <Icon
                 name="close"
                 size="sm"
-                onClick={() => {
-                  if (addNewNetwork) {
-                    history.push(NETWORKS_ROUTE);
-                  } else {
-                    history.push(mostRecentOverviewPage);
-                  }
-                }}
               />
-            </div>
+            </button>
           </div>
 
           {/* <div className="settings-page__header__search">

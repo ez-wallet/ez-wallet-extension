@@ -3,17 +3,25 @@
   appearance: none;
   background: var(--color-background-default);
   color: var(--color-icon-muted);
-  width: 18px;
+  width: 31px;
   height: 18px;
   font-size: 21px;
   line-height: 0.9;
   border-radius: 2px;
   display: flex;
+  position: relative;
 
   &__checked,
   &__indeterminate {
     color: var(--colors-primary-green_03);
     border-color: var(--colors-primary-green_03);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
   }
 
   &:disabled {

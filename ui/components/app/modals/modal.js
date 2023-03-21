@@ -10,6 +10,7 @@ import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 // Modal Components
 import AddNetworkModal from '../../../pages/onboarding-flow/add-network-modal';
 import AccountDetailsModal from './account-details-modal';
+import AccountQRModal from './account-qr-modal';
 import ExportPrivateKeyModal from './export-private-key-modal';
 import HideTokenConfirmationModal from './hide-token-confirmation-modal';
 import QRScanner from './qr-scanner';
@@ -111,6 +112,11 @@ const MODALS = {
 
   ACCOUNT_DETAILS: {
     contents: <AccountDetailsModal />,
+    ...accountModalStyle,
+  },
+
+  ACCOUNT_QR: {
+    contents: <AccountQRModal />,
     ...accountModalStyle,
   },
 

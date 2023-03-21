@@ -286,36 +286,36 @@ export default class Home extends PureComponent {
           ///: BEGIN:ONLY_INCLUDE_IN(flask)
           shouldShowErrors
             ? Object.entries(errorsToShow).map(([errorId, error]) => {
-                return (
-                  <HomeNotification
-                    classNames={['home__error-message']}
-                    infoText={error.data.snapId}
-                    descriptionText={
-                      <>
-                        <Typography
-                          color={TextColor.textAlternative}
-                          variant={TypographyVariant.H5}
-                          fontWeight={FONT_WEIGHT.NORMAL}
-                        >
-                          {t('somethingWentWrong')}
-                        </Typography>
-                        <Typography
-                          color={TextColor.textAlternative}
-                          variant={TypographyVariant.H7}
-                          fontWeight={FONT_WEIGHT.NORMAL}
-                        >
-                          {t('snapError', [error.message, error.code])}
-                        </Typography>
-                      </>
-                    }
-                    onIgnore={async () => {
-                      await removeSnapError(errorId);
-                    }}
-                    ignoreText="Dismiss"
-                    key="home-error-message"
-                  />
-                );
-              })
+              return (
+                <HomeNotification
+                  classNames={['home__error-message']}
+                  infoText={error.data.snapId}
+                  descriptionText={
+                    <>
+                      <Typography
+                        color={TextColor.textAlternative}
+                        variant={TypographyVariant.H5}
+                        fontWeight={FONT_WEIGHT.NORMAL}
+                      >
+                        {t('somethingWentWrong')}
+                      </Typography>
+                      <Typography
+                        color={TextColor.textAlternative}
+                        variant={TypographyVariant.H7}
+                        fontWeight={FONT_WEIGHT.NORMAL}
+                      >
+                        {t('snapError', [error.message, error.code])}
+                      </Typography>
+                    </>
+                  }
+                  onIgnore={async () => {
+                    await removeSnapError(errorId);
+                  }}
+                  ignoreText="Dismiss"
+                  key="home-error-message"
+                />
+              );
+            })
             : null
           ///: END:ONLY_INCLUDE_IN
         }
@@ -754,7 +754,7 @@ export default class Home extends PureComponent {
               </Tab> */}
             </Tabs>
           </div>
-          <Toolbar />
+          {/* <Toolbar /> */}
           {this.renderNotifications()}
         </div>
       </div>
