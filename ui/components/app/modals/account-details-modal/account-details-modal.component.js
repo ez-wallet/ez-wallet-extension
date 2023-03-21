@@ -79,7 +79,7 @@ export default class AccountDetailsModal extends Component {
     };
 
     return (
-      <AccountModalContainer className="account-details-modal">
+      <AccountModalContainer className="account-details-modal rounded-xl">
         <EditableLabel
           className="account-details-modal__name"
           defaultValue={name}

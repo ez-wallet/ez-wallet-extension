@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import Identicon from '../../../ui/identicon';
+// import Identicon from '../../../ui/identicon';
+import { Icon } from '../../../component-library';
 
 export default function AccountModalContainer(props, context) {
   const {
     className,
-    selectedIdentity,
+    // selectedIdentity,
     showBackButton,
     backButtonAction,
     hideModal,
@@ -14,14 +15,11 @@ export default function AccountModalContainer(props, context) {
   } = props;
 
   return (
-    <div
-      className={classnames(className, 'account-modal')}
-      style={{ borderRadius: '4px' }}
-    >
+    <div className={classnames(className, 'account-modal rounded-xl')}>
       <div className="account-modal__container">
-        <div>
+        {/* <div>
           <Identicon address={selectedIdentity.address} diameter={64} />
-        </div>
+        </div> */}
         {showBackButton && (
           <div className="account-modal__back" onClick={backButtonAction}>
             <i className="fa fa-angle-left fa-lg" />
@@ -30,7 +28,9 @@ export default function AccountModalContainer(props, context) {
             </span>
           </div>
         )}
-        <button className="account-modal__close" onClick={hideModal} />
+        <button className="account-modal__close" onClick={hideModal}>
+          <Icon name="close" />
+        </button>
         {children}
       </div>
     </div>
@@ -49,7 +49,7 @@ AccountModalContainer.defaultProps = {
 
 AccountModalContainer.propTypes = {
   className: PropTypes.string,
-  selectedIdentity: PropTypes.object.isRequired,
+  // selectedIdentity: PropTypes.object.isRequired,
   showBackButton: PropTypes.bool,
   backButtonAction: PropTypes.func,
   hideModal: PropTypes.func.isRequired,

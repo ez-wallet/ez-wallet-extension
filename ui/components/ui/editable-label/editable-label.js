@@ -74,7 +74,9 @@ export default class EditableLabel extends Component {
   renderReadonly() {
     return (
       <div className={classnames('editable-label', this.props.className)}>
-        <div className="editable-label__value">{this.state.value}</div>
+        <div className="text-[19px] font-bold text-black">
+          {this.state.value}
+        </div>
         <ButtonIcon
           iconName={ICON_NAMES.EDIT}
           ariaLabel={this.context.t('edit')}

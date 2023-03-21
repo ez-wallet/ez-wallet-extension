@@ -128,14 +128,20 @@ const AssetListItem = ({
       titleIcon={titleIcon}
       onClick={onClick}
       icon={
-        <Identicon
-          className={iconClassName}
-          diameter={32}
-          address={tokenAddress}
-          image={tokenImage}
-          alt={`${primary} ${tokenSymbol}`}
-          imageBorder={identiconBorder}
-        />
+        tokenImage ? (
+          <Identicon
+            className={iconClassName}
+            diameter={32}
+            address={tokenAddress}
+            image={tokenImage}
+            alt={`${primary} ${tokenSymbol}`}
+            imageBorder={identiconBorder}
+          />
+        ) : (
+          <div className="h-8 w-8 rounded-full bg-white flex items-center justify-center text-[12px]">
+            <i className="fa fa-question " />
+          </div>
+        )
       }
       midContent={midContent}
       // rightContent={!isERC721 && <>{sendTokenButton}</>}
