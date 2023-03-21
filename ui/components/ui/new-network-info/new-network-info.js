@@ -5,16 +5,6 @@ import { I18nContext } from '../../../contexts/i18n';
 import Popover from '../popover';
 import Button from '../button';
 import Identicon from '../identicon';
-import Box from '../box';
-import {
-  AlignItems,
-  Color,
-  DISPLAY,
-  FONT_WEIGHT,
-  TEXT_ALIGN,
-  TypographyVariant,
-} from '../../../helpers/constants/design-system';
-import Typography from '../typography';
 import { TOKEN_API_METASWAP_CODEFI_URL } from '../../../../shared/constants/tokens';
 import fetchWithCache from '../../../../shared/lib/fetch-with-cache';
 import {
@@ -23,7 +13,6 @@ import {
   getUseTokenDetection,
 } from '../../../selectors';
 import { IMPORT_TOKEN_ROUTE } from '../../../helpers/constants/routes';
-import Chip from '../chip/chip';
 import { setFirstTimeUsedNetwork } from '../../../store/actions';
 import { NETWORK_TYPES } from '../../../../shared/constants/network';
 
@@ -72,152 +61,74 @@ const NewNetworkInfo = () => {
   return (
     <Popover
       onClose={onCloseClick}
-      className="new-network-info__wrapper"
+      className="new-network-info__wrapper bg-grey-6"
       footer={
-        <Button type="primary" onClick={onCloseClick}>
+        <Button large type="primary" onClick={onCloseClick}>
           {t('recoveryPhraseReminderConfirm')}
         </Button>
       }
     >
-      <Typography
-        variant={TypographyVariant.H4}
-        color={Color.textDefault}
-        fontWeight={FONT_WEIGHT.BOLD}
-        align={TEXT_ALIGN.CENTER}
-      >
-        {t('switchedTo')}
-      </Typography>
-      <Chip
-        className="new-network-info__token-box"
-        backgroundColor={Color.backgroundAlternative}
-        maxContent={false}
-        label={
-          currentProvider.type === NETWORK_TYPES.RPC
-            ? currentProvider.nickname ?? t('privateNetwork')
-            : t(currentProvider.type)
-        }
-        labelProps={{
-          color: Color.textDefault,
-        }}
-        leftIcon={
-          primaryTokenImage ? (
+      <div className="flex flex-col items-center px-4 gap-4">
+        <p className="text-[19px] text-black font-bold">{t('switchedTo')}</p>
+        <div className="bg-grey-7 rounded-full px-3 py-2 text-[15px] text-black font-medium flex items-center gap-2 shadow-input">
+          {primaryTokenImage ? (
             <Identicon image={primaryTokenImage} diameter={14} />
           ) : (
             <i className="fa fa-question-circle" />
-          )
-        }
-      />
-      <Typography
-        variant={TypographyVariant.H7}
-        color={Color.textDefault}
-        fontWeight={FONT_WEIGHT.BOLD}
-        align={TEXT_ALIGN.CENTER}
-        margin={[8, 0, 0, 0]}
-      >
-        {t('thingsToKeep')}
-      </Typography>
-      <Box marginRight={4} marginLeft={5} marginTop={6}>
-        {currentProvider.ticker ? (
-          <Box
-            display={DISPLAY.FLEX}
-            alignItems={AlignItems.center}
-            marginBottom={2}
-            paddingBottom={2}
-            className="new-network-info__bullet-paragraph"
-          >
-            <Box marginRight={4} color={Color.textDefault}>
-              &bull;
-            </Box>
-            <Typography
-              variant={TypographyVariant.H7}
-              color={Color.textDefault}
-              boxProps={{ display: DISPLAY.INLINE_BLOCK }}
-              key="nativeTokenInfo"
-            >
-              {t('nativeToken', [
-                <Typography
-                  variant={TypographyVariant.H7}
-                  boxProps={{ display: DISPLAY.INLINE_BLOCK }}
-                  fontWeight={FONT_WEIGHT.BOLD}
-                  key="ticker"
-                >
-                  {currentProvider.ticker}
-                </Typography>,
-              ])}
-            </Typography>
-          </Box>
-        ) : null}
-        <Box
-          display={DISPLAY.FLEX}
-          alignItems={AlignItems.center}
-          marginBottom={2}
-          paddingBottom={2}
-          className={
-            !autoDetectToken || !tokenDetectionSupported
-              ? 'new-network-info__bullet-paragraph'
-              : null
-          }
-        >
-          <Box marginRight={4} color={Color.textDefault}>
-            &bull;
-          </Box>
-          <Typography
-            variant={TypographyVariant.H7}
-            color={Color.textDefault}
-            boxProps={{ display: DISPLAY.INLINE_BLOCK }}
-            className="new-network-info__bullet-paragraph__text"
-          >
-            {t('attemptSendingAssets')}{' '}
-            <a
-              href="https://metamask.zendesk.com/hc/en-us/articles/4404424659995"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Typography
-                variant={TypographyVariant.H7}
-                color={Color.infoDefault}
-                boxProps={{ display: DISPLAY.INLINE_BLOCK }}
+          )}
+          <span>
+            {currentProvider.type === NETWORK_TYPES.RPC
+              ? currentProvider.nickname ?? t('privateNetwork')
+              : t(currentProvider.type)}
+          </span>
+        </div>
+        <p className="text-[15px] text-black font-bold text-center">
+          {t('thingsToKeep')}
+        </p>
+        <div className="w-full flex flex-col gap-3">
+          {currentProvider.ticker ? (
+            <div className="flex items-center gap-2">
+              <span>&bull;</span>
+              <div className="text-[13px]" key="nativeTokenInfo">
+                {t('nativeToken', [
+                  <span key="ticker" className="text-[13px]">
+                    {currentProvider.ticker}
+                  </span>,
+                ])}
+              </div>
+            </div>
+          ) : null}
+          <div className="w-full flex items-center gap-2">
+            <span>&bull;</span>
+            <div className="text-[13px]">
+              {t('attemptSendingAssets')}
+              <a
+                href="https://ezwallet.zendesk.com/hc/en-us/articles/4404424659995"
+                target="_blank"
+                className="text-blue"
+                rel="noreferrer"
               >
                 {t('learnMoreUpperCase')}
-              </Typography>
-            </a>
-          </Typography>
-        </Box>
-        {!autoDetectToken || !tokenDetectionSupported ? (
-          <Box
-            display={DISPLAY.FLEX}
-            alignItems={AlignItems.center}
-            marginBottom={2}
-            paddingBottom={2}
-          >
-            <Box marginRight={4} color={Color.textDefault}>
-              &bull;
-            </Box>
-            <Box>
-              <Typography
-                variant={TypographyVariant.H7}
-                color={Color.textDefault}
-                className="new-network-info__token-show-up"
+              </a>
+            </div>
+          </div>
+          {!autoDetectToken || !tokenDetectionSupported ? (
+            <div className="w-full flex items-center gap-2">
+              <span>&bull;</span>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  addTokenManually();
+                }}
+                className="text-blue text-[13px]"
               >
-                {t('tokenShowUp')}{' '}
-                <Button
-                  type="link"
-                  onClick={addTokenManually}
-                  className="new-network-info__button"
-                >
-                  <Typography
-                    variant={TypographyVariant.H7}
-                    color={Color.infoDefault}
-                    className="new-network-info__manually-add-tokens"
-                  >
-                    {t('clickToManuallyAdd')}
-                  </Typography>
-                </Button>
-              </Typography>
-            </Box>
-          </Box>
-        ) : null}
-      </Box>
+                {t('clickToManuallyAdd')}
+              </a>
+            </div>
+          ) : null}
+        </div>
+      </div>
     </Popover>
   );
 };

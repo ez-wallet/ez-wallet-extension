@@ -61,21 +61,17 @@ export default class Modal extends PureComponent {
           {children}
         </div>
         {hideFooter ? null : (
-          <div className="modal-container__footer">
+          <div className="w-full grid grid-cols-1 gap-4 p-4">
             {onCancel && (
-              <Button
-                type={cancelType}
-                onClick={onCancel}
-                className="modal-container__footer-button"
-              >
+              <Button large type={cancelType} onClick={onCancel}>
                 {cancelText}
               </Button>
             )}
             <Button
+              large
               type={submitType}
               onClick={onSubmit}
               disabled={submitDisabled}
-              className="modal-container__footer-button"
             >
               {submitText}
             </Button>

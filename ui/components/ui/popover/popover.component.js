@@ -112,7 +112,7 @@ const Popover = ({
         {showHeader && <Header />}
         {children ? (
           <Box
-            className={classnames('popover-content', contentClassName)}
+            className={classnames('popover-content w-full', contentClassName)}
             {...{ ...defaultContentProps, ...contentProps }}
           >
             {children}

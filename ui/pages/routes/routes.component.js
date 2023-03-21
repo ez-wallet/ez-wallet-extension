@@ -431,7 +431,7 @@ export default class Routes extends Component {
           />
         )}
         {this.showOnboardingHeader() && <OnboardingAppHeader />}
-        <div className="relative">
+        <div className="relative w-full">
           {completedOnboarding ? <NetworkDropdown /> : null}
         </div>
 

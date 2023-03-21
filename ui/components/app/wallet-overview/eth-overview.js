@@ -217,7 +217,11 @@ const EthOverview = ({ className }) => {
           </Fragment>
         }
         className={className}
-        icon={<Identicon diameter={32} image={primaryTokenImage} imageBorder />}
+        icon={
+          primaryTokenImage ? (
+            <Identicon diameter={32} image={primaryTokenImage} imageBorder />
+          ) : null
+        }
       />
     </>
   );

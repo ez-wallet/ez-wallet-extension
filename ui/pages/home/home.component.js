@@ -47,7 +47,6 @@ import {
 } from '../../helpers/constants/routes';
 import ZENDESK_URLS from '../../helpers/constants/zendesk-url';
 import Tooltip from '../../components/ui/tooltip';
-import Toolbar from '../../components/app/toolbar';
 
 function shouldCloseNotificationPopup({
   isNotification,
@@ -286,36 +285,36 @@ export default class Home extends PureComponent {
           ///: BEGIN:ONLY_INCLUDE_IN(flask)
           shouldShowErrors
             ? Object.entries(errorsToShow).map(([errorId, error]) => {
-              return (
-                <HomeNotification
-                  classNames={['home__error-message']}
-                  infoText={error.data.snapId}
-                  descriptionText={
-                    <>
-                      <Typography
-                        color={TextColor.textAlternative}
-                        variant={TypographyVariant.H5}
-                        fontWeight={FONT_WEIGHT.NORMAL}
-                      >
-                        {t('somethingWentWrong')}
-                      </Typography>
-                      <Typography
-                        color={TextColor.textAlternative}
-                        variant={TypographyVariant.H7}
-                        fontWeight={FONT_WEIGHT.NORMAL}
-                      >
-                        {t('snapError', [error.message, error.code])}
-                      </Typography>
-                    </>
-                  }
-                  onIgnore={async () => {
-                    await removeSnapError(errorId);
-                  }}
-                  ignoreText="Dismiss"
-                  key="home-error-message"
-                />
-              );
-            })
+                return (
+                  <HomeNotification
+                    classNames={['home__error-message']}
+                    infoText={error.data.snapId}
+                    descriptionText={
+                      <>
+                        <Typography
+                          color={TextColor.textAlternative}
+                          variant={TypographyVariant.H5}
+                          fontWeight={FONT_WEIGHT.NORMAL}
+                        >
+                          {t('somethingWentWrong')}
+                        </Typography>
+                        <Typography
+                          color={TextColor.textAlternative}
+                          variant={TypographyVariant.H7}
+                          fontWeight={FONT_WEIGHT.NORMAL}
+                        >
+                          {t('snapError', [error.message, error.code])}
+                        </Typography>
+                      </>
+                    }
+                    onIgnore={async () => {
+                      await removeSnapError(errorId);
+                    }}
+                    ignoreText="Dismiss"
+                    key="home-error-message"
+                  />
+                );
+              })
             : null
           ///: END:ONLY_INCLUDE_IN
         }
@@ -494,22 +493,17 @@ export default class Home extends PureComponent {
           />
         ) : null}
         {Object.keys(newCustomNetworkAdded).length !== 0 && (
-          <Popover className="home__new-network-added">
-            <i className="fa fa-check-circle fa-2x home__new-network-added__check-circle" />
-            <Typography
-              variant={TypographyVariant.H4}
-              marginTop={5}
-              marginRight={9}
-              marginLeft={9}
-              marginBottom={0}
-              fontWeight={FONT_WEIGHT.BOLD}
-            >
-              {t('networkAddedSuccessfully')}
-            </Typography>
-            <Box marginTop={8} marginRight={8} marginLeft={8} marginBottom={5}>
+          <Popover className="rounded-xl bg-grey-6 p-4">
+            <div className="flex flex-col items-center gap-4">
+              <i className="fa fa-check-circle fa-2x home__new-network-added__check-circle" />
+              <p className="text-[19px] font-bold text-green-7">
+                {t('networkAddedSuccessfully')}
+              </p>
+
               <Button
                 type="primary"
-                className="home__new-network-added__switch-to-button"
+                className="font-bold text-[16px] text-black"
+                large
                 onClick={() => {
                   setRpcTarget(
                     newCustomNetworkAdded.rpcUrl,
@@ -520,27 +514,19 @@ export default class Home extends PureComponent {
                   clearNewCustomNetworkAdded();
                 }}
               >
-                <Typography
-                  variant={TypographyVariant.H6}
-                  fontWeight={FONT_WEIGHT.NORMAL}
-                  color={TextColor.primaryInverse}
-                >
-                  {t('switchToNetwork', [newCustomNetworkAdded.chainName])}
-                </Typography>
+                {t('switchToNetwork', [newCustomNetworkAdded.chainName])}
               </Button>
-              <Button
-                type="secondary"
-                onClick={() => clearNewCustomNetworkAdded()}
+              <a
+                href="#"
+                className="text-blue text-[15px] text-center"
+                onClick={(e) => {
+                  e.preventDefault();
+                  clearNewCustomNetworkAdded();
+                }}
               >
-                <Typography
-                  variant={TypographyVariant.H6}
-                  fontWeight={FONT_WEIGHT.NORMAL}
-                  color={TextColor.primaryDefault}
-                >
-                  {t('dismiss')}
-                </Typography>
-              </Button>
-            </Box>
+                {t('dismiss')}
+              </a>
+            </div>
           </Popover>
         )}
       </MultipleNotifications>
