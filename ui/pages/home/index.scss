@@ -20,6 +20,7 @@
     }
   }
   &__bottom-view {
+    position: relative;
     overflow: hidden;
     .tabs {
       background: transparent;

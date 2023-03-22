@@ -5,12 +5,9 @@ import { I18nContext } from '../../../contexts/i18n';
 import Box from '../../ui/box';
 import Typography from '../../ui/typography';
 import {
-  AlignItems,
   DISPLAY,
   FLEX_DIRECTION,
-  FONT_WEIGHT,
   TypographyVariant,
-  JustifyContent,
   BorderRadius,
   BackgroundColor,
   TextColor,
@@ -25,7 +22,6 @@ import {
 } from '../../../selectors';
 
 import {
-  ENVIRONMENT_TYPE_FULLSCREEN,
   ENVIRONMENT_TYPE_POPUP,
   MESSAGE_TYPE,
 } from '../../../../shared/constants/app';
@@ -36,6 +32,7 @@ import { FEATURED_RPCS } from '../../../../shared/constants/network';
 import { ADD_NETWORK_ROUTE } from '../../../helpers/constants/routes';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
+import { GET_NETWORKS_URL } from '../../../helpers/constants/url';
 import { Icon } from '../../component-library';
 
 const AddNetwork = () => {
@@ -59,7 +56,18 @@ const AddNetwork = () => {
   );
   const unapprovedConfirmations = useSelector(getUnapprovedConfirmations);
   const [showPopover, setShowPopover] = useState(false);
-
+  const [networks, setNetworks] = useState(null);
+  const [error, setError] = useState(false);
+  const fetchNetworks = () => {
+    return fetch(GET_NETWORKS_URL)
+      .then((response) => response.json())
+      .then((data) => {
+        setNetworks(data);
+      })
+      .catch(() => {
+        setError(true);
+      });
+  };
   useEffect(() => {
     const anAddNetworkConfirmationFromMetaMaskExists =
       unapprovedConfirmations?.find((confirmation) => {
@@ -76,6 +84,10 @@ const AddNetwork = () => {
       setShowPopover(false);
     }
   }, [unapprovedConfirmations, showPopover]);
+
+  useEffect(() => {
+    fetchNetworks();
+  }, []);
 
   return (
     <>
@@ -156,67 +168,71 @@ const AddNetwork = () => {
               </Typography>
             </Box>
           )} */}
-          <div className="w-full">
-            <p className="text-[15px] text-black">
-              {t('popularCustomNetworks')}
-            </p>
-            {notFrequentRpcNetworks.map((item, index) => (
-              <div
-                key={index}
-                className="flex w-full items-center justify-center py-4 gap-2"
-              >
-                <IconBorder size={24}>
-                  <IconWithFallback
-                    icon={item.rpcPrefs.imageUrl}
-                    name={item.nickname}
-                    size={24}
-                  />
-                </IconBorder>
-                <div className="text-[15px] flex-grow text-black font-medium">
-                  {item.nickname}
+          {networks && (
+            <div className="w-full">
+              {networks.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex w-full items-center justify-center py-4 gap-2"
+                >
+                  <IconBorder size={24}>
+                    <IconWithFallback
+                      icon={item.rpcPrefs.imageUrl}
+                      name={item.nickname}
+                      size={24}
+                    />
+                  </IconBorder>
+                  <div className="text-[15px] flex-grow text-black font-medium">
+                    {item.nickname}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {
+                      // Warning for the networks that doesn't use infura.io as the RPC
+                      !infuraRegex.test(item.rpcUrl) && (
+                        <Tooltip
+                          position="top"
+                          interactive
+                          html={
+                            <div>
+                              {t('addNetworkTooltipWarning', [
+                                <a
+                                  key="zendesk_page_link"
+                                  href={ZENDESK_URLS.UNKNOWN_NETWORK}
+                                  rel="noreferrer"
+                                  target="_blank"
+                                >
+                                  {t('learnMoreUpperCase')}
+                                </a>,
+                              ])}
+                            </div>
+                          }
+                          trigger="mouseenter"
+                        >
+                          <i
+                            className="fa fa-exclamation-triangle add-network__warning-icon"
+                            title={t('warning')}
+                          />
+                        </Tooltip>
+                      )
+                    }
+                    <Icon
+                      name="add-circle"
+                      className="text-blue cursor-pointer"
+                      onClick={async () => {
+                        await dispatch(requestAddNetworkApproval(item, true));
+                      }}
+                    />
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  {
-                    // Warning for the networks that doesn't use infura.io as the RPC
-                    !infuraRegex.test(item.rpcUrl) && (
-                      <Tooltip
-                        position="top"
-                        interactive
-                        html={
-                          <div>
-                            {t('addNetworkTooltipWarning', [
-                              <a
-                                key="zendesk_page_link"
-                                href={ZENDESK_URLS.UNKNOWN_NETWORK}
-                                rel="noreferrer"
-                                target="_blank"
-                              >
-                                {t('learnMoreUpperCase')}
-                              </a>,
-                            ])}
-                          </div>
-                        }
-                        trigger="mouseenter"
-                      >
-                        <i
-                          className="fa fa-exclamation-triangle add-network__warning-icon"
-                          title={t('warning')}
-                        />
-                      </Tooltip>
-                    )
-                  }
-                  <Icon
-                    name="add-circle"
-                    className="text-blue cursor-pointer"
-                    onClick={async () => {
-                      await dispatch(requestAddNetworkApproval(item, true));
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-          <div>
+              ))}
+            </div>
+          )}
+          {error && (
+            <div className="text-red text-[13px] text-center">
+              Cannot load networks
+            </div>
+          )}
+          {/* <div>
             <a
               href="#"
               className="text-blue"
@@ -230,7 +246,7 @@ const AddNetwork = () => {
             >
               {t('addANetworkManually')}
             </a>
-          </div>
+          </div> */}
         </div>
       )}
       {showPopover && (

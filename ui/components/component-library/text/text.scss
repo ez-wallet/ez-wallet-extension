@@ -11,14 +11,14 @@ $text-variants: (
 // screen size, type, size
 
 @mixin textVariables($type, $size) {
-  font-family: var(--typography-s-#{$type}-#{$size}-font-family);
+  font-family: "Inter", system-ui, sans-serif;
   font-weight: var(--typography-s-#{$type}-#{$size}-font-weight);
   font-size: var(--typography-s-#{$type}-#{$size}-font-size);
   line-height: var(--typography-s-#{$type}-#{$size}-line-height);
   letter-spacing: var(--typography-s-#{$type}-#{$size}-letter-spacing);
 
   @include screen-md-min {
-    font-family: var(--typography-l-#{$type}-#{$size}-font-family);
+    font-family: "Inter", system-ui, sans-serif;
     font-weight: var(--typography-l-#{$type}-#{$size}-font-weight);
     font-size: var(--typography-l-#{$type}-#{$size}-font-size);
     line-height: var(--typography-l-#{$type}-#{$size}-line-height);
@@ -31,7 +31,7 @@ $text-variants: (
 .mm-text {
   // Set default styles
   color: var(--color-text-default);
-  font-family: var(--font-family-sans);
+  font-family: "Inter", system-ui, sans-serif;
 
   @each $type, $size-options in $text-variants {
     &--#{$type} {

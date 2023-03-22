@@ -9,7 +9,6 @@ import MultipleNotifications from '../../components/app/multiple-notifications';
 import MenuBar from '../../components/app/menu-bar';
 import Popover from '../../components/ui/popover';
 import Button from '../../components/ui/button';
-import Box from '../../components/ui/box';
 import ConnectedSites from '../connected-sites';
 import ConnectedAccounts from '../connected-accounts';
 import { Tabs, Tab } from '../../components/ui/tabs';
@@ -17,19 +16,9 @@ import { EthOverview } from '../../components/app/wallet-overview';
 import WhatsNewPopup from '../../components/app/whats-new-popup';
 import RecoveryPhraseReminder from '../../components/app/recovery-phrase-reminder';
 import ActionableMessage from '../../components/ui/actionable-message/actionable-message';
-import Typography from '../../components/ui/typography/typography';
-import {
-  TypographyVariant,
-  FONT_WEIGHT,
-  DISPLAY,
-  // BLOCK_SIZES,
-  // Size,
-  // TextVariant,
-  // TextColor,
-} from '../../helpers/constants/design-system';
 import { SECOND } from '../../../shared/constants/time';
 // import { ButtonLink, ICON_NAMES } from '../../components/component-library';
-import ImportTokenLink from '../../components/app/import-token-link';
+// import ImportTokenLink from '../../components/app/import-token-link';
 import {
   ASSET_ROUTE,
   RESTORE_VAULT_ROUTE,
@@ -46,7 +35,7 @@ import {
   ONBOARDING_SECURE_YOUR_WALLET_ROUTE,
 } from '../../helpers/constants/routes';
 import ZENDESK_URLS from '../../helpers/constants/zendesk-url';
-import Tooltip from '../../components/ui/tooltip';
+// import Tooltip from '../../components/ui/tooltip';
 
 function shouldCloseNotificationPopup({
   isNotification,
@@ -96,7 +85,7 @@ export default class Home extends PureComponent {
     showWhatsNewPopup: PropTypes.bool.isRequired,
     hideWhatsNewPopup: PropTypes.func.isRequired,
     showPortfolioTooltip: PropTypes.bool.isRequired,
-    hidePortfolioTooltip: PropTypes.func.isRequired,
+    // hidePortfolioTooltip: PropTypes.func.isRequired,
     portfolioTooltipWasShownInThisSession: PropTypes.bool.isRequired,
     setPortfolioTooltipWasShownInThisSession: PropTypes.func.isRequired,
     announcementsToShow: PropTypes.bool.isRequired,
@@ -317,20 +306,17 @@ export default class Home extends PureComponent {
             autoHideTime={autoHideDelay}
             onAutoHide={onAutoHide}
             message={
-              <Box display={DISPLAY.INLINE_FLEX}>
+              <div className="flex gap-2">
                 <i className="fa fa-check-circle home__new-nft-notification-icon" />
-                <Typography
-                  variant={TypographyVariant.H7}
-                  fontWeight={FONT_WEIGHT.NORMAL}
-                >
+                <div className="text-[13px] text-black">
                   {t('newNftAddedMessage')}
-                </Typography>
+                </div>
                 <button
                   className="fas fa-times home__new-nft-notification-close"
                   title={t('close')}
                   onClick={onAutoHide}
                 />
-              </Box>
+              </div>
             }
           />
         ) : null}
@@ -342,20 +328,17 @@ export default class Home extends PureComponent {
             autoHideTime={autoHideDelay}
             onAutoHide={onAutoHide}
             message={
-              <Box display={DISPLAY.INLINE_FLEX}>
+              <div className="flex gap-2">
                 <i className="fa fa-check-circle home__new-nft-notification-icon" />
-                <Typography
-                  variant={TypographyVariant.H7}
-                  fontWeight={FONT_WEIGHT.NORMAL}
-                >
+                <div className="text-[13px] text-black font-bold">
                   {t('removeNftMessage')}
-                </Typography>
+                </div>
                 <button
                   className="fas fa-times home__new-nft-notification-close"
                   title={t('close')}
                   onClick={onAutoHide}
                 />
-              </Box>
+              </div>
             }
           />
         ) : null}
@@ -364,20 +347,17 @@ export default class Home extends PureComponent {
             type="success"
             className="home__new-network-notification"
             message={
-              <Box display={DISPLAY.INLINE_FLEX}>
+              <div className="flex gap-2">
                 <i className="fa fa-check-circle home__new-network-notification-icon" />
-                <Typography
-                  variant={TypographyVariant.H7}
-                  fontWeight={FONT_WEIGHT.NORMAL}
-                >
+                <p className="text-[13px] text-black">
                   {t('newNetworkAdded', [newNetworkAdded])}
-                </Typography>
+                </p>
                 <button
                   className="fas fa-times home__new-network-notification-close"
                   title={t('close')}
                   onClick={() => setNewNetworkAdded('')}
                 />
-              </Box>
+              </div>
             }
           />
         ) : null}
@@ -386,30 +366,22 @@ export default class Home extends PureComponent {
             type="success"
             className="home__new-tokens-imported-notification"
             message={
-              <Box display={DISPLAY.INLINE_FLEX}>
+              <div className="flex gap-2">
                 <i className="fa fa-check-circle home__new-tokens-imported-notification-icon" />
-                <Box>
-                  <Typography
-                    className="home__new-tokens-imported-notification-title"
-                    variant={TypographyVariant.H6}
-                    fontWeight={FONT_WEIGHT.BOLD}
-                  >
+                <div>
+                  <p className="text-[15px] font-bold text-black">
                     {t('newTokensImportedTitle')}
-                  </Typography>
-                  <Typography
-                    className="home__new-tokens-imported-notification-message"
-                    variant={TypographyVariant.H7}
-                    fontWeight={FONT_WEIGHT.NORMAL}
-                  >
+                  </p>
+                  <p className="text-[13px] font-bold text-black">
                     {t('newTokensImportedMessage', [newTokensImported])}
-                  </Typography>
-                </Box>
+                  </p>
+                </div>
                 <button
                   className="fas fa-times home__new-tokens-imported-notification-close"
                   title={t('close')}
                   onClick={() => setNewTokensImported('')}
                 />
-              </Box>
+              </div>
             }
           />
         ) : null}
@@ -572,7 +544,7 @@ export default class Home extends PureComponent {
   };
 
   render() {
-    const { t } = this.context;
+    // const { t } = this.context;
     const {
       defaultHomeActiveTabName,
       onTabClick,
@@ -584,13 +556,13 @@ export default class Home extends PureComponent {
       showWhatsNewPopup,
       hideWhatsNewPopup,
       showPortfolioTooltip,
-      hidePortfolioTooltip,
+      // hidePortfolioTooltip,
       portfolioTooltipWasShownInThisSession,
       seedPhraseBackedUp,
       showRecoveryPhraseReminder,
       firstTimeFlowType,
       completedOnboarding,
-      shouldShowSeedPhraseReminder,
+      // shouldShowSeedPhraseReminder,
       onboardedInThisUISession,
       newCustomNetworkAdded,
     } = this.props;
@@ -641,45 +613,45 @@ export default class Home extends PureComponent {
               defaultActiveTabKey={defaultHomeActiveTabName}
               onTabClick={onTabClick}
               tabsClassName="grid grid-cols-2"
-              subHeader={
-                <Tooltip
-                  position="bottom"
-                  open={
-                    !process.env.IN_TEST &&
-                    !shouldShowSeedPhraseReminder &&
-                    !showRecoveryPhraseReminder &&
-                    showPortfolioTooltip
-                  }
-                  interactive
-                  theme="home__subheader-link--tooltip"
-                  html={
-                    <div>
-                      <div className="home__subheader-link--tooltip-content-header">
-                        <div className="home__subheader-link--tooltip-content-header-text">
-                          {t('new')}
-                        </div>
-                        <button
-                          className="home__subheader-link--tooltip-content-header-button"
-                          onClick={() => {
-                            hidePortfolioTooltip();
-                          }}
-                        >
-                          <i className="fa fa-times" />
-                        </button>
-                      </div>
-                      <div>
-                        {t('tryOur')}&nbsp;
-                        <span className="home__subheader-link--tooltip-content-text-bold">
-                          {t('betaPortfolioSite')}
-                        </span>
-                        &nbsp;{t('keepTapsOnTokens')}
-                      </div>
-                    </div>
-                  }
-                >
-                  <ImportTokenLink />
-                </Tooltip>
-              }
+              // subHeader={
+              //   <Tooltip
+              //     position="bottom"
+              //     open={
+              //       !process.env.IN_TEST &&
+              //       !shouldShowSeedPhraseReminder &&
+              //       !showRecoveryPhraseReminder &&
+              //       showPortfolioTooltip
+              //     }
+              //     interactive
+              //     theme="home__subheader-link--tooltip"
+              //     html={
+              //       <div>
+              //         <div className="home__subheader-link--tooltip-content-header">
+              //           <div className="home__subheader-link--tooltip-content-header-text">
+              //             {t('new')}
+              //           </div>
+              //           <button
+              //             className="home__subheader-link--tooltip-content-header-button"
+              //             onClick={() => {
+              //               hidePortfolioTooltip();
+              //             }}
+              //           >
+              //             <i className="fa fa-times" />
+              //           </button>
+              //         </div>
+              //         <div>
+              //           {t('tryOur')}&nbsp;
+              //           <span className="home__subheader-link--tooltip-content-text-bold">
+              //             {t('betaPortfolioSite')}
+              //           </span>
+              //           &nbsp;{t('keepTapsOnTokens')}
+              //         </div>
+              //       </div>
+              //     }
+              //   >
+              //     <ImportTokenLink />
+              //   </Tooltip>
+              // }
             >
               <Tab
                 className="home__tab"
