@@ -56,7 +56,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[2]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://metamask.io/privacy.html"
+            href="https://www.ezwallet.xyz/"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -67,7 +67,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[3]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://metamask.io/terms.html"
+            href="https://www.ezwallet.xyz/"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -79,7 +79,7 @@ export default class InfoTab extends PureComponent {
           <div ref={this.settingsRefs[8]} className="info-tab__link-item">
             <Button
               type="link"
-              href="https://metamask.io/beta-terms.html"
+              href="https://www.ezwallet.xyz/"
               target="_blank"
               rel="noopener noreferrer"
               className="info-tab__link-text"
@@ -92,7 +92,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[4]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://metamask.io/attributions.html"
+            href="https://www.ezwallet.xyz/"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -129,7 +129,7 @@ export default class InfoTab extends PureComponent {
         <div ref={this.settingsRefs[6]} className="info-tab__link-item">
           <Button
             type="link"
-            href="https://metamask.io/"
+            href="https://www.ezwallet.xyz/"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"

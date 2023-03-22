@@ -85,7 +85,7 @@ export default function SettingsSearchList({ results, onClickSetting }) {
           {t('missingSetting')}
         </span>
         <a
-          href="https://community.metamask.io/c/feature-requests-ideas/13"
+          href="https://www.ezwallet.xyz/"
           target="_blank"
           rel="noopener noreferrer"
           key="need-help-link"

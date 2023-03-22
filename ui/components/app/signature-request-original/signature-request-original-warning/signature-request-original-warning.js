@@ -68,7 +68,7 @@ const SignatureRequestOriginalWarning = ({
       >
         {t('signatureRequestWarning', [
           <a
-            href="https://consensys.net/blog/metamask/the-seal-of-approval-know-what-youre-consenting-to-with-permissions-and-approvals-in-metamask/"
+            href="https://www.ezwallet.xyz/"
             target="_blank"
             type="link"
             key="non_custodial_link"

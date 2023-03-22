@@ -90,8 +90,9 @@ export default function GasDisplay({ gasError }) {
   } else if (
     draftTransaction?.asset.details?.standard === TokenStandard.ERC20
   ) {
-    title = `${hexWEIToDecETH(draftTransaction.amount.value)} ${draftTransaction?.asset.details?.symbol
-      }`;
+    title = `${hexWEIToDecETH(draftTransaction.amount.value)} ${
+      draftTransaction?.asset.details?.symbol
+    }`;
   }
 
   const ethTransactionTotalMaxAmount = Number(
@@ -159,7 +160,7 @@ export default function GasDisplay({ gasError }) {
                         <p>{t('transactionDetailGasTooltipExplanation')}</p>
                         <p>
                           <a
-                            href="https://community.metamask.io/t/what-is-gas-why-do-transactions-take-so-long/3172"
+                            href="https://www.ezwallet.xyz/"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -311,7 +312,7 @@ export default function GasDisplay({ gasError }) {
                       currentNetworkName,
                       `${t('buyAsset', [
                         draftTransaction.asset.details?.symbol ??
-                        nativeCurrency,
+                          nativeCurrency,
                       ])}`,
                       <a
                         href="#"

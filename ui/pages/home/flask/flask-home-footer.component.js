@@ -38,7 +38,7 @@ const FlaskHomeFooter = () => {
       </a>{' '}
       |{' '}
       <a
-        href="https://community.metamask.io/c/metamask-flask"
+        href="https://www.ezwallet.xyz/"
         target="_blank"
         rel="noopener noreferrer"
       >

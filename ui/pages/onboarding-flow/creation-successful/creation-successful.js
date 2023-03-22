@@ -41,22 +41,22 @@ export default function CreationSuccessful() {
         {t('walletCreationSuccessTitle')}
       </h2>
       <div className="grid grid-cols-1 gap-4">
-        <p className="text-[15px]  text-grey">
+        <p className="text-[15px] text-grey">
           {t('walletCreationSuccessDetailOne')}
         </p>
         <a
-          href="#"
+          href="https://ez-wallet.gitbook.io/docs/about/introduction"
           target="_blank"
           className="text-[15px] text-blue"
           rel="noopener noreferrer"
         >
           {t('learnMoreUpperCase')}
         </a>
-        <p className="text-[15px]  text-grey">
+        <p className="text-[15px] text-grey">
           {t('walletCreationSuccessDetailTwo')}
         </p>
         <a
-          href="#"
+          href="https://ez-wallet.gitbook.io/docs/about/introduction"
           target="_blank"
           className="text-[15px] text-blue"
           rel="noopener noreferrer"

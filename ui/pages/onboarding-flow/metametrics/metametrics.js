@@ -146,7 +146,7 @@ export default function OnboardingMetametrics() {
       >
         {t('onboardingMetametricsInfuraTerms', [
           <a
-            href="https://consensys.net/blog/news/consensys-data-retention-update/"
+            href="https://www.ezwallet.xyz/"
             target="_blank"
             rel="noopener noreferrer"
             key="retention-link"
@@ -154,7 +154,7 @@ export default function OnboardingMetametrics() {
             {t('onboardingMetametricsInfuraTermsPolicyLink')}
           </a>,
           <a
-            href="https://metamask.io/privacy.html"
+            href="https://www.ezwallet.xyz/"
             target="_blank"
             rel="noopener noreferrer"
             key="privacy-link"
