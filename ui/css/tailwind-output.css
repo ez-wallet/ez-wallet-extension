@@ -753,6 +753,10 @@ html {
   height: 100px !important;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-\[1px\] {
   height: 1px;
 }
@@ -784,6 +788,10 @@ html {
 
 .h-full {
   height: 100%;
+}
+
+.w-8 {
+  width: 2rem;
 }
 
 .w-\[215px\] {
@@ -1016,11 +1024,6 @@ html {
   border-width: 2px;
 }
 
-.border-y {
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-}
-
 .border-b {
   border-bottom-width: 1px;
 }
@@ -1038,6 +1041,11 @@ html {
   border-color: rgb(23 230 134 / var(--tw-border-opacity));
 }
 
+.border-grey {
+  --tw-border-opacity: 1;
+  border-color: rgb(140 140 153 / var(--tw-border-opacity));
+}
+
 .border-grey-5 {
   --tw-border-opacity: 1;
   border-color: rgb(222 228 243 / var(--tw-border-opacity));
@@ -1046,11 +1054,6 @@ html {
 .border-red {
   --tw-border-opacity: 1;
   border-color: rgb(255 64 64 / var(--tw-border-opacity));
-}
-
-.border-yellow {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 204 0 / var(--tw-border-opacity));
 }
 
 .bg-blue {
@@ -1076,6 +1079,11 @@ html {
 .bg-green-6 {
   --tw-bg-opacity: 1;
   background-color: rgb(206 242 225 / var(--tw-bg-opacity));
+}
+
+.bg-grey {
+  --tw-bg-opacity: 1;
+  background-color: rgb(140 140 153 / var(--tw-bg-opacity));
 }
 
 .bg-grey-2 {
@@ -1223,12 +1231,20 @@ html {
   text-align: center;
 }
 
+.text-\[12px\] {
+  font-size: 12px;
+}
+
 .text-\[13px\] {
   font-size: 13px;
 }
 
 .text-\[15px\] {
   font-size: 15px;
+}
+
+.text-\[16px\] {
+  font-size: 16px;
 }
 
 .text-\[17px\] {
@@ -1365,6 +1381,12 @@ html {
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 

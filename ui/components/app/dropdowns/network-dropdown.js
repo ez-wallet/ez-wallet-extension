@@ -10,9 +10,6 @@ import {
   NETWORK_TYPES,
 } from '../../../../shared/constants/network';
 import { isPrefixedFormattedHexString } from '../../../../shared/modules/network.utils';
-
-import ColorIndicator from '../../ui/color-indicator';
-import { IconColor, Size } from '../../../helpers/constants/design-system';
 import { getShowTestNetworks } from '../../../selectors';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
@@ -22,8 +19,8 @@ import {
   ADVANCED_ROUTE,
 } from '../../../helpers/constants/routes';
 import IconCheck from '../../ui/icon/icon-check';
-
-import { Dropdown, DropdownMenuItem } from './dropdown';
+import Button from '../../ui/button';
+import { Dropdown } from './dropdown';
 
 // classes from nodes of the toggle element.
 const notToggleElementClassnames = [
@@ -34,12 +31,6 @@ const notToggleElementClassnames = [
   'network-component',
   'modal-container__footer-button',
 ];
-
-const DROP_DOWN_MENU_ITEM_STYLE = {
-  fontSize: '16px',
-  lineHeight: '20px',
-  padding: '16px',
-};
 
 function mapStateToProps(state) {
   return {
@@ -126,8 +117,9 @@ class NetworkDropdown extends Component {
   renderAddCustomButton() {
     const { onAddClick } = this.props;
     return (
-      <button
-        className="network__add-network-button"
+      <Button
+        large
+        type="primary"
         onClick={() => {
           if (onAddClick) {
             onAddClick();
@@ -142,11 +134,11 @@ class NetworkDropdown extends Component {
         }}
       >
         {this.context.t('addNetwork')}
-      </button>
+      </Button>
     );
   }
 
-  renderCustomRpcList(rpcListDetail, provider, opts = {}) {
+  renderCustomRpcList(rpcListDetail, provider) {
     const reversedRpcListDetail = rpcListDetail.slice().reverse();
 
     return reversedRpcListDetail.map((entry) => {
@@ -155,7 +147,7 @@ class NetworkDropdown extends Component {
         provider.type === NETWORK_TYPES.RPC && rpcUrl === provider.rpcUrl;
 
       return (
-        <DropdownMenuItem
+        <div
           key={`common${rpcUrl}`}
           closeMenu={() => this.props.hideNetworkDropdown()}
           onClick={() => {
@@ -165,33 +157,15 @@ class NetworkDropdown extends Component {
               this.props.displayInvalidCustomNetworkAlert(nickname || rpcUrl);
             }
           }}
-          style={{
-            fontSize: '16px',
-            lineHeight: '20px',
-            padding: '16px',
-          }}
+          className="flex items-center gap-2 bg-white rounded-xl p-4 shadow-xl cursor-pointer"
         >
-          {isCurrentRpcTarget ? (
-            <IconCheck color="var(--color-success-default)" />
-          ) : (
-            <div className="network-check__transparent">✓</div>
-          )}
-          <ColorIndicator
-            color={opts.isLocalHost ? 'localhost' : IconColor.iconMuted}
-            size={Size.LG}
-            type={ColorIndicator.TYPES.FILLED}
-          />
-          <span
-            className="network-name-item"
+          <div
+            className="flex-grow text-[13px] text-black"
             data-testid={`${nickname}-network-item`}
-            style={{
-              color: isCurrentRpcTarget
-                ? 'var(--color-text-default)'
-                : 'var(--color-text-alternative)',
-            }}
           >
             {nickname || rpcUrl}
-          </span>
+          </div>
+          {isCurrentRpcTarget && <IconCheck />}
           {isCurrentRpcTarget ? null : (
             <i
               className="fa fa-times delete"
@@ -204,7 +178,7 @@ class NetworkDropdown extends Component {
               }}
             />
           )}
-        </DropdownMenuItem>
+        </div>
       );
     });
   }
@@ -233,35 +207,20 @@ class NetworkDropdown extends Component {
       provider: { type: providerType },
     } = this.props;
     return (
-      <DropdownMenuItem
+      <div
         key={network}
         closeMenu={this.props.hideNetworkDropdown}
         onClick={() => this.handleClick(network)}
-        style={DROP_DOWN_MENU_ITEM_STYLE}
+        className="flex items-center gap-2 bg-white rounded-xl p-4 shadow-xl cursor-pointer"
       >
-        {providerType === network ? (
-          <IconCheck color="var(--color-success-default)" />
-        ) : (
-          <div className="network-check__transparent">✓</div>
-        )}
-        <ColorIndicator
-          color={network}
-          size={Size.LG}
-          type={ColorIndicator.TYPES.FILLED}
-        />
-        <span
-          className="network-name-item"
+        <div
+          className="flex-grow text-[13px] text-black"
           data-testid={`${network}-network-item`}
-          style={{
-            color:
-              providerType === network
-                ? 'var(--color-text-default)'
-                : 'var(--color-text-alternative)',
-          }}
         >
           {this.context.t(network)}
-        </span>
-      </DropdownMenuItem>
+        </div>
+        {providerType === network && <IconCheck />}
+      </div>
     );
   }
 
@@ -298,33 +257,30 @@ class NetworkDropdown extends Component {
             hideNetworkDropdown();
           }
         }}
-        containerClassName="network-droppo"
+        containerClassName="network-droppo px-4"
         zIndex={55}
         style={
           this.props.dropdownStyles || {
             position: 'absolute',
-            top: '-16px',
-            width: '360px',
-            left: '50%',
-            marginLeft: '-180px',
+            left: '0',
+            right: '0',
             zIndex: '55',
           }
         }
       >
-        <div className="network-dropdown-header">
+        <div className="network-dropdown-header px-4">
           {hideElementsForOnboarding ? null : (
-            <div className="network-dropdown-title">{t('networks')}</div>
-          )}
-          {hideElementsForOnboarding ? null : (
-            <div className="network-dropdown-divider" />
+            <div className="text-[19px] text-black font-bold mb-3">
+              {t('networks')}
+            </div>
           )}
           {showTestnetMessageInDropdown && !hideElementsForOnboarding ? (
-            <div className="network-dropdown-content">
+            <div className="w-full flex items-center justify-between text-[13px]">
               {t('toggleTestNetworks', [
                 <a
                   href="#"
                   key="advancedSettingsLink"
-                  className="network-dropdown-content--link"
+                  className="text-[13px] text-blue"
                   onClick={(e) => {
                     e.preventDefault();
                     hideNetworkDropdown();
@@ -336,7 +292,7 @@ class NetworkDropdown extends Component {
               ])}
               <button
                 onClick={hideTestNetMessage}
-                className="network-dropdown-content--dismiss"
+                className="text-[13px] border text-grey border-grey rounded-full px-2"
               >
                 {t('dismiss')}
               </button>
@@ -344,7 +300,7 @@ class NetworkDropdown extends Component {
           ) : null}
         </div>
 
-        <div className="network-dropdown-list">
+        <div className="network-dropdown-list flex flex-col gap-3 p-4">
           {this.renderNetworkEntry(NETWORK_TYPES.MAINNET)}
 
           {this.renderCustomRpcList(
@@ -364,9 +320,7 @@ class NetworkDropdown extends Component {
             </>
           )}
         </div>
-        <div className="network__add-network-button-container">
-          {this.renderAddCustomButton()}
-        </div>
+        <div className="w-full px-4">{this.renderAddCustomButton()} </div>
       </Dropdown>
     );
   }

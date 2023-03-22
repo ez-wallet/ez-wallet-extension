@@ -8,7 +8,7 @@ import Identicon from '../../ui/identicon';
 import { I18nContext } from '../../../contexts/i18n';
 import {
   SEND_ROUTE,
-  BUILD_QUOTE_ROUTE,
+  // BUILD_QUOTE_ROUTE,
 } from '../../../helpers/constants/routes';
 import Tooltip from '../../ui/tooltip';
 import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
@@ -16,24 +16,24 @@ import { PRIMARY, SECONDARY } from '../../../helpers/constants/common';
 import {
   isBalanceCached,
   getShouldShowFiat,
-  getCurrentKeyring,
-  getSwapsDefaultToken,
-  getIsSwapsChain,
+  // getCurrentKeyring,
+  // getSwapsDefaultToken,
+  // getIsSwapsChain,
   getIsBuyableChain,
   getNativeCurrencyImage,
   getSelectedAccountCachedBalance,
   getSelectedIdentity,
 } from '../../../selectors';
-import { setSwapsFromToken } from '../../../ducks/swaps/swaps';
+// import { setSwapsFromToken } from '../../../ducks/swaps/swaps';
 import IconButton from '../../ui/icon-button';
-import { isHardwareKeyring } from '../../../helpers/utils/hardware';
+// import { isHardwareKeyring } from '../../../helpers/utils/hardware';
 import { MetaMetricsContext } from '../../../contexts/metametrics';
 import { EVENT, EVENT_NAMES } from '../../../../shared/constants/metametrics';
 import Spinner from '../../ui/spinner';
 import { startNewDraftTransaction } from '../../../ducks/send';
 import { AssetType } from '../../../../shared/constants/transaction';
 import DepositPopover from '../deposit-popover';
-import { Icon, ICON_NAMES } from '../../component-library';
+import { Icon } from '../../component-library';
 import WalletOverview from './wallet-overview';
 
 const EthOverview = ({ className }) => {
@@ -42,15 +42,15 @@ const EthOverview = ({ className }) => {
   const trackEvent = useContext(MetaMetricsContext);
   const history = useHistory();
   const [showDepositPopover, setShowDepositPopover] = useState(false);
-  const keyring = useSelector(getCurrentKeyring);
-  const usingHardwareWallet = isHardwareKeyring(keyring?.type);
+  // const keyring = useSelector(getCurrentKeyring);
+  // const usingHardwareWallet = isHardwareKeyring(keyring?.type);
   const balanceIsCached = useSelector(isBalanceCached);
   const showFiat = useSelector(getShouldShowFiat);
   const balance = useSelector(getSelectedAccountCachedBalance);
-  const isSwapsChain = useSelector(getIsSwapsChain);
+  // const isSwapsChain = useSelector(getIsSwapsChain);
   const isBuyableChain = useSelector(getIsBuyableChain);
   const primaryTokenImage = useSelector(getNativeCurrencyImage);
-  const defaultSwapsToken = useSelector(getSwapsDefaultToken);
+  // const defaultSwapsToken = useSelector(getSwapsDefaultToken);
   const selectedIdentity = useSelector(getSelectedIdentity);
 
   return (
@@ -82,7 +82,7 @@ const EthOverview = ({ className }) => {
                   />
                 ) : (
                   <Spinner
-                    color="var(--colors-primary-green_03)"
+                    color="#00B360"
                     className="loading-overlay__spinner"
                   />
                 )}
@@ -217,7 +217,11 @@ const EthOverview = ({ className }) => {
           </Fragment>
         }
         className={className}
-        icon={<Identicon diameter={32} image={primaryTokenImage} imageBorder />}
+        icon={
+          primaryTokenImage ? (
+            <Identicon diameter={32} image={primaryTokenImage} imageBorder />
+          ) : null
+        }
       />
     </>
   );

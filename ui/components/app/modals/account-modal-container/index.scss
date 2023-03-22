@@ -7,8 +7,6 @@
     align-items: center;
     position: relative;
     padding: 5px 0 31px 0;
-    border: 1px solid var(--color-border-default);
-    border-radius: 4px;
   }
 
   &__back {
@@ -36,10 +34,6 @@
     cursor: pointer;
     top: -10px;
     right: 12px;
-
-    &::after {
-      content: '\00D7';
-    }
   }
 
   & .identicon {

@@ -62,16 +62,17 @@ function QrCodeView(props) {
         title={copied ? t('copiedExclamation') : t('copyToClipboard')}
       >
         <div
-          className="qr-code__address-container"
+          className="w-full rounded-full bg-grey-5 px-4 py-2 flex items-center gap-2"
           onClick={() => {
             handleCopy(toChecksumHexAddress(data));
           }}
         >
-          <div className="qr-code__address">{toChecksumHexAddress(data)}</div>
+          <div className="text-[13px] text-black">
+            {toChecksumHexAddress(data)}
+          </div>
           <Icon
             name={copied ? ICON_NAMES.COPY_SUCCESS : ICON_NAMES.COPY}
             size={ICON_SIZES.SM}
-            marginInlineStart={3}
           />
         </div>
       </Tooltip>
