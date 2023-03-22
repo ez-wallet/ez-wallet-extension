@@ -25,7 +25,7 @@ import {
   // BLOCK_SIZES,
   // Size,
   // TextVariant,
-  TextColor,
+  // TextColor,
 } from '../../helpers/constants/design-system';
 import { SECOND } from '../../../shared/constants/time';
 // import { ButtonLink, ICON_NAMES } from '../../components/component-library';
@@ -291,20 +291,12 @@ export default class Home extends PureComponent {
                     infoText={error.data.snapId}
                     descriptionText={
                       <>
-                        <Typography
-                          color={TextColor.textAlternative}
-                          variant={TypographyVariant.H5}
-                          fontWeight={FONT_WEIGHT.NORMAL}
-                        >
+                        <p className="text-[13px] text-red">
                           {t('somethingWentWrong')}
-                        </Typography>
-                        <Typography
-                          color={TextColor.textAlternative}
-                          variant={TypographyVariant.H7}
-                          fontWeight={FONT_WEIGHT.NORMAL}
-                        >
+                        </p>
+                        <p className="text-[13px] text-grey">
                           {t('snapError', [error.message, error.code])}
-                        </Typography>
+                        </p>
                       </>
                     }
                     onIgnore={async () => {
