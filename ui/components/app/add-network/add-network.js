@@ -62,9 +62,14 @@ const AddNetwork = () => {
     return fetch(GET_NETWORKS_URL)
       .then((response) => response.json())
       .then((data) => {
-        setNetworks(data);
+        const parsedData = data.map((item) => ({
+          ...item,
+          chainId: `0x${item.chainId.toString(16)}`,
+        }));
+        setNetworks(parsedData);
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         setError(true);
       });
   };
